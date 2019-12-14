@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blue100"
+    tools:context=".CreateProfile">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="@drawable/frame"
+        android:elevation="3dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:stateListAnimator="@drawable/elevator_regtang"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="0.13">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="8dp"
+
+            android:fontFamily="@font/bold"
+            android:text="CREATE MEMBER"
+            android:textColor="#ffff"
+            android:textSize="35dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.503"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/member4"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="left"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/frame"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="member 4"
+            android:inputType="textPersonName"
+            android:textColor="#ffff"
+            android:textColorHint="#ffff"
+            app:layout_constraintEnd_toEndOf="@+id/member3"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/member3"
+            app:layout_constraintTop_toBottomOf="@+id/member3" />
+
+        <EditText
+            android:id="@+id/member3"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="left"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/frame"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="member 3"
+            android:inputType="textPersonName"
+            android:textColor="#ffff"
+            android:textColorHint="#ffff"
+            app:layout_constraintEnd_toEndOf="@+id/member2"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/member2"
+            app:layout_constraintTop_toBottomOf="@+id/member2" />
+
+        <EditText
+            android:id="@+id/member2"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="left"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/frame"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="member 2"
+            android:inputType="textPersonName"
+            android:textColor="#ffff"
+            android:textColorHint="#ffff"
+            app:layout_constraintEnd_toStartOf="@+id/etAge2"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/member1"
+            app:layout_constraintTop_toBottomOf="@+id/member1" />
+
+
+        <EditText
+            android:id="@+id/member1"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/frame"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="member 1"
+            android:inputType="textPersonName"
+            android:textColor="#ffff"
+            android:textColorHint="#ffff"
+            app:layout_constraintEnd_toStartOf="@+id/etAge1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+        <Button
+            android:id="@+id/btSave"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/button"
+            android:text="SAVE"
+            android:textColor="#ffff"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/member4" />
+
+        <EditText
+            android:id="@+id/etAge1"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/frame"
+            android:ems="10"
+            android:gravity="center"
+            android:textColor="#ffff"
+            android:hint="age"
+            android:inputType="numberDecimal"
+            android:textColorHint="#ffff"
+            app:layout_constraintBottom_toBottomOf="@+id/member1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/member1"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <EditText
+            android:id="@+id/etAge2"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/frame"
+            android:ems="10"
+            android:gravity="center"
+            android:textColor="#ffff"
+            android:hint="age"
+            android:inputType="numberDecimal"
+            android:textColorHint="#ffff"
+            app:layout_constraintBottom_toBottomOf="@+id/member2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/member2"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <EditText
+            android:id="@+id/etAge3"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/frame"
+            android:ems="10"
+            android:gravity="center"
+            android:textColor="#ffff"
+            android:hint="age"
+            android:inputType="numberDecimal"
+            android:textColorHint="#ffff"
+            app:layout_constraintBottom_toBottomOf="@+id/member3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/member3"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <EditText
+            android:id="@+id/etAge4"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/frame"
+            android:ems="10"
+            android:gravity="center"
+            android:textColor="#ffff"
+            android:hint="age"
+            android:inputType="numberDecimal"
+            android:textColorHint="#ffff"
+            app:layout_constraintBottom_toBottomOf="@+id/member4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/member4"
+            app:layout_constraintVertical_bias="0.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="99dp"
+        android:layout_height="95dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/elevetorcircle"
+        android:elevation="2dp"
+        android:stateListAnimator="@drawable/elevetorcircle"
+
+        android:translationZ="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/accout"
+        tools:ignore="VectorDrawableCompat" />
+</androidx.constraintlayout.widget.ConstraintLayout>

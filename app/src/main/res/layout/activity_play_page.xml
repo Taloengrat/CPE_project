@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PlayingMode.PlayPage"
+    android:background="#6AB9C4">
+
+
+
+
+    <fragment
+        android:id="@+id/fragment"
+        android:name="com.example.projectcpe.PlayingMode.Stepmission.detailStep"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textClock"
+        tools:layout="@layout/fragment_detail_step" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="0dp"
+        app:layout_constraintHeight_percent="0.1"
+        android:layout_marginStart="0dp"
+        android:background="#5562AF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:menu="@menu/playing_bar"
+        app:itemIconSize="30dp"
+        
+        />
+
+    <TextView
+        android:id="@+id/textClock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:layout_margin="16dp"
+        android:textSize="32dp"
+        android:fontFamily="@font/bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintHeight_percent="0.1"
+        app:layout_constraintWidth_percent="0.1"
+        app:layout_constraintBottom_toBottomOf="@+id/textClock"
+        app:layout_constraintEnd_toStartOf="@+id/textClock"
+        app:layout_constraintTop_toTopOf="@+id/textClock"
+        app:srcCompat="@drawable/clock"
+        tools:ignore="VectorDrawableCompat" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

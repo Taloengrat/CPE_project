@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        app:cardCornerRadius="20dp"
+
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:layout_gravity="bottom"
+            android:background="@drawable/step_layout"
+            >
+
+
+            <LinearLayout
+                android:id="@+id/frameEdittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/numstep"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@id/head"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/answerStep"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bgtext"
+                    android:ems="10"
+
+                    android:fontFamily="@font/thin"
+                    android:gravity="center"
+                    android:hint="Put your answer"
+                    android:inputType="textPersonName"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+
+            </LinearLayout>
+
+
+
+            <TextView
+                android:id="@+id/numstep"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="6dp"
+                android:layout_marginRight="20dp"
+                android:layout_toEndOf="@+id/head"
+                android:layout_toRightOf="@id/head"
+                android:background="@color/colorPrimary"
+                android:fontFamily="@font/bold"
+                android:gravity="center"
+                android:paddingLeft="15dp"
+                android:textColor="#695F5F"
+                android:paddingRight="15dp"
+                android:text="Number of step"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small.Inverse"
+                android:textSize="30dp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/head"
+                android:layout_width="120dp"
+                android:layout_height="90dp"
+                android:padding="4dp"
+                app:srcCompat="@drawable/camera"
+                tools:ignore="VectorDrawableCompat" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/frameEdittext"
+                android:layout_alignRight="@+id/head"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="0dp"
+                android:layout_marginBottom="5dp"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/head">
+
+                <ImageView
+                    android:id="@+id/add"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/add" />
+
+                <ImageView
+                    android:id="@+id/score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/unscore" />
+
+            </LinearLayout>
+
+
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

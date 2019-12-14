@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PlayingMode.DetailMission"
+    android:background="@drawable/layout_mission"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/layout_shadow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.3"
+        app:layout_constraintHorizontal_bias="0.527"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.8">
+
+        <TextView
+            android:id="@+id/numstep"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Step of mission"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="@+id/Name"
+            app:layout_constraintStart_toStartOf="@+id/Name"
+            app:layout_constraintTop_toBottomOf="@+id/Name" />
+
+        <TextView
+            android:id="@+id/Name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/bold"
+            android:text="Mission Name"
+            android:textSize="30dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/Age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Step of mission"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="@+id/Name"
+            app:layout_constraintStart_toStartOf="@+id/Name"
+            app:layout_constraintTop_toBottomOf="@+id/numstep" />
+
+
+        <TextView
+            android:id="@+id/DetailMission"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/layout_black"
+            android:fontFamily="@font/bold"
+            android:gravity="center"
+            android:text="About this mission"
+            android:textColor="#ffff"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="@+id/numstep"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="@+id/numstep"
+            app:layout_constraintTop_toBottomOf="@+id/Age" />
+
+        <ImageView
+            android:id="@+id/btPlay"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:onClick="setBtPlayClick"
+            app:layout_constraintBottom_toTopOf="@+id/DetailMission"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.45"
+            app:layout_constraintStart_toEndOf="@+id/Name"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.3"
+            app:srcCompat="@drawable/play"
+            tools:ignore="VectorDrawableCompat" />
+
+        <TextView
+            android:id="@+id/txDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/thin"
+            android:text="TextView"
+            android:textSize="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/DetailMission"
+            app:layout_constraintStart_toStartOf="@+id/DetailMission"
+            app:layout_constraintTop_toBottomOf="@+id/DetailMission" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/layout_range"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3"
+        app:layout_constraintWidth_percent="0.9">
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="60dp"
+            android:layout_gravity="center"
+            android:layout_height="60dp"
+            app:srcCompat="@drawable/star"
+            tools:ignore="VectorDrawableCompat" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

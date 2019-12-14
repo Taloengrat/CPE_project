@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".FunctionEditProfile"
+    android:background= "@color/blue200">
+
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/elevetorcircle"
+        app:layout_constraintBottom_toTopOf="@+id/guideline3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent="0.4"
+        app:srcCompat="@drawable/accout"
+        tools:ignore="VectorDrawableCompat" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/frame"
+        android:padding="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.5"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintWidth_percent="0.9">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/MemberRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <!--        <LinearLayout-->
+        <!--            android:id="@+id/layout1"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_margin="10dp"-->
+        <!--            android:background="@drawable/frame"-->
+        <!--            android:orientation="horizontal"-->
+        <!--            android:padding="10dp"-->
+        <!--            app:layout_constraintBottom_toTopOf="@+id/guideline2"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintHeight_percent="0.45"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toTopOf="parent"-->
+        <!--            app:layout_constraintWidth_percent="0.45">-->
+
+        <!--            <ImageView-->
+        <!--                android:id="@+id/imUser1"-->
+        <!--                android:layout_width="60dp"-->
+        <!--                android:layout_height="60dp"-->
+        <!--                android:layout_gravity="center"-->
+        <!--                app:srcCompat="@drawable/user1"-->
+        <!--                tools:ignore="VectorDrawableCompat" />-->
+
+        <!--            <TextView-->
+        <!--                android:id="@+id/profile1"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_gravity="center"-->
+        <!--                android:fontFamily="@font/thin"-->
+        <!--                android:text="member1"-->
+        <!--                android:layout_marginStart="10dp"-->
+        <!--                android:textColor="#ffff"-->
+        <!--                android:textSize="25dp" />-->
+
+        <!--            <TextView-->
+        <!--                android:id="@+id/age1"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_gravity="center"-->
+        <!--                android:fontFamily="@font/thin"-->
+        <!--                android:text="member1"-->
+        <!--                android:layout_marginStart="10dp"-->
+        <!--                android:textColor="#ffff"-->
+        <!--                android:textSize="25dp" />-->
+
+        <!--        </LinearLayout>-->
+
+        <!--        <LinearLayout-->
+        <!--            android:id="@+id/layout2"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_margin="10dp"-->
+        <!--            android:background="@drawable/frame"-->
+        <!--            android:orientation="horizontal"-->
+        <!--            android:padding="10dp"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+
+        <!--            app:layout_constraintHeight_percent="0.45"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/layout1"-->
+        <!--            app:layout_constraintWidth_percent="0.45">-->
+
+        <!--            <ImageView-->
+        <!--                android:id="@+id/imUser2"-->
+        <!--                android:layout_width="60dp"-->
+        <!--                android:layout_height="60dp"-->
+        <!--                android:layout_gravity="center"-->
+        <!--                app:srcCompat="@drawable/user2"-->
+        <!--                tools:ignore="VectorDrawableCompat" />-->
+
+        <!--            <TextView-->
+        <!--                android:id="@+id/profile2"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_gravity="center"-->
+        <!--                android:fontFamily="@font/thin"-->
+        <!--                android:text="member2"-->
+        <!--                android:layout_marginStart="10dp"-->
+        <!--                android:textColor="#ffff"-->
+        <!--                android:textSize="25dp" />-->
+
+        <!--            <TextView-->
+        <!--                android:id="@+id/age2"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_gravity="center"-->
+        <!--                android:fontFamily="@font/thin"-->
+        <!--                android:text="member1"-->
+        <!--                android:layout_marginStart="10dp"-->
+        <!--                android:textColor="#ffff"-->
+        <!--                android:textSize="25dp"  />-->
+        <!--        </LinearLayout>-->
+
+        <!--        <LinearLayout-->
+        <!--            android:id="@+id/layout3"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_margin="10dp"-->
+        <!--            android:background="@drawable/frame"-->
+        <!--            android:orientation="horizontal"-->
+        <!--            android:padding="10dp"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintHeight_percent="0.45"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/layout2"-->
+        <!--            app:layout_constraintWidth_percent="0.45">-->
+
+        <!--            <ImageView-->
+        <!--                android:id="@+id/imUser3"-->
+        <!--                android:layout_width="60dp"-->
+        <!--                android:layout_height="60dp"-->
+        <!--                android:layout_gravity="center"-->
+        <!--                app:srcCompat="@drawable/user3"-->
+        <!--                tools:ignore="VectorDrawableCompat" />-->
+
+        <!--            <TextView-->
+        <!--                android:id="@+id/profile3"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_gravity="center"-->
+        <!--                android:fontFamily="@font/thin"-->
+        <!--                android:text="member3"-->
+        <!--                android:layout_marginStart="10dp"-->
+        <!--                android:textColor="#ffff"-->
+        <!--                android:textSize="25dp" />-->
+
+        <!--            <TextView-->
+        <!--                android:id="@+id/age3"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_gravity="center"-->
+        <!--                android:fontFamily="@font/thin"-->
+        <!--                android:text="member1"-->
+        <!--                android:layout_marginStart="10dp"-->
+        <!--                android:textColor="#ffff"-->
+        <!--                android:textSize="25dp"  />-->
+        <!--        </LinearLayout>-->
+
+        <!--        <LinearLayout-->
+        <!--            android:id="@+id/layout4"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_margin="10dp"-->
+        <!--            android:background="@drawable/frame"-->
+        <!--            android:orientation="horizontal"-->
+        <!--            android:padding="10dp"-->
+        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintHeight_percent="0.45"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/layout3"-->
+        <!--            app:layout_constraintWidth_percent="0.45">-->
+
+        <!--            <ImageView-->
+        <!--                android:id="@+id/imUser4"-->
+        <!--                android:layout_width="60dp"-->
+        <!--                android:layout_height="60dp"-->
+        <!--                android:layout_gravity="center"-->
+        <!--                app:srcCompat="@drawable/user4"-->
+        <!--                tools:ignore="VectorDrawableCompat" />-->
+
+        <!--            <TextView-->
+        <!--                android:id="@+id/profile4"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_gravity="center"-->
+        <!--                android:fontFamily="@font/thin"-->
+        <!--                android:text="member4"-->
+        <!--                android:layout_marginStart="10dp"-->
+        <!--                android:textColor="#ffff"-->
+        <!--                android:textSize="25dp" />-->
+
+        <!--            <TextView-->
+        <!--                android:id="@+id/age4"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_gravity="center"-->
+        <!--                android:fontFamily="@font/thin"-->
+        <!--                android:text="member1"-->
+        <!--                android:layout_marginStart="10dp"-->
+        <!--                android:textColor="#ffff"-->
+        <!--                android:textSize="25dp"  />-->
+        <!--        </LinearLayout>-->
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:foregroundGravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/bold"
+        android:text="Manage Profile"
+        android:textColor="#ffff"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintHorizontal_bias="0.543"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.25" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="1" />
+
+    <ImageView
+        android:id="@+id/addmember"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/constraintLayout2"
+        app:layout_constraintStart_toStartOf="@+id/constraintLayout2"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
+        app:srcCompat="@drawable/add" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

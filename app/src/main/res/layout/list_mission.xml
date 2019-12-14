@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        app:cardCornerRadius="20dp"
+
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:layout_gravity="bottom"
+            android:background="@drawable/layout_card"
+            android:id="@+id/layoutcard"
+            >
+
+            <TextView
+                android:id="@+id/textMisssionName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/txName"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/bold"
+                android:text="Name of mission"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                android:textColor="#000000"
+                android:textSize="25dp" />
+
+            <TextView
+                android:id="@+id/textAge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textMisssionName"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="16dp"
+                android:layout_toRightOf="@id/text"
+                android:background="@color/red400"
+                android:fontFamily="@font/thin"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:text="4.7"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small.Inverse"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/text"
+                android:fontFamily="@font/bold"
+                android:textSize="25dp"
+                android:layout_marginTop="8dp"
+                android:textColor="#ffff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="suitable for Age :"
+                android:layout_below="@id/textMisssionName"/>
+
+            <TextView
+                android:id="@+id/txName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mission Name :"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/bold"
+                android:textColor="#ffff"
+                android:textSize="25dp"/>
+
+            <ImageView
+                android:id="@+id/delete"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="false"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bgauthen"
+                android:visibility="gone"
+                app:srcCompat="@drawable/delete"
+                tools:ignore="VectorDrawableCompat" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

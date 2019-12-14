@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PlayingMode.Feedback"
+    android:background="#F17784">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutlogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:visibility="visible">
+
+        <ImageView
+            android:id="@+id/mainStar"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_centerHorizontal="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_language_black_24dp"
+            tools:ignore="VectorDrawableCompat" />
+
+        <ImageView
+            android:id="@+id/star1"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:srcCompat="@drawable/hindstar"
+            app:layout_constraintCircle="@id/mainStar"
+            app:layout_constraintCircleAngle="300"
+            app:layout_constraintCircleRadius="95dp"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/star2"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:srcCompat="@drawable/hindstar"
+            app:layout_constraintCircle="@id/mainStar"
+            app:layout_constraintCircleAngle="330"
+            app:layout_constraintCircleRadius="100dp"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/star3"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:srcCompat="@drawable/hindstar"
+            app:layout_constraintCircle="@id/mainStar"
+            app:layout_constraintCircleAngle="360"
+            app:layout_constraintCircleRadius="105dp"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/star4"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:srcCompat="@drawable/hindstar"
+            app:layout_constraintCircle="@id/mainStar"
+            app:layout_constraintCircleAngle="30"
+            app:layout_constraintCircleRadius="100dp"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/star5"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:srcCompat="@drawable/hindstar"
+            app:layout_constraintCircle="@id/mainStar"
+            app:layout_constraintCircleAngle="60"
+            app:layout_constraintCircleRadius="95dp"
+            tools:ignore="MissingConstraints" />
+
+
+        <ImageView
+            android:id="@+id/fullstar1"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:srcCompat="@drawable/fullstar"
+            android:visibility="gone"
+            app:layout_constraintCircle="@id/mainStar"
+            app:layout_constraintCircleAngle="300"
+            app:layout_constraintCircleRadius="90dp"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/fullstar2"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:srcCompat="@drawable/fullstar"
+            android:visibility="gone"
+            app:layout_constraintCircle="@id/mainStar"
+            app:layout_constraintCircleAngle="330"
+            app:layout_constraintCircleRadius="110dp"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/fullstar3"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:srcCompat="@drawable/fullstar"
+            android:visibility="gone"
+            app:layout_constraintCircle="@id/mainStar"
+            app:layout_constraintCircleAngle="360"
+            app:layout_constraintCircleRadius="120dp"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/fullstar4"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:srcCompat="@drawable/fullstar"
+            android:visibility="gone"
+            app:layout_constraintCircle="@id/mainStar"
+            app:layout_constraintCircleAngle="30"
+            app:layout_constraintCircleRadius="110dp"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/fullstar5"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:srcCompat="@drawable/fullstar"
+            android:visibility="gone"
+            app:layout_constraintCircle="@id/mainStar"
+            app:layout_constraintCircleAngle="60"
+            app:layout_constraintCircleRadius="90dp"
+            tools:ignore="MissingConstraints" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mission Name"
+        android:textSize="35dp"
+        android:fontFamily="@font/bold"
+        android:layout_below="@+id/layoutlogo"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:id="@+id/imUser"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_gravity="center"
+        app:srcCompat="@drawable/user1"
+        android:layout_marginTop="32dp"
+        tools:ignore="VectorDrawableCompat"
+        android:layout_below="@+id/textView7"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/userName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Profile Name"
+        android:textSize="35dp"
+        android:fontFamily="@font/thin"
+        android:layout_below="@+id/imUser"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="16dp"/>
+
+</RelativeLayout>
