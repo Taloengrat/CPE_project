@@ -2,13 +2,18 @@ package com.example.projectcpe;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,6 +22,7 @@ import com.example.projectcpe.Adapter.MemberAdapter;
 import com.example.projectcpe.ViewModel.Member;
 import com.example.projectcpe.ViewModel.MissionDATABASE;
 
+import java.io.ByteArrayOutputStream;
 import java.util.List;
 
 public class FunctionEditProfile extends AppCompatActivity {
@@ -25,6 +31,10 @@ public class FunctionEditProfile extends AppCompatActivity {
     RecyclerView MemberRecyclerview;
     List<Member> missionsList;
     ImageView addMember;
+    int numPic;
+    ImageView imMedium;
+
+    BitmapDrawable imBitmap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +55,70 @@ public class FunctionEditProfile extends AppCompatActivity {
 
                 final EditText _etName = dialog.findViewById(R.id.etname);
                 final EditText _etAge = dialog.findViewById(R.id.etage);
+                final ImageView profile = dialog.findViewById(R.id.head);
+
+                profile.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        final Dialog dialog = new Dialog(FunctionEditProfile.this);
+                        dialog.getWindow().setBackgroundDrawableResource(R.drawable.frameline);
+                        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                        dialog.setContentView(R.layout.item_profile);
+                        dialog.setCancelable(true);
+
+                        View.OnClickListener Clickkk = new View.OnClickListener() {
+
+                            @Override
+                            public void onClick(View view) {
+
+                                imMedium = (ImageView) view;
+
+Toast.makeText(getApplicationContext(), String.valueOf(imMedium.getDrawable()), Toast.LENGTH_SHORT).show();
+                                profile.setImageDrawable(imMedium.getDrawable());
+                                dialog.cancel();
+                            }
+                        };
+
+                        ImageView pro1, pro2, pro3, pro4, pro5, pro6, pro7, pro8, pro9, pro10,pro11, pro12, pro13, pro14, pro15;
+
+                        pro1 = dialog.findViewById(R.id.pro1);
+                        pro2 = dialog.findViewById(R.id.pro2);
+                        pro3 = dialog.findViewById(R.id.pro3);
+                        pro4 = dialog.findViewById(R.id.pro4);
+                        pro5 = dialog.findViewById(R.id.pro5);
+                        pro6 = dialog.findViewById(R.id.pro6);
+                        pro7 = dialog.findViewById(R.id.pro7);
+                        pro8 = dialog.findViewById(R.id.pro8);
+                        pro9 = dialog.findViewById(R.id.pro9);
+                        pro10 = dialog.findViewById(R.id.pro10);
+                        pro11 = dialog.findViewById(R.id.pro11);
+                        pro12 = dialog.findViewById(R.id.pro12);
+                        pro13 = dialog.findViewById(R.id.pro13);
+                        pro14 = dialog.findViewById(R.id.pro14);
+                        pro15 = dialog.findViewById(R.id.pro15);
+
+                        pro1.setOnClickListener(Clickkk);
+                        pro2.setOnClickListener(Clickkk);
+                        pro3.setOnClickListener(Clickkk);
+                        pro4.setOnClickListener(Clickkk);
+                        pro5.setOnClickListener(Clickkk);
+                        pro6.setOnClickListener(Clickkk);
+                        pro7.setOnClickListener(Clickkk);
+                        pro8.setOnClickListener(Clickkk);
+                        pro9.setOnClickListener(Clickkk);
+                        pro10.setOnClickListener(Clickkk);
+                        pro11.setOnClickListener(Clickkk);
+                        pro12.setOnClickListener(Clickkk);
+                        pro13.setOnClickListener(Clickkk);
+                        pro14.setOnClickListener(Clickkk);
+                        pro15.setOnClickListener(Clickkk);
+
+
+
+
+                        dialog.show();
+                    }
+                });
 
                 Button btSubmit = (Button) dialog.findViewById(R.id.ok);
                 btSubmit.setOnClickListener(new View.OnClickListener() {
@@ -55,7 +129,12 @@ public class FunctionEditProfile extends AppCompatActivity {
                             return;
                         } else {
 
-                            Member newMember = new Member(_etName.getText().toString(), _etAge.getText().toString());
+                            Bitmap bitmap = ((BitmapDrawable) imMedium.getDrawable()).getBitmap();
+                            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                            byte[] imageInByte = baos.toByteArray();
+
+                            Member newMember = new Member(_etName.getText().toString(), _etAge.getText().toString(), imageInByte);
 
                             MissionDATABASE.getInstance(FunctionEditProfile.this).missionDAO().createMember(newMember);
 dialog.cancel();
@@ -67,6 +146,9 @@ dialog.cancel();
                 dialog.show();
             }
         });
+
+
+
 
     }
 

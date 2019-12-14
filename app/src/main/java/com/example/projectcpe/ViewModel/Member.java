@@ -1,5 +1,7 @@
 package com.example.projectcpe.ViewModel;
 
+import android.widget.ImageView;
+
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
@@ -22,6 +24,9 @@ public class Member  {
     @ColumnInfo(name = "age")
     private String age;
 
+    @ColumnInfo(name = "profile")
+    private byte[] profile;
+
     @Ignore
     // Constructor
     public Member(){
@@ -29,9 +34,10 @@ public class Member  {
     }
 
 
-    public Member(String name, String age) {
+    public Member(String name, String age, byte[] profile) {
         this.name = name;
         this.age = age;
+        this.profile = profile;
     }
 
 
@@ -57,6 +63,14 @@ public class Member  {
 
     public void setAge(String age) {
         this.age = age;
+    }
+
+    public byte[] getProfile() {
+        return profile;
+    }
+
+    public void setProfile(byte[] profile) {
+        this.profile = profile;
     }
 
     @Override

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/frameline"
+    android:layout_gravity="center"
+    android:columnCount="1">
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:layout_row="0"
+        android:layout_marginTop="8dp">
+
+    <ImageView
+        android:id="@+id/pro1"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_weight="1"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="8dp"
+        app:srcCompat="@drawable/pro1" />
+
+    <ImageView
+        android:id="@+id/pro2"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_weight="1"
+        android:layout_marginStart="8dp"
+        android:layout_gravity="center_horizontal"
+        app:srcCompat="@drawable/pro2" />
+
+    <ImageView
+        android:id="@+id/pro3"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_weight="1"
+        android:layout_marginStart="8dp"
+        android:layout_gravity="center_horizontal"
+        app:srcCompat="@drawable/pro3" />
+
+    <ImageView
+        android:id="@+id/pro4"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_weight="1"
+        android:layout_marginStart="8dp"
+        android:layout_gravity="center_horizontal"
+        app:srcCompat="@drawable/pro4" />
+
+    <ImageView
+        android:id="@+id/pro5"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_weight="1"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:srcCompat="@drawable/pro5" />
+
+</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_row="1"
+        android:layout_marginTop="8dp">
+        <ImageView
+            android:id="@+id/pro6"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:layout_gravity="center_horizontal"
+            app:srcCompat="@drawable/pro6" />
+
+        <ImageView
+            android:id="@+id/pro7"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:layout_gravity="center_horizontal"
+            app:srcCompat="@drawable/pro7" />
+
+        <ImageView
+            android:id="@+id/pro8"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:layout_gravity="center_horizontal"
+            app:srcCompat="@drawable/pro8" />
+
+        <ImageView
+            android:id="@+id/pro9"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:layout_gravity="center_horizontal"
+            app:srcCompat="@drawable/pro9" />
+
+        <ImageView
+            android:id="@+id/pro10"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            app:srcCompat="@drawable/pro10" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_row="2"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp">
+        <ImageView
+            android:id="@+id/pro11"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:layout_gravity="center_horizontal"
+            app:srcCompat="@drawable/pro11" />
+
+        <ImageView
+            android:id="@+id/pro12"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:layout_gravity="center_horizontal"
+            app:srcCompat="@drawable/pro12" />
+
+        <ImageView
+            android:id="@+id/pro13"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:layout_gravity="center_horizontal"
+            app:srcCompat="@drawable/pro13" />
+
+        <ImageView
+            android:id="@+id/pro14"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:layout_gravity="center_horizontal"
+            app:srcCompat="@drawable/pro14" />
+
+        <ImageView
+            android:id="@+id/pro15"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            app:srcCompat="@drawable/pro15" />
+    </LinearLayout>
+
+
+</GridLayout>

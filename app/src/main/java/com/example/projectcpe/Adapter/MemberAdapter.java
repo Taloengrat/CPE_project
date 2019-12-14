@@ -5,6 +5,9 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
@@ -49,6 +52,7 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MemberView
 
 
 
+
     public MemberAdapter(List<Member> c, Context ctx) {
         this.memberListb = c;
         this.mCtx = ctx;
@@ -64,11 +68,17 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MemberView
     @Override
     public void onBindViewHolder(@NonNull final MemberAdapter.MemberViewHolder holder, int position) {
 
+
         final Member member = memberListb.get(position);
+        Bitmap bitmap = BitmapFactory.decodeByteArray(member.getProfile(), 0, member.getProfile().length);
 
         holder.name.setText(member.getName());
         holder.age.setText(String.valueOf(member.getAge()));
+        holder.imUser.setImageBitmap(bitmap);
 
+        holder.imUser.setBackgroundResource(R.drawable.elevetorcircle);
+
+//        Toast.makeText(mCtx, String.valueOf(member.getProfile()), Toast.LENGTH_SHORT).show();
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -148,16 +158,19 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MemberView
             age = itemView.findViewById(R.id.age);
             delete = itemView.findViewById(R.id.delete);
             layout = itemView.findViewById(R.id.layout);
-
+            imUser =itemView.findViewById(R.id.imUser);
 
 
         }
 
         @Override
         public void onClick(View view) {
+
+            int iddd = MissionDATABASE.getInstance(mCtx).missionDAO().getDesMember(memberListb.get(getAdapterPosition()).getId());
             Intent i = new Intent(mCtx, HomePage.class);
             i.putExtra("NAME", name.getText().toString());
             i.putExtra("AGE", age.getText().toString());
+            i.putExtra("ID", iddd);
             mCtx.startActivity(i);
         }
     }

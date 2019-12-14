@@ -1,5 +1,6 @@
 package com.example.projectcpe.ViewModel;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -30,8 +31,11 @@ public interface MissionDAO {
     @Query("select * from mission where id=:id")
     List<Mission> getAllinfoOfMission(int id);
 
-    @Query("select * from mission where id=:id")
+    @Query("select * from member where id=:id")
     List<Member> getAllinfoOfMember(int id);
+
+    @Query("select * from member where id=:id")
+    LiveData<Member> getProfile(int id);
 
 /////////////////////////////////////////////////
 
