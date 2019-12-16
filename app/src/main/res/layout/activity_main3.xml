@@ -13,4 +13,13 @@
         app:srcCompat="@drawable/pro1"
         tools:layout_editor_absoluteX="106dp"
         tools:layout_editor_absoluteY="274dp" />
+
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/pro1"
+        tools:layout_editor_absoluteX="98dp"
+        tools:layout_editor_absoluteY="477dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
