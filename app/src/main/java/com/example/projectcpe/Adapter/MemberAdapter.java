@@ -50,7 +50,7 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MemberView
     public static List<Member> memberListb;
     public static final String MY_PRE_PASSWORD_ADMIN = "com.example.projectcpe.passwordasmin";
 
-
+    ///////New Update
 
 
     public MemberAdapter(List<Member> c, Context ctx) {
