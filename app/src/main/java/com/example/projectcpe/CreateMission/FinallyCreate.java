@@ -4,17 +4,23 @@ import android.Manifest;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Build;
 import android.provider.MediaStore;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.core.content.ContextCompat;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -34,6 +40,11 @@ import java.util.List;
 
 public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCustomrPictureClick {
 
+
+
+    String imgDecodableString;
+    public Bitmap b;
+
     RecyclerView recyclerViewStep;
     StepAdapter adapter;
     List<Step> steplist;
@@ -47,7 +58,7 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
 
 
     private  final int CAMERA_RESULT_CODE = 100;
-    private  final int RESULT_LOAD_IMAGE = 101;
+    private static int RESULT_LOAD_IMG = 101;
     public static int position;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,20 +68,20 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
         Initia();
 
         Bundle bundle = getIntent().getExtras();
-       getNumOfStep = bundle.getInt("NumOfStep");
-       getName = bundle.getString("name");
-       getDetail = bundle.getString("name");
-       getAge = bundle.getInt("age");
+        getNumOfStep = bundle.getInt("NumOfStep");
+        getName = bundle.getString("name");
+        getDetail = bundle.getString("name");
+        getAge = bundle.getInt("age");
 
         NumStepListener(this.getNumOfStep);
 
         btSubmit.setOnLongClickListener(new View.OnLongClickListener() {
-           @Override
-           public boolean onLongClick(View v) {
-               Intent intent = new Intent(FinallyCreate.this, Main2Activity.class);
-               startActivity(intent);
-               return true;
-           }
+            @Override
+            public boolean onLongClick(View v) {
+                Intent intent = new Intent(FinallyCreate.this, Main2Activity.class);
+                startActivity(intent);
+                return true;
+            }
         });
 
         btSubmit.setOnClickListener(new View.OnClickListener() {
@@ -120,7 +131,7 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
         recyclerViewStep = findViewById(R.id.recyclerViewStepCreate);
         recyclerViewStep.setHasFixedSize(true);
         recyclerViewStep.setLayoutManager(new LinearLayoutManager(this));
-         frameEdittext = findViewById(R.id.frameEdittext);
+        frameEdittext = findViewById(R.id.frameEdittext);
 
 //        for (int i = 0 ; i<)
 //
@@ -178,44 +189,51 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
         btGallary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent getImageIntent = new Intent(Intent.ACTION_GET_CONTENT);
+                Intent getImageIntent = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 getImageIntent.setType("image/*");
-                startActivityForResult(getImageIntent , RESULT_LOAD_IMAGE );
+                startActivityForResult(getImageIntent , RESULT_LOAD_IMG );
                 Toast.makeText(getApplicationContext(), "this is Choose Gallary", Toast.LENGTH_SHORT).show();
+                dialog.cancel();
             }
         });
 
     }
-
-
-
-
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-
-
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK) {
-            if (requestCode == CAMERA_RESULT_CODE || requestCode == RESULT_LOAD_IMAGE) {
+        try {
+            if (requestCode == RESULT_LOAD_IMG && resultCode == RESULT_OK && null != data) {
+                Uri selectedImage = data.getData();
+                String[] filePathColumn = { MediaStore.Images.Media.DATA };
+                Cursor cursor = getContentResolver().query(selectedImage,filePathColumn, null, null, null);
+                cursor.moveToFirst();
+                int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+                imgDecodableString = cursor.getString(columnIndex);
+                cursor.close();
+                Bitmap b1 = BitmapFactory.decodeFile(imgDecodableString);
+                b = Bitmap.createBitmap(b1);
+                setPic(b);
+            }
+            else if (resultCode == RESULT_OK && requestCode == CAMERA_RESULT_CODE) {
                 Bundle bd = data.getExtras();
                 Bitmap bmp = (Bitmap) bd.get("data");
                 if (bmp != null) {
                     setPic(bmp);
                 }
-
             }
+            else {
+                Toast.makeText(this, "You haven't picked Image",
+                        Toast.LENGTH_LONG).show();
+            }
+        } catch (Exception e) {
+            Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG).show();
         }
 
-
     }
-
     private void setPic(Bitmap bitmap) {
 
         this.mediumImage.setImageBitmap(bitmap);
     }
-
-
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -235,11 +253,7 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
         }
     }
 
-
-
-
-
-    }
+}
 
 
 

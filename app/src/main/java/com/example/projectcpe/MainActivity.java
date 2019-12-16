@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
                             password.commit();
                             Snackbar.make(_etPass, "Created Password For Admin", Snackbar.LENGTH_SHORT).show();
 
-                            startActivity(new Intent(MainActivity.this, CreateProfile.class));
+                            startActivity(new Intent(MainActivity.this, FunctionEditProfile.class));
                         }
                         }
                 });
