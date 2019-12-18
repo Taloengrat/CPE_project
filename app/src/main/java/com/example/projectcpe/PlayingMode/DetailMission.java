@@ -2,6 +2,9 @@ package com.example.projectcpe.PlayingMode;
 
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -37,14 +40,23 @@ public class DetailMission extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
        id = bundle.getInt("MissionId");
 
-        Toast.makeText(getApplicationContext(), String.valueOf(id),Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), String.valueOf(id),Toast.LENGTH_LONG).show();
 
         this.missionData = getData(id);
 
 
 
 
-//                Toast.makeText(getApplicationContext(),missionData.get(0).getMissionName(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), missionData.get(0).getQ1()
+                        +"\n"+missionData.get(0).getA1()
+                        +"\n"+missionData.get(0).getQ2()
+                        +"\n"+missionData.get(0).getA2(),Toast.LENGTH_SHORT).show();
+
+        Bitmap bmp = BitmapFactory.decodeByteArray(missionData.get(0).getP1(), 0, missionData.get(0).getP1().length);
+
+        btPlay.setImageBitmap(bmp);
+
+
 
         txName.setText(missionData.get(0).getMissionName());
         txAge.setText("age : " +String.valueOf(missionData.get(0).getAge()));

@@ -5,7 +5,7 @@
     android:id="@+id/layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue100"
+    android:background="@color/blue200"
     tools:context=".MainActivity">
 
 

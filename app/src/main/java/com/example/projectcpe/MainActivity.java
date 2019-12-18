@@ -21,6 +21,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
@@ -31,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
     EditText _etPass;
     ImageView imMedium;
     Button _btBegin;
+
+    ImageView MediumP1, MediumP2, MediumP3, MediumP4, MediumP5, MediumP6, MediumP7, MediumP8, MediumP9, MediumP10;
 
 
     public static final String MY_PRE_PASSWORD_ADMIN = "com.example.projectcpe.passwordasmin";
@@ -82,10 +85,16 @@ public class MainActivity extends AppCompatActivity {
 
     private void CreateMissionDefault() {
 
-        Mission mission = new Mission("Color", "Various colors", 5,10);
+        Bitmap bitmap = ((BitmapDrawable) getResources().getDrawable(R.drawable.red)).getBitmap();
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] imageInByte = baos.toByteArray();
+                Mission mission = new Mission("Color", "Various colors", 5,10
+        ,imageInByte, imageInByte, imageInByte, imageInByte, imageInByte
+        ,getResources().getString(R.string.q1_1),getResources().getString(R.string.q1_2), getResources().getString(R.string.q1_3),getResources().getString(R.string.q1_4),getResources().getString(R.string.q1_5)
+        ,getResources().getString(R.string.a1_1), getResources().getString(R.string.a1_2),getResources().getString(R.string.a1_3), getResources().getString(R.string.a1_4),getResources().getString(R.string.a1_5));
 
         MissionDATABASE.getInstance(MainActivity.this).missionDAO().create(mission);
-
 
     }
 
