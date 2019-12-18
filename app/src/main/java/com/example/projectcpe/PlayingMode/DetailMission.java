@@ -47,9 +47,9 @@ public class DetailMission extends AppCompatActivity {
 //                Toast.makeText(getApplicationContext(),missionData.get(0).getMissionName(),Toast.LENGTH_SHORT).show();
 
         txName.setText(missionData.get(0).getMissionName());
-        txAge.setText(String.valueOf(missionData.get(0).getAge()));
-        txNumstep.setText(String.valueOf(missionData.get(0).getNumberofMission())+" step" );
-        txDetail.setText(missionData.get(0).getDetailMission()+" step");
+        txAge.setText("age : " +String.valueOf(missionData.get(0).getAge()));
+        txNumstep.setText("step : " + String.valueOf(missionData.get(0).getNumberofMission()));
+        txDetail.setText(missionData.get(0).getDetailMission());
 
 
 

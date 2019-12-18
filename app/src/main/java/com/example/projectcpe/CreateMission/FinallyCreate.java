@@ -70,7 +70,7 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
         Bundle bundle = getIntent().getExtras();
         getNumOfStep = bundle.getInt("NumOfStep");
         getName = bundle.getString("name");
-        getDetail = bundle.getString("name");
+        getDetail = bundle.getString("detail");
         getAge = bundle.getInt("age");
 
         NumStepListener(this.getNumOfStep);
@@ -88,10 +88,12 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
             @Override
             public void onClick(View v) {
 
-                for (int i = 0; i < StepAdapter.stepList.size(); i++) {
-                    Toast.makeText(getApplicationContext(),  StepAdapter.stepList.get(i).getAnswer(), Toast.LENGTH_SHORT).show();
+//                for (int i = 0; i < StepAdapter.stepList.size(); i++) {
+//                    Toast.makeText(getApplicationContext(),  StepAdapter.stepList.get(i).getAnswer(), Toast.LENGTH_SHORT).show();
+//
+//                }
 
-                }
+                Toast.makeText(getApplicationContext(), getName, Toast.LENGTH_SHORT).show();
             }
         });
 

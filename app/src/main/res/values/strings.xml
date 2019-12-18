@@ -10,4 +10,90 @@
     <string name="title_activity_profile">ProfileActivity</string>
     <string name="navigation_drawer_open">Open navigation</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="M1">Color</string>
+    <string name="D1">Various colors</string>
+    <string name="N1">10</string>
+    <string name="A1">5</string>
+
+    <string name="q1_1">What color is this</string>
+    <string name="q1_2">What color is this</string>
+    <string name="q1_3">What color is this</string>
+    <string name="q1_4">What color is this</string>
+    <string name="q1_5">What color is this</string>
+    <string name="q1_6">What color is this</string>
+    <string name="q1_7">What color is this</string>
+    <string name="q1_8">What color is this</string>
+    <string name="q1_9">What color is this</string>
+    <string name="q1_10">What color is this</string>
+    <string name="a1_1">Red</string>
+    <string name="a1_2">Green</string>
+    <string name="a1_3">Blue</string>
+    <string name="a1_4">Yellow</string>
+    <string name="a1_5">Black</string>
+    <string name="a1_6">"White</string>
+    <string name="a1_7">Brown</string>
+    <string name="a1_8">Purple</string>
+    <string name="a1_9">Gray</string>
+    <string name="a1_10">Orange</string>
+
+
+    <string name="M2">Mission 2</string>
+    <string name="Q2_1">SmartChecker</string>
+    <string name="Q2_2">SmartChecker</string>
+    <string name="Q2_3">SmartChecker</string>
+    <string name="Q2_4">SmartChecker</string>
+    <string name="Q2_5">SmartChecker</string>
+    <string name="A2_1">SmartChecker</string>
+    <string name="A2_2">SmartChecker</string>
+    <string name="A2_3">SmartChecker</string>
+    <string name="A2_4">SmartChecker</string>
+    <string name="A2_5">SmartChecker</string>
+
+
+    <string name="M3">Mission 3</string>
+    <string name="Q3_1">SmartChecker</string>
+    <string name="Q3_2">SmartChecker</string>
+    <string name="Q3_3">SmartChecker</string>
+    <string name="Q3_4">SmartChecker</string>
+    <string name="Q3_5">SmartChecker</string>
+    <string name="A3_1">SmartChecker</string>
+    <string name="A3_2">SmartChecker</string>
+    <string name="A3_3">SmartChecker</string>
+    <string name="A3_4">SmartChecker</string>
+    <string name="A3_5">SmartChecker</string>
+
+
+    <string name="M4">Mission 4</string>
+    <string name="Q4_1">SmartChecker</string>
+    <string name="Q4_2">SmartChecker</string>
+    <string name="Q4_3">SmartChecker</string>
+    <string name="Q4_4">SmartChecker</string>
+    <string name="Q4_5">SmartChecker</string>
+    <string name="A4_1">SmartChecker</string>
+    <string name="A4_2">SmartChecker</string>
+    <string name="A4_3">SmartChecker</string>
+    <string name="A4_4">SmartChecker</string>
+    <string name="A4_5">SmartChecker</string>
+
+
+    <string name="M5">Mission 5</string>
+    <string name="Q5_1">SmartChecker</string>
+    <string name="Q5_2">SmartChecker</string>
+    <string name="Q5_3">SmartChecker</string>
+    <string name="Q5_4">SmartChecker</string>
+    <string name="Q5_5">SmartChecker</string>
+    <string name="A5_1">SmartChecker</string>
+    <string name="A5_2">SmartChecker</string>
+    <string name="A5_3">SmartChecker</string>
+    <string name="A5_4">SmartChecker</string>
+    <string name="A5_5">SmartChecker</string>
+
+
+
+
+
+
+
+
 </resources>

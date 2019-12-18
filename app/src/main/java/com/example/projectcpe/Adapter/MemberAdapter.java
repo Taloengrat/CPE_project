@@ -144,7 +144,7 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MemberView
         return memberListb.size();
     }
 
-    public class MemberViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class MemberViewHolder extends RecyclerView.ViewHolder{
 
           TextView name, age;
           ImageView imUser, delete;
@@ -152,7 +152,7 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MemberView
 
         public MemberViewHolder(@NonNull final View itemView) {
             super(itemView);
-            itemView.setOnClickListener(this);
+
 
             name = itemView.findViewById(R.id.name);
             age = itemView.findViewById(R.id.age);
@@ -163,16 +163,7 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MemberView
 
         }
 
-        @Override
-        public void onClick(View view) {
 
-            int iddd = MissionDATABASE.getInstance(mCtx).missionDAO().getDesMember(memberListb.get(getAdapterPosition()).getId());
-            Intent i = new Intent(mCtx, HomePage.class);
-            i.putExtra("NAME", name.getText().toString());
-            i.putExtra("AGE", age.getText().toString());
-            i.putExtra("ID", iddd);
-            mCtx.startActivity(i);
-        }
     }
 
 }

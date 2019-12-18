@@ -20,7 +20,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Main3Activity"></activity>
+        <activity android:name=".LogoIntro"></activity>
+        <activity android:name=".BeginMember" />
         <activity android:name=".TestSystem.TestSystem" />
         <activity android:name=".PlayingMode.Feedback" />
         <activity android:name=".PlayingMode.SumaryPage" />
