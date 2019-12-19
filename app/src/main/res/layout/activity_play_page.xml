@@ -4,67 +4,127 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PlayingMode.PlayPage"
-    android:background="#6AB9C4">
+    android:background="@color/yel300"
+    tools:context=".PlayingMode.PlayPage">
 
 
+    <TextView
+        android:id="@+id/counttime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:textSize="100dp"
+        android:fontFamily="@font/bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"/>
 
-
-    <fragment
+    <FrameLayout
         android:id="@+id/fragment"
-        android:name="com.example.projectcpe.PlayingMode.Stepmission.detailStep"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="32dp"
-        app:layout_constraintBottom_toTopOf="@+id/navigation"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textClock"
-        tools:layout="@layout/fragment_detail_step" />
+        app:layout_constraintTop_toBottomOf="@+id/textClock" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/navigation"
+    <LinearLayout
+        android:id="@+id/bar"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginEnd="0dp"
-        app:layout_constraintHeight_percent="0.1"
         android:layout_marginStart="0dp"
-        android:background="#5562AF"
+        android:layout_marginEnd="0dp"
+        android:background="@color/yel900"
+        android:orientation="horizontal"
+        app:itemIconSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHeight_percent="0.1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:menu="@menu/playing_bar"
-        app:itemIconSize="30dp"
-        
-        />
+
+        >
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/back"
+            tools:ignore="VectorDrawableCompat" />
+
+        <ImageView
+            android:id="@+id/hint"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="16dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/help"
+            tools:ignore="VectorDrawableCompat" />
+
+        <ImageView
+            android:id="@+id/mic"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/mic"
+            tools:ignore="VectorDrawableCompat" />
+
+        <ImageView
+            android:id="@+id/speak"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="13dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/voice"
+            tools:ignore="VectorDrawableCompat" />
+
+        <ImageView
+            android:id="@+id/next"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/next"
+            tools:ignore="VectorDrawableCompat" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/textClock"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
         android:layout_margin="16dp"
-        android:textSize="32dp"
         android:fontFamily="@font/bold"
-        app:layout_constraintTop_toTopOf="parent"
+        android:text="TextView"
+        android:textSize="32dp"
         app:layout_constraintEnd_toEndOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginEnd="8dp"
-        app:layout_constraintHeight_percent="0.1"
-        app:layout_constraintWidth_percent="0.1"
         app:layout_constraintBottom_toBottomOf="@+id/textClock"
         app:layout_constraintEnd_toStartOf="@+id/textClock"
+        app:layout_constraintHeight_percent="0.1"
         app:layout_constraintTop_toTopOf="@+id/textClock"
+        app:layout_constraintWidth_percent="0.1"
         app:srcCompat="@drawable/clock"
         tools:ignore="VectorDrawableCompat" />
+
+    <ImageView
+        android:id="@+id/startClick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/clickstart" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

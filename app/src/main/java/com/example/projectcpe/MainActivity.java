@@ -85,12 +85,24 @@ public class MainActivity extends AppCompatActivity {
 
     private void CreateMissionDefault() {
 
-        Bitmap bitmap = ((BitmapDrawable) getResources().getDrawable(R.drawable.red)).getBitmap();
+        Bitmap bitmap1 = ((BitmapDrawable) getResources().getDrawable(R.drawable.red)).getBitmap();
+        Bitmap bitmap2 = ((BitmapDrawable) getResources().getDrawable(R.drawable.green)).getBitmap();
+        Bitmap bitmap3 = ((BitmapDrawable) getResources().getDrawable(R.drawable.blue)).getBitmap();
+        Bitmap bitmap4 = ((BitmapDrawable) getResources().getDrawable(R.drawable.yellow)).getBitmap();
+        Bitmap bitmap5 = ((BitmapDrawable) getResources().getDrawable(R.drawable.black)).getBitmap();
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-        byte[] imageInByte = baos.toByteArray();
+        bitmap1.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        bitmap2.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        bitmap3.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        bitmap4.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        bitmap5.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] imageInByte1 = baos.toByteArray();
+        byte[] imageInByte2 = baos.toByteArray();
+        byte[] imageInByte3 = baos.toByteArray();
+        byte[] imageInByte4 = baos.toByteArray();
+        byte[] imageInByte5= baos.toByteArray();
                 Mission mission = new Mission("Color", "Various colors", 5,10
-        ,imageInByte, imageInByte, imageInByte, imageInByte, imageInByte
+        ,imageInByte1, imageInByte2, imageInByte3, imageInByte4, imageInByte5
         ,getResources().getString(R.string.q1_1),getResources().getString(R.string.q1_2), getResources().getString(R.string.q1_3),getResources().getString(R.string.q1_4),getResources().getString(R.string.q1_5)
         ,getResources().getString(R.string.a1_1), getResources().getString(R.string.a1_2),getResources().getString(R.string.a1_3), getResources().getString(R.string.a1_4),getResources().getString(R.string.a1_5));
 

@@ -132,8 +132,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()){
 
-            case R.id.member :
-                startActivity(new Intent(this, FunctionEditProfile.class));
+            case R.id.member : VerifyAdmin("profile");
                 break;
             case R.id.admin :
                 startActivity(new Intent(this, FunctionEditPassword.class));
@@ -186,6 +185,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
                     case "delete" : startActivity(new Intent(HomePage.this, MissionDelete.class)); break;
                     case "import" : startActivity(new Intent(HomePage.this, MissionImport.class)); break;
                     case "export" : startActivity(new Intent(HomePage.this, MissionExport.class)); break;
+                    case "profile" : startActivity(new Intent(HomePage.this, FunctionEditProfile.class));break;
                 }
             }
 

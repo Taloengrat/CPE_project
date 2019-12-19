@@ -52,9 +52,9 @@ public class DetailMission extends AppCompatActivity {
                         +"\n"+missionData.get(0).getQ2()
                         +"\n"+missionData.get(0).getA2(),Toast.LENGTH_SHORT).show();
 
-        Bitmap bmp = BitmapFactory.decodeByteArray(missionData.get(0).getP1(), 0, missionData.get(0).getP1().length);
-
-        btPlay.setImageBitmap(bmp);
+//        Bitmap bmp = BitmapFactory.decodeByteArray(missionData.get(0).getP1(), 0, missionData.get(0).getP1().length);
+//
+//        btPlay.setImageBitmap(bmp);
 
 
 

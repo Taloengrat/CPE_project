@@ -32,7 +32,7 @@
         tools:ignore="MenuTitle" />
 
     <item
-        android:id="@+id/nextPlay"
+        android:id="@+id/next"
         android:icon="@drawable/next"
         tools:ignore="MenuTitle" />
 
