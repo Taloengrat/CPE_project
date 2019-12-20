@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
         byte[] imageInByte3 = baos.toByteArray();
         byte[] imageInByte4 = baos.toByteArray();
         byte[] imageInByte5= baos.toByteArray();
-                Mission mission = new Mission("Color", "Various colors", 5,10
+                Mission mission = new Mission("Color", "Various colors", 5,5
         ,imageInByte1, imageInByte2, imageInByte3, imageInByte4, imageInByte5
         ,getResources().getString(R.string.q1_1),getResources().getString(R.string.q1_2), getResources().getString(R.string.q1_3),getResources().getString(R.string.q1_4),getResources().getString(R.string.q1_5)
         ,getResources().getString(R.string.a1_1), getResources().getString(R.string.a1_2),getResources().getString(R.string.a1_3), getResources().getString(R.string.a1_4),getResources().getString(R.string.a1_5));

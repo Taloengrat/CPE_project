@@ -43,7 +43,7 @@ public class PlayPage extends AppCompatActivity {
     ViewPager pager ;
 
     EditText putAnwer ;
-    protected int id;
+    protected int id, stepnum;
     protected boolean running = false;
 
 
@@ -72,7 +72,7 @@ public class PlayPage extends AppCompatActivity {
 
     private void ShowViewPage()
     {
-        adapter = new SlidePageAdapter(getSupportFragmentManager(),id);
+        adapter = new SlidePageAdapter(getSupportFragmentManager(), id, stepnum);
         pager.setAdapter(adapter);
     }
     public void Initial(){
@@ -98,6 +98,8 @@ public class PlayPage extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         id = bundle.getInt("getId");
+        stepnum = bundle.getInt("step");
+
 
 
     }

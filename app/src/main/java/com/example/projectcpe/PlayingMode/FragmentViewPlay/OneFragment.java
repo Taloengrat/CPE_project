@@ -44,10 +44,11 @@ public class OneFragment extends Fragment {
         TextView textView = view.findViewById(R.id.text);
         ImageView imQuestion = view.findViewById(R.id.imQuestion);
 
-//        String message = getArguments().getString("message");
+        String step = getArguments().getString("step");
         String id = getArguments().getString("message");
 
 
+        textView.setText(step);
         Toast.makeText(getActivity(), id, Toast.LENGTH_LONG).show();
 
         this.missionData = getData(Integer.valueOf(id));

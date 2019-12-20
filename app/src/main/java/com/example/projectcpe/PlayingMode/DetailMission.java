@@ -81,6 +81,7 @@ public class DetailMission extends AppCompatActivity {
 
         Intent i = new Intent(DetailMission.this, PlayPage.class);
         i.putExtra("getId", id);
+        i.putExtra("step", missionData.get(0).getNumberofMission());
         startActivity(i);
         finish();
     }

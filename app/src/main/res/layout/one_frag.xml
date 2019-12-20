@@ -15,6 +15,8 @@
         android:layout_gravity="center"
         android:layout_marginTop="8dp"
         android:text="one_fragment"
+        android:textSize="30dp"
+        android:fontFamily="@font/bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

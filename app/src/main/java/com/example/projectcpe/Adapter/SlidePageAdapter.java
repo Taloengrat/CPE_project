@@ -13,10 +13,12 @@ import java.util.List;
 
 public class SlidePageAdapter extends FragmentStatePagerAdapter {
 
-int entity;
-    public SlidePageAdapter(FragmentManager fm,int id){
+int entity, step;
+
+    public SlidePageAdapter(FragmentManager fm,int id,int step){
         super(fm);
         entity = id;
+        this.step = step;
     }
 
     public SlidePageAdapter(@NonNull FragmentManager fm,String sendingEntity) {
@@ -37,6 +39,7 @@ int entity;
         OneFragment fragment = new OneFragment();
         Bundle bundle = new Bundle();
         position = position+1;
+        bundle.putString("step", position +" / " +step);
         bundle.putString("message", String.valueOf(entity));
         fragment.setArguments(bundle);
         return fragment;
@@ -44,6 +47,6 @@ int entity;
 
     @Override
     public int getCount() {
-        return 10;
+        return this.step;
     }
 }
