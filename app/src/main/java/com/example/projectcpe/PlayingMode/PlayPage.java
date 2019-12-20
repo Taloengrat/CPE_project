@@ -1,15 +1,27 @@
 package com.example.projectcpe.PlayingMode;
 
+import com.example.projectcpe.Adapter.SlidePageAdapter;
+import com.example.projectcpe.BeginMember;
+import com.example.projectcpe.LogoIntro;
+import com.example.projectcpe.Play;
+import com.example.projectcpe.PlayingMode.FragmentViewPlay.OneFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.projectcpe.R;
 
@@ -23,12 +35,23 @@ public class PlayPage extends AppCompatActivity {
     private int seconds = 0;
     private int minutes = 0;
 
+    private SlidePageAdapter adapter;
     private TextView textclock,timecount;
     ImageView recogni, back, next, voice, help,start;
     private Timer timer;
     private CountDownTimer countDownTimer;
+    ViewPager pager ;
 
-    private boolean running = false;
+    EditText putAnwer ;
+    protected int id;
+    protected boolean running = false;
+
+
+
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,12 +61,21 @@ public class PlayPage extends AppCompatActivity {
         Initial();
 
 
+//        Toast.makeText(getApplicationContext(), String.valueOf(id), Toast.LENGTH_LONG).show();
+
+
+
+
 
 
     }
 
+    private void ShowViewPage()
+    {
+        adapter = new SlidePageAdapter(getSupportFragmentManager(),id);
+        pager.setAdapter(adapter);
+    }
     public void Initial(){
-        LinearLayout navigation = findViewById(R.id.bar);
         recogni = findViewById(R.id.mic);
         back = findViewById(R.id.back);
         next = findViewById(R.id.next);
@@ -51,12 +83,10 @@ public class PlayPage extends AppCompatActivity {
         voice = findViewById(R.id.speak);
         start = findViewById(R.id.startClick);
         timecount =findViewById(R.id.counttime);
-
-
-
+        pager = findViewById(R.id.ViewPage);
+        putAnwer = findViewById(R.id.putAnswer);
 
         textclock = findViewById(R.id.textClock);
-
 
         recogni.setOnTouchListener(Hilight);
         back.setOnTouchListener(Hilight);
@@ -64,8 +94,12 @@ public class PlayPage extends AppCompatActivity {
         help.setOnTouchListener(Hilight);
         voice.setOnTouchListener(Hilight);
 
-
         start.setOnClickListener(startTimeBegin);
+
+        Bundle bundle = getIntent().getExtras();
+        id = bundle.getInt("getId");
+
+
     }
 
     private void stopTimer(){
@@ -85,7 +119,21 @@ public class PlayPage extends AppCompatActivity {
             public void onFinish() {
                 timecount.setText("Start !!!");
 
-                startTimer();
+                Runnable Delay = new Runnable() {
+                    @Override
+                    public void run() {
+
+                        timecount.setVisibility(View.GONE);
+                        startTimer();
+                        ShowViewPage();
+
+                    }
+                };
+
+                Handler pd = new Handler();
+                pd.postDelayed(Delay, 2000);
+
+
             }
 
         }.start();
@@ -101,6 +149,8 @@ public class PlayPage extends AppCompatActivity {
                 runTimer();
             }
         }, 0, 100);
+
+
     }
 
     private void runTimer(){
@@ -124,14 +174,27 @@ public class PlayPage extends AppCompatActivity {
     }
 
     private void updateTimerText(){
-        textclock.setText(String.format(Locale.getDefault(),"%02d:%02d", minutes, seconds,ms));
+
+
+
+            textclock.setText(String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds));
+
+
     }
 
     private Runnable timerTick = new Runnable() {
         @Override
         public void run() {
-            updateTimerText();
-            updateMs();
+
+            if (minutes >= 1) {
+                stopTimer();
+                textclock.setText(String.format(Locale.getDefault(), "%02d:%02d", 1, 0));
+                textclock.setTextColor(getResources().getColor(R.color.red600));
+            }
+            else {
+                updateTimerText();
+                updateMs();
+            }
         }
     };
 

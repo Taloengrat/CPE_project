@@ -78,7 +78,10 @@ public class DetailMission extends AppCompatActivity {
     }
 
     public void setBtPlayClick(View view){
-        startActivity(new Intent(DetailMission.this, PlayPage.class));
+
+        Intent i = new Intent(DetailMission.this, PlayPage.class);
+        i.putExtra("getId", id);
+        startActivity(i);
         finish();
     }
 

@@ -15,7 +15,7 @@ import com.example.projectcpe.CreateMission.MissionCreate;
 import com.example.projectcpe.ViewModel.Mission;
 import com.example.projectcpe.ViewModel.MissionDATABASE;
 
-public class LogoIntro extends AppCompatActivity {
+public class    LogoIntro extends AppCompatActivity {
 
     ImageView imLogo;
     TextView txLogo;
