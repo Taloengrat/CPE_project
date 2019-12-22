@@ -90,17 +90,21 @@ public class MainActivity extends AppCompatActivity {
         Bitmap bitmap3 = ((BitmapDrawable) getResources().getDrawable(R.drawable.blue)).getBitmap();
         Bitmap bitmap4 = ((BitmapDrawable) getResources().getDrawable(R.drawable.yellow)).getBitmap();
         Bitmap bitmap5 = ((BitmapDrawable) getResources().getDrawable(R.drawable.black)).getBitmap();
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bitmap1.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-        bitmap2.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-        bitmap3.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-        bitmap4.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-        bitmap5.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-        byte[] imageInByte1 = baos.toByteArray();
-        byte[] imageInByte2 = baos.toByteArray();
-        byte[] imageInByte3 = baos.toByteArray();
-        byte[] imageInByte4 = baos.toByteArray();
-        byte[] imageInByte5= baos.toByteArray();
+        ByteArrayOutputStream baos1 = new ByteArrayOutputStream();
+        ByteArrayOutputStream baos2 = new ByteArrayOutputStream();
+        ByteArrayOutputStream baos3 = new ByteArrayOutputStream();
+        ByteArrayOutputStream baos4 = new ByteArrayOutputStream();
+        ByteArrayOutputStream baos5 = new ByteArrayOutputStream();
+        bitmap1.compress(Bitmap.CompressFormat.JPEG, 100, baos1);
+        bitmap2.compress(Bitmap.CompressFormat.JPEG, 100, baos2);
+        bitmap3.compress(Bitmap.CompressFormat.JPEG, 100, baos3);
+        bitmap4.compress(Bitmap.CompressFormat.JPEG, 100, baos4);
+        bitmap5.compress(Bitmap.CompressFormat.JPEG, 100, baos5);
+        byte[] imageInByte1 = baos1.toByteArray();
+        byte[] imageInByte2 = baos2.toByteArray();
+        byte[] imageInByte3 = baos3.toByteArray();
+        byte[] imageInByte4 = baos4.toByteArray();
+        byte[] imageInByte5 = baos5.toByteArray();
                 Mission mission = new Mission("Color", "Various colors", 5,5
         ,imageInByte1, imageInByte2, imageInByte3, imageInByte4, imageInByte5
         ,getResources().getString(R.string.q1_1),getResources().getString(R.string.q1_2), getResources().getString(R.string.q1_3),getResources().getString(R.string.q1_4),getResources().getString(R.string.q1_5)

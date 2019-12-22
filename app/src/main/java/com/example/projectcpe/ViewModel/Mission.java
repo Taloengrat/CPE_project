@@ -11,7 +11,8 @@ import java.util.List;
 import io.reactivex.annotations.NonNull;
 
 @Entity(tableName = "mission")
-public class Mission implements Serializable {
+public class
+Mission implements Serializable {
 
     @NonNull
     @PrimaryKey(autoGenerate = true)
@@ -151,8 +152,10 @@ public class Mission implements Serializable {
     }
 
 
-    public Mission( String missionName, String detailMission, int age, int numberofMission, byte[] p1, byte[] p2, byte[] p3, byte[] p4, byte[] p5, String q1, String q2, String q3, String q4, String q5, String a1, String a2, String a3, String a4, String a5) {
-        this.idMission = idMission;
+    public Mission( String missionName, String detailMission, int age, int numberofMission
+            , byte[] p1, byte[] p2, byte[] p3, byte[] p4, byte[] p5
+            , String q1, String q2, String q3, String q4, String q5
+            , String a1, String a2, String a3, String a4, String a5) {
         this.missionName = missionName;
         this.detailMission = detailMission;
         this.numberofMission = numberofMission;

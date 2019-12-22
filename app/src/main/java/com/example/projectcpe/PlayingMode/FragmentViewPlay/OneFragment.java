@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.projectcpe.PlayingMode.PlayPage;
 import com.example.projectcpe.R;
 import com.example.projectcpe.ViewModel.Mission;
 import com.example.projectcpe.ViewModel.MissionDATABASE;
@@ -28,12 +29,13 @@ import java.util.List;
 public class OneFragment extends Fragment {
 
     public List<Mission> missionData;
-    Bitmap bmp;
+
 
     public OneFragment() {
         // Required empty public constructor
     }
 
+   protected Bitmap  bmp ;
 
 
     @Override
@@ -42,26 +44,60 @@ public class OneFragment extends Fragment {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.one_frag, container, false);
         TextView textView = view.findViewById(R.id.text);
+        TextView Question = view.findViewById(R.id.text);
         ImageView imQuestion = view.findViewById(R.id.imQuestion);
 
         String step = getArguments().getString("step");
-        String id = getArguments().getString("message");
+        int id = getArguments().getInt("message");
+         byte[] pic = getArguments().getByteArray("code");
 
+        textView.setText(String.valueOf(step));
 
-        textView.setText(step);
-        Toast.makeText(getActivity(), id, Toast.LENGTH_LONG).show();
+//        this.missionData = getData(id);
+        Toast.makeText(getActivity(), String.valueOf(id), Toast.LENGTH_SHORT).show();
+        bmp = BitmapFactory.decodeByteArray(pic, 0, pic.length);
+//
+//        assert id != null;
+//        imQuestion.setImageBitmap(getPicture(pic,getData(Integer.valueOf(id))));
+//
+//        Toast.makeText(getActivity(), String.valueOf(pic),Toast.LENGTH_SHORT).show();
 
-        this.missionData = getData(Integer.valueOf(id));
-
-
-
-               bmp  = BitmapFactory.decodeByteArray(missionData.get(0).getP1(), 0, missionData.get(0).getP1().length);
 
         imQuestion.setImageBitmap(bmp);
+
 
         return view;
     }
 
+
+
+//    private Bitmap getPicture(int i,List<Mission> mission){
+//
+//        switch (i){
+//            case 1 : bmp = BitmapFactory.decodeByteArray(mission.get(0).getP1(), 0, mission.get(0).getP1().length);
+//                break;
+//            case 2 : bmp = BitmapFactory.decodeByteArray(mission.get(0).getP2(), 0, mission.get(0).getP2().length);
+//                break;
+//            case 3 : bmp = BitmapFactory.decodeByteArray(mission.get(0).getP3(), 0, mission.get(0).getP3().length);
+//                break;
+//            case 4 : bmp = BitmapFactory.decodeByteArray(mission.get(0).getP4(), 0, mission.get(0).getP4().length);
+//                break;
+//            case 5 : bmp = BitmapFactory.decodeByteArray(mission.get(0).getP5(), 0, mission.get(0).getP5().length);
+//                break;
+//            case 6 : bmp = BitmapFactory.decodeByteArray(mission.get(0).getP6(), 0, mission.get(0).getP6().length);
+//                break;
+//            case 7 : bmp = BitmapFactory.decodeByteArray(mission.get(0).getP7(), 0, mission.get(0).getP7().length);
+//                break;
+//            case 8 : bmp = BitmapFactory.decodeByteArray(mission.get(0).getP8(), 0, mission.get(0).getP8().length);
+//                break;
+//            case 9 : bmp = BitmapFactory.decodeByteArray(mission.get(0).getP9(), 0, mission.get(0).getP9().length);
+//                break;
+//            case 10 : bmp = BitmapFactory.decodeByteArray(mission.get(0).getP10(), 0, mission.get(0).getP10().length);
+//                break;
+//        }
+//
+//        return bmp;
+//    }
     private List<Mission> getData(int id) {
         return MissionDATABASE.getInstance(getActivity()).missionDAO().getAllinfoOfMission(id);
     }

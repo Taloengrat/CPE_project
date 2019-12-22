@@ -5,6 +5,8 @@ import com.example.projectcpe.BeginMember;
 import com.example.projectcpe.LogoIntro;
 import com.example.projectcpe.Play;
 import com.example.projectcpe.PlayingMode.FragmentViewPlay.OneFragment;
+import com.example.projectcpe.ViewModel.Mission;
+import com.example.projectcpe.ViewModel.MissionDATABASE;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -25,6 +27,7 @@ import android.widget.Toast;
 
 import com.example.projectcpe.R;
 
+import java.util.List;
 import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -72,7 +75,7 @@ public class PlayPage extends AppCompatActivity {
 
     private void ShowViewPage()
     {
-        adapter = new SlidePageAdapter(getSupportFragmentManager(), id, stepnum);
+        adapter = new SlidePageAdapter(getSupportFragmentManager(), id, stepnum, getData(id));
         pager.setAdapter(adapter);
     }
     public void Initial(){
@@ -237,4 +240,7 @@ public class PlayPage extends AppCompatActivity {
         }
     };
 
+    private List<Mission> getData(int id) {
+        return MissionDATABASE.getInstance(PlayPage.this).missionDAO().getAllinfoOfMission(id);
+    }
 }
