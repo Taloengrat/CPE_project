@@ -34,6 +34,7 @@ import com.example.projectcpe.Main2Activity;
 import com.example.projectcpe.R;
 import com.example.projectcpe.ViewModel.Step;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -212,10 +213,26 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
                 int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
                 imgDecodableString = cursor.getString(columnIndex);
                 cursor.close();
+
                 Bitmap b1 = BitmapFactory.decodeFile(imgDecodableString);
-                b = Bitmap.createBitmap(b1);
+                ByteArrayOutputStream baos1 = new ByteArrayOutputStream();
+                b1.compress(Bitmap.CompressFormat.JPEG, 100, baos1);
+                byte[] imageInByte1 = baos1.toByteArray();
+
+                BitmapFactory.Options options = new BitmapFactory.Options();
+                options.inJustDecodeBounds = true;
+                BitmapFactory.decodeByteArray(imageInByte1,0,imageInByte1.length,options);
+
+                options.inSampleSize = calculateInSampleSize(options, 500, 500);
+                options.inJustDecodeBounds = false;
+                Bitmap bmp1 = BitmapFactory.decodeByteArray(imageInByte1,0,imageInByte1.length,options);
+
+
+                b = Bitmap.createBitmap(bmp1);
                 setPic(b);
             }
+
+
             else if (resultCode == RESULT_OK && requestCode == CAMERA_RESULT_CODE) {
                 Bundle bd = data.getExtras();
                 Bitmap bmp = (Bitmap) bd.get("data");
@@ -232,6 +249,24 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
         }
 
     }
+
+    public static int calculateInSampleSize(
+            BitmapFactory.Options options, int reqWidth, int reqHeight) {
+        // Raw height and width of image
+        final int height = options.outHeight;
+        final int width = options.outWidth;
+
+        int stretch_width = Math.round((float)width / (float)reqWidth);
+        int stretch_height = Math.round((float)height / (float)reqHeight);
+
+        if (stretch_width <= stretch_height)
+            return stretch_height;
+        else
+            return stretch_width;
+    }
+
+
+
     private void setPic(Bitmap bitmap) {
 
         this.mediumImage.setImageBitmap(bitmap);
