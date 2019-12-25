@@ -11,15 +11,17 @@
         android:id="@+id/CardCreate"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="30dp"
+        android:onClick="FunctionAdmin"
         app:layout_constraintBottom_toTopOf="@+id/guidelineHorizon_0.3"
         app:layout_constraintEnd_toStartOf="@+id/guidelineVerti"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_margin="30dp"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="30dp"
-
-        >
+        app:layout_constraintTop_toTopOf="@id/guidelineHorizon_0.1">
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -28,22 +30,24 @@
 
             >
 
-        <ImageView
-            android:id="@+id/imagecreate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/iconcreate"
-            tools:ignore="VectorDrawableCompat"
-            android:layout_centerHorizontal="true"/>
+            <ImageView
+                android:id="@+id/imagecreate"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/elevetorcircle"
+                android:padding="8dp"
+                app:srcCompat="@drawable/iconcreate"
+                tools:ignore="VectorDrawableCompat" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="CREATE"
-            android:textSize="25dp"
-            android:fontFamily="@font/bold"
-            android:layout_below="@id/imagecreate"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imagecreate"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/bold"
+                android:text="CREATE"
+                android:textSize="25dp" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
@@ -51,37 +55,43 @@
         android:id="@+id/CardDelete"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginBottom="15dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="30dp"
+        android:onClick="FunctionAdmin"
         app:layout_constraintBottom_toTopOf="@+id/guidelineHorizon_0.3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guidelineVerti"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_margin="30dp"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="30dp">
+        app:layout_constraintTop_toTopOf="@id/guidelineHorizon_0.1">
 
 
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            >
-        <ImageView
-            android:id="@+id/imagedelete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/iconcreate"
-            tools:ignore="VectorDrawableCompat"
-            android:layout_centerHorizontal="true"/>
+            android:layout_gravity="center">
+
+            <ImageView
+                android:id="@+id/imagedelete"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/elevetorcircle"
+                android:padding="8dp"
+                app:srcCompat="@drawable/icondelete"
+                tools:ignore="VectorDrawableCompat" />
 
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/imagedelete"
                 android:layout_marginTop="8dp"
-                android:text="DELETE"
-                android:textSize="25dp"
                 android:fontFamily="@font/bold"
-                android:layout_below="@id/imagedelete"/>
+                android:text="DELETE"
+                android:textSize="25dp" />
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
@@ -90,78 +100,86 @@
         android:id="@+id/CardImport"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="30dp"
+        android:onClick="FunctionAdmin"
         app:layout_constraintBottom_toTopOf="@+id/guidelineHorizon_0.6"
         app:layout_constraintEnd_toStartOf="@+id/guidelineVerti"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guidelineHorizon_0.3"
-        android:layout_margin="30dp"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="30dp">
+        app:layout_constraintTop_toTopOf="@+id/guidelineHorizon_0.3">
 
-<RelativeLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
->
-        <ImageView
-            android:id="@+id/imageimport"
-            android:layout_width="60dp"
-            android:background="@drawable/elevetorcircle"
-            android:layout_height="60dp"
-            android:padding="8dp"
-            app:srcCompat="@drawable/iconcreate"
-            tools:ignore="VectorDrawableCompat"
-            android:layout_centerHorizontal="true"/>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="IMPORT"
-        android:textSize="25dp"
-        android:fontFamily="@font/bold"
-        android:layout_below="@id/imageimport"/>
+            <ImageView
+                android:id="@+id/imageimport"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/elevetorcircle"
+                android:padding="8dp"
+                app:srcCompat="@drawable/iconimport"
+                tools:ignore="VectorDrawableCompat" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imageimport"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/bold"
+                android:text="IMPORT"
+                android:textSize="25dp" />
 
 
-</RelativeLayout>
+        </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/CardExport"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginBottom="15dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="30dp"
+        android:onClick="FunctionAdmin"
         app:layout_constraintBottom_toTopOf="@+id/guidelineHorizon_0.6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guidelineVerti"
-        app:layout_constraintTop_toTopOf="@+id/guidelineHorizon_0.3"
-        android:layout_margin="30dp"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="30dp"
-
-        >
+        app:layout_constraintTop_toTopOf="@+id/guidelineHorizon_0.3">
 
 
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-   >
-        <ImageView
-            android:id="@+id/imageexport"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/iconcreate"
-            tools:ignore="VectorDrawableCompat"
-            android:layout_centerHorizontal="true"/>
+            android:layout_gravity="center">
+
+            <ImageView
+                android:id="@+id/imageexport"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/elevetorcircle"
+                android:padding="8dp"
+                app:srcCompat="@drawable/iconupload"
+                tools:ignore="VectorDrawableCompat" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/imageexport"
                 android:layout_marginTop="8dp"
-                android:text="EXPORT"
-                android:textSize="25dp"
                 android:fontFamily="@font/bold"
-                android:layout_below="@id/imageexport"/>
+                android:text="EXPORT"
+                android:textSize="25dp" />
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
@@ -170,91 +188,116 @@
         android:id="@+id/CardEditmember"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="30dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="30dp"
+        android:onClick="FunctionAdmin"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineHorizon_0.9"
         app:layout_constraintEnd_toStartOf="@+id/guidelineVerti"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guidelineHorizon_0.6"
-        android:layout_margin="30dp"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="30dp">
+        app:layout_constraintTop_toTopOf="@+id/guidelineHorizon_0.6">
 
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center">
-        <ImageView
-            android:id="@+id/imageEditmember"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/iconcreate"
-            tools:ignore="VectorDrawableCompat"
-            android:layout_centerHorizontal="true"/>
+
+            <ImageView
+                android:id="@+id/imageEditmember"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/elevetorcircle"
+                android:padding="8dp"
+                app:srcCompat="@drawable/accout"
+                tools:ignore="VectorDrawableCompat" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="EDIT \nMEMBER"
-                android:gravity="center"
-                android:textSize="25dp"
+                android:layout_below="@id/imageEditmember"
                 android:fontFamily="@font/bold"
-                android:layout_below="@id/imageEditmember"/>
+                android:gravity="center"
+                android:text="EDIT \nMEMBER"
+                android:textSize="25dp" />
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
-
 
     <androidx.cardview.widget.CardView
         android:id="@+id/CardChagepassword"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginBottom="30dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="30dp"
+        android:onClick="FunctionAdmin"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineHorizon_0.9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guidelineVerti"
-        app:layout_constraintTop_toTopOf="@+id/guidelineHorizon_0.6"
-        android:layout_margin="30dp"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="30dp">
+        app:layout_constraintTop_toTopOf="@+id/guidelineHorizon_0.6">
 
 
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center">
-        <ImageView
-            android:id="@+id/imagechangepasswoord"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/iconcreate"
-            tools:ignore="VectorDrawableCompat"
-            android:layout_centerHorizontal="true"/>
+
+            <ImageView
+                android:id="@+id/imagechangepasswoord"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/elevetorcircle"
+                android:padding="10dp"
+                app:srcCompat="@drawable/key"
+                tools:ignore="VectorDrawableCompat" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/imagechangepasswoord"
+                android:fontFamily="@font/bold"
                 android:gravity="center"
                 android:text="CHANGE \nPASSWORD"
-                android:textSize="25dp"
-                android:fontFamily="@font/bold"
-                android:layout_below="@id/imagechangepasswoord"/>
+                android:textSize="25dp" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
 
-
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineHorizon_0.1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.1" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineHorizon_0.3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.33333" />
+        app:layout_constraintGuide_percent="0.38" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineHorizon_0.6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.66666" />
+        app:layout_constraintGuide_percent="0.65" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineHorizon_0.9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.95" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineVerti"

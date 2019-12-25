@@ -16,6 +16,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="16dp"
+
         android:background="@drawable/elevetorcircle"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toEndOf="parent"
@@ -95,6 +96,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:background="@drawable/elevator_regtang"
         app:layout_constraintTop_toTopOf="parent"
+        android:padding="8dp"
         app:srcCompat="@drawable/menu" />
 
 
