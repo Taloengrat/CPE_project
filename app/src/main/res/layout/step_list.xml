@@ -33,6 +33,18 @@
                 android:layout_marginTop="5dp"
                 android:layout_toRightOf="@id/head"
                 android:orientation="vertical">
+                <EditText
+                    android:id="@+id/questionStep"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bgtext"
+                    android:ems="10"
+
+                    android:fontFamily="@font/thin"
+                    android:gravity="center"
+                    android:hint="Insert your question of Picture"
+                    android:inputType="textPersonName"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
 
                 <EditText
                     android:id="@+id/answerStep"
