@@ -88,12 +88,12 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
             @Override
             public void onClick(View v) {
 
-//                for (int i = 0; i < StepAdapter.stepList.size(); i++) {
-//                    Toast.makeText(getApplicationContext(),  StepAdapter.stepList.get(i).getAnswer(), Toast.LENGTH_SHORT).show();
-//
-//                }
+                for (int i = 0; i < StepAdapter.stepList.size(); i++) {
+                    Toast.makeText(getApplicationContext(),  StepAdapter.stepList.get(0).getAnswer(), Toast.LENGTH_SHORT).show();
 
-                Toast.makeText(getApplicationContext(), getName, Toast.LENGTH_SHORT).show();
+                }
+
+
             }
         });
 

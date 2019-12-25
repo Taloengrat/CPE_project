@@ -31,6 +31,8 @@ Mission implements Serializable {
     @ColumnInfo(name = "age")
     private int age;
 
+
+    ///////////// attribute Picture
     @ColumnInfo(name = "P1")
     private byte[] P1;
 
@@ -61,6 +63,8 @@ Mission implements Serializable {
     @ColumnInfo(name = "P10")
     private byte[] P10;
 
+
+    ///////////// attribute Question
     @ColumnInfo(name = "Q1")
     private String Q1;
 
@@ -91,6 +95,8 @@ Mission implements Serializable {
     @ColumnInfo(name = "Q10")
     private String Q10;
 
+
+    ///////////// attribute Answer
     @ColumnInfo(name = "A1")
     private String A1;
 
@@ -121,6 +127,70 @@ Mission implements Serializable {
     @ColumnInfo(name = "A10")
     private String A10;
 
+    ///////////// attribute Score
+//    @ColumnInfo(name = "S1")
+//    private String Score1;
+//
+//    @ColumnInfo(name = "S2")
+//    private String Score2;
+//
+//    @ColumnInfo(name = "S3")
+//    private String Score3;
+//
+//    @ColumnInfo(name = "S4")
+//    private String Score4;
+//
+//    @ColumnInfo(name = "S5")
+//    private String Score5;
+//
+//    @ColumnInfo(name = "S6")
+//    private String Score6;
+//
+//    @ColumnInfo(name = "S7")
+//    private String Score7;
+//
+//    @ColumnInfo(name = "S8")
+//    private String Score8;
+//
+//    @ColumnInfo(name = "S9")
+//    private String Score9;
+//
+//    @ColumnInfo(name = "S10")
+//    private String Score10;
+//
+/////////////// attribute Hint
+//    @ColumnInfo(name = "H1")
+//    private String Hint1;
+//
+//    @ColumnInfo(name = "H2")
+//    private String Hint2;
+//
+//    @ColumnInfo(name = "H3")
+//    private String Hint3;
+//
+//    @ColumnInfo(name = "H4")
+//    private String Hint4;
+//
+//    @ColumnInfo(name = "H5")
+//    private String Hint5;
+//
+//    @ColumnInfo(name = "H6")
+//    private String Hint6;
+//
+//    @ColumnInfo(name = "H7")
+//    private String Hint7;
+//
+//    @ColumnInfo(name = "H8")
+//    private String Hint8;
+//
+//    @ColumnInfo(name = "H9")
+//    private String Hint9;
+//
+//    @ColumnInfo(name = "H10")
+//    private String Hint10;
+
+
+
 
 
 
@@ -141,7 +211,8 @@ Mission implements Serializable {
 
 
 
-    public Mission(String missionName, String detailMission, int age,int numberofMission) {
+
+    public Mission(String missionName, String detailMission, int age, int numberofMission) {
 //        this.idMission = idMission;
         this.missionName = missionName;
         this.detailMission = detailMission;
@@ -151,8 +222,32 @@ Mission implements Serializable {
 //        this.question = question;
     }
 
+    public Mission(String missionName, String detailMission, int numberofMission, int age, byte[] p1, byte[] p2, byte[] p3, byte[] p4, byte[] p5, byte[] p6, String q1, String q2, String q3, String q4, String q5, String q6, String a1, String a2, String a3, String a4, String a5, String a6) {
+        this.missionName = missionName;
+        this.detailMission = detailMission;
+        this.numberofMission = numberofMission;
+        this.age = age;
+        P1 = p1;
+        P2 = p2;
+        P3 = p3;
+        P4 = p4;
+        P5 = p5;
+        P6 = p6;
+        Q1 = q1;
+        Q2 = q2;
+        Q3 = q3;
+        Q4 = q4;
+        Q5 = q5;
+        Q6 = q6;
+        A1 = a1;
+        A2 = a2;
+        A3 = a3;
+        A4 = a4;
+        A5 = a5;
+        A6 = a6;
+    }
 
-    public Mission( String missionName, String detailMission, int age, int numberofMission
+    public Mission(String missionName, String detailMission, int age, int numberofMission
             , byte[] p1, byte[] p2, byte[] p3, byte[] p4, byte[] p5
             , String q1, String q2, String q3, String q4, String q5
             , String a1, String a2, String a3, String a4, String a5) {
@@ -177,12 +272,11 @@ Mission implements Serializable {
         A5 = a5;
     }
 
-    public Mission(int idMission, String missionName, String detailMission, int age, int numberofMission
+    public Mission( String missionName, String detailMission, int age, int numberofMission
             , byte[] p1, byte[] p2, byte[] p3, byte[] p4, byte[] p5, byte[] p6, byte[] p7, byte[] p8, byte[] p9, byte[] p10
             , String q1, String q2, String q3, String q4, String q5, String q6, String q7, String q8, String q9, String q10
             , String a1, String a2, String a3, String a4, String a5, String a6, String a7, String a8, String a9, String a10) {
 
-        this.idMission = idMission;
         this.missionName = missionName;
         this.detailMission = detailMission;
         this.numberofMission = numberofMission;

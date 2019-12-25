@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.example.projectcpe.Adapter.MemberAdapter;
@@ -21,7 +23,7 @@ public class BeginMember extends AppCompatActivity {
     List<Member> missionsList;
     ImageView addMember;
     int numPic;
-    ImageView imMedium;
+    ImageView menu;
 
     BitmapDrawable imBitmap;
     @Override
@@ -30,6 +32,13 @@ public class BeginMember extends AppCompatActivity {
         setContentView(R.layout.activity_begin_member);
 
         Initia();
+
+        menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(BeginMember.this, AdminPage.class));
+            }
+        });
     }
 
     private List<Member> lodeMember () {
@@ -49,6 +58,7 @@ public class BeginMember extends AppCompatActivity {
     private void Initia () {
         MemberRecyclerview = findViewById(R.id.MemberRecyclerView);
         addMember = findViewById(R.id.addmember);
+        menu = findViewById(R.id.menu_begin);
     }
 
     @Override
@@ -56,4 +66,6 @@ public class BeginMember extends AppCompatActivity {
         super.onStart();
         loadData();
     }
+
+
 }

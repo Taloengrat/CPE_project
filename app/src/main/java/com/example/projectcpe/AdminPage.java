@@ -3,7 +3,7 @@ package com.example.projectcpe;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class Play extends AppCompatActivity {
+public class AdminPage extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

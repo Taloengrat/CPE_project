@@ -29,6 +29,8 @@ import java.util.List;
 public class OneFragment extends Fragment {
 
     public List<Mission> missionData;
+    private String compareAnswer, textReturn;
+
 
 
     public OneFragment() {
@@ -44,30 +46,33 @@ public class OneFragment extends Fragment {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.one_frag, container, false);
         TextView textView = view.findViewById(R.id.text);
-        TextView Question = view.findViewById(R.id.text);
+        TextView Question = view.findViewById(R.id.Question);
         ImageView imQuestion = view.findViewById(R.id.imQuestion);
 
+
         String step = getArguments().getString("step");
+        int position = getArguments().getInt("position");
+        String question = getArguments().getString("question");
         int id = getArguments().getInt("message");
          byte[] pic = getArguments().getByteArray("code");
 
+         missionData = getData(id);
+
         textView.setText(String.valueOf(step));
-
-//        this.missionData = getData(id);
-        Toast.makeText(getActivity(), String.valueOf(id), Toast.LENGTH_SHORT).show();
+        Question.setText(question);
+//        Toast.makeText(getActivity(), "id mission: " + String.valueOf(id), Toast.LENGTH_SHORT).show();
         bmp = BitmapFactory.decodeByteArray(pic, 0, pic.length);
-//
-//        assert id != null;
-//        imQuestion.setImageBitmap(getPicture(pic,getData(Integer.valueOf(id))));
-//
-//        Toast.makeText(getActivity(), String.valueOf(pic),Toast.LENGTH_SHORT).show();
-
-
         imQuestion.setImageBitmap(bmp);
+        Toast.makeText(getActivity(), String.valueOf(position), Toast.LENGTH_SHORT).show();
+
+
+
+
 
 
         return view;
     }
+
 
 
 

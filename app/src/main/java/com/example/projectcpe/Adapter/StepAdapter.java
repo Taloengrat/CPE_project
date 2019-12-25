@@ -72,6 +72,8 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
     public void onBindViewHolder(@NonNull final StepAdapter.StepViewHolder stepViewHolder, final int position) {
         Step step = (Step) stepList.get(position);
 
+
+
 //        stepViewHolder.imStep.setImageResource(step.getPhoto());
         stepViewHolder.Numstep.setText(String.valueOf(position+1));
 
@@ -251,6 +253,7 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
 
 
 
+
             answerStep.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -259,7 +262,7 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    stepList.get(getAdapterPosition()).setAnswer(answerStep.getText().toString());
+//                    stepList.get(getAdapterPosition()).setAnswer(answerStep.getText().toString());
 
                 }
 

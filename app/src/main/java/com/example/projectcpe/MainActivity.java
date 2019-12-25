@@ -90,29 +90,63 @@ public class MainActivity extends AppCompatActivity {
         Bitmap bitmap3 = ((BitmapDrawable) getResources().getDrawable(R.drawable.blue)).getBitmap();
         Bitmap bitmap4 = ((BitmapDrawable) getResources().getDrawable(R.drawable.yellow)).getBitmap();
         Bitmap bitmap5 = ((BitmapDrawable) getResources().getDrawable(R.drawable.black)).getBitmap();
+        Bitmap bitmap6 = ((BitmapDrawable) getResources().getDrawable(R.drawable.white)).getBitmap();
+        Bitmap bitmap7 = ((BitmapDrawable) getResources().getDrawable(R.drawable.brown)).getBitmap();
+        Bitmap bitmap8 = ((BitmapDrawable) getResources().getDrawable(R.drawable.purple)).getBitmap();
+        Bitmap bitmap9 = ((BitmapDrawable) getResources().getDrawable(R.drawable.gray)).getBitmap();
+        Bitmap bitmap10 = ((BitmapDrawable) getResources().getDrawable(R.drawable.orange)).getBitmap();
+
         ByteArrayOutputStream baos1 = new ByteArrayOutputStream();
         ByteArrayOutputStream baos2 = new ByteArrayOutputStream();
         ByteArrayOutputStream baos3 = new ByteArrayOutputStream();
         ByteArrayOutputStream baos4 = new ByteArrayOutputStream();
         ByteArrayOutputStream baos5 = new ByteArrayOutputStream();
+        ByteArrayOutputStream baos6 = new ByteArrayOutputStream();
+        ByteArrayOutputStream baos7 = new ByteArrayOutputStream();
+        ByteArrayOutputStream baos8 = new ByteArrayOutputStream();
+        ByteArrayOutputStream baos9 = new ByteArrayOutputStream();
+        ByteArrayOutputStream baos10 = new ByteArrayOutputStream();
+
         bitmap1.compress(Bitmap.CompressFormat.JPEG, 100, baos1);
         bitmap2.compress(Bitmap.CompressFormat.JPEG, 100, baos2);
         bitmap3.compress(Bitmap.CompressFormat.JPEG, 100, baos3);
         bitmap4.compress(Bitmap.CompressFormat.JPEG, 100, baos4);
         bitmap5.compress(Bitmap.CompressFormat.JPEG, 100, baos5);
+        bitmap6.compress(Bitmap.CompressFormat.JPEG, 100, baos6);
+        bitmap7.compress(Bitmap.CompressFormat.JPEG, 100, baos7);
+        bitmap8.compress(Bitmap.CompressFormat.JPEG, 100, baos8);
+        bitmap9.compress(Bitmap.CompressFormat.JPEG, 100, baos9);
+        bitmap10.compress(Bitmap.CompressFormat.JPEG, 100, baos10);
+
         byte[] imageInByte1 = baos1.toByteArray();
         byte[] imageInByte2 = baos2.toByteArray();
         byte[] imageInByte3 = baos3.toByteArray();
         byte[] imageInByte4 = baos4.toByteArray();
         byte[] imageInByte5 = baos5.toByteArray();
-                Mission mission = new Mission("Color", "Various colors", 5,5
-        ,imageInByte1, imageInByte2, imageInByte3, imageInByte4, imageInByte5
+        byte[] imageInByte6 = baos6.toByteArray();
+        byte[] imageInByte7 = baos7.toByteArray();
+        byte[] imageInByte8 = baos8.toByteArray();
+        byte[] imageInByte9 = baos9.toByteArray();
+        byte[] imageInByte10 = baos10.toByteArray();
+
+
+                Mission mission = new Mission("Color", "Various colors", 5,10
+        ,imageInByte1, imageInByte2, imageInByte3, imageInByte4, imageInByte5, imageInByte6, imageInByte7,imageInByte8,imageInByte9,imageInByte10
         ,getResources().getString(R.string.q1_1),getResources().getString(R.string.q1_2), getResources().getString(R.string.q1_3),getResources().getString(R.string.q1_4),getResources().getString(R.string.q1_5)
-        ,getResources().getString(R.string.a1_1), getResources().getString(R.string.a1_2),getResources().getString(R.string.a1_3), getResources().getString(R.string.a1_4),getResources().getString(R.string.a1_5));
+                        ,getResources().getString(R.string.q1_6),getResources().getString(R.string.q1_7),getResources().getString(R.string.q1_8)
+                        ,getResources().getString(R.string.q1_9),getResources().getString(R.string.q1_10)
+                   ,getResources().getString(R.string.a1_1).trim(), getResources().getString(R.string.a1_2).trim(),getResources().getString(R.string.a1_3).trim()
+                        , getResources().getString(R.string.a1_4).trim(),getResources().getString(R.string.a1_5).trim()
+                        ,getResources().getString(R.string.a1_6).trim(),getResources().getString(R.string.a1_7).trim(),getResources().getString(R.string.a1_8).trim()
+                        ,getResources().getString(R.string.a1_9).trim(),getResources().getString(R.string.a1_10).trim());
+
+
 
         MissionDATABASE.getInstance(MainActivity.this).missionDAO().create(mission);
 
     }
+
+
 
     @Override
     protected void onStart() {

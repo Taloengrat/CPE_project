@@ -65,84 +65,56 @@ Context c;
 
         position = position+1;
         bundle.putString("step", position +" / " +step);
+        bundle.putInt("position", position);
         bundle.putString("message", String.valueOf(entity));
 
 
 
-        switch (position){
+        switch (position) {
 
-            case 1:bundle.putByteArray("code", Data.get(0).getP1());
+            case 1:
+                bundle.putByteArray("code", Data.get(0).getP1());
+                bundle.putString("question", Data.get(0).getQ1());
                 break;
-            case 2:bundle.putByteArray("code", Data.get(0).getP2());
+            case 2:
+                bundle.putByteArray("code", Data.get(0).getP2());
+                bundle.putString("question", Data.get(0).getQ2());
                 break;
-            case 3:bundle.putByteArray("code", Data.get(0).getP3());
+            case 3:
+                bundle.putByteArray("code", Data.get(0).getP3());
+                bundle.putString("question", Data.get(0).getQ3());
                 break;
-            case 4:bundle.putByteArray("code", Data.get(0).getP4());
+            case 4:
+                bundle.putByteArray("code", Data.get(0).getP4());
+                bundle.putString("question", Data.get(0).getQ4());
                 break;
-            case 5:bundle.putByteArray("code", Data.get(0).getP5());
+            case 5:
+                bundle.putByteArray("code", Data.get(0).getP5());
+                bundle.putString("question", Data.get(0).getQ5());
                 break;
-            case 6:bundle.putByteArray("code", Data.get(0).getP6());
+            case 6:
+                bundle.putByteArray("code", Data.get(0).getP6());
+                bundle.putString("question", Data.get(0).getQ6());
                 break;
-            case 7:bundle.putByteArray("code", Data.get(0).getP7());
+            case 7:
+                bundle.putByteArray("code", Data.get(0).getP7());
+                bundle.putString("question", Data.get(0).getQ7());
                 break;
-            case 8:bundle.putByteArray("code", Data.get(0).getP8());
+            case 8:
+                bundle.putByteArray("code", Data.get(0).getP8());
+                bundle.putString("question", Data.get(0).getQ8());
                 break;
-            case 9:bundle.putByteArray("code", Data.get(0).getP9());
+            case 9:
+                bundle.putByteArray("code", Data.get(0).getP9());
+                bundle.putString("question", Data.get(0).getQ9());
                 break;
-            case 10:bundle.putByteArray("code", Data.get(0).getP10());
+            case 10:
+                bundle.putByteArray("code", Data.get(0).getP10());
+                bundle.putString("question", Data.get(0).getQ10());
                 break;
 
-//            case 5 : bundle.putByteArray("picCode1", Data.get(0).getP1());
-//                bundle.putByteArray("picCode2", Data.get(0).getP2());
-//                bundle.putByteArray("picCode3", Data.get(0).getP3());
-//                bundle.putByteArray("picCode4", Data.get(0).getP4());
-//                bundle.putByteArray("picCode5", Data.get(0).getP5());
-//                break;
-//            case 6 : bundle.putByteArray("picCode1", Data.get(0).getP1());
-//                bundle.putByteArray("picCode2", Data.get(0).getP2());
-//                bundle.putByteArray("picCode3", Data.get(0).getP3());
-//                bundle.putByteArray("picCode4", Data.get(0).getP4());
-//                bundle.putByteArray("picCode5", Data.get(0).getP5());
-//                bundle.putByteArray("picCode6", Data.get(0).getP6());
-//                break;
-//            case 7 : bundle.putByteArray("picCode1", Data.get(0).getP1());
-//                bundle.putByteArray("picCode2", Data.get(0).getP2());
-//                bundle.putByteArray("picCode3", Data.get(0).getP3());
-//                bundle.putByteArray("picCode4", Data.get(0).getP4());
-//                bundle.putByteArray("picCode5", Data.get(0).getP5());
-//                bundle.putByteArray("picCode6", Data.get(0).getP6());
-//                bundle.putByteArray("picCode7", Data.get(0).getP7());
-//                break;
-//            case 8 : bundle.putByteArray("picCode1", Data.get(0).getP1());
-//                bundle.putByteArray("picCode2", Data.get(0).getP2());
-//                bundle.putByteArray("picCode3", Data.get(0).getP3());
-//                bundle.putByteArray("picCode4", Data.get(0).getP4());
-//                bundle.putByteArray("picCode5", Data.get(0).getP5());
-//                bundle.putByteArray("picCode6", Data.get(0).getP6());
-//                bundle.putByteArray("picCode7", Data.get(0).getP7());
-//                bundle.putByteArray("picCode8", Data.get(0).getP8());
-//                break;
-//            case 9 : bundle.putByteArray("picCode1", Data.get(0).getP1());
-//                bundle.putByteArray("picCode2", Data.get(0).getP2());
-//                bundle.putByteArray("picCode3", Data.get(0).getP3());
-//                bundle.putByteArray("picCode4", Data.get(0).getP4());
-//                bundle.putByteArray("picCode5", Data.get(0).getP5());
-//                bundle.putByteArray("picCode6", Data.get(0).getP6());
-//                bundle.putByteArray("picCode7", Data.get(0).getP7());
-//                bundle.putByteArray("picCode8", Data.get(0).getP8());
-//                bundle.putByteArray("picCode9", Data.get(0).getP9());
-//                break;
-//            case 10 : bundle.putByteArray("picCode1", Data.get(0).getP1());
-//                bundle.putByteArray("picCode2", Data.get(0).getP2());
-//                bundle.putByteArray("picCode3", Data.get(0).getP3());
-//                bundle.putByteArray("picCode4", Data.get(0).getP4());
-//                bundle.putByteArray("picCode5", Data.get(0).getP5());
-//                bundle.putByteArray("picCode6", Data.get(0).getP6());
-//                bundle.putByteArray("picCode7", Data.get(0).getP7());
-//                bundle.putByteArray("picCode8", Data.get(0).getP8());
-//                bundle.putByteArray("picCode9", Data.get(0).getP9());
-//                bundle.putByteArray("picCode10", Data.get(0).getP10());
         }
+
 
 
         fragment.setArguments(bundle);

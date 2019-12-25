@@ -16,7 +16,7 @@
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@drawable/ic_language_black_24dp"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -29,7 +29,7 @@
         <activity android:name=".PlayingMode.SumaryPage" />
         <activity android:name=".PlayingMode.PlayPage" />
         <activity android:name=".Main2Activity" />
-        <activity android:name=".Play" />
+        <activity android:name=".AdminPage" />
         <activity android:name=".PlayingMode.DetailMission" />
         <activity android:name=".CreateMission.FinallyCreate" />
         <activity android:name=".FunctionEditPassword" />
