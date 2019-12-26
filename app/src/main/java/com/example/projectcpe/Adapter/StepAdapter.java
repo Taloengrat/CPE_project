@@ -128,6 +128,7 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
                             childCount = stepViewHolder.frameEdittextthis.getChildCount();
                         }
                     }
+                    //
 
 //
                     childCount = stepViewHolder.frameEdittextthis.getChildCount();
