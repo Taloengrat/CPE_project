@@ -90,9 +90,15 @@ public class MissionCreate extends AppCompatActivity {
         i.putExtra("detail",etDetail.getText().toString());
         i.putExtra("age",Integer.parseInt(etAge.getText().toString()));
         i.putExtra("NumOfStep",Integer.parseInt(spinner.getSelectedItem().toString()));
-
         startActivity(i);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         Toast.makeText(getApplicationContext(), spinner.getSelectedItem().toString(), Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
 }

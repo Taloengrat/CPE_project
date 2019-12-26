@@ -103,7 +103,9 @@ public class BeginMember extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Please enter your pass word", Toast.LENGTH_SHORT).show();
                 }else if (CheckPassword(Integer.parseInt(pass))) {
                     Toast.makeText(getApplicationContext(), "Password Correct :)", Toast.LENGTH_SHORT).show();
+                    dialog.cancel();
                     startActivity(new Intent(BeginMember.this, AdminPage.class));
+                    overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 } else {
                     Toast.makeText(getApplicationContext(), "Password Invalid !!!", Toast.LENGTH_SHORT).show();
                 }

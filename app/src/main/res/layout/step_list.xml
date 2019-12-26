@@ -52,7 +52,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/bgtext"
                     android:ems="10"
-
+                    android:layout_marginTop="4dp"
                     android:fontFamily="@font/thin"
                     android:gravity="center"
                     android:hint="Put your answer"

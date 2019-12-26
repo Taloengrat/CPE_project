@@ -22,55 +22,38 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity android:name=".AdminPage"
             android:screenOrientation="portrait" />
-
         <activity android:name=".LogoIntro"
             android:screenOrientation="portrait" />
-
         <activity android:name=".BeginMember"
             android:screenOrientation="portrait" />
-
         <activity android:name=".TestSystem.TestSystem"
             android:screenOrientation="portrait" />
-
         <activity android:name=".PlayingMode.Feedback"
             android:screenOrientation="portrait" />
-
         <activity android:name=".PlayingMode.SumaryPage"
             android:screenOrientation="portrait" />
-
         <activity android:name=".PlayingMode.PlayPage"
             android:screenOrientation="portrait" />
-
         <activity android:name=".Main2Activity"
             android:screenOrientation="portrait" />
-
         <activity android:name=".PlayingMode.DetailMission"
             android:screenOrientation="portrait" />
-
         <activity android:name=".CreateMission.FinallyCreate"
             android:screenOrientation="portrait" />
-
         <activity android:name=".FunctionEditPassword"
             android:screenOrientation="portrait" />
-
         <activity android:name=".FunctionEditProfile"
             android:screenOrientation="portrait" />
-
         <activity android:name=".CreateMission.MissionExport"
             android:screenOrientation="portrait" />
-
         <activity android:name=".CreateMission.MissionImport"
             android:screenOrientation="portrait" />
-
         <activity android:name=".CreateMission.MissionDelete"
             android:screenOrientation="portrait" />
-
         <activity android:name=".CreateMission.MissionCreate"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".CreateProfile"
             android:screenOrientation="portrait" />

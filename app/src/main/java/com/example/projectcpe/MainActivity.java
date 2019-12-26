@@ -157,10 +157,8 @@ public class MainActivity extends AppCompatActivity {
         if (gettedPassword == 0){
 
         }else{
-
-
-
             startActivity(new Intent(MainActivity.this, LogoIntro.class));
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             finish();
         }
     }

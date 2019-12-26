@@ -1,5 +1,6 @@
 package com.example.projectcpe.Adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.projectcpe.BeginMember;
 import com.example.projectcpe.HomePage;
 import com.example.projectcpe.R;
 import com.example.projectcpe.ViewModel.Member;
@@ -22,12 +24,12 @@ import java.util.List;
 
 public class MemberAdapterBegin extends RecyclerView.Adapter<MemberAdapterBegin.MemberViewHolder>{
 
-    Context mCtx;
+    Activity activity;
     public static List<Member> memberListb;
 
-    public MemberAdapterBegin(List<Member> c, Context ctx) {
+    public MemberAdapterBegin(List<Member> c, Activity activity) {
         this.memberListb = c;
-        this.mCtx = ctx;
+        this.activity = activity;
     }
 
     @NonNull
@@ -73,12 +75,15 @@ public class MemberAdapterBegin extends RecyclerView.Adapter<MemberAdapterBegin.
         @Override
         public void onClick(View view) {
 
-            int iddd = MissionDATABASE.getInstance(mCtx).missionDAO().getDesMember(memberListb.get(getAdapterPosition()).getId());
-            Intent i = new Intent(mCtx, HomePage.class);
+            int iddd = MissionDATABASE.getInstance(activity).missionDAO().getDesMember(memberListb.get(getAdapterPosition()).getId());
+            Intent i = new Intent(activity, HomePage.class);
+
             i.putExtra("NAME", name.getText().toString());
             i.putExtra("AGE", age.getText().toString());
             i.putExtra("ID", iddd);
-            mCtx.startActivity(i);
+            activity.startActivity(i);
+            activity.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+
         }
     }
 }

@@ -53,6 +53,7 @@ public class    LogoIntro extends AppCompatActivity {
             public void run() {
 
                 startActivity(new Intent(LogoIntro.this, BeginMember.class));
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 finish();
 
             }

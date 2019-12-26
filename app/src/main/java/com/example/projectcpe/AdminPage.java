@@ -1,6 +1,7 @@
 package com.example.projectcpe;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.app.Dialog;
 import android.content.Intent;
@@ -24,6 +25,13 @@ public class AdminPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
     }
     public void FunctionAdmin(View view) {
         switch (view.getId())
@@ -34,10 +42,14 @@ public class AdminPage extends AppCompatActivity {
             case R.id.CardImport : startActivity(new Intent(AdminPage.this, MissionImport.class)); break;
             case R.id.CardExport : startActivity(new Intent(AdminPage.this, MissionExport.class)); break;
             case R.id.CardChagepassword : startActivity(new Intent(AdminPage.this, FunctionEditPassword.class)); break;
-
         }
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
 
-
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
 
 }
