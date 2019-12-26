@@ -101,8 +101,36 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
 
                 final LinearLayout linearDetail2 = dialog.findViewById(R.id.linearDetail);
 
-                // For Create TextView
+
                 int childCount = stepViewHolder.frameEdittextthis.getChildCount();
+                final int[] childAt = {-1,-1,-1};
+
+
+                for(int k = 0; k < childCount-1 ; k++){
+                    TextView textView = (TextView) stepViewHolder.frameEdittextthis.getChildAt(childAt[2]+2);
+
+                    Log.e("Text",textView.getText().toString());
+                    Log.e("Hint",textView.getHint().toString());
+
+                    if (textView.getText().toString().matches("")){
+                        stepViewHolder.frameEdittextthis.removeViewAt(childAt[2]+2);
+                        Log.e("DO it","Delete");
+                        childCount--;
+                    }
+                    childAt[2]++;
+                }
+
+
+
+
+
+
+
+
+
+
+
+                // For Create TextView
                 for(int i = 0; i < childCount-1 ; i++){
 
                     // LayoutParams Properties.
@@ -137,7 +165,7 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
 
                 // For Set Text in TextView.
                 final int childDetail = linearDetail2.getChildCount();
-                final int[] childAt = {-1,-1};
+
                 for(int j = 0; j < childDetail ; j++) {
 
                     EditText textGeted;
@@ -203,6 +231,8 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
         stepViewHolder.add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
 
                 final LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                 final EditText textView = new EditText(mCtx);

@@ -65,7 +65,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/bold"
-        android:text="Manage Profile"
+        android:text="Select Profile"
         android:textColor="#ffff"
         android:textSize="30dp"
         app:layout_constraintEnd_toEndOf="@+id/imageView2"
@@ -87,17 +87,33 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="1" />
 
-    <ImageView
-        android:id="@+id/menu_begin"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+    <LinearLayout
+        android:layout_width="112dp"
+        android:layout_height="62dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="@drawable/elevator_regtang"
-        app:layout_constraintTop_toTopOf="parent"
-        android:padding="8dp"
-        app:srcCompat="@drawable/menu" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/menu_begin"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="right"
+            android:background="@drawable/elevator_regtang"
+            android:padding="8dp"
+            app:srcCompat="@drawable/menu" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Admin Mode"
+            android:layout_gravity="right"
+            />
+
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

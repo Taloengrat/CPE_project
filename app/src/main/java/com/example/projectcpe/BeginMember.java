@@ -107,7 +107,10 @@ public class BeginMember extends AppCompatActivity {
                 } else {
                     Toast.makeText(getApplicationContext(), "Password Invalid !!!", Toast.LENGTH_SHORT).show();
                 }
+
+                dialog.cancel();
             }
+
 
 
 
