@@ -314,7 +314,7 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
-//                    stepList.get(getAdapterPosition()).setAnswer(answerStep.getText().toString());
+                    stepList.get(getAdapterPosition()).setAnswer(answerStep.getText().toString());
 
                 }
 
