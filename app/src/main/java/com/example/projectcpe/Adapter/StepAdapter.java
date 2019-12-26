@@ -223,6 +223,27 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
 
 
                         Log.w("Mylist", String.valueOf(allWord));
+
+                        int childCount = stepViewHolder.frameEdittextthis.getChildCount();
+                        int childAt = -1;
+
+                        String sumAnswer = "";
+
+                        for (int i = 0 ; i < childCount-1 ; i++){
+
+                            TextView textView = (TextView) stepViewHolder.frameEdittextthis.getChildAt(childAt+2);
+                            String nextText = textView.getText().toString();
+                            sumAnswer = sumAnswer + " / " + nextText;
+
+                            childAt++;
+                        }
+
+
+                        stepList.get(position).setAnswer(sumAnswer);
+
+
+
+
                     }
                 });
 
@@ -251,6 +272,8 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
                 textView.setBackgroundResource(R.drawable.bgtext);
                 textView.setHint("Put your answer");
                 textView.setMaxEms(8);
+
+                textView.requestFocus();
 
 
 
@@ -314,12 +337,15 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    stepList.get(getAdapterPosition()).setAnswer(answerStep.getText().toString());
+
+
 
                 }
 
                 @Override
                 public void afterTextChanged(Editable s) {
+
+
 
                 }
             });
