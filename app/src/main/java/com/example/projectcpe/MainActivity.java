@@ -168,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
         dialog.getWindow().setBackgroundDrawableResource(R.drawable.frameline);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.addmember_dialog);
-        dialog.setCancelable(true);
+        dialog.setCancelable(false);
         //
 
         final EditText _etName = dialog.findViewById(R.id.etname);
