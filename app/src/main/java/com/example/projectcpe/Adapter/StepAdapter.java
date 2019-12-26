@@ -21,7 +21,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.projectcpe.CreateMission.FinallyCreate;
 import com.example.projectcpe.R;
 import com.example.projectcpe.ViewModel.Step;
 
@@ -105,82 +107,83 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
                 int childCount = stepViewHolder.frameEdittextthis.getChildCount();
                 final int[] childAt = {-1,-1,-1};
 
+                TextView textView1 = (TextView) stepViewHolder.frameEdittextthis.getChildAt(childAt[2]+2);
 
-                for(int k = 0; k < childCount-1 ; k++){
-                    TextView textView = (TextView) stepViewHolder.frameEdittextthis.getChildAt(childAt[2]+2);
+                if (textView1.getText().toString().matches("")){
+                    Toast.makeText(mCtx, "กรุณาใส่คำตอบที่ถูกตัองที่สุด", Toast.LENGTH_LONG).show();
+                } else {
 
-                    Log.e("Text",textView.getText().toString());
-                    Log.e("Hint",textView.getHint().toString());
+                    for (int k = 0; k < childCount - 1; k++) {
+                        TextView textView = (TextView) stepViewHolder.frameEdittextthis.getChildAt(childAt[2] + 2);
 
-                    if (textView.getText().toString().matches("")){
-                        stepViewHolder.frameEdittextthis.removeViewAt(childAt[2]+2);
-                        Log.e("DO it","Delete");
-                        childCount--;
+                        Log.e("Text", textView.getText().toString());
+                        Log.e("Hint", textView.getHint().toString());
+
+                        if (textView.getText().toString().matches("")) {
+                            stepViewHolder.frameEdittextthis.removeViewAt(childAt[2] + 2);
+                            Log.e("DO it", "Delete");
+
+                        } else {
+                            childAt[2]++;
+                            childCount = stepViewHolder.frameEdittextthis.getChildCount();
+                        }
                     }
-                    childAt[2]++;
-                }
 
 //
+                    childCount = stepViewHolder.frameEdittextthis.getChildCount();
 
+                    // For Create TextView
+                    for (int i = 0; i < childCount - 1; i++) {
 
+                        // LayoutParams Properties.
+                        final LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                        layoutParams.setMargins(0, 5, 0, 0);
+                        layoutParams.weight = 1;
 
+                        // LinearLayout Properties.
+                        final LinearLayout linearLayout = new LinearLayout(mCtx);
 
+                        // TextView Properties.
+                        final TextView textView = new TextView(mCtx);
+                        textView.setTypeface(ResourcesCompat.getFont(mCtx, R.font.thin));
+                        textView.setLayoutParams(layoutParams);
+                        textView.setTextSize(16);
+                        textView.setGravity(Gravity.CENTER);
+                        textView.setBackgroundResource(R.drawable.bgtext);
+                        textView.setHint("Put your answer");
+                        textView.setMaxEms(8);
 
+                        // Spinner Properties.
+                        final Spinner spinner = new Spinner(mCtx);
+                        String[] items = new String[]{"5", "6", "7", "8", "9", "10"};
+                        ArrayAdapter<CharSequence> adapter = new ArrayAdapter<CharSequence>(mCtx, android.R.layout.simple_spinner_dropdown_item, items);
+                        spinner.setAdapter(adapter);
 
+                        // Create Detail.
+                        linearDetail2.addView(linearLayout);
+                        linearLayout.addView(textView);
+                        linearLayout.addView(spinner);
+                    }
 
+                    // For Set Text in TextView.
+                    final int childDetail = linearDetail2.getChildCount();
 
+                    for (int j = 0; j < childDetail; j++) {
 
-                // For Create TextView
-                for(int i = 0; i < childCount-1 ; i++){
+                        EditText textGeted;
+                        textGeted = (EditText) stepViewHolder.frameEdittextthis.getChildAt(childAt[0] + 2);
 
-                    // LayoutParams Properties.
-                    final LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-                    layoutParams.setMargins(0,5,0,0);
-                    layoutParams.weight = 1;
+                        LinearLayout layoutSelect;
+                        layoutSelect = (LinearLayout) linearDetail2.getChildAt(childAt[0] + 1);
 
-                    // LinearLayout Properties.
-                    final LinearLayout linearLayout = new LinearLayout(mCtx);
+                        TextView textSet;
+                        textSet = (TextView) layoutSelect.getChildAt(0);
 
-                    // TextView Properties.
-                    final TextView textView = new TextView(mCtx);
-                    textView.setTypeface(ResourcesCompat.getFont(mCtx, R.font.thin));
-                    textView.setLayoutParams(layoutParams);
-                    textView.setTextSize(16);
-                    textView.setGravity(Gravity.CENTER);
-                    textView.setBackgroundResource(R.drawable.bgtext);
-                    textView.setHint("Put your answer");
-                    textView.setMaxEms(8);
-
-                    // Spinner Properties.
-                    final Spinner spinner = new Spinner(mCtx);
-                    String[] items = new String[]{"5", "6", "7", "8", "9", "10"};
-                    ArrayAdapter<CharSequence> adapter = new ArrayAdapter<CharSequence>(mCtx, android.R.layout.simple_spinner_dropdown_item, items);
-                    spinner.setAdapter(adapter);
-
-                    // Create Detail.
-                    linearDetail2.addView(linearLayout);
-                    linearLayout.addView(textView);
-                    linearLayout.addView(spinner);
+                        textSet.setText(textGeted.getText());
+                        childAt[0]++;
+                    }
+                    dialog.show();
                 }
-
-                // For Set Text in TextView.
-                final int childDetail = linearDetail2.getChildCount();
-
-                for(int j = 0; j < childDetail ; j++) {
-
-                    EditText textGeted;
-                    textGeted = (EditText) stepViewHolder.frameEdittextthis.getChildAt(childAt[0] + 2);
-
-                    LinearLayout layoutSelect;
-                    layoutSelect = (LinearLayout) linearDetail2.getChildAt(childAt[0] + 1);
-
-                    TextView textSet;
-                    textSet = (TextView) layoutSelect.getChildAt(0);
-
-                    textSet.setText(textGeted.getText());
-                    childAt[0]++;
-                }
-                dialog.show();
 
 
 
@@ -188,7 +191,7 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
                 bSave.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
+                        final int childDetail = linearDetail2.getChildCount();
                         for(int j = 0; j < childDetail ; j++) {
 
 
