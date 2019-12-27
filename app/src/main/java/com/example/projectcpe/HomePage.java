@@ -266,5 +266,11 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         super.onDestroy();
     }
 
-
+    @Override
+    public void onBackPressed() {
+        // your code.
+        startActivity(new Intent(HomePage.this, BeginMember.class));
+        finish();
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+    }
 }

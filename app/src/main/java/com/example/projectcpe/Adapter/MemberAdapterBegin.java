@@ -1,6 +1,7 @@
 package com.example.projectcpe.Adapter;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -8,14 +9,19 @@ import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projectcpe.BeginMember;
 import com.example.projectcpe.HomePage;
+import com.example.projectcpe.MainActivity;
 import com.example.projectcpe.R;
 import com.example.projectcpe.ViewModel.Member;
 import com.example.projectcpe.ViewModel.MissionDATABASE;
@@ -25,7 +31,7 @@ import java.util.List;
 public class MemberAdapterBegin extends RecyclerView.Adapter<MemberAdapterBegin.MemberViewHolder>{
 
     Activity activity;
-    public static List<Member> memberListb;
+    public static List<Member> memberListb, User;
 
     public MemberAdapterBegin(List<Member> c, Activity activity) {
         this.memberListb = c;
@@ -75,15 +81,49 @@ public class MemberAdapterBegin extends RecyclerView.Adapter<MemberAdapterBegin.
         @Override
         public void onClick(View view) {
 
-            int iddd = MissionDATABASE.getInstance(activity).missionDAO().getDesMember(memberListb.get(getAdapterPosition()).getId());
-            Intent i = new Intent(activity, HomePage.class);
 
-            i.putExtra("NAME", name.getText().toString());
-            i.putExtra("AGE", age.getText().toString());
-            i.putExtra("ID", iddd);
-            activity.startActivity(i);
-            activity.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 
+            final Dialog dialog = new Dialog(activity);
+            dialog.getWindow().setBackgroundDrawableResource(R.drawable.frameline);
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            dialog.setContentView(R.layout.verify_member);
+            dialog.setCancelable(true);
+
+            final EditText _etPassword = dialog.findViewById(R.id.etpassword);
+            Button btSubmit = dialog.findViewById(R.id.okverify);
+
+            final int iddd = MissionDATABASE.getInstance(activity).missionDAO().getDesMember(memberListb.get(getAdapterPosition()).getId());
+
+            User =getData(iddd);
+
+            btSubmit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (_etPassword.getText().toString().equals(String.valueOf(User.get(0).getPassword()))){
+                        Intent i = new Intent(activity, HomePage.class);
+                        i.putExtra("NAME", name.getText().toString());
+                        i.putExtra("AGE", age.getText().toString());
+                        i.putExtra("ID", iddd);
+                        activity.startActivity(i);
+                        activity.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                        activity.finish();
+                        dialog.cancel();
+
+                    }else{
+
+                        Toast.makeText(activity, String.valueOf(User.get(0).getPassword()),Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+
+
+dialog.show();
+
+
+        }
+
+        private List<Member> getData(int id) {
+            return MissionDATABASE.getInstance(activity).missionDAO().getAllinfoOfMember(id);
         }
     }
 }

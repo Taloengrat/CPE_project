@@ -55,6 +55,7 @@ public class FunctionEditProfile extends AppCompatActivity {
 
                 final EditText _etName = dialog.findViewById(R.id.etname);
                 final EditText _etAge = dialog.findViewById(R.id.etage);
+                final EditText _etPassword = dialog.findViewById(R.id.etpassword);
                 final ImageView profile = dialog.findViewById(R.id.head);
 
                 profile.setOnClickListener(new View.OnClickListener() {
@@ -134,7 +135,7 @@ Toast.makeText(getApplicationContext(), String.valueOf(imMedium.getDrawable()), 
                             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
                             byte[] imageInByte = baos.toByteArray();
 
-                            Member newMember = new Member(_etName.getText().toString(), _etAge.getText().toString(), imageInByte);
+                            Member newMember = new Member(_etName.getText().toString(), _etAge.getText().toString(), imageInByte,Integer.valueOf(_etPassword.getText().toString()));
 
                             MissionDATABASE.getInstance(FunctionEditProfile.this).missionDAO().createMember(newMember);
 dialog.cancel();

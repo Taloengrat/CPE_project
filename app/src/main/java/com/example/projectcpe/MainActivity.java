@@ -174,6 +174,7 @@ public class MainActivity extends AppCompatActivity {
         final EditText _etName = dialog.findViewById(R.id.etname);
         final EditText _etAge = dialog.findViewById(R.id.etage);
         final ImageView profile = dialog.findViewById(R.id.head);
+        final EditText _etPassword = dialog.findViewById(R.id.etpassword);
 
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -252,7 +253,7 @@ public class MainActivity extends AppCompatActivity {
                     bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
                     byte[] imageInByte = baos.toByteArray();
 
-                    Member newMember = new Member(_etName.getText().toString(), _etAge.getText().toString(), imageInByte);
+                    Member newMember = new Member(_etName.getText().toString(), _etAge.getText().toString(), imageInByte, Integer.valueOf(_etPassword.getText().toString()));
 
                     MissionDATABASE.getInstance(MainActivity.this).missionDAO().createMember(newMember);
                     dialog.cancel();

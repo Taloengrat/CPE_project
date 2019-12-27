@@ -55,9 +55,6 @@
         <activity android:name=".CreateMission.MissionCreate"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".CreateProfile"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".HomePage"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Design.NoActionBar" />
