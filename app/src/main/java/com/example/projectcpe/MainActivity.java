@@ -259,6 +259,7 @@ public class MainActivity extends AppCompatActivity {
                     dialog.cancel();
                     startActivity(new Intent(MainActivity.this, LogoIntro.class));
                     finish();
+                    overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 
                 }
             }

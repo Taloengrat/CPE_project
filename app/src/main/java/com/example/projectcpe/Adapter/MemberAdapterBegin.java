@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
@@ -28,10 +29,13 @@ import com.example.projectcpe.ViewModel.MissionDATABASE;
 
 import java.util.List;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class MemberAdapterBegin extends RecyclerView.Adapter<MemberAdapterBegin.MemberViewHolder>{
 
     Activity activity;
     public static List<Member> memberListb, User;
+    public static final String MY_PRE_PASSWORD_ADMIN = "com.example.projectcpe.passwordasmin";
 
     public MemberAdapterBegin(List<Member> c, Activity activity) {
         this.memberListb = c;
@@ -96,10 +100,15 @@ public class MemberAdapterBegin extends RecyclerView.Adapter<MemberAdapterBegin.
 
             User =getData(iddd);
 
+            final SharedPreferences getPassword = activity.getSharedPreferences(MY_PRE_PASSWORD_ADMIN, MODE_PRIVATE);
+            int gettingPassword = 0;
+            final int gettedPassword  = getPassword.getInt("Pass", gettingPassword);
+
             btSubmit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (_etPassword.getText().toString().equals(String.valueOf(User.get(0).getPassword()))){
+                    if (_etPassword.getText().toString().equals(String.valueOf(User.get(0).getPassword()))
+                    || _etPassword.getText().toString().equals(String.valueOf(gettedPassword))){
                         Intent i = new Intent(activity, HomePage.class);
                         i.putExtra("NAME", name.getText().toString());
                         i.putExtra("AGE", age.getText().toString());
