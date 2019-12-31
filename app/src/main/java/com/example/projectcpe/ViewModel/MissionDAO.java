@@ -21,6 +21,9 @@ public interface MissionDAO {
     @Query("select * from static where idsub=:idsub order by score DESC")
     List<Static> getAllStatic(int idsub);
 
+    @Query("select * from MemberStatic where idsub=:idsub order by score DESC")
+    List<MemberStatic> getAllMemberStatic(int idsub);
+
     ////////////////////////////////////////////
 
     @Query("select * from mission where id=:id")
@@ -54,6 +57,9 @@ public interface MissionDAO {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void createStatistic(Static statistic);
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void createMemberStatic(MemberStatic memberStatic);
 
     ///////////////////////////////////////////////
 

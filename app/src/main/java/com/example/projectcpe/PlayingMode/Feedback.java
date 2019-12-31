@@ -16,6 +16,7 @@ import com.example.projectcpe.BeginMember;
 import com.example.projectcpe.LogoIntro;
 import com.example.projectcpe.R;
 import com.example.projectcpe.ViewModel.Member;
+import com.example.projectcpe.ViewModel.MemberStatic;
 import com.example.projectcpe.ViewModel.Mission;
 import com.example.projectcpe.ViewModel.MissionDATABASE;
 import com.example.projectcpe.ViewModel.Static;
@@ -53,10 +54,13 @@ public class Feedback extends AppCompatActivity {
 
 
         Static statistic = new Static(id,memberId,memberList.get(0).getProfile(),memberList.get(0).getName(),Integer.valueOf(memberList.get(0).getAge())
-                ,Score,numstar
-                );
-
+                ,Score,numstar);
         MissionDATABASE.getInstance(Feedback.this).missionDAO().createStatistic(statistic);
+
+
+
+        MemberStatic memberStatic = new MemberStatic(id, missionList.get(0).getMissionName(),String.valueOf(missionList.get(0).getAge()),numstar,Score);
+        MissionDATABASE.getInstance(Feedback.this).missionDAO().createMemberStatic(memberStatic);
 
 
     }
@@ -278,5 +282,7 @@ public class Feedback extends AppCompatActivity {
         i.putExtra("MissionId", id);
         i.putExtra("MemberId", memberId);
         startActivity(i);
+        fileList();
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
 }

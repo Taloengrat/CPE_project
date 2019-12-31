@@ -7,7 +7,7 @@
     tools:context=".HomePage"
     android:id="@+id/drawLayout"
     android:fitsSystemWindows="true"
-    android:background="@color/blue400"
+    android:background="@color/blue200"
     tools:openDrawer="start">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -24,7 +24,7 @@
                 android:id="@+id/collapsingToolbarLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/blue200"
+                android:background="@color/blue600"
                 android:paddingBottom="4dp"
                 app:collapsedTitleTextAppearance="@font/bold"
                 app:expandedTitleGravity="center|bottom"
@@ -37,7 +37,7 @@
                     android:layout_gravity="center"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="11dp"
-                    android:background="@drawable/framelist"
+                    android:background="@drawable/elevator_regtang"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHeight_percent="0.35"
@@ -100,16 +100,6 @@
                         app:layout_constraintVertical_bias="0.0" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <Button
-                    android:id="@+id/textsystem"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="TEST SYSTEM"
-                    android:layout_gravity="center|bottom"
-                    android:fontFamily="@font/bold"
-                    android:background="@color/blue900"/>
-
-
                 <androidx.appcompat.widget.Toolbar
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
@@ -135,7 +125,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="20dp"
-            android:background="@drawable/bgtext"
+            android:background="@drawable/elevator_regtang"
             android:fillViewport="true"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 

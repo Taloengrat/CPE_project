@@ -5,7 +5,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import android.content.Context;
 
-@Database(entities = { Mission.class, Member.class, Static.class}, version = 1)
+@Database(entities = { Mission.class, Member.class, Static.class,MemberStatic.class}, version = 1)
 public abstract class MissionDATABASE extends RoomDatabase {
     private static final String DATABASE_NAME = "Mission";
     private static MissionDATABASE db;

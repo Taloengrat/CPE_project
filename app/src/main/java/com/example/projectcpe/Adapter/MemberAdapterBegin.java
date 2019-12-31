@@ -106,7 +106,7 @@ public class MemberAdapterBegin extends RecyclerView.Adapter<MemberAdapterBegin.
 
 
             final Dialog dialog = new Dialog(activity);
-            dialog.getWindow().setBackgroundDrawableResource(R.drawable.frameline);
+            dialog.getWindow().setBackgroundDrawableResource(R.drawable.elevator_regtang);
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
             dialog.setContentView(R.layout.verify_member);
             dialog.setCancelable(true);

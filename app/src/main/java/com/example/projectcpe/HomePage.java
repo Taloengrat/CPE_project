@@ -56,7 +56,6 @@ public class HomePage extends AppCompatActivity implements  MissionAdapter.OnCus
     RecyclerView recyclerView;
     MissionAdapter missionAdapter;
     List<Mission> missionsList;
-    Button testSystem;
     int id;
     private byte memberData;
     List<Member> member;
@@ -77,12 +76,6 @@ public class HomePage extends AppCompatActivity implements  MissionAdapter.OnCus
 //        missionsList.add(new Mission("TestSystem", 0));
 
 
-        testSystem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                    startActivity(new Intent(getApplicationContext(), TestSystem.class));
-            }
-        });
        loadData();
 
 
@@ -97,7 +90,6 @@ public class HomePage extends AppCompatActivity implements  MissionAdapter.OnCus
 
         member = getData(id);
 
-        Toast.makeText(getApplicationContext(), String.valueOf(member.get(0).getProfile()), Toast.LENGTH_SHORT).show();
         Bitmap bitmap = BitmapFactory.decodeByteArray(member.get(0).getProfile(), 0, member.get(0).getProfile().length);
 
 
@@ -130,7 +122,6 @@ public class HomePage extends AppCompatActivity implements  MissionAdapter.OnCus
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        testSystem = findViewById(R.id.textsystem);
         txAge = findViewById(R.id.txAge);
         txName = findViewById(R.id.txName);
         imProfile = findViewById(R.id.imProfile);

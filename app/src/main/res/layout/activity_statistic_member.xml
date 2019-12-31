@@ -7,6 +7,19 @@
     tools:context=".StatisticMember"
     android:background="@color/blue200">
 
+    <FrameLayout
+        android:id="@+id/asfasdfdas"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:background="#504848"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txAge" />
+
+
     <ImageView
         android:id="@+id/imProfile"
         android:layout_width="100dp"
@@ -28,7 +41,7 @@
         android:text="TextView"
         android:textSize="25dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/asfdas" />
 
     <TextView
         android:id="@+id/txAge"
@@ -43,7 +56,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txName" />
 
     <FrameLayout
-        android:id="@+id/frameLayout"
+        android:id="@+id/asfdas"
         android:layout_width="match_parent"
         android:layout_height="4dp"
         android:layout_marginStart="32dp"
@@ -55,4 +68,32 @@
         app:layout_constraintTop_toBottomOf="@+id/imProfile">
 
     </FrameLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:padding="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/elevator_regtang"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/asfasdfdas" />
+
+    <TextView
+        android:id="@+id/textnohave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="This member not have statistic"
+        android:textSize="25dp"
+        android:fontFamily="@font/bold"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/recyclerView" />
 </androidx.constraintlayout.widget.ConstraintLayout>
