@@ -320,15 +320,6 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
             frameEdittext = this.frameEdittextthis;
 
 
-
-
-
-
-
-
-
-
-
             answerStep.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {

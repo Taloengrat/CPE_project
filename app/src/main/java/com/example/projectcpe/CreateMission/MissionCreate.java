@@ -3,6 +3,8 @@ package com.example.projectcpe.CreateMission;
 import android.content.Intent;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -12,6 +14,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.projectcpe.AdminPage;
+import com.example.projectcpe.BeginMember;
+import com.example.projectcpe.HomePage;
 import com.example.projectcpe.R;
 import com.example.projectcpe.ViewModel.Mission;
 import com.example.projectcpe.ViewModel.MissionDATABASE;
@@ -42,6 +47,13 @@ public class MissionCreate extends AppCompatActivity {
     }
 
     private void bindVariable(){
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         spinner = findViewById(R.id.snMissionStep);
         btNext = findViewById(R.id.btNext);
         etName = findViewById(R.id.etMissionName);
@@ -96,8 +108,17 @@ public class MissionCreate extends AppCompatActivity {
     }
 
     @Override
+    public void onBackPressed() {
+        // your code.
+        startActivity(new Intent(MissionCreate.this, AdminPage.class));
+        finish();
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+    }
+
+    @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         return true;
     }
 

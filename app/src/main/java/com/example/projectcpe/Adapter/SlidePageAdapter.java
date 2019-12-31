@@ -2,26 +2,18 @@ package com.example.projectcpe.Adapter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
 
-import com.example.projectcpe.PlayingMode.FragmentViewPlay.FiveFragment;
-import com.example.projectcpe.PlayingMode.FragmentViewPlay.FourFragment;
 import com.example.projectcpe.PlayingMode.FragmentViewPlay.OneFragment;
-import com.example.projectcpe.PlayingMode.FragmentViewPlay.ThreeFragment;
-import com.example.projectcpe.PlayingMode.FragmentViewPlay.TwoFragment;
-import com.example.projectcpe.PlayingMode.PlayPage;
 import com.example.projectcpe.ViewModel.Mission;
 import com.example.projectcpe.ViewModel.MissionDATABASE;
 
-import java.util.Date;
 import java.util.List;
 
 public class SlidePageAdapter extends FragmentStatePagerAdapter {
@@ -113,6 +105,7 @@ Context c;
                 bundle.putString("question", Data.get(0).getQ10());
                 break;
 
+
         }
 
 
@@ -126,6 +119,8 @@ Context c;
     public int getCount() {
         return this.step;
     }
+
+
 
     private List<Mission> getData(int id) {
         return MissionDATABASE.getInstance(c).missionDAO().getAllinfoOfMission(id);

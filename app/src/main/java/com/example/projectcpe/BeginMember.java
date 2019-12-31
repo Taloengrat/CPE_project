@@ -47,6 +47,15 @@ public class BeginMember extends AppCompatActivity {
 
         Initia();
 
+
+        findViewById(R.id.imagemanage).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(BeginMember.this, Main2Activity.class));
+            }
+        });
+
+
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -107,7 +107,7 @@
                     android:text="TEST SYSTEM"
                     android:layout_gravity="center|bottom"
                     android:fontFamily="@font/bold"
-                    android:background="@color/oran400"/>
+                    android:background="@color/blue900"/>
 
 
                 <androidx.appcompat.widget.Toolbar
@@ -115,7 +115,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
                     android:elevation="4dp"
-
                     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
                     app:layout_collapseMode="pin"
                     app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />

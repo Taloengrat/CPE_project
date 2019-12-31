@@ -60,13 +60,8 @@ public class OneFragment extends Fragment {
 
         textView.setText(String.valueOf(step));
         Question.setText(question);
-//        Toast.makeText(getActivity(), "id mission: " + String.valueOf(id), Toast.LENGTH_SHORT).show();
         bmp = BitmapFactory.decodeByteArray(pic, 0, pic.length);
         imQuestion.setImageBitmap(bmp);
-        Toast.makeText(getActivity(), String.valueOf(position), Toast.LENGTH_SHORT).show();
-
-
-
 
 
 
@@ -76,33 +71,6 @@ public class OneFragment extends Fragment {
 
 
 
-//    private Bitmap getPicture(int i,List<Mission> mission){
-//
-//        switch (i){
-//            case 1 : bmp = BitmapFactory.decodeByteArray(mission.get(0).getP1(), 0, mission.get(0).getP1().length);
-//                break;
-//            case 2 : bmp = BitmapFactory.decodeByteArray(mission.get(0).getP2(), 0, mission.get(0).getP2().length);
-//                break;
-//            case 3 : bmp = BitmapFactory.decodeByteArray(mission.get(0).getP3(), 0, mission.get(0).getP3().length);
-//                break;
-//            case 4 : bmp = BitmapFactory.decodeByteArray(mission.get(0).getP4(), 0, mission.get(0).getP4().length);
-//                break;
-//            case 5 : bmp = BitmapFactory.decodeByteArray(mission.get(0).getP5(), 0, mission.get(0).getP5().length);
-//                break;
-//            case 6 : bmp = BitmapFactory.decodeByteArray(mission.get(0).getP6(), 0, mission.get(0).getP6().length);
-//                break;
-//            case 7 : bmp = BitmapFactory.decodeByteArray(mission.get(0).getP7(), 0, mission.get(0).getP7().length);
-//                break;
-//            case 8 : bmp = BitmapFactory.decodeByteArray(mission.get(0).getP8(), 0, mission.get(0).getP8().length);
-//                break;
-//            case 9 : bmp = BitmapFactory.decodeByteArray(mission.get(0).getP9(), 0, mission.get(0).getP9().length);
-//                break;
-//            case 10 : bmp = BitmapFactory.decodeByteArray(mission.get(0).getP10(), 0, mission.get(0).getP10().length);
-//                break;
-//        }
-//
-//        return bmp;
-//    }
     private List<Mission> getData(int id) {
         return MissionDATABASE.getInstance(getActivity()).missionDAO().getAllinfoOfMission(id);
     }

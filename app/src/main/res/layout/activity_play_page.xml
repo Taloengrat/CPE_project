@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/yel300"
+    android:background="@color/yel100"
     tools:context=".PlayingMode.PlayPage">
 
 
@@ -100,6 +100,7 @@
         android:fontFamily="@font/bold"
         android:text="Timer"
         android:textSize="32dp"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -124,6 +125,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/elevetorcircle"
+        android:padding="32dp"
         app:srcCompat="@drawable/clickstart" />
 
     <androidx.viewpager.widget.ViewPager
@@ -150,6 +153,7 @@
         android:background="@drawable/frame"
         android:padding="8dp"
         android:textSize="20dp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/bar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

@@ -10,7 +10,7 @@
 
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imagemanage"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="8dp"
@@ -249,10 +249,10 @@
         android:text="Manage Profile"
         android:textColor="#ffff"
         android:textSize="30dp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="@+id/imagemanage"
         app:layout_constraintHorizontal_bias="0.543"
-        app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintStart_toStartOf="@+id/imagemanage"
+        app:layout_constraintTop_toBottomOf="@+id/imagemanage" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"

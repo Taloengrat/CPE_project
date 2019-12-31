@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutstatistic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@drawable/layout_statistic"
+            android:padding="8dp">
+
+
+            <ImageView
+                android:id="@+id/imPro"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/member" />
+
+            <TextView
+                android:id="@+id/txName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="8dp"
+                android:text="name"
+                app:layout_constraintBottom_toTopOf="@+id/txAge"
+                app:layout_constraintStart_toEndOf="@+id/imPro" />
+
+            <TextView
+                android:id="@+id/txAge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="4dp"
+                android:text="age"
+                app:layout_constraintBottom_toTopOf="@+id/guideline12"
+                app:layout_constraintStart_toEndOf="@+id/imPro" />
+
+            <ImageView
+                android:id="@+id/star1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toEndOf="@+id/imPro"
+                app:layout_constraintTop_toBottomOf="@+id/txScore"
+                app:srcCompat="@drawable/fullstar"
+                tools:ignore="VectorDrawableCompat"
+                android:visibility="invisible"/>
+
+            <ImageView
+                android:id="@+id/star2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                app:layout_constraintStart_toEndOf="@+id/star1"
+                app:layout_constraintTop_toTopOf="@+id/star1"
+                app:srcCompat="@drawable/fullstar"
+                tools:ignore="VectorDrawableCompat"
+                android:visibility="invisible"/>
+
+            <ImageView
+                android:id="@+id/star3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                app:layout_constraintStart_toEndOf="@+id/star2"
+                app:layout_constraintTop_toTopOf="@+id/star2"
+                app:srcCompat="@drawable/fullstar"
+                tools:ignore="VectorDrawableCompat"
+                android:visibility="invisible"/>
+
+            <ImageView
+                android:id="@+id/star4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                app:layout_constraintStart_toEndOf="@+id/star3"
+                app:layout_constraintTop_toTopOf="@+id/star3"
+                app:srcCompat="@drawable/fullstar"
+                tools:ignore="VectorDrawableCompat"
+                android:visibility="invisible"/>
+
+            <ImageView
+                android:id="@+id/star5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                app:layout_constraintStart_toEndOf="@+id/star4"
+                app:layout_constraintTop_toTopOf="@+id/star4"
+                app:srcCompat="@drawable/fullstar"
+                tools:ignore="VectorDrawableCompat"
+                android:visibility="invisible"/>
+
+
+
+
+
+            <ImageView
+                android:id="@+id/halfstar1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toEndOf="@+id/imPro"
+                app:layout_constraintTop_toBottomOf="@+id/txScore"
+                app:srcCompat="@drawable/halfstar"
+                tools:ignore="VectorDrawableCompat"
+                android:visibility="invisible"/>
+
+            <ImageView
+                android:id="@+id/halfstar2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                app:layout_constraintStart_toEndOf="@+id/star1"
+                app:layout_constraintTop_toTopOf="@+id/star1"
+                app:srcCompat="@drawable/halfstar"
+                tools:ignore="VectorDrawableCompat"
+                android:visibility="invisible"/>
+
+            <ImageView
+                android:id="@+id/halfstar3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                app:layout_constraintStart_toEndOf="@+id/star2"
+                app:layout_constraintTop_toTopOf="@+id/star2"
+                app:srcCompat="@drawable/halfstar"
+                tools:ignore="VectorDrawableCompat"
+                android:visibility="invisible"/>
+
+            <ImageView
+                android:id="@+id/halfstar4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                app:layout_constraintStart_toEndOf="@+id/star3"
+                app:layout_constraintTop_toTopOf="@+id/star3"
+                app:srcCompat="@drawable/halfstar"
+                tools:ignore="VectorDrawableCompat"
+                android:visibility="invisible"/>
+
+            <ImageView
+                android:id="@+id/halfstar5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                app:layout_constraintStart_toEndOf="@+id/star4"
+                app:layout_constraintTop_toTopOf="@+id/star4"
+                app:srcCompat="@drawable/halfstar"
+                tools:ignore="VectorDrawableCompat"
+                android:visibility="invisible"/>
+
+            <TextView
+                android:id="@+id/txScore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:text="score"
+                app:layout_constraintStart_toEndOf="@+id/imPro"
+                app:layout_constraintTop_toTopOf="@+id/guideline12"
+                />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <ImageView
+                android:id="@+id/imrange"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/elevetorcircle"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_margin="16dp"
+                app:srcCompat="@drawable/first"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/textRange"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/bold"
+                android:textSize="30dp"
+                android:visibility="gone"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/elevetorcircle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_margin="16dp"
+                tools:ignore="MissingConstraints" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

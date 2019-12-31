@@ -18,6 +18,9 @@ public interface MissionDAO {
     @Query("select * from member")
     List<Member> getAllMember();
 
+    @Query("select * from static where idsub=:idsub order by score DESC")
+    List<Static> getAllStatic(int idsub);
+
     ////////////////////////////////////////////
 
     @Query("select * from mission where id=:id")
@@ -25,6 +28,9 @@ public interface MissionDAO {
 
     @Query("select * from member where id=:id")
     int getDesMember(int id);
+
+    @Query("select * from static where id=:id")
+    int getDesStatic(int id);
 
     ////////////////////////////////////////////
 
@@ -34,8 +40,9 @@ public interface MissionDAO {
     @Query("select * from member where id=:id")
     List<Member> getAllinfoOfMember(int id);
 
-    @Query("select * from member where id=:id")
-    LiveData<Member> getProfile(int id);
+    @Query("select * from static where id=:id")
+    List<Static> getAllinfoOfStatic(int id);
+
 
 /////////////////////////////////////////////////
 
@@ -45,6 +52,9 @@ public interface MissionDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void createMember(Member mission);
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void createStatistic(Static statistic);
+
     ///////////////////////////////////////////////
 
     @Update
@@ -52,6 +62,9 @@ public interface MissionDAO {
 
     @Update
     void updateMember(Member mission);
+
+    @Update
+    void updateStatistic(Static statistic);
 
     ////////////////////////////////////////////////
 

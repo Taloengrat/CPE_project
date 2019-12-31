@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PlayingMode.DetailMission"
-    android:background="@drawable/layout_mission"
+    android:background="@color/yel100"
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -13,7 +13,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/layout_shadow"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,11 +38,11 @@
             android:id="@+id/Name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/bold"
             android:text="Mission Name"
             android:textSize="30dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline8"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -78,7 +78,6 @@
             android:id="@+id/btPlay"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
@@ -86,7 +85,6 @@
             app:layout_constraintBottom_toTopOf="@+id/DetailMission"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent="0.45"
-            app:layout_constraintStart_toEndOf="@+id/Name"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintWidth_percent="0.3"
             app:srcCompat="@drawable/play"
@@ -105,30 +103,80 @@
             app:layout_constraintEnd_toEndOf="@+id/DetailMission"
             app:layout_constraintStart_toStartOf="@+id/DetailMission"
             app:layout_constraintTop_toBottomOf="@+id/DetailMission" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toStartOf="@+id/btPlay"
+            app:layout_constraintGuide_begin="190dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <LinearLayout
-        android:layout_width="0dp"
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView2"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+
         android:layout_marginBottom="16dp"
-        android:background="@drawable/layout_range"
+        android:background="@drawable/elevator_regtang"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
         app:layout_constraintWidth_percent="0.9">
 
-        <ImageView
-            android:id="@+id/imageView5"
-            android:layout_width="60dp"
-            android:layout_gravity="center"
-            android:layout_height="60dp"
-            app:srcCompat="@drawable/star"
-            tools:ignore="VectorDrawableCompat" />
-    </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp" />
+
+
+    </androidx.core.widget.NestedScrollView>
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3"
+        app:srcCompat="@drawable/podium" />
+
+    <ImageView
+        android:id="@+id/imNoStatic"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:srcCompat="@drawable/accout"
+        tools:ignore="VectorDrawableCompat"
+        android:visibility="gone"
+        />
+
+    <TextView
+        android:id="@+id/txNoStatic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="No have statistic"
+        android:fontFamily="@font/bold"
+        android:textSize="25dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/imNoStatic"
+        app:layout_constraintStart_toStartOf="@+id/imNoStatic"
+        app:layout_constraintTop_toBottomOf="@+id/imNoStatic" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -24,6 +24,7 @@ import com.example.projectcpe.BeginMember;
 import com.example.projectcpe.HomePage;
 import com.example.projectcpe.MainActivity;
 import com.example.projectcpe.R;
+import com.example.projectcpe.StatisticMember;
 import com.example.projectcpe.ViewModel.Member;
 import com.example.projectcpe.ViewModel.MissionDATABASE;
 
@@ -50,13 +51,25 @@ public class MemberAdapterBegin extends RecyclerView.Adapter<MemberAdapterBegin.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MemberViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MemberViewHolder holder, final int position) {
         final Member member = memberListb.get(position);
         Bitmap bitmap = BitmapFactory.decodeByteArray(member.getProfile(), 0, member.getProfile().length);
 
         holder.name.setText(member.getName());
         holder.age.setText(String.valueOf(member.getAge()));
         holder.imUser.setImageBitmap(bitmap);
+
+        holder.option.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(activity, StatisticMember.class);
+                i.putExtra("id",member.getId());
+                activity.startActivity(i);
+                activity.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            }
+        });
+
+
     }
 
     @Override
@@ -67,7 +80,7 @@ public class MemberAdapterBegin extends RecyclerView.Adapter<MemberAdapterBegin.
     public class MemberViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         TextView name, age;
-        ImageView imUser;
+        ImageView imUser,option;
         ViewGroup layout;
 
         public MemberViewHolder(@NonNull final View itemView) {
@@ -78,9 +91,14 @@ public class MemberAdapterBegin extends RecyclerView.Adapter<MemberAdapterBegin.
             age = itemView.findViewById(R.id.age);
             layout = itemView.findViewById(R.id.layout);
             imUser =itemView.findViewById(R.id.imUser);
+            option = itemView.findViewById(R.id.option);
+
+
 
 
         }
+
+
 
         @Override
         public void onClick(View view) {

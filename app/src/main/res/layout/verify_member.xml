@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@drawable/frameline"
+    android:background="@drawable/fram_verify_member"
     android:padding="40dp"
     android:layout_gravity="center"
     >
@@ -24,6 +24,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/accout"
+        android:background="@drawable/bg_logomenber"
         tools:ignore="VectorDrawableCompat" />
 
 
@@ -55,17 +56,30 @@
         android:id="@+id/etpassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:background="@drawable/bgtext"
         android:ems="10"
         android:fontFamily="@font/thin"
         android:gravity="center"
         android:hint="Password"
-        android:textColor="#ffff"
-        android:layout_marginTop="8dp"
         android:inputType="numberPassword"
+        android:textColor="#ffff"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
         app:layout_constraintEnd_toEndOf="@+id/etage"
         app:layout_constraintStart_toStartOf="@+id/etage"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textColor="#ffff"
+        android:fontFamily="@font/bold"
+        android:text="Password Member"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/head"
+        app:layout_constraintStart_toStartOf="@+id/head"
         app:layout_constraintTop_toBottomOf="@+id/head" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

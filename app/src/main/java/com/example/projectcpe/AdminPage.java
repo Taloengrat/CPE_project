@@ -32,6 +32,7 @@ public class AdminPage extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+
     }
     public void FunctionAdmin(View view) {
         switch (view.getId())
@@ -43,6 +44,7 @@ public class AdminPage extends AppCompatActivity {
             case R.id.CardExport : startActivity(new Intent(AdminPage.this, MissionExport.class)); break;
             case R.id.CardChagepassword : startActivity(new Intent(AdminPage.this, FunctionEditPassword.class)); break;
         }
+        finish();
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
 

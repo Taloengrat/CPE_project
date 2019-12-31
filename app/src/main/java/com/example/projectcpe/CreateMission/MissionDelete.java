@@ -3,11 +3,18 @@ package com.example.projectcpe.CreateMission;
 import android.content.DialogInterface;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projectcpe.Adapter.MissionAdapter;
+import com.example.projectcpe.AdminPage;
+import com.example.projectcpe.BeginMember;
+import com.example.projectcpe.HomePage;
 import com.example.projectcpe.R;
 import com.example.projectcpe.ViewModel.Mission;
 import com.example.projectcpe.ViewModel.MissionDATABASE;
@@ -40,6 +47,12 @@ public class MissionDelete extends AppCompatActivity implements MissionAdapter.O
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
 
     }
@@ -86,8 +99,18 @@ switch (result){
 
 
 
-//    @Override
-//    public void onCustomerClick(int adapterPosition) {
-//
-//    }
+    @Override
+    public void onBackPressed() {
+        // your code.
+        startActivity(new Intent(MissionDelete.this, AdminPage.class));
+        finish();
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        return true;
+    }
 }

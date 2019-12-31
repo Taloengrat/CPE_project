@@ -21,12 +21,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.lifecycle.LiveData;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projectcpe.Adapter.MissionAdapter;
+import com.example.projectcpe.Adapter.StatiticAdapter;
 import com.example.projectcpe.CreateMission.MissionCreate;
 import com.example.projectcpe.CreateMission.MissionDelete;
 import com.example.projectcpe.CreateMission.MissionExport;
@@ -36,6 +38,7 @@ import com.example.projectcpe.TestSystem.TestSystem;
 import com.example.projectcpe.ViewModel.Member;
 import com.example.projectcpe.ViewModel.Mission;
 import com.example.projectcpe.ViewModel.MissionDATABASE;
+import com.example.projectcpe.ViewModel.Static;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -54,7 +57,7 @@ public class HomePage extends AppCompatActivity implements  MissionAdapter.OnCus
     MissionAdapter missionAdapter;
     List<Mission> missionsList;
     Button testSystem;
-    int count;
+    int id;
     private byte memberData;
     List<Member> member;
 
@@ -88,7 +91,7 @@ public class HomePage extends AppCompatActivity implements  MissionAdapter.OnCus
 
 
         Bundle bundle = getIntent().getExtras();
-        int id = bundle.getInt("ID");
+        id = bundle.getInt("ID");
         String NameUser = bundle.getString("NAME");
         String Age = bundle.getString("AGE");
 
@@ -118,6 +121,15 @@ public class HomePage extends AppCompatActivity implements  MissionAdapter.OnCus
 
 
     public void createInstance(){
+
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("");
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         testSystem = findViewById(R.id.textsystem);
         txAge = findViewById(R.id.txAge);
         txName = findViewById(R.id.txName);
@@ -165,7 +177,9 @@ public class HomePage extends AppCompatActivity implements  MissionAdapter.OnCus
 
     Intent i = new Intent(HomePage.this, DetailMission.class);
     i.putExtra("MissionId", id);
+    i.putExtra("MemberId", this.id);
     startActivity(i);
+    overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 
     }
 
@@ -183,5 +197,12 @@ public class HomePage extends AppCompatActivity implements  MissionAdapter.OnCus
         startActivity(new Intent(HomePage.this, BeginMember.class));
         finish();
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        return true;
     }
 }

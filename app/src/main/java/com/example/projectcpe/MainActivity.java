@@ -2,6 +2,7 @@ package com.example.projectcpe;
 
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 
@@ -12,8 +13,11 @@ import com.example.projectcpe.ViewModel.MissionDATABASE;
 import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.res.AssetManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -24,7 +28,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -52,7 +59,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
 
-                CreateMissionDefault();
+//                CreateMissionDefault();
+
 
             _etPass.setVisibility(View.VISIBLE);
                 _btBegin.setText("LET's GO !");
@@ -70,6 +78,9 @@ public class MainActivity extends AppCompatActivity {
                             Snackbar.make(_etPass, "Created Password For Admin", Snackbar.LENGTH_SHORT).show();
 
                             CreateMember();
+
+                            CreateMissionDefault();
+                            CreateMissionTwo();
 
 
 
@@ -138,7 +149,17 @@ public class MainActivity extends AppCompatActivity {
                    ,getResources().getString(R.string.a1_1).trim(), getResources().getString(R.string.a1_2).trim(),getResources().getString(R.string.a1_3).trim()
                         , getResources().getString(R.string.a1_4).trim(),getResources().getString(R.string.a1_5).trim()
                         ,getResources().getString(R.string.a1_6).trim(),getResources().getString(R.string.a1_7).trim(),getResources().getString(R.string.a1_8).trim()
-                        ,getResources().getString(R.string.a1_9).trim(),getResources().getString(R.string.a1_10).trim());
+                        ,getResources().getString(R.string.a1_9).trim(),getResources().getString(R.string.a1_10).trim()
+
+                        ,getResources().getString(R.string.s1_1).trim(),getResources().getString(R.string.s1_2).trim(),getResources().getString(R.string.s1_3).trim()
+                        ,getResources().getString(R.string.s1_4).trim(),getResources().getString(R.string.s1_5).trim(),getResources().getString(R.string.s1_6).trim()
+                        ,getResources().getString(R.string.s1_7).trim(),getResources().getString(R.string.s1_8).trim(),getResources().getString(R.string.s1_9).trim()
+                        ,getResources().getString(R.string.s1_10).trim()
+
+                        ,getResources().getString(R.string.h1_1).trim(),getResources().getString(R.string.h1_2).trim(),getResources().getString(R.string.h1_3).trim()
+                        ,getResources().getString(R.string.h1_4).trim(),getResources().getString(R.string.h1_5).trim(),getResources().getString(R.string.h1_6).trim()
+                        ,getResources().getString(R.string.h1_7).trim(),getResources().getString(R.string.h1_8).trim(),getResources().getString(R.string.h1_9).trim()
+                        ,getResources().getString(R.string.h1_10).trim());
 
 
 
@@ -146,7 +167,83 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void CreateMissionTwo()  {
+        Bitmap bitmap1 = ((BitmapDrawable) getResources().getDrawable(R.drawable.mt1)).getBitmap();
+        Bitmap bitmap2 = ((BitmapDrawable) getResources().getDrawable(R.drawable.mt2)).getBitmap();
+        Bitmap bitmap3 = ((BitmapDrawable) getResources().getDrawable(R.drawable.mt3)).getBitmap();
+        Bitmap bitmap4 = ((BitmapDrawable) getResources().getDrawable(R.drawable.mt4)).getBitmap();
+        Bitmap bitmap5 = ((BitmapDrawable) getResources().getDrawable(R.drawable.mt5)).getBitmap();
+        Bitmap bitmap6 = ((BitmapDrawable) getResources().getDrawable(R.drawable.mt6)).getBitmap();
+        Bitmap bitmap7 = ((BitmapDrawable) getResources().getDrawable(R.drawable.mt7)).getBitmap();
+        Bitmap bitmap8 = ((BitmapDrawable) getResources().getDrawable(R.drawable.mt8)).getBitmap();
+        Bitmap bitmap9 = ((BitmapDrawable) getResources().getDrawable(R.drawable.mt9)).getBitmap();
+        Bitmap bitmap10 = ((BitmapDrawable) getResources().getDrawable(R.drawable.mt10)).getBitmap();
 
+        ByteArrayOutputStream baos1 = new ByteArrayOutputStream();
+        ByteArrayOutputStream baos2 = new ByteArrayOutputStream();
+        ByteArrayOutputStream baos3 = new ByteArrayOutputStream();
+        ByteArrayOutputStream baos4 = new ByteArrayOutputStream();
+        ByteArrayOutputStream baos5 = new ByteArrayOutputStream();
+        ByteArrayOutputStream baos6 = new ByteArrayOutputStream();
+        ByteArrayOutputStream baos7 = new ByteArrayOutputStream();
+        ByteArrayOutputStream baos8 = new ByteArrayOutputStream();
+        ByteArrayOutputStream baos9 = new ByteArrayOutputStream();
+        ByteArrayOutputStream baos10 = new ByteArrayOutputStream();
+
+        bitmap1.compress(Bitmap.CompressFormat.JPEG, 30, baos1);
+        bitmap2.compress(Bitmap.CompressFormat.JPEG, 30, baos2);
+        bitmap3.compress(Bitmap.CompressFormat.JPEG, 30, baos3);
+        bitmap4.compress(Bitmap.CompressFormat.JPEG, 30, baos4);
+        bitmap5.compress(Bitmap.CompressFormat.JPEG, 30, baos5);
+        bitmap6.compress(Bitmap.CompressFormat.JPEG, 30, baos6);
+        bitmap7.compress(Bitmap.CompressFormat.JPEG, 30, baos7);
+        bitmap8.compress(Bitmap.CompressFormat.JPEG, 30, baos8);
+        bitmap9.compress(Bitmap.CompressFormat.JPEG, 30, baos9);
+        bitmap10.compress(Bitmap.CompressFormat.JPEG, 30, baos10);
+
+        byte[] imageInByte1 = baos1.toByteArray();
+        byte[] imageInByte2 = baos2.toByteArray();
+        byte[] imageInByte3 = baos3.toByteArray();
+        byte[] imageInByte4 = baos4.toByteArray();
+        byte[] imageInByte5 = baos5.toByteArray();
+        byte[] imageInByte6 = baos6.toByteArray();
+        byte[] imageInByte7 = baos7.toByteArray();
+        byte[] imageInByte8 = baos8.toByteArray();
+        byte[] imageInByte9 = baos9.toByteArray();
+        byte[] imageInByte10 = baos10.toByteArray();
+
+        Mission mission2 = new Mission("K.Jame", "Talk to K.Jame", 18,10
+                ,imageInByte1, imageInByte2, imageInByte3, imageInByte4, imageInByte5, imageInByte6, imageInByte7,imageInByte8,imageInByte9,imageInByte10
+                ,getResources().getString(R.string.q2_1),getResources().getString(R.string.q2_2), getResources().getString(R.string.q2_3),getResources().getString(R.string.q2_4),getResources().getString(R.string.q2_5)
+                ,getResources().getString(R.string.q2_6),getResources().getString(R.string.q2_7),getResources().getString(R.string.q2_8)
+                ,getResources().getString(R.string.q2_9),getResources().getString(R.string.q2_10)
+                ,getResources().getString(R.string.a2_1).trim(), getResources().getString(R.string.a2_2).trim(),getResources().getString(R.string.a2_3).trim()
+                , getResources().getString(R.string.a2_4).trim(),getResources().getString(R.string.a2_5).trim()
+                ,getResources().getString(R.string.a2_6).trim(),getResources().getString(R.string.a2_7).trim(),getResources().getString(R.string.a2_8).trim()
+                ,getResources().getString(R.string.a2_9).trim(),getResources().getString(R.string.a2_10).trim()
+
+        ,getResources().getString(R.string.s2_1).trim(),getResources().getString(R.string.s2_2).trim(),getResources().getString(R.string.s2_3).trim()
+                ,getResources().getString(R.string.s2_4).trim(),getResources().getString(R.string.s2_5).trim(),getResources().getString(R.string.s2_6).trim()
+                ,getResources().getString(R.string.s2_7).trim(),getResources().getString(R.string.s2_8).trim(),getResources().getString(R.string.s2_9).trim()
+                ,getResources().getString(R.string.s2_10).trim()
+
+                 ,getResources().getString(R.string.h2_1).trim(),getResources().getString(R.string.h2_2).trim(),getResources().getString(R.string.h2_3).trim()
+                ,getResources().getString(R.string.h2_4).trim(),getResources().getString(R.string.h2_5).trim(),getResources().getString(R.string.h2_6).trim()
+                ,getResources().getString(R.string.h2_7).trim(),getResources().getString(R.string.h2_8).trim(),getResources().getString(R.string.h2_9).trim()
+                ,getResources().getString(R.string.h2_10).trim());
+
+
+
+        MissionDATABASE.getInstance(MainActivity.this).missionDAO().create(mission2);
+
+    }
+
+    public static Drawable getAssetImage(Context context, String filename) throws IOException {
+        AssetManager assets = context.getResources().getAssets();
+        InputStream buffer = new BufferedInputStream((assets.open("drawable/" + filename + ".png")));
+        Bitmap bitmap = BitmapFactory.decodeStream(buffer);
+        return new BitmapDrawable(context.getResources(), bitmap);
+    }
 
     @Override
     protected void onStart() {
@@ -162,6 +259,8 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
     }
+
+
 
     private void CreateMember(){
         final Dialog dialog = new Dialog(MainActivity.this);
