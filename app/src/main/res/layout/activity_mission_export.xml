@@ -4,12 +4,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CreateMission.MissionExport"
-    android:background="@drawable/frameauthen">
+    android:background="@color/blue200">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_collapseMode="pin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:title="Export Mission"
+        app:subtitleTextAppearance="@font/bold"/>
 
     <ImageView
         android:id="@+id/imageView10"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="96dp"
         android:layout_marginEnd="8dp"
@@ -17,6 +31,8 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:padding="16dp"
+        android:background="@drawable/elevetorcircle"
         app:srcCompat="@drawable/iconupload"
         tools:ignore="VectorDrawableCompat" />
 

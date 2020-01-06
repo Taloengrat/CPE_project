@@ -2,12 +2,16 @@ package com.example.projectcpe.CreateMission;
 
 import android.app.Dialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.projectcpe.AdminPage;
 import com.example.projectcpe.R;
 
 public class MissionImport extends AppCompatActivity {
@@ -57,5 +61,26 @@ public class MissionImport extends AppCompatActivity {
     private void BindVariable(){
         btSelect = findViewById(R.id.btSelectIm);
         btSubmit = findViewById(R.id.btSubmitIm);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+    }
+
+    @Override
+    public void onBackPressed() {
+        // your code.
+        startActivity(new Intent(MissionImport.this, AdminPage.class));
+        finish();
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        return true;
     }
 }

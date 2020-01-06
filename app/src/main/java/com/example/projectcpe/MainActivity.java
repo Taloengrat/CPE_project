@@ -79,9 +79,9 @@ public class MainActivity extends AppCompatActivity {
 
                             CreateMember();
 
+//
                             CreateMissionDefault();
                             CreateMissionTwo();
-
 
 
                         }
