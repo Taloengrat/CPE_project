@@ -76,23 +76,53 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
 
         NumStepListener(this.getNumOfStep);
 
+        btSubmit.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Intent intent = new Intent(FinallyCreate.this, Main2Activity.class);
+                startActivity(intent);
+                return true;
+            }
+        });
 
         btSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 for (int i = 0; i < StepAdapter.stepList.size(); i++) {
+                    int position = 0;
+                    Toast.makeText(getApplicationContext(),  StepAdapter.stepList.get(position).getAnswer(), Toast.LENGTH_SHORT).show();
+                    position++;
 
-                    Toast.makeText(getApplicationContext(),  StepAdapter.stepList.get(i).getAnswer(), Toast.LENGTH_SHORT).show();
-
+                    if (StepAdapter.stepList.get(i).getAnswer() != null && StepAdapter.stepList.get(i).getQuestion() != null) {
+                        Log.e("Question" + (i+1),StepAdapter.stepList.get(i).getQuestion());
+                        Log.e("Answer" + (i+1), StepAdapter.stepList.get(i).getAnswer());
+                    }
                 }
 
+//                Toast.makeText(getApplicationContext(), getName, Toast.LENGTH_SHORT).show();
             }
         });
 
-
+//        loadData();
     }
 
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        if (requestCode == 1) {
+//            if(resultCode == Activity.RESULT_OK){
+//
+//
+//                data.getIntExtra("NumOfStep",this.mediumNum);
+//
+//
+//                NumStepListener(this.mediumNum);
+//            }
+//            if (resultCode == Activity.RESULT_CANCELED) {
+//                //Write your code if there's no result
+//            }
+//        }
+//    }
 
     private void NumStepListener(int mediumNum) {
 

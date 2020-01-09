@@ -16,7 +16,7 @@ public class Step extends Mission {
 
     private int Photo;
 
-    private String Answer;
+    private String Answer,Question;
 
     public Step(){}
 
@@ -64,5 +64,13 @@ public class Step extends Mission {
 
     public void setAnswer(String answer) {
         Answer = answer;
+    }
+
+    public String getQuestion() {
+        return Question;
+    }
+
+    public void setQuestion(String question) {
+        Question = question;
     }
 }

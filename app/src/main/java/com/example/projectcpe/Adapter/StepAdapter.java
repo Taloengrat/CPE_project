@@ -17,6 +17,7 @@ import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -26,6 +27,7 @@ import android.widget.Toast;
 import com.example.projectcpe.CreateMission.FinallyCreate;
 import com.example.projectcpe.R;
 import com.example.projectcpe.ViewModel.Step;
+import com.nex3z.flowlayout.FlowLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +43,8 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
     //we are storing all the products in a list
     public static List<Step> stepList;
     private OnCustomrPictureClick onCustomrPictureClick;
+
+    public String[] scoreOfStep = new String[9];
 
     public ArrayList<String> allWord = new ArrayList<String>();
 
@@ -101,7 +105,7 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
 
                 Button bSave = dialog.findViewById(R.id.ok);
 
-                final LinearLayout linearDetail2 = dialog.findViewById(R.id.linearDetail);
+                final LinearLayout linearDetail = dialog.findViewById(R.id.linearDetail);
 
 
                 int childCount = stepViewHolder.frameEdittextthis.getChildCount();
@@ -133,7 +137,7 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
                     childCount = stepViewHolder.frameEdittextthis.getChildCount();
 
                     // For Create TextView
-                    for (int i = 0; i < childCount - 1; i++) {
+                    for (int i = 0; i < childCount - 2; i++) {
 
                         // LayoutParams Properties.
                         final LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -160,21 +164,21 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
                         spinner.setAdapter(adapter);
 
                         // Create Detail.
-                        linearDetail2.addView(linearLayout);
+                        linearDetail.addView(linearLayout);
                         linearLayout.addView(textView);
                         linearLayout.addView(spinner);
                     }
 
                     // For Set Text in TextView.
-                    final int childDetail = linearDetail2.getChildCount();
+                    final int childDetail = linearDetail.getChildCount();
 
                     for (int j = 0; j < childDetail; j++) {
 
                         EditText textGeted;
-                        textGeted = (EditText) stepViewHolder.frameEdittextthis.getChildAt(childAt[0] + 2);
+                        textGeted = (EditText) stepViewHolder.frameEdittextthis.getChildAt(childAt[0] + 3);
 
                         LinearLayout layoutSelect;
-                        layoutSelect = (LinearLayout) linearDetail2.getChildAt(childAt[0] + 1);
+                        layoutSelect = (LinearLayout) linearDetail.getChildAt(childAt[0] + 1);
 
                         TextView textSet;
                         textSet = (TextView) layoutSelect.getChildAt(0);
@@ -191,29 +195,42 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
                 bSave.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        final int childDetail = linearDetail2.getChildCount();
+                        final int childDetail = linearDetail.getChildCount();
+
+                        String sumScore = null;
                         for(int j = 0; j < childDetail ; j++) {
 
 
 
 
                             EditText textGeted;
-                            textGeted = (EditText) stepViewHolder.frameEdittextthis.getChildAt(childAt[1] + 2);
+                            textGeted = (EditText) stepViewHolder.frameEdittextthis.getChildAt(childAt[1] + 3);
 
                             LinearLayout layoutSelect;
-                            layoutSelect = (LinearLayout) linearDetail2.getChildAt(childAt[1] + 1);
+                            layoutSelect = (LinearLayout) linearDetail.getChildAt(childAt[1] + 1);
 
                             TextView textGet;
                             textGet = (TextView) layoutSelect.getChildAt(0);
 
-                            Spinner spinItem;
-                            spinItem = (Spinner) layoutSelect.getChildAt(1);
-                            String spinText =  spinItem.getSelectedItem().toString();
+
+                            Spinner spinItem = (Spinner) layoutSelect.getChildAt(1);
+                            String score =  spinItem.getSelectedItem().toString();
 
 
                             textGeted.setText(textGet.getText());
 
                             allWord.add(textGet.getText().toString() + " ");
+
+                            Log.e("Score",score);
+
+
+
+                            sumScore = sumScore +"/"+score;
+
+
+
+
+                            scoreOfStep[position] = sumScore;
 
 
 
@@ -223,23 +240,6 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
 
 
                         Log.w("Mylist", String.valueOf(allWord));
-
-                        int childCount = stepViewHolder.frameEdittextthis.getChildCount();
-                        int childAt = -1;
-
-                        String sumAnswer = "";
-
-                        for (int i = 0 ; i < childCount-1 ; i++){
-
-                            TextView textView = (TextView) stepViewHolder.frameEdittextthis.getChildAt(childAt+2);
-                            String nextText = textView.getText().toString();
-                            sumAnswer = sumAnswer + " / " + nextText;
-
-                            childAt++;
-                        }
-
-
-                        stepList.get(position).setAnswer(sumAnswer);
 
 
 
@@ -252,39 +252,228 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
             }
         });
 
+
+        final int[] n = {1};
         stepViewHolder.add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (n[0] < 5) {
+                    final LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                    final EditText textView = new EditText(mCtx);
+                    layoutParams.setMargins(0, 5, 0, 0);
+                    layoutParams.weight = 1;
+                    textView.setTypeface(ResourcesCompat.getFont(mCtx, R.font.thin));
+                    textView.setLayoutParams(layoutParams);
+                    textView.setTextSize(16);
+                    textView.setGravity(Gravity.CENTER);
+                    textView.setBackgroundResource(R.drawable.bgtext);
+                    textView.setHint("Put your answer");
+                    textView.setMaxEms(8);
+                    textView.setText("");
+                    onClickViewChange(textView, stepViewHolder.frameEdittextthis, position);
+                    textView.requestFocus();
+                    stepViewHolder.frameEdittextthis.addView(textView);
+                    n[0]++;
+                }
+
+            }
+        });
+
+
+        stepViewHolder.hint.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                final Dialog dialog = new Dialog(mCtx);
+                dialog.getWindow().setBackgroundDrawableResource(R.drawable.framedetailstep);
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                dialog.setContentView(R.layout.put_hint);
+                dialog.setCancelable(true);
+
+                TextView textHead = dialog.findViewById(R.id.head2);
+                textHead.setText("Set a hint of step "+String.valueOf(position+1));
+
+                Button bSave = dialog.findViewById(R.id.ok2);
+                final ImageView add2 = dialog.findViewById(R.id.add2);
+
+                int childAt = -1;
+
+                TextView textView1 = (TextView) stepViewHolder.frameEdittextthis.getChildAt(childAt+2);
+
+                final LinearLayout linearDetail = dialog.findViewById(R.id.linearDetail2);
+
+
+                if (textView1.getText().toString().matches("")){
+                    Toast.makeText(mCtx, "กรุณาใส่คำตอบที่ถูกตัองที่สุด", Toast.LENGTH_LONG).show();
+                } else {
+
+                    final LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                    layoutParams.setMargins(0, 5, 0, 0);
+//                    layoutParams.weight = 1;
 
 
 
-                final LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-                final EditText textView = new EditText(mCtx);
-
-                layoutParams.setMargins(0,5,0,0);
-                layoutParams.weight = 1;
-
-                textView.setTypeface(ResourcesCompat.getFont(mCtx, R.font.thin));
-                textView.setLayoutParams(layoutParams);
-                textView.setTextSize(16);
-
-                textView.setGravity(Gravity.CENTER);
-                textView.setBackgroundResource(R.drawable.bgtext);
-                textView.setHint("Put your answer");
-                textView.setMaxEms(8);
-
-                textView.requestFocus();
+                    // LinearLayout Properties.
+                    final FlowLayout flowLayout = new FlowLayout(mCtx);
+                    flowLayout.setLayoutParams(layoutParams);
+                    flowLayout.setBackgroundResource(R.drawable.bgtext);
 
 
+                    // TextView Properties.
+                    final TextView textView = new TextView(mCtx);
+                    textView.setTypeface(ResourcesCompat.getFont(mCtx, R.font.thin));
+                    textView.setLayoutParams(layoutParams);
+                    textView.setTextSize(16);
+                    textView.setGravity(Gravity.CENTER);
+                    textView.setBackgroundResource(R.drawable.bgtext);
+                    textView.setHint("Put your answer");
+                    textView.setMaxEms(8);
+//                    textView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
 
-                stepViewHolder.frameEdittextthis.addView(textView);
 
+                    String textToHint = textView1.getText().toString();
+                    final String[] textSplit = textToHint.split("\\s+");
+
+                    linearDetail.addView(flowLayout);
+
+                    for (int i = 0; i < textSplit.length; i++){
+
+                        NewText(dialog,textSplit[i],0);
+
+                    }
+                    final int[] n = {1};
+                    add2.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                            if (n[0] < 4) {
+                                NewFlowLayout(dialog);
+                              for (int i = 0; i < textSplit.length; i++){
+                                NewText(dialog,textSplit[i], n[0]);
+//
+                                }
+                              n[0]++;
+                              if (n[0] == 4){add2.setVisibility(View.GONE);}
+                            }
+                        }
+                    });
+
+
+
+
+
+
+                    dialog.show();
+                }
 
             }
         });
 
 
     }
+
+    public void NewText (final Dialog dialog, String s , final int index){
+
+        View.OnClickListener textDelelt = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final LinearLayout linearDetail2 = dialog.findViewById(R.id.linearDetail2);
+                FlowLayout flowLayout1 = (FlowLayout) linearDetail2.getChildAt(index);
+                TextView tv = (TextView) view;
+                tv.setText("____");
+            }
+        };
+        final LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        layoutParams.setMargins(0, 5, 0, 5);
+        // LinearLayout Properties.
+        final FlowLayout flowLayout = new FlowLayout(mCtx);
+        // TextView Properties.
+        final TextView textView = new TextView(mCtx);
+        textView.setTypeface(ResourcesCompat.getFont(mCtx, R.font.thin));
+        textView.setLayoutParams(layoutParams);
+        textView.setTextSize(16);
+        textView.setGravity(Gravity.CENTER);
+        textView.setBackgroundResource(R.drawable.bgtext);
+        textView.setText(s);
+        textView.setOnClickListener(textDelelt);
+        final LinearLayout linearDetail = dialog.findViewById(R.id.linearDetail2);
+        FlowLayout flowLayout1 = (FlowLayout) linearDetail.getChildAt(index);
+        flowLayout1.addView(textView);
+
+    }
+
+    public void NewFlowLayout (Dialog dialog){
+
+        final LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        layoutParams.setMargins(0, 5, 0, 5);
+
+        final FlowLayout flowLayout = new FlowLayout(mCtx);
+        flowLayout.setLayoutParams(layoutParams);
+        flowLayout.setBackgroundResource(R.drawable.bgtext);
+        final LinearLayout linearDetail = dialog.findViewById(R.id.linearDetail2);
+        linearDetail.addView(flowLayout);
+    }
+
+
+
+
+
+
+    public void onClickViewChange (EditText view, final LinearLayout linearLayout, final int position){
+        view.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s ) {
+
+                int childCount = linearLayout.getChildCount();
+                int childAt = -1;
+
+                String sumAnswer = "";
+
+                for (int i = 0 ; i < childCount-1 ; i++){
+
+
+                    TextView textView = (TextView) linearLayout.getChildAt(childAt+2);
+                    String nextText = textView.getText().toString();
+                    sumAnswer = sumAnswer + " / " + nextText;
+
+                    childAt++;
+                }
+
+
+                stepList.get(position).setAnswer(sumAnswer);
+
+                TextView questionText = (TextView) linearLayout.getChildAt(0);
+
+
+                stepList.get(position).setQuestion(questionText.getText().toString());
+
+
+            }
+        });
+
+
+
+
+    }
+
+
+
+
+
+
+
 
     @Override
     public int getItemCount() {
@@ -294,7 +483,7 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
 
     public class StepViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-        ImageView imStep,add,score;
+        ImageView imStep,add,score,hint;
         EditText answerStep,questionStep;
         TextView Numstep;
         public LinearLayout frameEdittextthis;
@@ -313,33 +502,63 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
             add = itemView.findViewById(R.id.add);
             frameEdittextthis = itemView.findViewById(R.id.frameEdittext);
             score = itemView.findViewById(R.id.score);
-
-
+            hint = itemView.findViewById(R.id.hint);
             imStep.setOnClickListener(this);
 
             frameEdittext = this.frameEdittextthis;
 
 
+
             answerStep.addTextChangedListener(new TextWatcher() {
                 @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                }
-
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
                 @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-
-
-                }
+                public void onTextChanged(CharSequence s, int start, int before, int count) { }
 
                 @Override
                 public void afterTextChanged(Editable s) {
+                    int childCount = frameEdittextthis.getChildCount();
+                    int childAt = -1;
+                    String sumAnswer = "";
+                    for (int i = 0 ; i < childCount-1 ; i++){
 
+                        TextView textView = (TextView) frameEdittextthis.getChildAt(childAt+2);
+                        String nextText = textView.getText().toString();
+                        sumAnswer = sumAnswer + " / " + nextText;
 
-
+                        childAt++;
+                    }
+                    stepList.get(getAdapterPosition()).setAnswer(sumAnswer);
+                    stepList.get(getAdapterPosition()).setQuestion(questionStep.getText().toString());
                 }
             });
+
+            questionStep.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) { }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+                    int childCount = frameEdittextthis.getChildCount();
+                    int childAt = -1;
+                    String sumAnswer = "";
+                    for (int i = 0 ; i < childCount-1 ; i++){
+
+                        TextView textView = (TextView) frameEdittextthis.getChildAt(childAt+2);
+                        String nextText = textView.getText().toString();
+                        sumAnswer = sumAnswer + " / " + nextText;
+
+                        childAt++;
+                    }
+                    stepList.get(getAdapterPosition()).setAnswer(sumAnswer);
+                    stepList.get(getAdapterPosition()).setQuestion(questionStep.getText().toString());
+                }
+            });
+
+
+
 
         }
 
