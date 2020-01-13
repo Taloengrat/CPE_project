@@ -57,6 +57,7 @@ public class MissionAdapter extends RecyclerView.Adapter<MissionAdapter.MissionV
         //binding the data with the viewholder views
         missionViewHolder.tvMisName.setText(mission.getMissionName());
         missionViewHolder.tvMisAge.setText(String.valueOf(mission.getAge()));
+        missionViewHolder.number.setText("mission \n"+ ++position);
 
     }
 
@@ -71,7 +72,7 @@ public class MissionAdapter extends RecyclerView.Adapter<MissionAdapter.MissionV
 
     public class MissionViewHolder extends RecyclerView.ViewHolder implements View.OnLongClickListener,View.OnClickListener{
 
-        TextView tvMisName, tvMisAge;
+        TextView tvMisName, tvMisAge, number;
         ImageView delete;
         ViewGroup layout;
 
@@ -83,6 +84,7 @@ public class MissionAdapter extends RecyclerView.Adapter<MissionAdapter.MissionV
             tvMisAge = itemView.findViewById(R.id.textAge);
             delete = itemView.findViewById(R.id.delete);
             layout = itemView.findViewById(R.id.layoutcard);
+            number = itemView.findViewById(R.id.number);
 
         }
         @Override

@@ -6,7 +6,9 @@
         android:bottom="4dp"
         android:right="4dp"
         android:left="4dp" />
-    <corners android:radius="16dp"/>
-    <solid android:color="#42000000"/>
+    <corners android:radius="8dp"/>
+
+<!--    <solid android:color="@color/yel200"/>-->
+<!--    <solid android:color="#42000000"/>-->
 
 </shape>

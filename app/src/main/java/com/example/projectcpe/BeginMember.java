@@ -2,6 +2,7 @@ package com.example.projectcpe;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -9,7 +10,6 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -18,12 +18,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.projectcpe.Adapter.MemberAdapter;
 import com.example.projectcpe.Adapter.MemberAdapterBegin;
-import com.example.projectcpe.CreateMission.MissionCreate;
-import com.example.projectcpe.CreateMission.MissionDelete;
-import com.example.projectcpe.CreateMission.MissionExport;
-import com.example.projectcpe.CreateMission.MissionImport;
 import com.example.projectcpe.ViewModel.Member;
 import com.example.projectcpe.ViewModel.MissionDATABASE;
 
@@ -34,10 +29,7 @@ public class BeginMember extends AppCompatActivity {
     RecyclerView MemberRecyclerview;
     List<Member> missionsList;
     ImageView addMember;
-    int numPic;
-    ImageView menu;
-
-    BitmapDrawable imBitmap;
+    CardView menu;
 
     public static final String MY_PRE_PASSWORD_ADMIN = "com.example.projectcpe.passwordasmin";
     @Override
@@ -72,7 +64,6 @@ public class BeginMember extends AppCompatActivity {
     }
 
     private void loadData () {
-
         RecyclerView.Adapter adapter = new MemberAdapterBegin(lodeMember(), this);
         MemberRecyclerview.setHasFixedSize(true);
         MemberRecyclerview.setLayoutManager(new LinearLayoutManager(this));

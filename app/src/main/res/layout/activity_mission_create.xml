@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CreateMission.MissionCreate"
-    android:background="@color/blue300">
+    android:background="@color/blue50">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -14,6 +14,8 @@
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:layout_collapseMode="pin"
+        android:background="@color/blue300"
+        app:titleTextAppearance="@style/RobotoBoldTextAppearance"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -26,7 +28,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/elevetorcircle"
         android:padding="16dp"
@@ -49,6 +51,7 @@
         android:hint="Mission name"
         android:inputType="textPersonName"
         android:textColor="#000000"
+        android:textSize="25dp"
         app:layout_constraintEnd_toEndOf="@+id/imageView10"
         app:layout_constraintStart_toStartOf="@+id/imageView10"
         app:layout_constraintTop_toBottomOf="@+id/imageView10" />
@@ -56,15 +59,16 @@
     <EditText
         android:id="@+id/etMisisionDetail"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@drawable/bgtext"
         app:layout_constraintHeight_percent="0.2"
         android:ems="10"
+        android:textSize="25sp"
         android:fontFamily="@font/thin"
         android:gravity="center_horizontal|top"
-        android:hint="Content about mission"
-        android:inputType="textPersonName"
+        android:hint="Content about mission \n       "
+        android:inputType="textPersonName|textMultiLine"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="@+id/etMissionName"
         app:layout_constraintHorizontal_bias="0.0"
@@ -79,7 +83,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_weight="1"
-        android:hint="Age"
+        android:hint="For age"
+        android:textSize="25dp"
         android:background="@drawable/bgtext"
         android:ems="10"
         android:textColor="#000000"
@@ -108,19 +113,24 @@
             android:id="@+id/snMissionStep"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:spinnerMode="dropdown" />
+            android:spinnerMode="dropdown"
+            android:textAlignment="center"
+            />
 
     </LinearLayout>
 
     <Button
         android:id="@+id/btNext"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:background="@drawable/buttoncreate"
+        android:background="@drawable/button"
         android:gravity="center"
         android:onClick="setBtNextOnClick"
         android:text="NEXT"
+        android:fontFamily="@font/bold"
+        android:elevation="4dp"
+        android:textSize="25dp"
         android:textColor="#ffff"
         app:layout_constraintEnd_toEndOf="@+id/etMissionAge"
         app:layout_constraintStart_toStartOf="@+id/etMissionAge"

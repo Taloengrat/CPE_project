@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AdminPage"
-    android:background="@color/blue200">
+    android:background="@color/blue50">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -18,19 +18,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:title="Admin Management"
+        app:titleTextAppearance="@style/RobotoBoldTextAppearance"
+        android:background="@color/blue300"
+
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/CardCreate"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="45dp"
+        android:layout_marginStart="35dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="15dp"
         app:cardCornerRadius="16dp"
         app:cardElevation="30dp"
         android:onClick="FunctionAdmin"
+        app:cardBackgroundColor="@color/blue100"
         app:layout_constraintBottom_toTopOf="@+id/guidelineHorizon_0.3"
         app:layout_constraintEnd_toStartOf="@+id/guidelineVerti"
         app:layout_constraintStart_toStartOf="parent"
@@ -70,11 +74,12 @@
         android:layout_height="0dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
-        android:layout_marginEnd="45dp"
+        android:layout_marginEnd="35dp"
         android:layout_marginBottom="15dp"
         app:cardCornerRadius="16dp"
         app:cardElevation="30dp"
         android:onClick="FunctionAdmin"
+        app:cardBackgroundColor="@color/blue100"
         app:layout_constraintBottom_toTopOf="@+id/guidelineHorizon_0.3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guidelineVerti"
@@ -113,13 +118,14 @@
         android:id="@+id/CardImport"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="45dp"
+        android:layout_marginStart="35dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="15dp"
         app:cardCornerRadius="16dp"
         app:cardElevation="30dp"
         android:onClick="FunctionAdmin"
+        app:cardBackgroundColor="@color/blue100"
         app:layout_constraintBottom_toTopOf="@+id/guidelineHorizon_0.6"
         app:layout_constraintEnd_toStartOf="@+id/guidelineVerti"
         app:layout_constraintStart_toStartOf="parent"
@@ -159,9 +165,10 @@
         android:layout_height="0dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
-        android:layout_marginEnd="45dp"
+        android:layout_marginEnd="35dp"
         android:layout_marginBottom="15dp"
         app:cardCornerRadius="16dp"
+        app:cardBackgroundColor="@color/blue100"
         app:cardElevation="30dp"
         android:onClick="FunctionAdmin"
         app:layout_constraintBottom_toTopOf="@+id/guidelineHorizon_0.6"
@@ -201,11 +208,12 @@
         android:id="@+id/CardEditmember"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="45dp"
+        android:layout_marginStart="35dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="15dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="15dp"
         app:cardCornerRadius="16dp"
+        app:cardBackgroundColor="@color/blue100"
         app:cardElevation="30dp"
         android:onClick="FunctionAdmin"
         app:layout_constraintBottom_toTopOf="@+id/guidelineHorizon_0.9"
@@ -246,10 +254,11 @@
         android:layout_height="0dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
-        android:layout_marginEnd="45dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="15dp"
         app:cardCornerRadius="16dp"
         app:cardElevation="30dp"
+        app:cardBackgroundColor="@color/blue100"
         android:onClick="FunctionAdmin"
         app:layout_constraintBottom_toTopOf="@+id/guidelineHorizon_0.9"
         app:layout_constraintEnd_toEndOf="parent"
@@ -289,21 +298,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.1" />
+        app:layout_constraintGuide_percent="0.11" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineHorizon_0.3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.38" />
+        app:layout_constraintGuide_percent="0.39" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineHorizon_0.6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.65" />
+        app:layout_constraintGuide_percent="0.66" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineHorizon_0.9"

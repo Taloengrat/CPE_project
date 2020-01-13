@@ -1,8 +1,9 @@
-package com.example.projectcpe.CreateMission;
+package com.example.projectcpe.CreateMission.Import;
 
 import android.app.Dialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,10 +14,10 @@ import android.widget.Toast;
 
 import com.example.projectcpe.AdminPage;
 import com.example.projectcpe.R;
+import com.example.projectcpe.StoreCSV;
 
 public class MissionImport extends AppCompatActivity {
 
-    Button btSelect, btSubmit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,38 +30,8 @@ public class MissionImport extends AppCompatActivity {
 
 
     }
-    public void setBtSelectClick(View v){
-        final Dialog dialog = new Dialog(MissionImport.this);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.custom_dialog);
-        dialog.setCancelable(true);
-
-        Button btOndevice = (Button)dialog.findViewById(R.id.ChooseCamera);
-        btOndevice.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "On Device", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        Button button1 = (Button)dialog.findViewById(R.id.ok);
-        button1.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext()
-                        , "Google Drive", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-        dialog.show();
-    }
-
-    public void setBtSubmit(View v){
-
-    }
 
     private void BindVariable(){
-        btSelect = findViewById(R.id.btSelectIm);
-        btSubmit = findViewById(R.id.btSubmitIm);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -72,7 +43,7 @@ public class MissionImport extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         // your code.
-        startActivity(new Intent(MissionImport.this, AdminPage.class));
+
         finish();
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
@@ -82,5 +53,19 @@ public class MissionImport extends AppCompatActivity {
         onBackPressed();
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         return true;
+    }
+
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.cardDevice :
+//                StoreCSV.storeCSV("test.csv");
+                startActivity(new Intent(MissionImport.this, OnDevice.class));
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                break;
+            case R.id.cardGoogledrive :
+                startActivity(new Intent(MissionImport.this, OnGoogledrive.class));
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                break;
+        }
     }
 }

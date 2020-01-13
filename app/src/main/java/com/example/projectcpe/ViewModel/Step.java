@@ -7,39 +7,35 @@ import androidx.room.PrimaryKey;
 import io.reactivex.annotations.NonNull;
 
 @Entity(tableName = "step")
-public class Step extends Mission {
+public class Step{
 
     @NonNull
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "idstep")
     private int idStep;
 
-    private int Photo;
+    private byte[] Photo;
 
-    private String Answer,Question;
+    private String Answer,Question,Score;
+
+
 
     public Step(){}
+
+
 
     public Step(int idStep){
         this.idStep = idStep;
     }
 
 
-
-    public Step(String missionName, String detailMission, int age, int numberofMission) {
-        super(missionName, detailMission, age, numberofMission);
+    public String getScore() {
+        return Score;
     }
 
-    public Step(String missionName, String detailMission, int age, int numberofMission, int idStep, int photo, String answer) {
-        super(missionName, detailMission, age, numberofMission);
-        this.idStep = idStep;
-        Photo = photo;
-        Answer = answer;
+    public void setScore(String score) {
+        Score = score;
     }
-
-
-
-
 
     ///GETTER AND SETTER
     public int getIdStep() {
@@ -50,11 +46,11 @@ public class Step extends Mission {
         this.idStep = idStep;
     }
 
-    public int getPhoto() {
+    public byte[] getPhoto() {
         return Photo;
     }
 
-    public void setPhoto(int photo) {
+    public void setPhoto(byte[] photo) {
         Photo = photo;
     }
 

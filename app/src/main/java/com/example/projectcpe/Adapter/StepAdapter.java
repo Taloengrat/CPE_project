@@ -44,7 +44,7 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
     public static List<Step> stepList;
     private OnCustomrPictureClick onCustomrPictureClick;
 
-    public String[] scoreOfStep = new String[9];
+    public String scoreOfStep ;
 
     public ArrayList<String> allWord = new ArrayList<String>();
 
@@ -85,7 +85,7 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
 
 
 //        stepViewHolder.imStep.setImageResource(step.getPhoto());
-        stepViewHolder.Numstep.setText(String.valueOf(position+1));
+        stepViewHolder.Numstep.setText("step "+String.valueOf(position+1));
 
         stepViewHolder.frameEdittextthis.getChildCount();
 
@@ -225,17 +225,18 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
 
 
 
-                            sumScore = sumScore +"/"+score;
+                            sumScore +=score+"/";
 
 
 
 
-                            scoreOfStep[position] = sumScore;
+                            scoreOfStep = sumScore;
 
 
 
                             childAt[1]++;
                         }
+                        stepList.get(position).setScore(sumScore);
                         dialog.cancel();
 
 

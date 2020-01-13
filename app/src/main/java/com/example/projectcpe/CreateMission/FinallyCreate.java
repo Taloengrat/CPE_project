@@ -13,6 +13,7 @@ import android.provider.MediaStore;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,6 +31,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.projectcpe.Adapter.StepAdapter;
+import com.example.projectcpe.AdminPage;
 import com.example.projectcpe.Main2Activity;
 import com.example.projectcpe.R;
 import com.example.projectcpe.ViewModel.Step;
@@ -91,7 +93,7 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
 
                 for (int i = 0; i < StepAdapter.stepList.size(); i++) {
                     int position = 0;
-                    Toast.makeText(getApplicationContext(),  StepAdapter.stepList.get(position).getAnswer(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),  StepAdapter.stepList.get(1).getScore(), Toast.LENGTH_SHORT).show();
                     position++;
 
                     if (StepAdapter.stepList.get(i).getAnswer() != null && StepAdapter.stepList.get(i).getQuestion() != null) {
@@ -135,6 +137,13 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
     }
 
     private void Initia() {
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         steplist = new ArrayList<Step>();
         btSubmit = findViewById(R.id.btnsubmit);
         recyclerViewStep = findViewById(R.id.recyclerViewStepCreate);
@@ -294,6 +303,21 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
         else {
             super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        // your code.
+
+        finish();
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        return true;
     }
 
 }

@@ -1,46 +1,23 @@
 package com.example.projectcpe;
 
-import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.text.InputType;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.Window;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.lifecycle.LiveData;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projectcpe.Adapter.MissionAdapter;
-import com.example.projectcpe.Adapter.StatiticAdapter;
-import com.example.projectcpe.CreateMission.MissionCreate;
-import com.example.projectcpe.CreateMission.MissionDelete;
-import com.example.projectcpe.CreateMission.MissionExport;
-import com.example.projectcpe.CreateMission.MissionImport;
 import com.example.projectcpe.PlayingMode.DetailMission;
-import com.example.projectcpe.TestSystem.TestSystem;
 import com.example.projectcpe.ViewModel.Member;
 import com.example.projectcpe.ViewModel.Mission;
 import com.example.projectcpe.ViewModel.MissionDATABASE;
-import com.example.projectcpe.ViewModel.Static;
-import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -15,10 +15,12 @@ import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projectcpe.Adapter.MemberAdapter;
+import com.example.projectcpe.CreateMission.MissionCreate;
 import com.example.projectcpe.ViewModel.Member;
 import com.example.projectcpe.ViewModel.MissionDATABASE;
 
@@ -168,6 +170,13 @@ dialog.cancel();
         }
 
         private void Initia () {
+
+            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+            setSupportActionBar(toolbar);
+
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+
             MemberRecyclerview = findViewById(R.id.MemberRecyclerView);
             addMember = findViewById(R.id.addmember);
         }
@@ -178,6 +187,19 @@ dialog.cancel();
             loadData();
         }
 
+    @Override
+    public void onBackPressed() {
+        // your code.
+        finish();
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        return true;
+    }
 
 
 }

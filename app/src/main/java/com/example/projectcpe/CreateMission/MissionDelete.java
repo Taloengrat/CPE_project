@@ -76,8 +76,8 @@ public class MissionDelete extends AppCompatActivity implements MissionAdapter.O
 switch (result){
 
     case 0 : new AlertDialog.Builder(MissionDelete.this)
-            .setTitle("คุณต้องการทำอะไร?")
-            .setItems(new String[]{"ลบข้อมูลลูกค้า", "แก้ไขข้อมูลลูกค้า"},
+            .setTitle("Delete this mission?")
+            .setItems(new String[]{"Yes", "No"},
                     new DialogInterface.OnClickListener(){
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
@@ -102,7 +102,7 @@ switch (result){
     @Override
     public void onBackPressed() {
         // your code.
-        startActivity(new Intent(MissionDelete.this, AdminPage.class));
+
         finish();
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }

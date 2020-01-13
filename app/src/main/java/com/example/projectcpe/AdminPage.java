@@ -3,20 +3,14 @@ package com.example.projectcpe;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.app.Dialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.projectcpe.CreateMission.MissionCreate;
 import com.example.projectcpe.CreateMission.MissionDelete;
 import com.example.projectcpe.CreateMission.MissionExport;
-import com.example.projectcpe.CreateMission.MissionImport;
+import com.example.projectcpe.CreateMission.Import.MissionImport;
 
 public class AdminPage extends AppCompatActivity {
 
@@ -44,7 +38,7 @@ public class AdminPage extends AppCompatActivity {
             case R.id.CardExport : startActivity(new Intent(AdminPage.this, MissionExport.class)); break;
             case R.id.CardChagepassword : startActivity(new Intent(AdminPage.this, FunctionEditPassword.class)); break;
         }
-        finish();
+
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
 

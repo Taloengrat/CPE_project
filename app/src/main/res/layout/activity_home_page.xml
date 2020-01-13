@@ -7,7 +7,7 @@
     tools:context=".HomePage"
     android:id="@+id/drawLayout"
     android:fitsSystemWindows="true"
-    android:background="@color/blue200"
+    android:background="@color/white"
     tools:openDrawer="start">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -24,7 +24,7 @@
                 android:id="@+id/collapsingToolbarLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/blue600"
+                android:background="@color/blue500"
                 android:paddingBottom="4dp"
                 app:collapsedTitleTextAppearance="@font/bold"
                 app:expandedTitleGravity="center|bottom"
@@ -37,7 +37,7 @@
                     android:layout_gravity="center"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="11dp"
-                    android:background="@drawable/elevator_regtang"
+                    android:background="@drawable/background_regtang"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHeight_percent="0.35"
@@ -53,12 +53,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        app:layout_constraintGuide_begin="183dp" />
+                        app:layout_constraintGuide_percent="0.6" />
 
-                    <ImageView
+                    <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/imProfile"
-                        android:layout_width="153dp"
-                        android:layout_height="113dp"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="8dp"
@@ -74,11 +74,12 @@
                         android:id="@+id/txName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
                         android:layout_marginEnd="16dp"
                         android:fontFamily="@font/bold"
                         android:gravity="center"
                         android:text="Name"
-                        android:textColor="#FDFDFD"
+                        android:textColor="@color/gray"
                         android:textSize="30sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -93,6 +94,9 @@
                         android:layout_marginTop="8dp"
                         android:layout_marginBottom="8dp"
                         android:text="Age"
+                        android:textSize="30dp"
+                        android:fontFamily="@font/thin"
+                        android:textColor="@color/gray"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="@+id/txName"
                         app:layout_constraintStart_toStartOf="@+id/txName"
@@ -107,6 +111,8 @@
                     android:elevation="4dp"
                     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
                     app:layout_collapseMode="pin"
+                    app:title="English practice"
+                    app:titleTextAppearance="@style/RobotoBoldTextAppearance"
                     app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
                 <!--app:layout_scrollFlags="scroll|enterAlways"/>-->
 
@@ -124,8 +130,7 @@
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="20dp"
-            android:background="@drawable/elevator_regtang"
+            android:layout_margin="8dp"
             android:fillViewport="true"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 

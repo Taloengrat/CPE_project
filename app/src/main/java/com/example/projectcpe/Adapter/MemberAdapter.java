@@ -2,15 +2,9 @@ package com.example.projectcpe.Adapter;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.text.Editable;
-import android.text.InputType;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,27 +12,17 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.projectcpe.CreateMission.MissionCreate;
-import com.example.projectcpe.CreateMission.MissionDelete;
-import com.example.projectcpe.CreateMission.MissionExport;
-import com.example.projectcpe.CreateMission.MissionImport;
 import com.example.projectcpe.FunctionEditProfile;
-import com.example.projectcpe.HomePage;
 import com.example.projectcpe.R;
 import com.example.projectcpe.ViewModel.Member;
 import com.example.projectcpe.ViewModel.MissionDATABASE;
-import com.example.projectcpe.ViewModel.Step;
 import com.google.android.material.snackbar.Snackbar;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 

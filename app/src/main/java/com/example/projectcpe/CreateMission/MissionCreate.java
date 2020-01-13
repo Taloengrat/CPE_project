@@ -26,6 +26,8 @@ public class MissionCreate extends AppCompatActivity {
     Spinner spinner;
     Button btNext;
     EditText etName, etDetail, etAge;
+    String asdf = "10/9/5/7";
+    String[] asdfdsa= new String[] {"10", "9", "8", "7"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,7 @@ public class MissionCreate extends AppCompatActivity {
         bindMenuSpinner();
 
 
+        asdf = asdfdsa[0]+asdfdsa[1]+asdfdsa[2]+asdfdsa[3];
     }
 
 
@@ -87,10 +90,10 @@ public class MissionCreate extends AppCompatActivity {
             return;
         }
 
-        Mission create = new Mission(etName.getText().toString().trim(), etDetail.getText().toString().trim()
-                , Integer.parseInt(etAge.getText().toString()),Integer.parseInt(spinner.getSelectedItem().toString()));
-
-        MissionDATABASE.getInstance(MissionCreate.this).missionDAO().create(create);
+//        Mission create = new Mission(etName.getText().toString().trim(), etDetail.getText().toString().trim()
+//                , Integer.parseInt(etAge.getText().toString()),Integer.parseInt(spinner.getSelectedItem().toString()));
+//
+//        MissionDATABASE.getInstance(MissionCreate.this).missionDAO().create(create);
 
 
 //          Intent i  = new Intent(MissionCreate.this, HomePage.class);
@@ -110,7 +113,6 @@ public class MissionCreate extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         // your code.
-        startActivity(new Intent(MissionCreate.this, AdminPage.class));
         finish();
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }

@@ -68,7 +68,7 @@ public class MissionExport extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         // your code.
-        startActivity(new Intent(MissionExport.this, AdminPage.class));
+
         finish();
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }

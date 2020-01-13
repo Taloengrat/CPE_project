@@ -10,8 +10,10 @@
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        app:cardCornerRadius="20dp"
+        android:layout_margin="4dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="4dp"
+        app:cardBackgroundColor="@color/blue100"
 
         >
 
@@ -20,7 +22,6 @@
             android:layout_height="wrap_content"
             android:padding="8dp"
             android:layout_gravity="bottom"
-            android:background="@drawable/step_layout"
             >
 
 
@@ -39,11 +40,10 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/bgtextquestion"
                     android:ems="10"
-
                     android:fontFamily="@font/thin"
                     android:gravity="center"
                     android:hint="Insert your question of Picture"
-                    android:inputType="textPersonName"
+                    android:inputType="textPersonName|textMultiLine"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
 
                 <EditText
@@ -56,7 +56,7 @@
                     android:fontFamily="@font/thin"
                     android:gravity="center"
                     android:hint="Put your answer"
-                    android:inputType="textPersonName"
+                    android:inputType="textPersonName|textMultiLine"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
 
             </LinearLayout>
@@ -75,7 +75,7 @@
                 android:layout_marginRight="20dp"
                 android:layout_toEndOf="@+id/head"
                 android:layout_toRightOf="@id/head"
-                android:background="@color/colorPrimary"
+                android:background="@color/blue200"
                 android:fontFamily="@font/bold"
                 android:gravity="center"
                 android:paddingLeft="15dp"

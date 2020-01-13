@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FFEB3B</color>
-    <color name="colorPrimaryDark">#8DACA9AA</color>
-    <color name="colorAccent">#000000</color>
+    <color name="colorPrimary">#58bad6</color>
+    <color name="colorPrimaryDark">#219eca</color>
+    <color name="colorAccent">#219eca</color>
 
     <color name="pink1000">#FF80AB</color>
     <color name="pink1200">#FF4081</color>
@@ -20,6 +20,8 @@
     <color name="oran800">#ea7019</color>
     <color name="oran900">#e05717</color>
 
+    <color name="white">#ffffff</color>
+    <color name="gray">#8B7E7E</color>
     <color name="blue50">#e0f3f7</color>
     <color name="blue100">#b2e1ec</color>
     <color name="blue200">#82cde1</color>
