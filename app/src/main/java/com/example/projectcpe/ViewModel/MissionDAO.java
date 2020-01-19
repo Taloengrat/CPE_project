@@ -29,6 +29,9 @@ public interface MissionDAO {
     @Query("select * from mission where id=:id")
     int getDesMission(int id);
 
+    @Query("SELECT * FROM mission WHERE id > 5")
+    List<Mission> getMissionAdmin();
+
     @Query("select * from member where id=:id")
     int getDesMember(int id);
 

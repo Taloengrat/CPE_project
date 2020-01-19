@@ -141,7 +141,7 @@ public class HomePage extends AppCompatActivity implements  MissionAdapter.OnCus
     }
 
     @Override
-    public void onCustomerClick(int id, int result, Mission missionlist) {
+    public void onCustomerClick(int id,int result, Mission mission) {
 
     Intent i = new Intent(HomePage.this, DetailMission.class);
     i.putExtra("MissionId", id);

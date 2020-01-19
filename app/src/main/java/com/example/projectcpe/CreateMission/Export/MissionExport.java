@@ -1,39 +1,33 @@
-package com.example.projectcpe.CreateMission.Import;
+package com.example.projectcpe.CreateMission.Export;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.View;
 
+import com.example.projectcpe.CreateMission.Import.ImportOnDevice;
+import com.example.projectcpe.CreateMission.Import.ImportOnGoogledrive;
 import com.example.projectcpe.R;
 
-import java.io.File;
-
-public class MissionImport extends AppCompatActivity {
+public class MissionExport extends AppCompatActivity {
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mission_import);
+        setContentView(R.layout.activity_mission_export);
 
         BindVariable();
 
-        String directory_path = Environment.getExternalStorageDirectory().getPath() + "/MyMission/" +"arm";
-        File file = new File(directory_path);
-        if (!file.exists())
-        {
-            file.mkdirs();
-        }
-
-
-
     }
 
+
+
+
     private void BindVariable(){
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -61,13 +55,14 @@ public class MissionImport extends AppCompatActivity {
         switch (view.getId()){
             case R.id.cardDevice :
 //                StoreCSV.storeCSV("test.csv");
-                startActivity(new Intent(MissionImport.this, ImportOnDevice.class));
+                startActivity(new Intent(MissionExport.this, ExportOnDevice.class));
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 break;
             case R.id.cardGoogledrive :
-                startActivity(new Intent(MissionImport.this, ImportOnGoogledrive.class));
+                startActivity(new Intent(MissionExport.this, ExportOnGoogleDrive.class));
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 break;
         }
     }
+
 }

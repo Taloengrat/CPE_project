@@ -58,51 +58,62 @@ Context c;
         position = position+1;
         bundle.putString("step", position +" / " +step);
         bundle.putInt("position", position);
-        bundle.putString("message", String.valueOf(entity));
+        bundle.putInt("message", Data.get(0).getIdMission());
 
 
 
         switch (position) {
 
             case 1:
-                bundle.putByteArray("code", Data.get(0).getP1());
+
+                bundle.putString("code", Data.get(0).getP1());
                 bundle.putString("question", Data.get(0).getQ1());
+                bundle.putString("numberpicture",String.valueOf(position));
                 break;
             case 2:
-                bundle.putByteArray("code", Data.get(0).getP2());
+                bundle.putString("code", Data.get(0).getP2());
                 bundle.putString("question", Data.get(0).getQ2());
+                bundle.putString("numberpicture",String.valueOf(position));
                 break;
             case 3:
-                bundle.putByteArray("code", Data.get(0).getP3());
+                bundle.putString("code", Data.get(0).getP3());
                 bundle.putString("question", Data.get(0).getQ3());
+                bundle.putString("numberpicture",String.valueOf(position));
                 break;
             case 4:
-                bundle.putByteArray("code", Data.get(0).getP4());
+                bundle.putString("code", Data.get(0).getP4());
                 bundle.putString("question", Data.get(0).getQ4());
+                bundle.putString("numberpicture",String.valueOf(position));
                 break;
             case 5:
-                bundle.putByteArray("code", Data.get(0).getP5());
+                bundle.putString("code", Data.get(0).getP5());
                 bundle.putString("question", Data.get(0).getQ5());
+                bundle.putString("numberpicture",String.valueOf(position));
                 break;
             case 6:
-                bundle.putByteArray("code", Data.get(0).getP6());
+                bundle.putString("code", Data.get(0).getP6());
                 bundle.putString("question", Data.get(0).getQ6());
+                bundle.putString("numberpicture",String.valueOf(position));
                 break;
             case 7:
-                bundle.putByteArray("code", Data.get(0).getP7());
+                bundle.putString("code", Data.get(0).getP7());
                 bundle.putString("question", Data.get(0).getQ7());
+                bundle.putString("numberpicture",String.valueOf(position));
                 break;
             case 8:
-                bundle.putByteArray("code", Data.get(0).getP8());
+                bundle.putString("code", Data.get(0).getP8());
                 bundle.putString("question", Data.get(0).getQ8());
+                bundle.putString("numberpicture",String.valueOf(position));
                 break;
             case 9:
-                bundle.putByteArray("code", Data.get(0).getP9());
+                bundle.putString("code", Data.get(0).getP9());
                 bundle.putString("question", Data.get(0).getQ9());
+                bundle.putString("numberpicture",String.valueOf(position));
                 break;
             case 10:
-                bundle.putByteArray("code", Data.get(0).getP10());
+                bundle.putString("code", Data.get(0).getP10());
                 bundle.putString("question", Data.get(0).getQ10());
+                bundle.putString("numberpicture",String.valueOf(position));
                 break;
 
 

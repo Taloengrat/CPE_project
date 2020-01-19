@@ -107,7 +107,57 @@
     <string name="h2_9">ba__r__m/ba__room/bathroom</string>
     <string name="h2_10">On t__ fl__r/On the fl__r/On the floor</string>
 
-    <string name="M3">Mission 3</string>
+
+    <string name="M3">Animal</string>
+    <string name="D3">Various animals</string>
+    <string name="N3">10</string>
+    <string name="A3">9</string>
+
+    <string name="q3_1">What is this animal?</string>
+    <string name="q3_2">What is this animal?</string>
+    <string name="q3_3">What is this animal?</string>
+    <string name="q3_4">What is this animal?</string>
+    <string name="q3_5">What is this animal?</string>
+    <string name="q3_6">What is this animal?</string>
+    <string name="q3_7">What is this animal?</string>
+    <string name="q3_8">What is this animal?</string>
+    <string name="q3_9">What is this animal?</string>
+    <string name="q3_10">What is this animal?</string>
+
+    <string name="a3_1">Lion</string>
+    <string name="a3_2">Tiger</string>
+    <string name="a3_3">Zebra</string>
+    <string name="a3_4">Fox</string>
+    <string name="a3_5">Dolphin</string>
+    <string name="a3_6">Eagle</string>
+    <string name="a3_7">horse</string>
+    <string name="a3_8">Pig</string>
+    <string name="a3_9">chicken</string>
+    <string name="a3_10">wolf</string>
+
+    <string name="s3_1">10</string>
+    <string name="s3_2">10</string>
+    <string name="s3_3">10</string>
+    <string name="s3_4">10</string>
+    <string name="s3_5">10</string>
+    <string name="s3_6">10</string>
+    <string name="s3_7">10</string>
+    <string name="s3_8">10</string>
+    <string name="s3_9">10</string>
+    <string name="s3_10">10</string>
+
+    <string name="h3_1">L_on/Lion</string>
+    <string name="h3_2">Ti_er/Tiger</string>
+    <string name="h3_3">Zeb_a/Zebra</string>
+    <string name="h3_4">F_x/Fox</string>
+    <string name="h3_5">D_lph_n/Dolphin</string>
+    <string name="h3_6">Ea_le/Eagle</string>
+    <string name="h3_7">h_rse/horse</string>
+    <string name="h3_8">P_g/Pig</string>
+    <string name="h3_9">ch_ck_n/chicken</string>
+    <string name="h3_10">w_lf/wolf</string>
+
+    <string name="M15">Mission 3</string>
     <string name="Q3_1">SmartChecker</string>
     <string name="Q3_2">SmartChecker</string>
     <string name="Q3_3">SmartChecker</string>

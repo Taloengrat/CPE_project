@@ -1,33 +1,29 @@
-package com.example.projectcpe.CreateMission.Import;
+package com.example.projectcpe.CreateMission.Export;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.content.Intent;
-import android.net.wifi.hotspot2.pps.Credential;
 import android.os.Bundle;
+import android.os.Environment;
 
 import com.example.projectcpe.R;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.text.SimpleDateFormat;
 
-public class OnGoogledrive extends AppCompatActivity {
-
+public class ExportOnGoogleDrive extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_on_googledrive);
+        setContentView(R.layout.activity_export_on_google_drive);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-
-
 
     }
     @Override
@@ -44,6 +40,4 @@ public class OnGoogledrive extends AppCompatActivity {
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         return true;
     }
-
-
 }

@@ -8,6 +8,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -73,6 +76,8 @@ public class PlayPage extends AppCompatActivity {
 
 
 //        Toast.makeText(getApplicationContext(), String.valueOf(id), Toast.LENGTH_LONG).show();
+
+
         speechRecognizer.setRecognitionListener(new RecognitionListener() {
             @Override
             public void onReadyForSpeech(Bundle bundle) {
@@ -274,8 +279,34 @@ public class PlayPage extends AppCompatActivity {
         speechRecognizer = SpeechRecognizer.createSpeechRecognizer(PlayPage.this);
 
         speechRecognizerIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        speechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "en-US");
+
         speechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
         speechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
+    }
+
+    public class LanguageDetailsChecker extends BroadcastReceiver
+    {
+        private List<String> supportedLanguages;
+
+        private String languagePreference;
+
+        @Override
+        public void onReceive(Context context, Intent intent)
+        {
+            Bundle results = getResultExtras(true);
+            if (results.containsKey(RecognizerIntent.EXTRA_LANGUAGE_PREFERENCE))
+            {
+                languagePreference =
+                        results.getString(RecognizerIntent.EXTRA_LANGUAGE_PREFERENCE);
+            }
+            if (results.containsKey(RecognizerIntent.EXTRA_SUPPORTED_LANGUAGES))
+            {
+                supportedLanguages =
+                        results.getStringArrayList(
+                                RecognizerIntent.EXTRA_SUPPORTED_LANGUAGES);
+            }
+        }
     }
 
     private void ShowViewPage()
@@ -289,6 +320,8 @@ public class PlayPage extends AppCompatActivity {
         id = bundle.getInt("missionId");
         stepnum = bundle.getInt("step");
         memberId = bundle.getInt("memberId");
+
+
 
 
         check = findViewById(R.id.check);

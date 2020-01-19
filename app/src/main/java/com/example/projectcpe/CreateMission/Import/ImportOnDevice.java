@@ -18,7 +18,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class   OnDevice extends AppCompatActivity {
+public class ImportOnDevice extends AppCompatActivity {
 
     RecyclerView recyclerView;
     @Override
@@ -49,7 +49,7 @@ public class   OnDevice extends AppCompatActivity {
 
         ArrayList<Csv> csvArrayList = new ArrayList<>();
 
-        String asdf = Environment.getExternalStorageDirectory().getPath()+"/MyCSV/";
+        String asdf = Environment.getExternalStorageDirectory().getPath()+"/MyMissionExport/";
         File downloadsFolder = new File(asdf);
 
         Csv csv;
@@ -63,13 +63,13 @@ public class   OnDevice extends AppCompatActivity {
 
                 File file = files[i];
 
-                if (file.getPath().endsWith("csv")){
+
                     csv = new Csv();
                     csv.setCsvName(file.getName());
                     csv.setCsvDate(file.getAbsolutePath());
 
                     csvArrayList.add(csv);
-                }
+
             }
         }
         return csvArrayList;

@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,9 @@ import com.example.projectcpe.ViewModel.MissionDATABASE;
 
 import org.w3c.dom.Text;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.List;
 
 /**
@@ -54,14 +58,28 @@ public class OneFragment extends Fragment {
         int position = getArguments().getInt("position");
         String question = getArguments().getString("question");
         int id = getArguments().getInt("message");
-         byte[] pic = getArguments().getByteArray("code");
+        String numberPicture = getArguments().getString("numberpicture");
+         String pic = getArguments().getString("code");
 
-         missionData = getData(id);
+        missionData = getData(id);
+//Toast.makeText(getActivity(), missionData.get(0).getMissionName(), Toast.LENGTH_LONG).show();
+
+
+        try {
+            File directory = new File(Environment.getExternalStorageDirectory() + "/MyMission/"+missionData.get(0).getMissionName(),"picture"+numberPicture+".png");
+            Bitmap b = BitmapFactory.decodeStream(new FileInputStream(directory));
+            imQuestion.setImageBitmap(b);
+
+        }
+        catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+        }
 
         textView.setText(String.valueOf(step));
         Question.setText(question);
-        bmp = BitmapFactory.decodeByteArray(pic, 0, pic.length);
-        imQuestion.setImageBitmap(bmp);
+
+
 
 
 

@@ -33,34 +33,34 @@ public class Mission implements Serializable {
 
     ///////////// attribute Picture
     @ColumnInfo(name = "P1")
-    private byte[] P1;
+    private String P1;
 
     @ColumnInfo(name = "P2")
-    private byte[] P2;
+    private String P2;
 
     @ColumnInfo(name = "P3")
-    private byte[] P3;
+    private String P3;
 
     @ColumnInfo(name = "P4")
-    private byte[] P4;
+    private String P4;
 
     @ColumnInfo(name = "P5")
-    private byte[] P5;
+    private String P5;
 
     @ColumnInfo(name = "P6")
-    private byte[] P6;
+    private String P6;
 
     @ColumnInfo(name = "P7")
-    private byte[] P7;
+    private String P7;
 
     @ColumnInfo(name = "P8")
-    private byte[] P8;
+    private String P8;
 
     @ColumnInfo(name = "P9")
-    private byte[] P9;
+    private String P9;
 
     @ColumnInfo(name = "P10")
-    private byte[] P10;
+    private String P10;
 
 
     ///////////// attribute Question
@@ -224,7 +224,7 @@ public class Mission implements Serializable {
 
 
     public Mission( String missionName, String detailMission, int age, int numberofMission
-            , byte[] p1, byte[] p2, byte[] p3, byte[] p4, byte[] p5, byte[] p6, byte[] p7, byte[] p8, byte[] p9, byte[] p10
+            , String p1, String p2, String p3, String p4, String p5, String p6, String p7, String p8, String p9, String p10
             , String q1, String q2, String q3, String q4, String q5, String q6, String q7, String q8, String q9, String q10
             , String a1, String a2, String a3, String a4, String a5, String a6, String a7, String a8, String a9, String a10
             , String s1, String s2, String s3, String s4, String s5, String s6, String s7, String s8, String s9, String s10
@@ -325,45 +325,45 @@ public class Mission implements Serializable {
         return age;
     }
 
-    public byte[] getP1() { return P1; }
+    public String getP1() { return P1; }
 
-    public void setP1(byte[] p1) { P1 = p1; }
+    public void setP1(String p1) { P1 = p1; }
 
-    public byte[] getP2() { return P2; }
+    public String getP2() { return P2; }
 
-    public void setP2(byte[] p2) { P2 = p2; }
+    public void setP2(String p2) { P2 = p2; }
 
-    public byte[] getP3() { return P3; }
+    public String getP3() { return P3; }
 
-    public void setP3(byte[] p3) { P3 = p3; }
+    public void setP3(String p3) { P3 = p3; }
 
-    public byte[] getP4() { return P4; }
+    public String getP4() { return P4; }
 
-    public void setP4(byte[] p4) { P4 = p4; }
+    public void setP4(String p4) { P4 = p4; }
 
-    public byte[] getP5() { return P5; }
+    public String getP5() { return P5; }
 
-    public void setP5(byte[] p5) { P5 = p5; }
+    public void setP5(String p5) { P5 = p5; }
 
-    public byte[] getP6() { return P6; }
+    public String getP6() { return P6; }
 
-    public void setP6(byte[] p6) { P6 = p6; }
+    public void setP6(String p6) { P6 = p6; }
 
-    public byte[] getP7() { return P7; }
+    public String getP7() { return P7; }
 
-    public void setP7(byte[] p7) { P7 = p7; }
+    public void setP7(String p7) { P7 = p7; }
 
-    public byte[] getP8() { return P8; }
+    public String getP8() { return P8; }
 
-    public void setP8(byte[] p8) { P8 = p8; }
+    public void setP8(String p8) { P8 = p8; }
 
-    public byte[] getP9() { return P9; }
+    public String getP9() { return P9; }
 
-    public void setP9(byte[] p9) { P9 = p9; }
+    public void setP9(String p9) { P9 = p9; }
 
-    public byte[] getP10() { return P10; }
+    public String getP10() { return P10; }
 
-    public void setP10(byte[] p10) { P10 = p10; }
+    public void setP10(String p10) { P10 = p10; }
 
     public String getQ1() { return Q1; }
 

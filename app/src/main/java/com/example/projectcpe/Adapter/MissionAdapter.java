@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.projectcpe.R;
 import com.example.projectcpe.ViewModel.Mission;
@@ -70,7 +71,7 @@ public class MissionAdapter extends RecyclerView.Adapter<MissionAdapter.MissionV
 
 
 
-    public class MissionViewHolder extends RecyclerView.ViewHolder implements View.OnLongClickListener,View.OnClickListener{
+    public class MissionViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         TextView tvMisName, tvMisAge, number;
         ImageView delete;
@@ -78,7 +79,6 @@ public class MissionAdapter extends RecyclerView.Adapter<MissionAdapter.MissionV
 
         public MissionViewHolder(View itemView) {
             super(itemView);
-            itemView.setOnLongClickListener(this);
             itemView.setOnClickListener(this);
             tvMisName = itemView.findViewById(R.id.textMisssionName);
             tvMisAge = itemView.findViewById(R.id.textAge);
@@ -86,43 +86,6 @@ public class MissionAdapter extends RecyclerView.Adapter<MissionAdapter.MissionV
             layout = itemView.findViewById(R.id.layoutcard);
             number = itemView.findViewById(R.id.number);
 
-        }
-        @Override
-        public boolean onLongClick(View v) {
-
-
-//
-//            final Dialog dialog = new Dialog(mCtx);
-//            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-//            dialog.setContentView(R.layout.detail_dialog);
-//            dialog.setCancelable(true);
-//
-//            Button delete = (Button)dialog.findViewById(R.id.ChooseCamera);
-//            delete.setOnClickListener(new View.OnClickListener() {
-//                public void onClick(View v) {
-//
-//
-//
-//                    MissionDATABASE.getInstance(mCtx).missionDAO().delete(missionList.get(getAdapterPosition()));
-//                    onCustomerItemClick.onCustomerClick(getAdapterPosition(), 1);
-//                    dialog.cancel();
-//
-//                }
-//            });
-//
-//            Button edit = (Button)dialog.findViewById(R.id.ChooseGallary);
-//            edit.setOnClickListener(new View.OnClickListener() {
-//                public void onClick(View v) {
-//
-//                    onCustomerItemClick.onCustomerClick(getAdapterPosition(), 2);
-//
-//                }
-//            });
-//
-//            dialog.show();
-//
-//
-              return true;
         }
 
         @Override
@@ -134,7 +97,7 @@ public class MissionAdapter extends RecyclerView.Adapter<MissionAdapter.MissionV
             onCustomerItemClick.onCustomerClick(iddd, 0, missionList.get(getAdapterPosition()));
 
 
-//          Toast.makeText(mCtx, String.valueOf(iddd), Toast.LENGTH_LONG).show();
+          Toast.makeText(mCtx, "Mission ID : "+String.valueOf(iddd), Toast.LENGTH_LONG).show();
 
 
         }

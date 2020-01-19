@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CreateMission.Import.ImportOnGoogledrive"
+    tools:context=".CreateMission.Export.ExportOnGoogleDrive"
     android:background="@color/blue50">
 
     <androidx.appcompat.widget.Toolbar
@@ -19,7 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:title="Import On googledrive"
+        app:title="Export On Gogole Drive"
         android:background="@color/blue300"
         app:subtitleTextAppearance="@font/bold"/>
 
