@@ -82,6 +82,8 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
     public void onBindViewHolder(@NonNull final StepAdapter.StepViewHolder stepViewHolder, final int position) {
         final Step step = (Step) stepList.get(position);
 
+        final int[] n = {1};
+
 
 
 //        stepViewHolder.imStep.setImageResource(step.getPhoto());
@@ -126,6 +128,7 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
                         if (textView.getText().toString().matches("")) {
                             stepViewHolder.frameEdittextthis.removeViewAt(childAt[2] + 2);
                             Log.e("DO it", "Delete");
+                            n[0]--;
 
                         } else {
                             childAt[2]++;
@@ -197,7 +200,7 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
                     public void onClick(View view) {
                         final int childDetail = linearDetail.getChildCount();
 
-                        String sumScore = null;
+                        String sumScore = "10/";
                         for(int j = 0; j < childDetail ; j++) {
 
 
@@ -212,27 +215,23 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
                             TextView textGet;
                             textGet = (TextView) layoutSelect.getChildAt(0);
 
-
                             Spinner spinItem = (Spinner) layoutSelect.getChildAt(1);
                             String score =  spinItem.getSelectedItem().toString();
 
-
                             textGeted.setText(textGet.getText());
-
-                            allWord.add(textGet.getText().toString() + " ");
 
                             Log.e("Score",score);
 
 
 
-                            sumScore +=score+"/";
+                            sumScore += score+"/";
 
 
 
 
                             scoreOfStep = sumScore;
 
-
+                            Log.e("SumScore",sumScore);
 
                             childAt[1]++;
                         }
@@ -240,7 +239,6 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
                         dialog.cancel();
 
 
-                        Log.w("Mylist", String.valueOf(allWord));
 
 
 
@@ -254,7 +252,6 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
         });
 
 
-        final int[] n = {1};
         stepViewHolder.add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -358,14 +355,45 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
                             }
                         }
                     });
-
-
-
-
-
-
                     dialog.show();
                 }
+
+                bSave.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        final LinearLayout linearDetail = dialog.findViewById(R.id.linearDetail2);
+
+                        int childcount = linearDetail.getChildCount();
+
+                        String sumHint="";
+                        String textHint = "";
+                        String sumAllHint = "";
+
+                        for (int j = 0; j < childcount; j++){
+                            FlowLayout flowLayout = (FlowLayout) linearDetail.getChildAt(j);
+
+                            int fChildcount = flowLayout.getChildCount();
+
+                            for (int k = 0;k < fChildcount; k++ ) {
+
+                                TextView textView = (TextView) flowLayout.getChildAt(k);
+                                textHint = textView.getText().toString();
+
+                                sumHint += textHint+" ";
+
+
+                            }
+
+                            sumHint += "/";
+                        }
+                        stepList.get(position).setHint(sumHint);
+                        Log.e("sumHint",sumHint);
+                    dialog.cancel();
+                    }
+                });
+
+
+
 
             }
         });
@@ -415,11 +443,6 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
         linearDetail.addView(flowLayout);
     }
 
-
-
-
-
-
     public void onClickViewChange (EditText view, final LinearLayout linearLayout, final int position){
         view.addTextChangedListener(new TextWatcher() {
             @Override
@@ -447,7 +470,7 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
 
                     TextView textView = (TextView) linearLayout.getChildAt(childAt+2);
                     String nextText = textView.getText().toString();
-                    sumAnswer = sumAnswer + " / " + nextText;
+                    sumAnswer += nextText+"/";
 
                     childAt++;
                 }

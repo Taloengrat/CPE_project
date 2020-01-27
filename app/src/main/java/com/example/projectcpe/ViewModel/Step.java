@@ -16,7 +16,7 @@ public class Step{
 
     private byte[] Photo;
 
-    private String Answer,Question,Score;
+    private String Answer,Question,Score,Hint;
 
 
 
@@ -69,4 +69,15 @@ public class Step{
     public void setQuestion(String question) {
         Question = question;
     }
+
+    public String getHint() {
+        return Hint;
+    }
+
+    public void setHint(String hint) {
+        Hint = hint;
+    }
+
+
+
 }

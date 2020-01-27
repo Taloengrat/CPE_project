@@ -96,9 +96,12 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
                     Toast.makeText(getApplicationContext(),  StepAdapter.stepList.get(1).getScore(), Toast.LENGTH_SHORT).show();
                     position++;
 
-                    if (StepAdapter.stepList.get(i).getAnswer() != null && StepAdapter.stepList.get(i).getQuestion() != null) {
+                    if (StepAdapter.stepList.get(i).getAnswer() != null && StepAdapter.stepList.get(i).getQuestion() != null && StepAdapter.stepList.get(i).getScore() != null && StepAdapter.stepList.get(i).getHint() != null) {
                         Log.e("Question" + (i+1),StepAdapter.stepList.get(i).getQuestion());
                         Log.e("Answer" + (i+1), StepAdapter.stepList.get(i).getAnswer());
+                        Log.e("Score" + (i+1), StepAdapter.stepList.get(i).getScore());
+                        Log.e("Hint" + (i+1), StepAdapter.stepList.get(i).getHint());
+
                     }
                 }
 
