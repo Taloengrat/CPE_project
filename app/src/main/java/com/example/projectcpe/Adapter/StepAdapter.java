@@ -293,6 +293,7 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
 
                 Button bSave = dialog.findViewById(R.id.ok2);
                 final ImageView add2 = dialog.findViewById(R.id.add2);
+                final ImageView del2 = dialog.findViewById(R.id.del2);
 
                 int childAt = -1;
 
@@ -339,6 +340,9 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
                         NewText(dialog,textSplit[i],0);
 
                     }
+
+                    del2.setVisibility(View.INVISIBLE);
+
                     final int[] n = {1};
                     add2.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -348,13 +352,36 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
                                 NewFlowLayout(dialog);
                               for (int i = 0; i < textSplit.length; i++){
                                 NewText(dialog,textSplit[i], n[0]);
-//
+                                del2.setVisibility(View.VISIBLE);
                                 }
                               n[0]++;
-                              if (n[0] == 4){add2.setVisibility(View.GONE);}
+                              if (n[0] == 4){add2.setVisibility(View.INVISIBLE);}
                             }
                         }
                     });
+
+                    del2.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                            if (n[0] > 1) {
+                                int childcount2 = linearDetail.getChildCount();
+                                linearDetail.removeViewAt(childcount2 - 1);
+                                add2.setVisibility(View.VISIBLE);
+                                n[0]--;
+                            }
+                            if (n[0] == 1){
+                                del2.setVisibility(View.INVISIBLE);
+                            }
+
+                        }
+                    });
+
+
+
+
+
+
                     dialog.show();
                 }
 
@@ -406,10 +433,20 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
         View.OnClickListener textDelelt = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final LinearLayout linearDetail2 = dialog.findViewById(R.id.linearDetail2);
-                FlowLayout flowLayout1 = (FlowLayout) linearDetail2.getChildAt(index);
                 TextView tv = (TextView) view;
-                tv.setText("____");
+
+                if (tv.getText().toString().matches("____")){
+                    tv.setText(tv.getHint().toString());
+
+                }
+
+                else {
+//                    final LinearLayout linearDetail2 = dialog.findViewById(R.id.linearDetail2);
+//                    FlowLayout flowLayout1 = (FlowLayout) linearDetail2.getChildAt(index);
+                    tv.setHint(tv.getText().toString());
+
+                    tv.setText("____");
+                }
             }
         };
         final LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
