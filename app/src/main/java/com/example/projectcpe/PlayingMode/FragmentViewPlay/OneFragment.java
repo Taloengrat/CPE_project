@@ -66,7 +66,7 @@ public class OneFragment extends Fragment {
 
 
         try {
-            File directory = new File(Environment.getExternalStorageDirectory() + "/MyMission/"+missionData.get(0).getMissionName(),"picture"+numberPicture+".png");
+            File directory = new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/"+missionData.get(0).getMissionName(),"picture"+numberPicture+".png");
             Bitmap b = BitmapFactory.decodeStream(new FileInputStream(directory));
             imQuestion.setImageBitmap(b);
 

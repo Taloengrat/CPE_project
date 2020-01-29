@@ -1,5 +1,7 @@
 package com.example.projectcpe.ViewModel;
 
+import android.graphics.Bitmap;
+
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -14,7 +16,7 @@ public class Step{
     @ColumnInfo(name = "idstep")
     private int idStep;
 
-    private byte[] Photo;
+    private Bitmap Photo;
 
     private String Answer,Question,Score,Hint;
 
@@ -46,11 +48,11 @@ public class Step{
         this.idStep = idStep;
     }
 
-    public byte[] getPhoto() {
+    public Bitmap getPhoto() {
         return Photo;
     }
 
-    public void setPhoto(byte[] photo) {
+    public void setPhoto(Bitmap photo) {
         Photo = photo;
     }
 

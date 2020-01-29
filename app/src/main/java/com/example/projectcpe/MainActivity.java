@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
     ProgressBar progressBar;
 
 
-    String directory_path = Environment.getExternalStorageDirectory().getPath() + "/MyMission/";
+    String directory_path = Environment.getExternalStorageDirectory().getPath() + "/EnglishPractice/";
 
     public final int WRITE_PERMISSON_REQUEST_CODE = 1;
 
@@ -96,19 +96,19 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
 
-                        String directory_path1 = Environment.getExternalStorageDirectory().getPath() + "/MyMission/Color";
+                        String directory_path1 = Environment.getExternalStorageDirectory().getPath() + "/EnglishPractice/Color";
                         File file1 = new File(directory_path1);
                         if (!file1.exists()) {
                             file1.mkdirs();
                         }
 
-                        String directory_path2 = Environment.getExternalStorageDirectory().getPath() + "/MyMission/Talk to Jame";
+                        String directory_path2 = Environment.getExternalStorageDirectory().getPath() + "/EnglishPractice/TalktoJame";
                         File file2 = new File(directory_path2);
                         if (!file2.exists()) {
                             file2.mkdirs();
                         }
 
-                        String directory_path3 = Environment.getExternalStorageDirectory().getPath() + "/MyMission/Animal";
+                        String directory_path3 = Environment.getExternalStorageDirectory().getPath() + "/EnglishPractice/Animal";
                         File file3 = new File(directory_path3);
                         if (!file3.exists()) {
                             file3.mkdirs();
@@ -213,19 +213,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void CreateMissionTwo() {
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.mt1)).getBitmap(), "picture1", "Talk to Jame");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.mt2)).getBitmap(), "picture2", "Talk to Jame");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.mt3)).getBitmap(), "picture3", "Talk to Jame");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.mt4)).getBitmap(), "picture4", "Talk to Jame");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.mt5)).getBitmap(), "picture5", "Talk to Jame");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.mt6)).getBitmap(), "picture6", "Talk to Jame");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.mt7)).getBitmap(), "picture7", "Talk to Jame");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.mt8)).getBitmap(), "picture8", "Talk to Jame");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.mt9)).getBitmap(), "picture9", "Talk to Jame");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.mt10)).getBitmap(), "picture10", "Talk to Jame");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.mt1)).getBitmap(), "picture1", "TalktoJame");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.mt2)).getBitmap(), "picture2", "TalktoJame");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.mt3)).getBitmap(), "picture3", "TalktoJame");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.mt4)).getBitmap(), "picture4", "TalktoJame");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.mt5)).getBitmap(), "picture5", "TalktoJame");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.mt6)).getBitmap(), "picture6", "TalktoJame");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.mt7)).getBitmap(), "picture7", "TalktoJame");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.mt8)).getBitmap(), "picture8", "TalktoJame");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.mt9)).getBitmap(), "picture9", "TalktoJame");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.mt10)).getBitmap(), "picture10", "TalktoJame");
 
 
-        Mission mission2 = new Mission("Talk to Jame", "Talk to K.Jame", 18, 10
+        Mission mission2 = new Mission("TalktoJame", "Talk to K.Jame", 18, 10
                 , directory_path + "Talktojame" + "/picture1.png", directory_path + "Talktojame" + "/picture2png", directory_path + "Talktojame" + "/picture3.png", directory_path + "Talktojame" + "/picture4.png", directory_path + "Talktojame" + "/picture5png", directory_path + "Talktojame" + "/picture6.png", directory_path + "Talktojame" + "/picture7.png", directory_path + "Talktojame" + "/picture8.png", directory_path + "Talktojame" + "/picture9.png", directory_path + "Talktojame" + "/picture10.png"
                 , getResources().getString(R.string.q2_1), getResources().getString(R.string.q2_2), getResources().getString(R.string.q2_3), getResources().getString(R.string.q2_4), getResources().getString(R.string.q2_5)
                 , getResources().getString(R.string.q2_6), getResources().getString(R.string.q2_7), getResources().getString(R.string.q2_8)
@@ -420,7 +420,7 @@ public class MainActivity extends AppCompatActivity {
     private String saveToInternalStorage(Bitmap bitmapImage, String picturename, String missionName) {
         ContextWrapper cw = new ContextWrapper(getApplicationContext());
         // path to /data/data/yourapp/app_data/imageDir
-        File directory = new File(Environment.getExternalStorageDirectory() + "/MyMission/" + missionName + "/");
+        File directory = new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionName + "/");
         // Create imageDir
         File mypath = new File(directory, picturename + ".png");
 

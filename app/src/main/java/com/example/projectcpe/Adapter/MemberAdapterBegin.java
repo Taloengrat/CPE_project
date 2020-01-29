@@ -59,6 +59,12 @@ public class MemberAdapterBegin extends RecyclerView.Adapter<MemberAdapterBegin.
         holder.age.setText(String.valueOf(member.getAge()));
         holder.imUser.setImageBitmap(bitmap);
 
+        holder.imUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(activity, member.getProfile().length, Toast.LENGTH_LONG).show();
+            }
+        });
         holder.option.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

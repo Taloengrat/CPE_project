@@ -39,7 +39,7 @@ public class ImportOnDevice extends AppCompatActivity {
     }
 
     private void loadData(){
-        RecyclerView.Adapter adapter = new CsvImportAdapter(getFilelist(),this);
+        RecyclerView.Adapter adapter = new CsvImportAdapter(getFilelist(),ImportOnDevice.this);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
@@ -49,8 +49,8 @@ public class ImportOnDevice extends AppCompatActivity {
 
         ArrayList<Csv> csvArrayList = new ArrayList<>();
 
-        String asdf = Environment.getExternalStorageDirectory().getPath()+"/MyMissionExport/";
-        File downloadsFolder = new File(asdf);
+        String path = Environment.getExternalStorageDirectory().getPath()+"/MyMissionExport/";
+        File downloadsFolder = new File(path);
 
         Csv csv;
 

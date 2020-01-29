@@ -170,7 +170,7 @@ public class ExportOnDevice extends AppCompatActivity implements  MissionAdapter
                         ".Hint1.Hint2.Hint3.Hint4.Hint5-");
 
                 dataList.add(missionList.get(0).getMissionName()+"."+missionList.get(0).getDetailMission()+"."+missionList.get(0).getAge()+"."+missionList.get(0).getNumberofMission()
-                        +"."+missionList.get(0).getP1() +"."+ missionList.get(0).getP2() +"."+ missionList.get(0).getP3() +"."+ missionList.get(0).getP4() +"."+ missionList.get(0).getP5()
+
                         +"."+missionList.get(0).getQ1()+"."+missionList.get(0).getQ2()+"."+missionList.get(0).getQ3()+"."+missionList.get(0).getQ4()+"."+missionList.get(0).getQ5()
                         +"."+missionList.get(0).getA1()+"."+missionList.get(0).getA2()+"."+missionList.get(0).getA3()+"."+missionList.get(0).getA4()+"."+missionList.get(0).getA5()
                         +"."+missionList.get(0).getS1()+"."+missionList.get(0).getS2()+"."+missionList.get(0).getS3()+"."+missionList.get(0).getS4()+"."+missionList.get(0).getS5()
@@ -198,7 +198,6 @@ public class ExportOnDevice extends AppCompatActivity implements  MissionAdapter
                         ".Hint1.Hint2.Hint3.Hint4.Hint5.Hint6-");
 
                 dataList.add(missionList.get(0).getMissionName()+"."+missionList.get(0).getDetailMission()+"."+missionList.get(0).getAge()+"."+missionList.get(0).getNumberofMission()
-                        +"."+ missionList.get(0).getP1() +"."+ missionList.get(0).getP2() +"."+ missionList.get(0).getP3() +"."+ missionList.get(0).getP4() +"."+ missionList.get(0).getP5()+"."+ missionList.get(0).getP6()
                         +"."+missionList.get(0).getQ1()+"."+missionList.get(0).getQ2()+"."+missionList.get(0).getQ3()+"."+missionList.get(0).getQ4()+"."+missionList.get(0).getQ5()+"."+missionList.get(0).getQ6()
                         +"."+missionList.get(0).getA1()+"."+missionList.get(0).getA2()+"."+missionList.get(0).getA3()+"."+missionList.get(0).getA4()+"."+missionList.get(0).getA5()+"."+missionList.get(0).getA6()
                         +"."+missionList.get(0).getS1()+"."+missionList.get(0).getS2()+"."+missionList.get(0).getS3()+"."+missionList.get(0).getS4()+"."+missionList.get(0).getS5()+"."+missionList.get(0).getS5()
@@ -226,7 +225,6 @@ public class ExportOnDevice extends AppCompatActivity implements  MissionAdapter
                         ".Hint1.Hint2.Hint3.Hint4.Hint5.Hint6.Hint7-");
 
                 dataList.add(missionList.get(0).getMissionName()+"."+missionList.get(0).getDetailMission()+"."+missionList.get(0).getAge()+"."+missionList.get(0).getNumberofMission()
-                        +"."+ missionList.get(0).getP1() +"."+ missionList.get(0).getP2() +"."+ missionList.get(0).getP3() +"."+ missionList.get(0).getP4() +"."+ missionList.get(0).getP5()+"."+ missionList.get(0).getP6()+"."+ missionList.get(0).getP7()
                         +"."+missionList.get(0).getQ1()+"."+missionList.get(0).getQ2()+"."+missionList.get(0).getQ3()+"."+missionList.get(0).getQ4()+"."+missionList.get(0).getQ5()+"."+missionList.get(0).getQ6()+"."+missionList.get(0).getQ7()
                         +"."+missionList.get(0).getA1()+"."+missionList.get(0).getA2()+"."+missionList.get(0).getA3()+"."+missionList.get(0).getA4()+"."+missionList.get(0).getA5()+"."+missionList.get(0).getA6()+"."+missionList.get(0).getA7()
                         +"."+missionList.get(0).getS1()+"."+missionList.get(0).getS2()+"."+missionList.get(0).getS3()+"."+missionList.get(0).getS4()+"."+missionList.get(0).getS5()+"."+missionList.get(0).getS5()+"."+missionList.get(0).getS7()
@@ -255,8 +253,7 @@ public class ExportOnDevice extends AppCompatActivity implements  MissionAdapter
                         ".Hint1.Hint2.Hint3.Hint4.Hint5.Hint6.Hint7.Hint8-");
 
                 dataList.add(missionList.get(0).getMissionName()+"."+missionList.get(0).getDetailMission()+"."+missionList.get(0).getAge()+"."+missionList.get(0).getNumberofMission()
-                        +"."+ missionList.get(0).getP1() +"."+ missionList.get(0).getP2() +"."+ missionList.get(0).getP3() +"."+ missionList.get(0).getP4() +"."+ missionList.get(0).getP5()+"."+ missionList.get(0).getP6()+"."+missionList.get(0).getP7()+"."+ missionList.get(0).getP8()
-                        +"."+missionList.get(0).getQ1()+"."+missionList.get(0).getQ2()+"."+missionList.get(0).getQ3()+"."+missionList.get(0).getQ4()+"."+missionList.get(0).getQ5()+"."+missionList.get(0).getQ6()+"."+missionList.get(0).getQ7()+"."+missionList.get(0).getQ8()
+                       +"."+missionList.get(0).getQ1()+"."+missionList.get(0).getQ2()+"."+missionList.get(0).getQ3()+"."+missionList.get(0).getQ4()+"."+missionList.get(0).getQ5()+"."+missionList.get(0).getQ6()+"."+missionList.get(0).getQ7()+"."+missionList.get(0).getQ8()
                         +"."+missionList.get(0).getA1()+"."+missionList.get(0).getA2()+"."+missionList.get(0).getA3()+"."+missionList.get(0).getA4()+"."+missionList.get(0).getA5()+"."+missionList.get(0).getA6()+"."+missionList.get(0).getA7()+"."+missionList.get(0).getA8()
                         +"."+missionList.get(0).getS1()+"."+missionList.get(0).getS2()+"."+missionList.get(0).getS3()+"."+missionList.get(0).getS4()+"."+missionList.get(0).getS5()+"."+missionList.get(0).getS5()+"."+missionList.get(0).getS7()+"."+missionList.get(0).getS8()
                         +"."+missionList.get(0).getH1()+"."+missionList.get(0).getH2()+"."+missionList.get(0).getH3()+"."+missionList.get(0).getH4()+"."+missionList.get(0).getH5()+"."+missionList.get(0).getH6()+"."+missionList.get(0).getH7()+"."+missionList.get(0).getH8()+"-");
@@ -286,7 +283,6 @@ public class ExportOnDevice extends AppCompatActivity implements  MissionAdapter
                         ".Hint1.Hint2.Hint3.Hint4.Hint5.Hint6.Hint7.Hint8.Hint9-");
 
                 dataList.add(missionList.get(0).getMissionName()+"."+missionList.get(0).getDetailMission()+"."+missionList.get(0).getAge()+"."+missionList.get(0).getNumberofMission()
-                        +"."+ missionList.get(0).getP1() +"."+ missionList.get(0).getP2()+"."+ missionList.get(0).getP3() +"."+ missionList.get(0).getP4() +"."+ missionList.get(0).getP5()+"."+ missionList.get(0).getP6()+"."+ missionList.get(0).getP7()+"."+ missionList.get(0).getP8()+"."+ missionList.get(0).getP9()
                         +"."+missionList.get(0).getQ1()+"."+missionList.get(0).getQ2()+"."+missionList.get(0).getQ3()+"."+missionList.get(0).getQ4()+"."+missionList.get(0).getQ5()+"."+missionList.get(0).getQ6()+"."+missionList.get(0).getQ7()+"."+missionList.get(0).getQ8()+"."+missionList.get(0).getQ9()
                         +"."+missionList.get(0).getA1()+"."+missionList.get(0).getA2()+"."+missionList.get(0).getA3()+"."+missionList.get(0).getA4()+"."+missionList.get(0).getA5()+"."+missionList.get(0).getA6()+"."+missionList.get(0).getA7()+"."+missionList.get(0).getA8()+"."+missionList.get(0).getA9()
                         +"."+missionList.get(0).getS1()+"."+missionList.get(0).getS2()+"."+missionList.get(0).getS3()+"."+missionList.get(0).getS4()+"."+missionList.get(0).getS5()+"."+missionList.get(0).getS5()+"."+missionList.get(0).getS7()+"."+missionList.get(0).getS8()+"."+missionList.get(0).getS9()
@@ -324,7 +320,7 @@ public class ExportOnDevice extends AppCompatActivity implements  MissionAdapter
                         +"."+missionList.get(0).getQ1()+"."+missionList.get(0).getQ2()+"."+missionList.get(0).getQ3()+"."+missionList.get(0).getQ4()+"."+missionList.get(0).getQ5()+"."+missionList.get(0).getQ6()+"."+missionList.get(0).getQ7()+"."+missionList.get(0).getQ8()+"."+missionList.get(0).getQ9()+"."+missionList.get(0).getQ10()
                         +"."+missionList.get(0).getA1()+"."+missionList.get(0).getA2()+"."+missionList.get(0).getA3()+"."+missionList.get(0).getA4()+"."+missionList.get(0).getA5()+"."+missionList.get(0).getA6()+"."+missionList.get(0).getA7()+"."+missionList.get(0).getA8()+"."+missionList.get(0).getA9()+"."+missionList.get(0).getA10()
                         +"."+missionList.get(0).getS1()+"."+missionList.get(0).getS2()+"."+missionList.get(0).getS3()+"."+missionList.get(0).getS4()+"."+missionList.get(0).getS5()+"."+missionList.get(0).getS5()+"."+missionList.get(0).getS7()+"."+missionList.get(0).getS8()+"."+missionList.get(0).getS9()+"."+missionList.get(0).getS10()
-                        +"."+missionList.get(0).getH1()+"."+missionList.get(0).getH2()+"."+missionList.get(0).getH3()+"."+missionList.get(0).getH4()+"."+missionList.get(0).getH5()+"."+missionList.get(0).getH6()+"."+missionList.get(0).getH7()+"."+"10ง10"+"."+missionList.get(0).getH9()+"."+missionList.get(0).getH10()+"-");
+                        +"."+missionList.get(0).getH1()+"."+missionList.get(0).getH2()+"."+missionList.get(0).getH3()+"."+missionList.get(0).getH4()+"."+missionList.get(0).getH5()+"."+missionList.get(0).getH6()+"."+missionList.get(0).getH7()+"."+missionList.get(0).getH8()+"."+missionList.get(0).getH9()+"."+missionList.get(0).getH10()+"-");
 
                 createFileCsv();
 
@@ -398,7 +394,7 @@ public class ExportOnDevice extends AppCompatActivity implements  MissionAdapter
 
         String fileName="Data";
 
-        easyCsv.createCsvFile(missionList.get(0).getMissionName(),missionList.get(0).getMissionName()+fileName, headerList, dataList, WRITE_PERMISSON_REQUEST_CODE, new FileCallback() {
+        easyCsv.createCsvFile(missionList.get(0).getMissionName().trim(),missionList.get(0).getMissionName()+fileName, headerList, dataList, WRITE_PERMISSON_REQUEST_CODE, new FileCallback() {
 
 
             @Override
