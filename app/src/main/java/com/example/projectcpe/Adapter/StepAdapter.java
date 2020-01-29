@@ -3,9 +3,11 @@ package com.example.projectcpe.Adapter;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
+
 import androidx.annotation.NonNull;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -39,25 +41,14 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
 
     public static LinearLayout frameEdittext;
     private Context mCtx;
-    private Step[] steps;
     //we are storing all the products in a list
     public static List<Step> stepList;
     private OnCustomrPictureClick onCustomrPictureClick;
 
-    public String scoreOfStep ;
+    public String scoreOfStep;
 
     public ArrayList<String> allWord = new ArrayList<String>();
 
-
-
-
-
-
-
-
-    public StepAdapter(Step[] steps){
-        this.steps = steps;
-    }
 
     public StepAdapter(List<Step> c, Context ctx) {
         this.stepList = c;
@@ -74,7 +65,7 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
     @NonNull
     @Override
     public StepAdapter.StepViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.step_list, parent,false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.step_list, parent, false);
         return new StepViewHolder(v);
     }
 
@@ -85,9 +76,8 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
         final int[] n = {1};
 
 
-
 //        stepViewHolder.imStep.setImageResource(step.getPhoto());
-        stepViewHolder.Numstep.setText("step "+String.valueOf(position+1));
+        stepViewHolder.Numstep.setText("Question : " + String.valueOf(position + 1));
 
         stepViewHolder.frameEdittextthis.getChildCount();
 
@@ -103,7 +93,7 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
                 dialog.setCancelable(true);
 
                 TextView textHead = dialog.findViewById(R.id.head);
-                textHead.setText("Set a score of step "+String.valueOf(position+1));
+                textHead.setText("Set a score of step " + String.valueOf(position + 1));
 
                 Button bSave = dialog.findViewById(R.id.ok);
 
@@ -111,11 +101,11 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
 
 
                 int childCount = stepViewHolder.frameEdittextthis.getChildCount();
-                final int[] childAt = {-1,-1,-1};
+                final int[] childAt = {-1, -1, -1};
 
-                TextView textView1 = (TextView) stepViewHolder.frameEdittextthis.getChildAt(childAt[2]+2);
+                TextView textView1 = (TextView) stepViewHolder.frameEdittextthis.getChildAt(childAt[2] + 2);
 
-                if (textView1.getText().toString().matches("")){
+                if (textView1.getText().toString().matches("")) {
                     Toast.makeText(mCtx, "กรุณาใส่คำตอบที่ถูกตัองที่สุด", Toast.LENGTH_LONG).show();
                 } else {
 
@@ -193,17 +183,13 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
                 }
 
 
-
-
                 bSave.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         final int childDetail = linearDetail.getChildCount();
 
                         String sumScore = "10/";
-                        for(int j = 0; j < childDetail ; j++) {
-
-
+                        for (int j = 0; j < childDetail; j++) {
 
 
                             EditText textGeted;
@@ -216,22 +202,19 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
                             textGet = (TextView) layoutSelect.getChildAt(0);
 
                             Spinner spinItem = (Spinner) layoutSelect.getChildAt(1);
-                            String score =  spinItem.getSelectedItem().toString();
+                            String score = spinItem.getSelectedItem().toString();
 
                             textGeted.setText(textGet.getText());
 
-                            Log.e("Score",score);
+                            Log.e("Score", score);
 
 
-
-                            sumScore += score+"/";
-
-
+                            sumScore += score + "/";
 
 
                             scoreOfStep = sumScore;
 
-                            Log.e("SumScore",sumScore);
+                            Log.e("SumScore", sumScore);
 
                             childAt[1]++;
                         }
@@ -239,13 +222,8 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
                         dialog.cancel();
 
 
-
-
-
-
                     }
                 });
-
 
 
             }
@@ -289,7 +267,7 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
                 dialog.setCancelable(true);
 
                 TextView textHead = dialog.findViewById(R.id.head2);
-                textHead.setText("Set a hint of step "+String.valueOf(position+1));
+                textHead.setText("Set a hint of step " + String.valueOf(position + 1));
 
                 Button bSave = dialog.findViewById(R.id.ok2);
                 final ImageView add2 = dialog.findViewById(R.id.add2);
@@ -297,19 +275,18 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
 
                 int childAt = -1;
 
-                TextView textView1 = (TextView) stepViewHolder.frameEdittextthis.getChildAt(childAt+2);
+                TextView textView1 = (TextView) stepViewHolder.frameEdittextthis.getChildAt(childAt + 2);
 
                 final LinearLayout linearDetail = dialog.findViewById(R.id.linearDetail2);
 
 
-                if (textView1.getText().toString().matches("")){
+                if (textView1.getText().toString().matches("")) {
                     Toast.makeText(mCtx, "กรุณาใส่คำตอบที่ถูกตัองที่สุด", Toast.LENGTH_LONG).show();
                 } else {
 
                     final LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                     layoutParams.setMargins(0, 5, 0, 0);
 //                    layoutParams.weight = 1;
-
 
 
                     // LinearLayout Properties.
@@ -335,9 +312,9 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
 
                     linearDetail.addView(flowLayout);
 
-                    for (int i = 0; i < textSplit.length; i++){
+                    for (int i = 0; i < textSplit.length; i++) {
 
-                        NewText(dialog,textSplit[i],0);
+                        NewText(dialog, textSplit[i], 0);
 
                     }
 
@@ -350,12 +327,14 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
 
                             if (n[0] < 4) {
                                 NewFlowLayout(dialog);
-                              for (int i = 0; i < textSplit.length; i++){
-                                NewText(dialog,textSplit[i], n[0]);
-                                del2.setVisibility(View.VISIBLE);
+                                for (int i = 0; i < textSplit.length; i++) {
+                                    NewText(dialog, textSplit[i], n[0]);
+                                    del2.setVisibility(View.VISIBLE);
                                 }
-                              n[0]++;
-                              if (n[0] == 4){add2.setVisibility(View.INVISIBLE);}
+                                n[0]++;
+                                if (n[0] == 4) {
+                                    add2.setVisibility(View.INVISIBLE);
+                                }
                             }
                         }
                     });
@@ -370,16 +349,12 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
                                 add2.setVisibility(View.VISIBLE);
                                 n[0]--;
                             }
-                            if (n[0] == 1){
+                            if (n[0] == 1) {
                                 del2.setVisibility(View.INVISIBLE);
                             }
 
                         }
                     });
-
-
-
-
 
 
                     dialog.show();
@@ -392,21 +367,21 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
 
                         int childcount = linearDetail.getChildCount();
 
-                        String sumHint="";
+                        String sumHint = "";
                         String textHint = "";
                         String sumAllHint = "";
 
-                        for (int j = 0; j < childcount; j++){
+                        for (int j = 0; j < childcount; j++) {
                             FlowLayout flowLayout = (FlowLayout) linearDetail.getChildAt(j);
 
                             int fChildcount = flowLayout.getChildCount();
 
-                            for (int k = 0;k < fChildcount; k++ ) {
+                            for (int k = 0; k < fChildcount; k++) {
 
                                 TextView textView = (TextView) flowLayout.getChildAt(k);
                                 textHint = textView.getText().toString();
 
-                                sumHint += textHint+" ";
+                                sumHint += textHint + " ";
 
 
                             }
@@ -414,12 +389,10 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
                             sumHint += "/";
                         }
                         stepList.get(position).setHint(sumHint);
-                        Log.e("sumHint",sumHint);
-                    dialog.cancel();
+                        Log.e("sumHint", sumHint);
+                        dialog.cancel();
                     }
                 });
-
-
 
 
             }
@@ -428,19 +401,17 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
 
     }
 
-    public void NewText (final Dialog dialog, String s , final int index){
+    public void NewText(final Dialog dialog, String s, final int index) {
 
         View.OnClickListener textDelelt = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 TextView tv = (TextView) view;
 
-                if (tv.getText().toString().matches("____")){
+                if (tv.getText().toString().matches("____")) {
                     tv.setText(tv.getHint().toString());
 
-                }
-
-                else {
+                } else {
 //                    final LinearLayout linearDetail2 = dialog.findViewById(R.id.linearDetail2);
 //                    FlowLayout flowLayout1 = (FlowLayout) linearDetail2.getChildAt(index);
                     tv.setHint(tv.getText().toString());
@@ -468,7 +439,7 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
 
     }
 
-    public void NewFlowLayout (Dialog dialog){
+    public void NewFlowLayout(Dialog dialog) {
 
         final LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         layoutParams.setMargins(0, 5, 0, 5);
@@ -480,7 +451,7 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
         linearDetail.addView(flowLayout);
     }
 
-    public void onClickViewChange (EditText view, final LinearLayout linearLayout, final int position){
+    public void onClickViewChange(EditText view, final LinearLayout linearLayout, final int position) {
         view.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -491,23 +462,22 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
 
-
             }
 
             @Override
-            public void afterTextChanged(Editable s ) {
+            public void afterTextChanged(Editable s) {
 
                 int childCount = linearLayout.getChildCount();
                 int childAt = -1;
 
                 String sumAnswer = "";
 
-                for (int i = 0 ; i < childCount-1 ; i++){
+                for (int i = 0; i < childCount - 1; i++) {
 
 
-                    TextView textView = (TextView) linearLayout.getChildAt(childAt+2);
+                    TextView textView = (TextView) linearLayout.getChildAt(childAt + 2);
                     String nextText = textView.getText().toString();
-                    sumAnswer += nextText+"/";
+                    sumAnswer += nextText + "/";
 
                     childAt++;
                 }
@@ -525,15 +495,7 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
         });
 
 
-
-
     }
-
-
-
-
-
-
 
 
     @Override
@@ -542,15 +504,12 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
     }
 
 
-    public class StepViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class StepViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        ImageView imStep,add,score,hint;
-        EditText answerStep,questionStep;
+        ImageView imStep, add, score, hint;
+        EditText answerStep, questionStep;
         TextView Numstep;
         public LinearLayout frameEdittextthis;
-
-
-
 
 
         public StepViewHolder(@NonNull final View itemView) {
@@ -569,21 +528,23 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
             frameEdittext = this.frameEdittextthis;
 
 
-
             answerStep.addTextChangedListener(new TextWatcher() {
                 @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                }
+
                 @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) { }
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                }
 
                 @Override
                 public void afterTextChanged(Editable s) {
                     int childCount = frameEdittextthis.getChildCount();
                     int childAt = -1;
                     String sumAnswer = "";
-                    for (int i = 0 ; i < childCount-1 ; i++){
+                    for (int i = 0; i < childCount - 1; i++) {
 
-                        TextView textView = (TextView) frameEdittextthis.getChildAt(childAt+2);
+                        TextView textView = (TextView) frameEdittextthis.getChildAt(childAt + 2);
                         String nextText = textView.getText().toString();
                         sumAnswer = sumAnswer + " / " + nextText;
 
@@ -596,18 +557,21 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
 
             questionStep.addTextChangedListener(new TextWatcher() {
                 @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                }
+
                 @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) { }
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                }
 
                 @Override
                 public void afterTextChanged(Editable s) {
                     int childCount = frameEdittextthis.getChildCount();
                     int childAt = -1;
                     String sumAnswer = "";
-                    for (int i = 0 ; i < childCount-1 ; i++){
+                    for (int i = 0; i < childCount - 1; i++) {
 
-                        TextView textView = (TextView) frameEdittextthis.getChildAt(childAt+2);
+                        TextView textView = (TextView) frameEdittextthis.getChildAt(childAt + 2);
                         String nextText = textView.getText().toString();
                         sumAnswer = sumAnswer + " / " + nextText;
 
@@ -619,8 +583,6 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
             });
 
 
-
-
         }
 
         @Override
@@ -630,12 +592,9 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
         }
 
 
-
-
-
     }
 
-    public interface OnCustomrPictureClick{
+    public interface OnCustomrPictureClick {
 
         void oncustompictureclick(int pos, ImageView imageView);
     }
