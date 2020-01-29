@@ -61,7 +61,7 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
     public Bitmap b;
 
     RecyclerView recyclerViewStep;
-    StepAdapter adapter;
+
     List<Step> steplist;
     String getName, getDetail;
     int getNumOfStep, getAge;
@@ -70,7 +70,6 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
     List<Step> stepList;
 
     public ImageView mediumImage;
-    EditText addEdittext;
     private volatile boolean stopThread = false;
     ProgressDialog loadingDialog;
     Mission mission = new Mission();
@@ -87,9 +86,9 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_finally_create);
 
-        test = findViewById(R.id.test);
 
-        Initia();
+
+
 
         Bundle bundle = getIntent().getExtras();
         getNumOfStep = bundle.getInt("NumOfStep");
@@ -97,16 +96,8 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
         getDetail = bundle.getString("detail");
         getAge = bundle.getInt("age");
 
+        Initia();
         NumStepListener(this.getNumOfStep);
-
-        btSubmit.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                Intent intent = new Intent(FinallyCreate.this, Main2Activity.class);
-                startActivity(intent);
-                return true;
-            }
-        });
 
         btSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -194,12 +185,15 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
 
     private void NumStepListener(int mediumNum) {
 
-        for (int i = 0; i < mediumNum; i++) {
+
+
+    }
+
+    private List<Step> getStepList() {
+        for (int i = 0; i < getNumOfStep; i++) {
             steplist.add(new Step());
         }
-
-        adapter = new StepAdapter(steplist, this);
-        recyclerViewStep.setAdapter(adapter);
+        return steplist;
     }
 
     private void Initia() {
@@ -212,16 +206,17 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
 
         steplist = new ArrayList<Step>();
         btSubmit = findViewById(R.id.btnsubmit);
+        frameEdittext = findViewById(R.id.frameEdittext);
+
+        RecyclerView.Adapter adapter = new StepAdapter(getStepList(),this);
         recyclerViewStep = findViewById(R.id.recyclerViewStepCreate);
         recyclerViewStep.setHasFixedSize(true);
         recyclerViewStep.setLayoutManager(new LinearLayoutManager(this));
-        frameEdittext = findViewById(R.id.frameEdittext);
-
-//        for (int i = 0 ; i<)
-//
-//        adapter = new StepAdapter(, this);
-
         recyclerViewStep.setAdapter(adapter);
+
+
+
+
 
     }
 
@@ -310,8 +305,8 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
                 Bitmap bmp1 = BitmapFactory.decodeByteArray(imageInByte1, 0, imageInByte1.length, options);
 
 
-//                b = Bitmap.createBitmap(bmp1);
-                mediumImage.setImageBitmap(bmp1);
+                b = Bitmap.createBitmap(bmp1);
+                mediumImage.setImageBitmap(b);
 
                 switch (position + 1) {
 
@@ -498,7 +493,7 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
 
         for (int i = 0; i < StepAdapter.stepList.size(); i++) {
 
-            if (StepAdapter.stepList.get(i).getAnswer() != null && StepAdapter.stepList.get(i).getQuestion() != null && StepAdapter.stepList.get(i).getScore() != null && StepAdapter.stepList.get(i).getHint() != null) {
+//            if (StepAdapter.stepList.get(i).getAnswer() != null && StepAdapter.stepList.get(i).getQuestion() != null && StepAdapter.stepList.get(i).getScore() != null && StepAdapter.stepList.get(i).getHint() != null) {
 
 
 
@@ -559,6 +554,8 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
                         mission.setA8(StepAdapter.stepList.get(i).getAnswer());
                         mission.setS8(StepAdapter.stepList.get(i).getScore());
                         mission.setH8(StepAdapter.stepList.get(i).getScore());
+
+
                         break;
                     case 8:
                         saveToInternalStorage(b9, "picture9", getName);
@@ -576,12 +573,15 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
                         break;
                 }
 
-            }
+//            }
 
-            stopThread = true;
 
-            MissionDATABASE.getInstance(FinallyCreate.this).missionDAO().create(mission);
+
+
         }
+        MissionDATABASE.getInstance(FinallyCreate.this).missionDAO().create(mission);
+
+        stopThread = true;
     }
 }
 

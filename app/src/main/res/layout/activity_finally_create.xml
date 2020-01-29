@@ -58,14 +58,5 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
-        android:id="@+id/test"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/btnsubmit"
-        app:layout_constraintStart_toEndOf="@+id/btnsubmit"
-        app:layout_constraintTop_toTopOf="@+id/btnsubmit"
-        app:srcCompat="@drawable/add" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

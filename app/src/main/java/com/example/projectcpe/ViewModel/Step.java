@@ -16,8 +16,6 @@ public class Step{
     @ColumnInfo(name = "idstep")
     private int idStep;
 
-    private Bitmap Photo;
-
     private String Answer,Question,Score,Hint;
 
 
@@ -46,14 +44,6 @@ public class Step{
 
     public void setIdStep(int idStep) {
         this.idStep = idStep;
-    }
-
-    public Bitmap getPhoto() {
-        return Photo;
-    }
-
-    public void setPhoto(Bitmap photo) {
-        Photo = photo;
     }
 
     public String getAnswer() {

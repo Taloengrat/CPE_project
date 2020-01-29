@@ -62,6 +62,12 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
     }
 
 
+
+    @Override
+    public int getItemViewType(int position) {
+        return position;
+    }
+
     @NonNull
     @Override
     public StepAdapter.StepViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
@@ -74,6 +80,7 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
         final Step step = (Step) stepList.get(position);
 
         final int[] n = {1};
+
 
 
 //        stepViewHolder.imStep.setImageResource(step.getPhoto());
