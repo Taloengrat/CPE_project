@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/yel50"
     tools:context=".PlayingMode.PlayPage">
 
 
@@ -13,13 +12,81 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:textSize="100dp"
         android:fontFamily="@font/bold"
+        android:textSize="100dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:visibility="gone"/>
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/frameHint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/framehint"
+        android:elevation="16dp"
+        android:orientation="horizontal"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/bar"
+        app:layout_constraintStart_toStartOf="@+id/bar"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp">
+
+        <TextView
+            android:id="@+id/hint1"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:background="@drawable/elevetorcircle"
+            android:ems="1"
+            android:fontFamily="@font/bold"
+            android:gravity="center"
+            android:text="1"
+
+            />
+
+        <TextView
+            android:id="@+id/hint2"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="4dp"
+            android:layout_weight="1"
+            android:background="@drawable/elevetorcircle"
+            android:ems="1"
+            android:fontFamily="@font/bold"
+            android:gravity="center"
+            android:text="2" />
+
+        <TextView
+            android:id="@+id/hint3"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="4dp"
+            android:layout_weight="1"
+            android:background="@drawable/elevetorcircle"
+            android:ems="1"
+            android:fontFamily="@font/bold"
+            android:gravity="center"
+            android:text="3" />
+
+        <TextView
+            android:id="@+id/hint4"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="4dp"
+            android:layout_weight="1"
+            android:background="@drawable/elevetorcircle"
+            android:ems="1"
+            android:fontFamily="@font/bold"
+            android:gravity="center"
+            android:text="4" />
+
+    </LinearLayout>
 
     <FrameLayout
         android:id="@+id/fragment"
@@ -37,9 +104,10 @@
         android:id="@+id/bar"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="0dp"
-        android:background="@color/yel900"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/backbar"
         android:orientation="horizontal"
         app:itemIconSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -49,13 +117,13 @@
 
         >
 
-        <ImageView
-            android:id="@+id/back"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/back"
-            tools:ignore="VectorDrawableCompat" />
+        <!--        <ImageView-->
+        <!--            android:id="@+id/back"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="match_parent"-->
+        <!--            android:layout_weight="1"-->
+        <!--            app:srcCompat="@drawable/back"-->
+        <!--            tools:ignore="VectorDrawableCompat" />-->
 
         <ImageView
             android:id="@+id/hint"
@@ -67,10 +135,11 @@
             tools:ignore="VectorDrawableCompat" />
 
         <ImageView
-            android:id="@+id/mic"
+
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:visibility="invisible"
             app:srcCompat="@drawable/mic"
             tools:ignore="VectorDrawableCompat" />
 
@@ -83,14 +152,25 @@
             app:srcCompat="@drawable/voice"
             tools:ignore="VectorDrawableCompat" />
 
-        <ImageView
-            android:id="@+id/next"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/next"
-            tools:ignore="VectorDrawableCompat" />
+        <!--        <ImageView-->
+        <!--            android:id="@+id/next"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="match_parent"-->
+        <!--            android:layout_weight="1"-->
+        <!--            app:srcCompat="@drawable/next"-->
+        <!--            tools:ignore="VectorDrawableCompat" />-->
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/mic"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_weight="1"
+        android:background="@drawable/backgroundmic"
+        android:elevation="16dp"
+        app:layout_constraintCircle="@id/bar"
+        app:srcCompat="@drawable/mic"
+        tools:ignore="VectorDrawableCompat" />
 
     <TextView
         android:id="@+id/textClock"
@@ -99,8 +179,8 @@
         android:layout_margin="16dp"
         android:fontFamily="@font/bold"
         android:text="Timer"
-        android:textSize="32dp"
         android:textColor="@color/black"
+        android:textSize="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -121,12 +201,11 @@
         android:id="@+id/startClick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="32dp"
         app:layout_constraintBottom_toBottomOf="@+id/bar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@drawable/elevetorcircle"
-        android:padding="32dp"
         app:srcCompat="@drawable/clickstart" />
 
     <androidx.viewpager.widget.ViewPager
@@ -143,14 +222,13 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
 
-
     <TextView
         android:id="@+id/answer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
-        android:gravity="center"
         android:background="@drawable/frame"
+        android:gravity="center"
         android:padding="8dp"
         android:textSize="20dp"
         android:visibility="invisible"
@@ -163,11 +241,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/elevetorcircle"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/bar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:visibility="gone" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

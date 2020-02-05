@@ -28,20 +28,23 @@ import com.example.projectcpe.ViewModel.MissionDATABASE;
 import com.opencsv.CSVReader;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-public class CsvImportAdapter extends RecyclerView.Adapter<CsvImportAdapter.CsvViewHolder>{
+public class CsvImportAdapter extends RecyclerView.Adapter<CsvImportAdapter.CsvViewHolder> {
 
     private List<Csv> csvList;
     private Activity activity;
-    private String[] nextLine ;
+    private String[] nextLine;
     private Mission missionImport;
     private ProgressDialog progressDialog;
     private volatile boolean stopThread = false;
+
 
     public CsvImportAdapter(List<Csv> list, Activity activity) {
         this.csvList = list;
@@ -51,7 +54,7 @@ public class CsvImportAdapter extends RecyclerView.Adapter<CsvImportAdapter.CsvV
     @NonNull
     @Override
     public CsvViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_import, parent,false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_import, parent, false);
         return new CsvViewHolder(v);
     }
 
@@ -71,6 +74,7 @@ public class CsvImportAdapter extends RecyclerView.Adapter<CsvImportAdapter.CsvV
     public class CsvViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView txName, txDate;
+
         public CsvViewHolder(@NonNull View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
@@ -90,118 +94,388 @@ public class CsvImportAdapter extends RecyclerView.Adapter<CsvImportAdapter.CsvV
             dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
 
-                    String path = Environment.getExternalStorageDirectory().getPath()+"/MyMissionExport/"+txName.getText()+"/"+txName.getText()+"Data.csv";
 
+                    progressDialog  = ProgressDialog.show(activity, "Import mission", "Loading...", true, false);
 
-                    try {
-                        File csvfile = new File(path);
-                        CSVReader reader = new CSVReader(new FileReader(csvfile.getAbsolutePath()));
-
-                        while ((nextLine = reader.readNext()) != null) {
-                            // nextLine[] is an array of values from the line
-
-                            if (reader.getLinesRead() == 2 ){
-                                Log.v("Lineeeeeeeee",String.valueOf(reader.getLinesRead()));
-
-                                SwitchImport(Integer.valueOf(nextLine[3]), path);
-                            }
-
-
-                        }
-
-
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                        Toast.makeText(activity, "The specified file was not found", Toast.LENGTH_SHORT).show();
-                    }
-
-
-//                    progressDialog  = ProgressDialog.show(activity, "Import mission", "Loading...", true, false);
-
-//                    startThread();
+                    startThread();
 
 
                 }
 
-                private void SwitchImport(int numberstep, String filePath) {
-                    String path = Environment.getExternalStorageDirectory().getPath()+"/MyMissionExport/"+txName.getText();
+                private void SwitchImport(int numberstep, String filePath) throws FileNotFoundException {
 
-                    File image1 = new File(filePath, "picture1.png");
-                    File image2 = new File(filePath, "picture2.png");
-                    File image3 = new File(filePath, "picture3.png");
-                    File image4 = new File(filePath, "picture4.png");
-                    File image5 = new File(filePath, "picture5.png");
-                    File image6 = new File(filePath, "picture6.png");
-                    File image7 = new File(filePath, "picture7.png");
-                    File image8 = new File(filePath, "picture8.png");
-                    File image9 = new File(filePath, "picture9.png");
-                    File image10 = new File(filePath, "picture10.png");
-
-                    BitmapFactory.Options bmOptions1 = new BitmapFactory.Options();
-                    BitmapFactory.Options bmOptions2 = new BitmapFactory.Options();
-                    BitmapFactory.Options bmOptions3 = new BitmapFactory.Options();
-                    BitmapFactory.Options bmOptions4 = new BitmapFactory.Options();
-                    BitmapFactory.Options bmOptions5 = new BitmapFactory.Options();
-                    BitmapFactory.Options bmOptions6 = new BitmapFactory.Options();
-                    BitmapFactory.Options bmOptions7 = new BitmapFactory.Options();
-                    BitmapFactory.Options bmOptions8 = new BitmapFactory.Options();
-                    BitmapFactory.Options bmOptions9 = new BitmapFactory.Options();
-                    BitmapFactory.Options bmOptions10 = new BitmapFactory.Options();
-
-
-
-                    Bitmap bitmap1 = BitmapFactory.decodeFile(image1.getAbsolutePath(),bmOptions1);
-                    Bitmap bitmap2 = BitmapFactory.decodeFile(image2.getAbsolutePath(),bmOptions2);
-                    Bitmap bitmap3 = BitmapFactory.decodeFile(image3.getAbsolutePath(),bmOptions3);
-                    Bitmap bitmap4 = BitmapFactory.decodeFile(image4.getAbsolutePath(),bmOptions4);
-                    Bitmap bitmap5 = BitmapFactory.decodeFile(image5.getAbsolutePath(),bmOptions5);
-                    Bitmap bitmap6 = BitmapFactory.decodeFile(image6.getAbsolutePath(),bmOptions6);
-                    Bitmap bitmap7 = BitmapFactory.decodeFile(image7.getAbsolutePath(),bmOptions7);
-                    Bitmap bitmap8 = BitmapFactory.decodeFile(image8.getAbsolutePath(),bmOptions8);
-                    Bitmap bitmap9 = BitmapFactory.decodeFile(image9.getAbsolutePath(),bmOptions9);
-                    Bitmap bitmap10 = BitmapFactory.decodeFile(image10.getAbsolutePath(),bmOptions10);
-
-                    switch (numberstep){
-                        case 5 :
-                            break;
-                        case 6 :
-                            break;
-                        case 7 :
-                            break;
-                        case 8 :
-                            break;
-                        case 9 :
-                            break;
-                        case 10 :
-
-
-
-
-                            saveToInternalStorage(bitmap1, "picture1", "Animal");
-                            saveToInternalStorage(bitmap2, "picture2", "Animal");
-                            saveToInternalStorage(bitmap3, "picture3", "Animal");
-                            saveToInternalStorage(bitmap4, "picture4", "Animal");
-                            saveToInternalStorage(bitmap5, "picture5", "Animal");
-                            saveToInternalStorage(bitmap6, "picture 6", "Animal");
-                            saveToInternalStorage(bitmap7, "picture7", "Animal");
-                            saveToInternalStorage(bitmap8, "picture8", "Animal");
-                            saveToInternalStorage(bitmap9, "picture9", "Animal");
-                            saveToInternalStorage(bitmap10, "picture10", "Animal");
-                            break;
+                    String createFolder = Environment.getExternalStorageDirectory().getPath() + "/EnglishPractice/" +txName.getText();
+                    File file = new File(createFolder);
+                    if (!file.exists())
+                    {
+                        file.mkdirs();
                     }
+                    Mission mission = new Mission();
+                    mission.setMissionName(nextLine[0]);
+                    mission.setDetailMission(nextLine[1]);
+                    mission.setAge(Integer.valueOf(nextLine[2]));
+                    mission.setNumberofMission(Integer.valueOf(nextLine[3]));
+
+                    String path = Environment.getExternalStorageDirectory().getPath() + "/MyMissionExport/" + txName.getText();
+
+
+
+                    File image1 = new File(path, "picture1.png");
+                    File image2 = new File(path, "picture2.png");
+                    File image3 = new File(path, "picture3.png");
+                    File image4 = new File(path, "picture4.png");
+                    File image5 = new File(path, "picture5.png");
+//                    File image6 = new File(path, "picture6.png");
+//                    File image7 = new File(path, "picture7.png");
+//                    File image8 = new File(path, "picture8.png");
+//                    File image9 = new File(path, "picture9.png");
+//                    File image10 = new File(path, "picture10.png");
+
+
+                    Bitmap bitmap1 = BitmapFactory.decodeStream(new FileInputStream(image1));
+                    Bitmap bitmap2 = BitmapFactory.decodeStream(new FileInputStream(image2));
+                    Bitmap bitmap3 = BitmapFactory.decodeStream(new FileInputStream(image3));
+                    Bitmap bitmap4 = BitmapFactory.decodeStream(new FileInputStream(image4));
+                    Bitmap bitmap5 = BitmapFactory.decodeStream(new FileInputStream(image5));
+//                    Bitmap bitmap6 = BitmapFactory.decodeStream(new FileInputStream(image6));
+//                    Bitmap bitmap7 = BitmapFactory.decodeStream(new FileInputStream(image7));
+//                    Bitmap bitmap8 = BitmapFactory.decodeStream(new FileInputStream(image8));
+//                    Bitmap bitmap9 = BitmapFactory.decodeStream(new FileInputStream(image9));
+//                    Bitmap bitmap10 = BitmapFactory.decodeStream(new FileInputStream(image10));
+
+
+
+                    switch (numberstep) {
+
+                        case 5:
+                            saveToInternalStorage(bitmap1, "picture1", txName.getText().toString());
+                            saveToInternalStorage(bitmap2, "picture2", txName.getText().toString());
+                            saveToInternalStorage(bitmap3, "picture3", txName.getText().toString());
+                            saveToInternalStorage(bitmap4, "picture4", txName.getText().toString());
+                            saveToInternalStorage(bitmap5, "picture5", txName.getText().toString());
+
+                            mission.setQ1(nextLine[4]);
+                            mission.setQ2(nextLine[5]);
+                            mission.setQ3(nextLine[6]);
+                            mission.setQ4(nextLine[7]);
+                            mission.setQ5(nextLine[8]);
+
+
+                            mission.setA1(nextLine[9]);
+                            mission.setA2(nextLine[10]);
+                            mission.setA3(nextLine[11]);
+                            mission.setA4(nextLine[12]);
+                            mission.setA5(nextLine[13]);
+
+                            mission.setS1(nextLine[14]);
+                            mission.setS2(nextLine[15]);
+                            mission.setS3(nextLine[16]);
+                            mission.setS4(nextLine[17]);
+                            mission.setS5(nextLine[18]);
+
+                            mission.setH1(nextLine[19]);
+                            mission.setH2(nextLine[20]);
+                            mission.setH3(nextLine[21]);
+                            mission.setH4(nextLine[22]);
+                            mission.setH5(nextLine[23]);
+
+
+
+
+
+
+                            break;
+//                        case 6:
+//                            saveToInternalStorage(bitmap1, "picture1", txName.getText().toString());
+//                            saveToInternalStorage(bitmap2, "picture2", txName.getText().toString());
+//                            saveToInternalStorage(bitmap3, "picture3", txName.getText().toString());
+//                            saveToInternalStorage(bitmap4, "picture4", txName.getText().toString());
+//                            saveToInternalStorage(bitmap5, "picture5", txName.getText().toString());
+//                            saveToInternalStorage(bitmap6, "picture6", txName.getText().toString());
+//
+//                            mission.setQ1(nextLine[4]);
+//                            mission.setQ2(nextLine[5]);
+//                            mission.setQ3(nextLine[6]);
+//                            mission.setQ4(nextLine[7]);
+//                            mission.setQ5(nextLine[8]);
+//                            mission.setQ6(nextLine[9]);
+//
+//
+//
+//
+//
+//
+//                            mission.setA1(nextLine[10]);
+//                            mission.setA2(nextLine[11]);
+//                            mission.setA3(nextLine[12]);
+//                            mission.setA4(nextLine[13]);
+//                            mission.setA5(nextLine[14]);
+//                            mission.setA6(nextLine[15]);
+//
+//
+//
+//
+//
+//                            mission.setS1(nextLine[16]);
+//                            mission.setS2(nextLine[17]);
+//                            mission.setS3(nextLine[18]);
+//                            mission.setS4(nextLine[19]);
+//                            mission.setS5(nextLine[20]);
+//                            mission.setS6(nextLine[21]);
+//
+//
+//
+//
+//
+//                            mission.setH1(nextLine[22]);
+//                            mission.setH2(nextLine[23]);
+//                            mission.setH3(nextLine[24]);
+//                            mission.setH4(nextLine[25]);
+//                            mission.setH5(nextLine[26]);
+//                            mission.setH6(nextLine[27]);
+//
+//
+//
+//                            break;
+//                        case 7:
+//                            saveToInternalStorage(bitmap1, "picture1", txName.getText().toString());
+//                            saveToInternalStorage(bitmap2, "picture2", txName.getText().toString());
+//                            saveToInternalStorage(bitmap3, "picture3", txName.getText().toString());
+//                            saveToInternalStorage(bitmap4, "picture4", txName.getText().toString());
+//                            saveToInternalStorage(bitmap5, "picture5", txName.getText().toString());
+//                            saveToInternalStorage(bitmap6, "picture6", txName.getText().toString());
+//                            saveToInternalStorage(bitmap7, "picture7", txName.getText().toString());
+//
+//                            mission.setQ1(nextLine[4]);
+//                            mission.setQ2(nextLine[5]);
+//                            mission.setQ3(nextLine[6]);
+//                            mission.setQ4(nextLine[7]);
+//                            mission.setQ5(nextLine[8]);
+//                            mission.setQ6(nextLine[9]);
+//                            mission.setQ7(nextLine[10]);
+//
+//
+//
+//
+//
+//                            mission.setA1(nextLine[11]);
+//                            mission.setA2(nextLine[12]);
+//                            mission.setA3(nextLine[13]);
+//                            mission.setA4(nextLine[14]);
+//                            mission.setA5(nextLine[15]);
+//                            mission.setA6(nextLine[16]);
+//                            mission.setA7(nextLine[17]);
+//
+//
+//
+//
+//                            mission.setS1(nextLine[18]);
+//                            mission.setS2(nextLine[19]);
+//                            mission.setS3(nextLine[20]);
+//                            mission.setS4(nextLine[21]);
+//                            mission.setS5(nextLine[22]);
+//                            mission.setS6(nextLine[23]);
+//                            mission.setS7(nextLine[24]);
+//
+//
+//
+//
+//                            mission.setH1(nextLine[25]);
+//                            mission.setH2(nextLine[26]);
+//                            mission.setH3(nextLine[27]);
+//                            mission.setH4(nextLine[28]);
+//                            mission.setH5(nextLine[29]);
+//                            mission.setH6(nextLine[30]);
+//                            mission.setH7(nextLine[31]);
+//
+//                            break;
+//                        case 8:
+//                            saveToInternalStorage(bitmap1, "picture1", txName.getText().toString());
+//                            saveToInternalStorage(bitmap2, "picture2", txName.getText().toString());
+//                            saveToInternalStorage(bitmap3, "picture3", txName.getText().toString());
+//                            saveToInternalStorage(bitmap4, "picture4", txName.getText().toString());
+//                            saveToInternalStorage(bitmap5, "picture5", txName.getText().toString());
+//                            saveToInternalStorage(bitmap6, "picture6", txName.getText().toString());
+//                            saveToInternalStorage(bitmap7, "picture7", txName.getText().toString());
+//                            saveToInternalStorage(bitmap8, "picture8", txName.getText().toString());
+//
+//                            mission.setQ1(nextLine[4]);
+//                            mission.setQ2(nextLine[5]);
+//                            mission.setQ3(nextLine[6]);
+//                            mission.setQ4(nextLine[7]);
+//                            mission.setQ5(nextLine[8]);
+//                            mission.setQ6(nextLine[9]);
+//                            mission.setQ7(nextLine[10]);
+//                            mission.setQ8(nextLine[11]);
+//
+//
+//
+//
+//                            mission.setA1(nextLine[12]);
+//                            mission.setA2(nextLine[13]);
+//                            mission.setA3(nextLine[14]);
+//                            mission.setA4(nextLine[15]);
+//                            mission.setA5(nextLine[16]);
+//                            mission.setA6(nextLine[17]);
+//                            mission.setA7(nextLine[18]);
+//                            mission.setA8(nextLine[19]);
+//
+//
+//
+//                            mission.setS1(nextLine[20]);
+//                            mission.setS2(nextLine[21]);
+//                            mission.setS3(nextLine[22]);
+//                            mission.setS4(nextLine[23]);
+//                            mission.setS5(nextLine[24]);
+//                            mission.setS6(nextLine[25]);
+//                            mission.setS7(nextLine[26]);
+//                            mission.setS8(nextLine[27]);
+//
+//
+//
+//                            mission.setH1(nextLine[28]);
+//                            mission.setH2(nextLine[29]);
+//                            mission.setH3(nextLine[30]);
+//                            mission.setH4(nextLine[31]);
+//                            mission.setH5(nextLine[32]);
+//                            mission.setH6(nextLine[33]);
+//                            mission.setH7(nextLine[34]);
+//                            mission.setS8(nextLine[35]);
+//
+//                            break;
+//                        case 9:
+//                            saveToInternalStorage(bitmap1, "picture1", txName.getText().toString());
+//                            saveToInternalStorage(bitmap2, "picture2", txName.getText().toString());
+//                            saveToInternalStorage(bitmap3, "picture3", txName.getText().toString());
+//                            saveToInternalStorage(bitmap4, "picture4", txName.getText().toString());
+//                            saveToInternalStorage(bitmap5, "picture5", txName.getText().toString());
+//                            saveToInternalStorage(bitmap6, "picture6", txName.getText().toString());
+//                            saveToInternalStorage(bitmap7, "picture7", txName.getText().toString());
+//                            saveToInternalStorage(bitmap8, "picture8", txName.getText().toString());
+//                            saveToInternalStorage(bitmap9, "picture9", txName.getText().toString());
+//
+//                            mission.setQ1(nextLine[4]);
+//                            mission.setQ2(nextLine[5]);
+//                            mission.setQ3(nextLine[6]);
+//                            mission.setQ4(nextLine[7]);
+//                            mission.setQ5(nextLine[8]);
+//                            mission.setQ6(nextLine[9]);
+//                            mission.setQ7(nextLine[10]);
+//                            mission.setQ8(nextLine[11]);
+//                            mission.setQ9(nextLine[12]);
+//
+//
+//
+//                            mission.setA1(nextLine[13]);
+//                            mission.setA2(nextLine[14]);
+//                            mission.setA3(nextLine[15]);
+//                            mission.setA4(nextLine[16]);
+//                            mission.setA5(nextLine[17]);
+//                            mission.setA6(nextLine[18]);
+//                            mission.setA7(nextLine[19]);
+//                            mission.setA8(nextLine[20]);
+//                            mission.setA9(nextLine[21]);
+//
+//
+//                            mission.setS1(nextLine[22]);
+//                            mission.setS2(nextLine[23]);
+//                            mission.setS3(nextLine[24]);
+//                            mission.setS4(nextLine[25]);
+//                            mission.setS5(nextLine[26]);
+//                            mission.setS6(nextLine[27]);
+//                            mission.setS7(nextLine[28]);
+//                            mission.setS8(nextLine[29]);
+//                            mission.setS9(nextLine[30]);
+//
+//
+//                            mission.setH1(nextLine[31]);
+//                            mission.setH2(nextLine[32]);
+//                            mission.setH3(nextLine[33]);
+//                            mission.setH4(nextLine[34]);
+//                            mission.setH5(nextLine[35]);
+//                            mission.setH6(nextLine[36]);
+//                            mission.setH7(nextLine[37]);
+//                            mission.setS8(nextLine[38]);
+//                            mission.setH9(nextLine[39]);
+//
+//                            break;
+//                        case 10:
+//
+//
+//                            saveToInternalStorage(bitmap1, "picture1", txName.getText().toString());
+//                            saveToInternalStorage(bitmap2, "picture2", txName.getText().toString());
+//                            saveToInternalStorage(bitmap3, "picture3", txName.getText().toString());
+//                            saveToInternalStorage(bitmap4, "picture4", txName.getText().toString());
+//                            saveToInternalStorage(bitmap5, "picture5", txName.getText().toString());
+//                            saveToInternalStorage(bitmap6, "picture6", txName.getText().toString());
+//                            saveToInternalStorage(bitmap7, "picture7", txName.getText().toString());
+//                            saveToInternalStorage(bitmap8, "picture8", txName.getText().toString());
+//                            saveToInternalStorage(bitmap9, "picture9", txName.getText().toString());
+//                            saveToInternalStorage(bitmap10, "picture10", txName.getText().toString());
+//
+//                            mission.setQ1(nextLine[4]);
+//                            mission.setQ2(nextLine[5]);
+//                            mission.setQ3(nextLine[6]);
+//                            mission.setQ4(nextLine[7]);
+//                            mission.setQ5(nextLine[8]);
+//                            mission.setQ6(nextLine[9]);
+//                            mission.setQ7(nextLine[10]);
+//                            mission.setQ8(nextLine[11]);
+//                            mission.setQ9(nextLine[12]);
+//                            mission.setQ10(nextLine[13]);
+//
+//
+//                            mission.setA1(nextLine[14]);
+//                            mission.setA2(nextLine[15]);
+//                            mission.setA3(nextLine[16]);
+//                            mission.setA4(nextLine[17]);
+//                            mission.setA5(nextLine[18]);
+//                            mission.setA6(nextLine[19]);
+//                            mission.setA7(nextLine[20]);
+//                            mission.setA8(nextLine[21]);
+//                            mission.setA9(nextLine[22]);
+//                            mission.setA10(nextLine[23]);
+//
+//                            mission.setS1(nextLine[24]);
+//                            mission.setS2(nextLine[25]);
+//                            mission.setS3(nextLine[26]);
+//                            mission.setS4(nextLine[27]);
+//                            mission.setS5(nextLine[28]);
+//                            mission.setS6(nextLine[29]);
+//                            mission.setS7(nextLine[30]);
+//                            mission.setS8(nextLine[31]);
+//                            mission.setS9(nextLine[32]);
+//                            mission.setS10(nextLine[33]);
+//
+//                            mission.setH1(nextLine[34]);
+//                            mission.setH2(nextLine[35]);
+//                            mission.setH3(nextLine[36]);
+//                            mission.setH4(nextLine[37]);
+//                            mission.setH5(nextLine[38]);
+//                            mission.setH6(nextLine[39]);
+//                            mission.setH7(nextLine[40]);
+//                            mission.setS8(nextLine[41]);
+//                            mission.setH9(nextLine[42]);
+//                            mission.setH10(nextLine[43]);
+//
+//
+//                            break;
+                    }
+
+                    MissionDATABASE.getInstance(activity).missionDAO().create(mission);
+                    stopThread = true;
                 }
 
                 private void startThread() {
 
-                        stopThread = false;
-                        ExampleRunnable runnable = new ExampleRunnable();
-                        new Thread(runnable).start();
+                    stopThread = false;
+                    ExampleRunnable runnable = new ExampleRunnable();
+                    new Thread(runnable).start();
 
 
                 }
 
                 class ExampleRunnable implements Runnable {
-
 
 
                     ExampleRunnable() {
@@ -211,8 +485,31 @@ public class CsvImportAdapter extends RecyclerView.Adapter<CsvImportAdapter.CsvV
                     @Override
                     public void run() {
 
+                        String path = Environment.getExternalStorageDirectory().getPath() + "/MyMissionExport/" + txName.getText() + "/" + txName.getText() + "Data.csv";
 
-//                        SwitchAddListString(missionList.get(0).getNumberofMission());
+
+                        try {
+                            File csvfile = new File(path);
+                            CSVReader reader = new CSVReader(new FileReader(csvfile.getAbsolutePath()));
+
+                            while ((nextLine = reader.readNext()) != null) {
+                                // nextLine[] is an array of values from the line
+
+                                if (reader.getLinesRead() == 2) {
+                                    Log.v("Lineeeeeeeee", String.valueOf(reader.getLinesRead()));
+
+                                    SwitchImport(Integer.valueOf(nextLine[3]), path);
+                                }
+
+
+                            }
+
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+
+                        }
+
 
                         if (stopThread) {
 
@@ -222,11 +519,8 @@ public class CsvImportAdapter extends RecyclerView.Adapter<CsvImportAdapter.CsvV
                                 public void run() {
 
 
-
-
                                     progressDialog.dismiss();
 //                                    recreate();
-
 
 
                                 }
@@ -235,7 +529,6 @@ public class CsvImportAdapter extends RecyclerView.Adapter<CsvImportAdapter.CsvV
 
 
                     }
-
 
 
                 }
@@ -256,7 +549,7 @@ public class CsvImportAdapter extends RecyclerView.Adapter<CsvImportAdapter.CsvV
     private String saveToInternalStorage(Bitmap bitmapImage, String picturename, String missionName) {
         ContextWrapper cw = new ContextWrapper(activity);
         // path to /data/data/yourapp/app_data/imageDir
-        File directory = new File(Environment.getExternalStorageDirectory() + "/MyMission/" + missionName + "/");
+        File directory = new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionName + "/");
         // Create imageDir
         File mypath = new File(directory, picturename + ".png");
 

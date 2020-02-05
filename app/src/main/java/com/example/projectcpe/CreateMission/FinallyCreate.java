@@ -117,7 +117,7 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
                             file.mkdirs();
                         }
 
-                        test.setImageBitmap(b5);
+
                         loadingDialog = ProgressDialog.show(FinallyCreate.this, "Create Mission", "Creating...", true, false);
 
 
@@ -493,7 +493,7 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
 
         for (int i = 0; i < StepAdapter.stepList.size(); i++) {
 
-//            if (StepAdapter.stepList.get(i).getAnswer() != null && StepAdapter.stepList.get(i).getQuestion() != null && StepAdapter.stepList.get(i).getScore() != null && StepAdapter.stepList.get(i).getHint() != null) {
+            if (StepAdapter.stepList.get(i).getAnswer() != null && StepAdapter.stepList.get(i).getQuestion() != null && StepAdapter.stepList.get(i).getScore() != null && StepAdapter.stepList.get(i).getHint() != null) {
 
 
 
@@ -573,7 +573,7 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
                         break;
                 }
 
-//            }
+            }
 
 
 

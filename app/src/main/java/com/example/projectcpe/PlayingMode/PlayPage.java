@@ -1,14 +1,18 @@
 package com.example.projectcpe.PlayingMode;
 
 import com.example.projectcpe.Adapter.SlidePageAdapter;
+import com.example.projectcpe.CSV.Utility.PermissionUtility;
+import com.example.projectcpe.MainActivity;
 import com.example.projectcpe.ViewModel.Mission;
 import com.example.projectcpe.ViewModel.MissionDATABASE;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -21,8 +25,10 @@ import android.speech.SpeechRecognizer;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,28 +49,42 @@ public class PlayPage extends AppCompatActivity {
     private int minutes = 0;
     float Score;
     float SumScore;
+    String Hint;
+    int numHint;
+
+    LinearLayout frameHint;
 
     private SlidePageAdapter adapter;
-    private TextView textclock,timecount, Answer;
-    ImageView recogni, back, next, voice, help,start;
+    private TextView textclock, timecount, Answer;
+    ImageView recogni, back, next, voice, help, start;
     private Timer timer;
     private CountDownTimer countDownTimer;
-    ViewPager pager ;
+    ViewPager pager;
     ImageView check;
 
     boolean threadreset;
-    EditText putAnwer ;
+    EditText putAnwer;
     protected int id, stepnum;
     protected boolean running = false;
+    TextView hint1, hint2, hint3, hint4;
 
     SpeechRecognizer speechRecognizer;
     Intent speechRecognizerIntent;
     String Keeper;
-    private String[] textReturn,ScoreString;
-    int memberId ;
+    private String[] textReturn, ScoreString, HintString;
+    int memberId;
     List<Mission> missionList;
-    List<String> stringList,scoreList;
+    List<String> stringList, scoreList, hintList;
+    public final int WRITE_PERMISSON_REQUEST_CODE = 1;
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (PermissionUtility.askPermissionForActivity(PlayPage.this, Manifest.permission.RECORD_AUDIO, WRITE_PERMISSON_REQUEST_CODE)) {
+
+
+        }
+    }
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -74,8 +94,9 @@ public class PlayPage extends AppCompatActivity {
 
         Initial();
 
+        getHint(pager.getCurrentItem());
 
-//        Toast.makeText(getApplicationContext(), String.valueOf(id), Toast.LENGTH_LONG).show();
+
 
 
         speechRecognizer.setRecognitionListener(new RecognitionListener() {
@@ -114,16 +135,17 @@ public class PlayPage extends AppCompatActivity {
 
                 ArrayList<String> matchesFound = bundle.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
 
-                if (matchesFound != null)
-                {
+                if (matchesFound != null) {
                     Keeper = matchesFound.get(0);
                     Answer.setVisibility(View.VISIBLE);
-                    Answer.setText(Keeper);
+                    Answer.setText(Keeper.replace(".", ""));
+
                     getAnswerFun(pager.getCurrentItem());
-                    VerifyAnswer(stringList , Keeper.toLowerCase());
+                    VerifyAnswer(stringList, Keeper.replace(".", "").toLowerCase());
 
 //                    Bundle bundleAnswer = new Bundle();
-//                    bundleAnswer.putString("answerATV", Answer.getText().toString().trim());
+//                    bundleAnswer.putString("answerATV", Answer.getText().t
+//                    oString().trim());
 //
 //                    OneFragment oneFragment = new OneFragment();
 //                    oneFragment.setArguments(bundleAnswer);
@@ -146,74 +168,212 @@ public class PlayPage extends AppCompatActivity {
 
     }
 
+    View.OnClickListener HintStep = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+
+            if (frameHint.getVisibility() == View.GONE) {
+                frameHint.setVisibility(View.VISIBLE);
+                switch (numHint) {
+                    case 1 :
+                        hint2.setVisibility(View.GONE);
+                        hint3.setVisibility(View.GONE);
+                        hint4.setVisibility(View.GONE);
+                        break;
+                    case 2 :
+                        hint3.setVisibility(View.GONE);
+                        hint4.setVisibility(View.GONE);
+                        break;
+                    case 3 :
+                        hint4.setVisibility(View.GONE);
+                }
+
+            } else {
+                frameHint.setVisibility(View.GONE);
+            }
+        }
+    };
+
+    View.OnClickListener hintOne = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            final Dialog dialog = new Dialog(PlayPage.this);
+            dialog.getWindow().setBackgroundDrawableResource(R.drawable.frameline);
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            dialog.setContentView(R.layout.dialog_hint);
+            dialog.setCancelable(true);
+
+            TextView data = dialog.findViewById(R.id.dataHint);
+
+            data.setText(HintString[0]);
+            Log.v("numHin", String.valueOf(HintString.length));
+
+
+            dialog.show();
+        }
+    };
+
+    View.OnClickListener hintTwo = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            final Dialog dialog = new Dialog(PlayPage.this);
+            dialog.getWindow().setBackgroundDrawableResource(R.drawable.frameline);
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            dialog.setContentView(R.layout.dialog_hint);
+            dialog.setCancelable(true);
+
+            dialog.show();
+
+            TextView data = dialog.findViewById(R.id.dataHint);
+
+            data.setText(HintString[1]);
+        }
+    };
+
+    View.OnClickListener hintThree = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            final Dialog dialog = new Dialog(PlayPage.this);
+            dialog.getWindow().setBackgroundDrawableResource(R.drawable.frameline);
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            dialog.setContentView(R.layout.dialog_hint);
+            dialog.setCancelable(true);
+
+            dialog.show();
+
+            TextView data = dialog.findViewById(R.id.dataHint);
+
+            data.setText(HintString[2]);
+        }
+    };
+
+    View.OnClickListener hintFour = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            final Dialog dialog = new Dialog(PlayPage.this);
+            dialog.getWindow().setBackgroundDrawableResource(R.drawable.frameline);
+            dialog.requestWindowFeature(Window.FEATURE_LEFT_ICON);
+            dialog.setContentView(R.layout.dialog_hint);
+            dialog.setCancelable(true);
+
+            dialog.show();
+
+            TextView data = dialog.findViewById(R.id.dataHint);
+
+            data.setText(HintString[3]);
+        }
+    };
+
     View.OnTouchListener Hilight = new View.OnTouchListener() {
         @Override
         public boolean onTouch(View view, MotionEvent motionEvent) {
 
+            if (PermissionUtility.askPermissionForActivity(PlayPage.this, Manifest.permission.RECORD_AUDIO, WRITE_PERMISSON_REQUEST_CODE)) {
 
-            switch (motionEvent.getAction())
-            {
-                case MotionEvent.ACTION_DOWN :
 
-                    Log.d("motionEvent","Action was DOWN");
+            }
+
+            switch (motionEvent.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+
+                    Log.d("motionEvent", "Action was DOWN");
                     view.setBackgroundResource(R.drawable.fram_hilight);
+                    ;
                     speechRecognizer.startListening(speechRecognizerIntent);
                     Keeper = "";
                     return true;
 
-                case MotionEvent.ACTION_UP :
-                    Log.d("motionEvent","Action was UP");
+                case MotionEvent.ACTION_UP:
+                    Log.d("motionEvent", "Action was UP");
                     view.setBackgroundResource(R.drawable.fram_unhilight);
                     speechRecognizer.stopListening();
                     return true;
-                default :
+                default:
                     return false;
             }
         }
     };
 
-    private void VerifyAnswer(List<String> missionAnswer, String userAnswer)  {
+    private void getHint(int position) {
+
+        switch (position) {
+            case 0:
+                HintString = missionList.get(0).getH1().split("/");
+                break;
+            case 1:
+                HintString = missionList.get(0).getH2().split("/");
+                break;
+            case 2:
+                HintString = missionList.get(0).getH3().split("/");
+                break;
+            case 3:
+                HintString = missionList.get(0).getH4().split("/");
+                break;
+            case 4:
+                HintString = missionList.get(0).getH5().split("/");
+                break;
+            case 5:
+                HintString = missionList.get(0).getH6().split("/");
+                break;
+            case 6:
+                HintString = missionList.get(0).getH7().split("/");
+                break;
+            case 7:
+                HintString = missionList.get(0).getH8().split("/");
+                break;
+            case 8:
+                HintString = missionList.get(0).getH9().split("/");
+                break;
+            case 9:
+                HintString = missionList.get(0).getH10().split("/");
+                break;
+        }
+        hintList = Arrays.asList(HintString);
+        numHint = HintString.length;
+    }
+
+    private void VerifyAnswer(List<String> missionAnswer, String userAnswer) {
         if (missionAnswer.contains(userAnswer)) {
             CorrectStep();
             getScore(pager.getCurrentItem());
 
-            switch (Integer.valueOf(missionAnswer.indexOf(userAnswer))){
-                case 0 :
+            switch (Integer.valueOf(missionAnswer.indexOf(userAnswer))) {
+                case 0:
                     Score = Float.valueOf(ScoreString[0]);
 
                     break;
-                case 1 :
+                case 1:
                     Score = Float.valueOf(ScoreString[1]);
 
                     break;
-                case 2 :
+                case 2:
                     Score = Float.valueOf(ScoreString[2]);
 
                     break;
-                case 3 :
+                case 3:
                     Score = Float.valueOf(ScoreString[3]);
 
                     break;
-                case 4 :
+                case 4:
                     Score = Float.valueOf(ScoreString[4]);
 
                     break;
-                case 5 :
+                case 5:
                     Score = Float.valueOf(ScoreString[5]);
 
                     break;
-                case 6 : Score = Float.valueOf(ScoreString[6]);
+                case 6:
+                    Score = Float.valueOf(ScoreString[6]);
                     break;
 
             }
 
-            SumScore+=Score;
-            Toast.makeText(getApplicationContext(), "point this step : "+String.valueOf(Score)
-                    +"\n All Score : "+SumScore, Toast.LENGTH_SHORT).show();
+            SumScore += Score;
+            Toast.makeText(getApplicationContext(), "point this step : " + String.valueOf(Score)
+                    + "\n All Score : " + SumScore, Toast.LENGTH_SHORT).show();
 
 
-
-        }else {
+        } else {
             WrongStep();
         }
 
@@ -240,14 +400,12 @@ public class PlayPage extends AppCompatActivity {
         check.setImageResource(R.drawable.correct);
 
 
-
-
         Runnable Delay = new Runnable() {
             @Override
             public void run() {
 
 
-                if (pager.getCurrentItem()+1 == missionList.get(0).getNumberofMission()){
+                if (pager.getCurrentItem() + 1 == missionList.get(0).getNumberofMission()) {
                     Toast.makeText(PlayPage.this, "end of step", Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(PlayPage.this, SumaryPage.class);
                     i.putExtra("IDmission", id);
@@ -256,13 +414,23 @@ public class PlayPage extends AppCompatActivity {
                     startActivity(i);
                     finish();
                     overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-                }else{
+                } else {
                     check.setVisibility(View.GONE);
-                    pager.setCurrentItem(pager.getCurrentItem()+1);
+                    pager.setCurrentItem(pager.getCurrentItem() + 1);
+
+                    getHint(pager.getCurrentItem()); //เปลี่ยนค่าของ hint
+                    frameHint.setVisibility(View.GONE); // ซ่อนกรอบของ Hint ก่อนที่จะเปลี่ยนเพจ
+
                     Answer.setText("");
                     Answer.setVisibility(View.INVISIBLE);
                     recogni.setOnTouchListener(Hilight);
                     textclock.setTextColor(getResources().getColor(R.color.black));
+
+                    stopTimer();
+                    ms = 0;
+                    minutes = 0;
+                    seconds = 0;
+
                     startTimer();
                 }
 
@@ -285,23 +453,19 @@ public class PlayPage extends AppCompatActivity {
         speechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
     }
 
-    public class LanguageDetailsChecker extends BroadcastReceiver
-    {
+    public class LanguageDetailsChecker extends BroadcastReceiver {
         private List<String> supportedLanguages;
 
         private String languagePreference;
 
         @Override
-        public void onReceive(Context context, Intent intent)
-        {
+        public void onReceive(Context context, Intent intent) {
             Bundle results = getResultExtras(true);
-            if (results.containsKey(RecognizerIntent.EXTRA_LANGUAGE_PREFERENCE))
-            {
+            if (results.containsKey(RecognizerIntent.EXTRA_LANGUAGE_PREFERENCE)) {
                 languagePreference =
                         results.getString(RecognizerIntent.EXTRA_LANGUAGE_PREFERENCE);
             }
-            if (results.containsKey(RecognizerIntent.EXTRA_SUPPORTED_LANGUAGES))
-            {
+            if (results.containsKey(RecognizerIntent.EXTRA_SUPPORTED_LANGUAGES)) {
                 supportedLanguages =
                         results.getStringArrayList(
                                 RecognizerIntent.EXTRA_SUPPORTED_LANGUAGES);
@@ -309,12 +473,12 @@ public class PlayPage extends AppCompatActivity {
         }
     }
 
-    private void ShowViewPage()
-    {
+    private void ShowViewPage() {
         adapter = new SlidePageAdapter(getSupportFragmentManager(), id, stepnum, getData(id));
         pager.setAdapter(adapter);
     }
-    public void Initial(){
+
+    public void Initial() {
 
         Bundle bundle = getIntent().getExtras();
         id = bundle.getInt("missionId");
@@ -322,16 +486,20 @@ public class PlayPage extends AppCompatActivity {
         memberId = bundle.getInt("memberId");
 
 
-
+        frameHint = findViewById(R.id.frameHint);
+        hint1 = findViewById(R.id.hint1);
+        hint2 = findViewById(R.id.hint2);
+        hint3 = findViewById(R.id.hint3);
+        hint4 = findViewById(R.id.hint4);
 
         check = findViewById(R.id.check);
         recogni = findViewById(R.id.mic);
-        back = findViewById(R.id.back);
-        next = findViewById(R.id.next);
+//        back = findViewById(R.id.back);
+//        next = findViewById(R.id.next);
         help = findViewById(R.id.hint);
         voice = findViewById(R.id.speak);
         start = findViewById(R.id.startClick);
-        timecount =findViewById(R.id.counttime);
+        timecount = findViewById(R.id.counttime);
         pager = findViewById(R.id.ViewPage);
         Answer = findViewById(R.id.answer);
         textclock = findViewById(R.id.textClock);
@@ -342,15 +510,18 @@ public class PlayPage extends AppCompatActivity {
 
         SettingRecognizi();
 
-        recogni.setOnTouchListener(Hilight);
-        back.setOnTouchListener(Hilight);
-        next.setOnTouchListener(Hilight);
-        help.setOnTouchListener(Hilight);
-        voice.setOnTouchListener(Hilight);
+
+//        back.setOnTouchListener(Hilight);
+//        next.setOnTouchListener(Hilight);
+
+
+
+        hint1.setOnClickListener(hintOne);
+        hint2.setOnClickListener(hintTwo);
+        hint3.setOnClickListener(hintThree);
+        hint4.setOnClickListener(hintFour);
 
         start.setOnClickListener(startTimeBegin);
-
-
 
 
     }
@@ -358,41 +529,51 @@ public class PlayPage extends AppCompatActivity {
     private void getScore(int position) {
 
         switch (position) {
-            case 0 : ScoreString = missionList.get(0).getS1().split("/");
+            case 0:
+                ScoreString = missionList.get(0).getS1().split("/");
                 break;
-            case 1 : ScoreString = missionList.get(0).getS2().split("/");
+            case 1:
+                ScoreString = missionList.get(0).getS2().split("/");
                 break;
-            case 2 : ScoreString = missionList.get(0).getS3().split("/");
+            case 2:
+                ScoreString = missionList.get(0).getS3().split("/");
                 break;
-            case 3 : ScoreString = missionList.get(0).getS4().split("/");
+            case 3:
+                ScoreString = missionList.get(0).getS4().split("/");
                 break;
-            case 4 : ScoreString = missionList.get(0).getS5().split("/");
+            case 4:
+                ScoreString = missionList.get(0).getS5().split("/");
                 break;
-            case 5 : ScoreString = missionList.get(0).getS6().split("/");
+            case 5:
+                ScoreString = missionList.get(0).getS6().split("/");
                 break;
-            case 6 : ScoreString = missionList.get(0).getS7().split("/");
+            case 6:
+                ScoreString = missionList.get(0).getS7().split("/");
                 break;
-            case 7 : ScoreString = missionList.get(0).getS8().split("/");
+            case 7:
+                ScoreString = missionList.get(0).getS8().split("/");
                 break;
-            case 8 : ScoreString = missionList.get(0).getS9().split("/");
+            case 8:
+                ScoreString = missionList.get(0).getS9().split("/");
                 break;
-            case 9 : ScoreString = missionList.get(0).getS10().split("/");
+            case 9:
+                ScoreString = missionList.get(0).getS10().split("/");
                 break;
         }
         scoreList = Arrays.asList(ScoreString);
     }
 
-    private void stopTimer(){
+    private void stopTimer() {
         running = false;
 //        btnStart.setText("Start");
         timer.cancel();
     }
 
-    private void countDownTimer(){
+    private void countDownTimer() {
         countDownTimer = new CountDownTimer(4000, 1000) {
 
             public void onTick(long millisUntilFinished) {
-                timecount.setText(String.valueOf(millisUntilFinished / 1000) );
+                timecount.setText(String.valueOf(millisUntilFinished / 1000));
                 //here you can have your logic to set text to edittext
             }
 
@@ -400,12 +581,17 @@ public class PlayPage extends AppCompatActivity {
                 timecount.setText("Start !!!");
 
                 Runnable Delay = new Runnable() {
+                    @SuppressLint("ClickableViewAccessibility")
                     @Override
                     public void run() {
 
                         timecount.setVisibility(View.GONE);
                         startTimer();
                         ShowViewPage();
+
+                        voice.setOnTouchListener(Hilight);// ใหปุ่ม speech อ่านออกเสียง เริ่มทำงานหลังจาก นับถอยหลังเสร็จ
+                        help.setOnClickListener(HintStep);// ใหปุ่ม speech hint เริ่มทำงานหลังจาก นับถอยหลังเสร็จ
+                        recogni.setOnTouchListener(Hilight);// ใหปุ่ม speech recog เริ่มทำงานหลังจาก นับถอยหลังเสร็จ
 
                     }
                 };
@@ -419,7 +605,7 @@ public class PlayPage extends AppCompatActivity {
         }.start();
     }
 
-    private void startTimer(){
+    private void startTimer() {
 
         timer = new Timer();
 
@@ -434,32 +620,31 @@ public class PlayPage extends AppCompatActivity {
 
     }
 
-    private void runTimer(){
+    private void runTimer() {
         this.runOnUiThread(timerTick);
     }
 
-    private void updateMs(){
+    private void updateMs() {
         ms++;
-        if(ms == 10){
+        if (ms == 10) {
             updateSeconds();
         }
     }
 
-    private void updateSeconds(){
+    private void updateSeconds() {
         ms = 0;
         seconds++;
-        if(seconds == 60){
+        if (seconds == 60) {
             seconds = 0;
             minutes++;
         }
     }
 
 
+    private void updateTimerText() {
 
-    private void updateTimerText(){
 
-
-            textclock.setText(String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds));
+        textclock.setText(String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds));
 
     }
 
@@ -472,8 +657,7 @@ public class PlayPage extends AppCompatActivity {
                 recogni.setOnTouchListener(null);
                 textclock.setText(String.format(Locale.getDefault(), "%02d:%02d", 1, 0));
                 textclock.setTextColor(getResources().getColor(R.color.red600));
-            }
-            else {
+            } else {
                 updateTimerText();
                 updateMs();
             }
@@ -481,14 +665,13 @@ public class PlayPage extends AppCompatActivity {
     };
 
 
-
-
     View.OnClickListener startTimeBegin = new View.OnClickListener() {
         @Override
-        public void onClick(View view){
+        public void onClick(View view) {
+
             view.setVisibility(View.GONE);
-           timecount.setVisibility(View.VISIBLE);
-           countDownTimer();
+            timecount.setVisibility(View.VISIBLE);
+            countDownTimer();
 
         }
     };
@@ -497,32 +680,43 @@ public class PlayPage extends AppCompatActivity {
         return MissionDATABASE.getInstance(PlayPage.this).missionDAO().getAllinfoOfMission(id);
     }
 
-    private void getAnswerFun(int position){
-Toast.makeText(getApplicationContext(), String.valueOf(pager.getCurrentItem()), Toast.LENGTH_SHORT).show();
-        switch (position){
-            case 0 : textReturn = missionList.get(0).getA1().toLowerCase().split("/");
+    private void getAnswerFun(int position) {
+        Toast.makeText(getApplicationContext(), String.valueOf(pager.getCurrentItem()), Toast.LENGTH_SHORT).show();
+        switch (position) {
+            case 0:
+                textReturn = missionList.get(0).getA1().toLowerCase().split("/");
                 break;
-            case 1 : textReturn = missionList.get(0).getA2().toLowerCase().split("/");
+            case 1:
+                textReturn = missionList.get(0).getA2().toLowerCase().split("/");
                 break;
-            case 2 : textReturn = missionList.get(0).getA3().toLowerCase().split("/");
+            case 2:
+                textReturn = missionList.get(0).getA3().toLowerCase().split("/");
                 break;
-            case 3 : textReturn = missionList.get(0).getA4().toLowerCase().split("/");
+            case 3:
+                textReturn = missionList.get(0).getA4().toLowerCase().split("/");
                 break;
-            case 4 : textReturn = missionList.get(0).getA5().toLowerCase().split("/");
+            case 4:
+                textReturn = missionList.get(0).getA5().toLowerCase().split("/");
                 break;
-            case 5 : textReturn = missionList.get(0).getA6().toLowerCase().split("/");
+            case 5:
+                textReturn = missionList.get(0).getA6().toLowerCase().split("/");
                 break;
-            case 6 : textReturn = missionList.get(0).getA7().toLowerCase().split("/");
+            case 6:
+                textReturn = missionList.get(0).getA7().toLowerCase().split("/");
                 break;
-            case 7 : textReturn = missionList.get(0).getA8().toLowerCase().split("/");
+            case 7:
+                textReturn = missionList.get(0).getA8().toLowerCase().split("/");
                 break;
-            case 8 : textReturn = missionList.get(0).getA9().toLowerCase().split("/");
+            case 8:
+                textReturn = missionList.get(0).getA9().toLowerCase().split("/");
                 break;
-            case 9 : textReturn = missionList.get(0).getA10().toLowerCase().split("/");
+            case 9:
+                textReturn = missionList.get(0).getA10().toLowerCase().split("/");
                 break;
-            default: Toast.makeText(getApplicationContext(), "not answer", Toast.LENGTH_SHORT).show();
+            default:
+                Toast.makeText(getApplicationContext(), "not answer", Toast.LENGTH_SHORT).show();
         }
 
-         stringList = Arrays.asList(textReturn);
+        stringList = Arrays.asList(textReturn);
     }
 }

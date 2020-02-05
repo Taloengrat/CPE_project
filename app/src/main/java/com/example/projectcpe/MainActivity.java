@@ -75,6 +75,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         }
+
+
         _logoApp = (ImageView) findViewById(R.id.logoApp);
         _btBegin = (Button) findViewById(R.id._etBegin);
 
@@ -264,7 +266,7 @@ public class MainActivity extends AppCompatActivity {
         saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.z10)).getBitmap(), "picture10", "Animal");
 
 
-        Mission mission3 = new Mission("Animal", "Various animals", 9 , 10
+        Mission mission3 = new Mission( "Animal", "Various animals", 9 , 10
                 , directory_path + "Animal" + "/picture1.png", directory_path + "Animal" + "/picture2png", directory_path + "Animal" + "/picture3.png", directory_path + "Animal" + "/picture4.png", directory_path + "Animal" + "/picture5png", directory_path + "Animal" + "/picture6.png", directory_path + "Animal" + "/picture7.png", directory_path + "Animal" + "/picture8.png", directory_path + "Animal" + "/picture9.png", directory_path + "Animal" + "/picture10.png"
                 , getResources().getString(R.string.q3_1), getResources().getString(R.string.q3_2), getResources().getString(R.string.q3_3), getResources().getString(R.string.q3_4), getResources().getString(R.string.q3_5)
                 , getResources().getString(R.string.q3_6), getResources().getString(R.string.q3_7), getResources().getString(R.string.q3_8)
@@ -396,7 +398,7 @@ public class MainActivity extends AppCompatActivity {
                     _etName.setError("Name is required");
                     _etName.requestFocus();
                     return;
-                } else {
+                } else if (imMedium != null){
 
                     Bitmap bitmap = ((BitmapDrawable) imMedium.getDrawable()).getBitmap();
                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -411,7 +413,7 @@ public class MainActivity extends AppCompatActivity {
                     finish();
                     overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 
-                }
+                }else {Toast.makeText(getApplicationContext(),"กรุณาเลือกรูปโปรไฟล์",Toast.LENGTH_SHORT).show();}
             }
         });
         dialog.show();

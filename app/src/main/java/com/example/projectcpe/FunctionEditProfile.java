@@ -130,9 +130,13 @@ Toast.makeText(getApplicationContext(), String.valueOf(imMedium.getDrawable()), 
                             _etName.setError("Name is required");
                             _etName.requestFocus();
                             return;
-                        } else {
+                        } else if (imMedium != null){
+
 
                             Bitmap bitmap = ((BitmapDrawable) imMedium.getDrawable()).getBitmap();
+
+
+
                             ByteArrayOutputStream baos = new ByteArrayOutputStream();
                             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
                             byte[] imageInByte = baos.toByteArray();
@@ -143,6 +147,8 @@ Toast.makeText(getApplicationContext(), String.valueOf(imMedium.getDrawable()), 
 dialog.cancel();
                             recreate();
 
+                        }else{
+                            Toast.makeText(getApplicationContext(),"กรุณาเลือกรูปโปรไฟล์",Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
