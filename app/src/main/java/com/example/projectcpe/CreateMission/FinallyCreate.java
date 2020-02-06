@@ -1,6 +1,7 @@
 package com.example.projectcpe.CreateMission;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.ContextWrapper;
@@ -10,6 +11,7 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
@@ -31,6 +33,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.AnimationSet;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -67,7 +71,6 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
     int getNumOfStep, getAge;
     Button btSubmit;
     LinearLayout frameEdittext;
-    List<Step> stepList;
 
     public ImageView mediumImage;
     private volatile boolean stopThread = false;
@@ -99,41 +102,115 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
         Initia();
         NumStepListener(this.getNumOfStep);
 
+
+        for (int i = 0; i < StepAdapter.stepList.size(); i++) {
+            steplist.get(i).seticonHint(getResources().getDrawable(R.drawable.hint).getConstantState());
+            steplist.get(i).seticonScore(getResources().getDrawable(R.drawable.unscore).getConstantState());
+        }
+
         btSubmit.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceAsColor")
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View v) {
+                String checker = "default";
 
-                AlertDialog.Builder dialog = new AlertDialog.Builder(FinallyCreate.this);
-                dialog.setTitle("create mission");
-                dialog.setCancelable(true);
-                dialog.setMessage("Do you want to create mission?");
-                dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
+                for (int i = 0; i < StepAdapter.stepList.size(); i++){
 
+//                    if (StepAdapter.stepList.get(i).geticonHint() == getResources().getDrawable(R.drawable.hint).getConstantState()){
+//                        checker = "checkHint";
+//                        Drawable.ConstantState constantState1 = StepAdapter.stepList.get(i).geticonHint();
+//                        Drawable.ConstantState constantState2 = getResources().getDrawable(R.drawable.hint).getConstantState();
 
-                        String directory_path = Environment.getExternalStorageDirectory().getPath() + "/EnglishPractice/" + getName;
-                        File file = new File(directory_path);
-                        if (!file.exists()) {
-                            file.mkdirs();
-                        }
-
-
-                        loadingDialog = ProgressDialog.show(FinallyCreate.this, "Create Mission", "Creating...", true, false);
-
-
-                        startThread();
-
+                    if (StepAdapter.stepList.get(i).getPicture() == null){
+                        checker = "checkPicture";
+                        break;
+                    }else if (StepAdapter.stepList.get(i).getQuestion() == null){
+                        checker = "checkQuestion";
+                        break;
+                    }else if (StepAdapter.stepList.get(i).getAnswer() == null){
+                        checker = "checkAnswer";
+                        break;
+                    }else if (StepAdapter.stepList.get(i).getScore() == null){
+                        checker = "checkScore";
+                        break;
+                    }else if (StepAdapter.stepList.get(i).geticonScore() == getResources().getDrawable(R.drawable.unscore).getConstantState()){
+                        checker = "checkScore";
+                        break;
+                    }else if (StepAdapter.stepList.get(i).getHint() == null) {
+                        checker = "checkHint";
+                        break;
+                    }else if (StepAdapter.stepList.get(i).geticonHint() == getResources().getDrawable(R.drawable.hint).getConstantState()){
+                        checker = "checkHint";
+                        break;
+                    }else {
+                        checker = "statusOK";
                     }
-                });
 
-                dialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
+                    recyclerViewStep.scrollToPosition(i);
+//                    recyclerViewStep.getChildAt(i).setBackgroundColor(R.color.blue50);
+//                    recyclerViewStep.getChildAt(i).setBackgroundColor(R.color.blue100);
 
-                dialog.show();
+//                    if (StepAdapter.stepList.get(i).getAnswer() != null && StepAdapter.stepList.get(i).getQuestion() != null && StepAdapter.stepList.get(i).getScore() != null && StepAdapter.stepList.get(i).getHint() != null) {
+//                        checker = 0;
+//                    } else if (StepAdapter.stepList.get(i).getPicture() == null){
+//                        checker = 1;
+//                    } else {
+//                        checker = 3;
+//                    }
 
+                }
+
+                switch (checker) {
+                    case "statusOK" :
+                        AlertDialog.Builder dialog = new AlertDialog.Builder(FinallyCreate.this);
+                        dialog.setTitle("create mission");
+                        dialog.setCancelable(true);
+                        dialog.setMessage("Do you want to create mission?");
+                        dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                String directory_path = Environment.getExternalStorageDirectory().getPath() + "/EnglishPractice/" + getName;
+                                File file = new File(directory_path);
+                                if (!file.exists()) {
+                                    file.mkdirs();
+                                }
+//                                test.setImageBitmap(b5);
+                                loadingDialog = ProgressDialog.show(FinallyCreate.this, "Create Mission", "Creating...", true, false);
+                                startThread();
+                            }
+                        });
+
+                        dialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+
+                        dialog.show();
+                        break;
+
+                    case "checkPicture":
+                        Toast.makeText(FinallyCreate.this,"Please Insert Picture.",Toast.LENGTH_SHORT).show();
+                        break;
+
+                    case "checkQuestion":
+                        Toast.makeText(FinallyCreate.this,"Please Insert Question.",Toast.LENGTH_SHORT).show();
+                        break;
+
+                    case "checkAnswer":
+                        Toast.makeText(FinallyCreate.this,"Please Insert Answer.",Toast.LENGTH_SHORT).show();
+                        break;
+
+                    case "checkScore":
+                        Toast.makeText(FinallyCreate.this,"Please Insert Score.",Toast.LENGTH_SHORT).show();
+                        break;
+
+                    case "checkHint":
+                        Toast.makeText(FinallyCreate.this,"Please Insert Hint.",Toast.LENGTH_SHORT).show();
+                        break;
+
+                }
 
 //                Toast.makeText(getApplicationContext(), getName, Toast.LENGTH_SHORT).show();
             }
@@ -308,6 +385,8 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
                 b = Bitmap.createBitmap(bmp1);
                 mediumImage.setImageBitmap(b);
 
+                steplist.get(position).setPicture(b);
+
                 switch (position + 1) {
 
                     case 1:
@@ -347,6 +426,9 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
                 Bitmap bmp = (Bitmap) bd.get("data");
                 if (bmp != null) {
                     mediumImage.setImageBitmap(bmp);
+
+                    steplist.get(position).setPicture(bmp);
+
 
                     switch (position + 1) {
 
@@ -493,7 +575,7 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
 
         for (int i = 0; i < StepAdapter.stepList.size(); i++) {
 
-            if (StepAdapter.stepList.get(i).getAnswer() != null && StepAdapter.stepList.get(i).getQuestion() != null && StepAdapter.stepList.get(i).getScore() != null && StepAdapter.stepList.get(i).getHint() != null) {
+//            if (StepAdapter.stepList.get(i).getAnswer() != null && StepAdapter.stepList.get(i).getQuestion() != null && StepAdapter.stepList.get(i).getScore() != null && StepAdapter.stepList.get(i).getHint() != null) {
 
 
 
@@ -573,7 +655,7 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
                         break;
                 }
 
-            }
+//            }
 
 
 

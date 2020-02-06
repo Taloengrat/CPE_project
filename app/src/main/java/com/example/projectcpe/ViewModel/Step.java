@@ -1,10 +1,13 @@
 package com.example.projectcpe.ViewModel;
 
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+
+import com.example.projectcpe.Adapter.StepAdapter;
 
 import io.reactivex.annotations.NonNull;
 
@@ -15,9 +18,9 @@ public class Step{
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "idstep")
     private int idStep;
-
+    public Bitmap Picture;
     private String Answer,Question,Score,Hint;
-
+    private Drawable.ConstantState iconHint,iconScore;
 
 
     public Step(){}
@@ -70,6 +73,27 @@ public class Step{
         Hint = hint;
     }
 
+    public Bitmap getPicture() {
+        return Picture;
+    }
 
+    public void setPicture(Bitmap Pic) {
+        Picture = Pic;
+    }
 
+    public Drawable.ConstantState geticonHint() {
+        return iconHint;
+    }
+
+    public void seticonHint(Drawable.ConstantState iconHint1) {
+        iconHint = iconHint1;
+    }
+
+    public Drawable.ConstantState geticonScore() {
+        return iconScore;
+    }
+
+    public void seticonScore(Drawable.ConstantState iconScore1) {
+        iconScore = iconScore1;
+    }
 }
