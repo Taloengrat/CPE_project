@@ -55,8 +55,8 @@ public class MemberAdapterBegin extends RecyclerView.Adapter<MemberAdapterBegin.
         final Member member = memberListb.get(position);
         Bitmap bitmap = BitmapFactory.decodeByteArray(member.getProfile(), 0, member.getProfile().length);
 
-        holder.name.setText(member.getName());
-        holder.age.setText(String.valueOf(member.getAge()));
+        holder.name.setText("name : "+member.getName());
+        holder.age.setText("age : " +member.getAge());
         holder.imUser.setImageBitmap(bitmap);
 
         holder.imUser.setOnClickListener(new View.OnClickListener() {

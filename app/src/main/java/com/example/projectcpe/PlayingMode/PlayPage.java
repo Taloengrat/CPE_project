@@ -6,6 +6,7 @@ import com.example.projectcpe.MainActivity;
 import com.example.projectcpe.ViewModel.Mission;
 import com.example.projectcpe.ViewModel.MissionDATABASE;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
@@ -15,6 +16,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -68,6 +70,8 @@ public class PlayPage extends AppCompatActivity {
     protected boolean running = false;
     TextView hint1, hint2, hint3, hint4;
 
+    boolean h1 = false, h2 = false, h3 = false, h4 = false;
+
     SpeechRecognizer speechRecognizer;
     Intent speechRecognizerIntent;
     String Keeper;
@@ -95,8 +99,6 @@ public class PlayPage extends AppCompatActivity {
         Initial();
 
         getHint(pager.getCurrentItem());
-
-
 
 
         speechRecognizer.setRecognitionListener(new RecognitionListener() {
@@ -175,17 +177,27 @@ public class PlayPage extends AppCompatActivity {
             if (frameHint.getVisibility() == View.GONE) {
                 frameHint.setVisibility(View.VISIBLE);
                 switch (numHint) {
-                    case 1 :
+                    case 1:
                         hint2.setVisibility(View.GONE);
                         hint3.setVisibility(View.GONE);
                         hint4.setVisibility(View.GONE);
                         break;
-                    case 2 :
+                    case 2:
                         hint3.setVisibility(View.GONE);
                         hint4.setVisibility(View.GONE);
                         break;
-                    case 3 :
+                    case 3:
+                        hint1.setVisibility(View.VISIBLE);
+                        hint2.setVisibility(View.VISIBLE);
+                        hint3.setVisibility(View.VISIBLE);
                         hint4.setVisibility(View.GONE);
+                        break;
+                    case 4:
+                        hint1.setVisibility(View.VISIBLE);
+                        hint2.setVisibility(View.VISIBLE);
+                        hint3.setVisibility(View.VISIBLE);
+                        hint4.setVisibility(View.VISIBLE);
+
                 }
 
             } else {
@@ -204,9 +216,15 @@ public class PlayPage extends AppCompatActivity {
             dialog.setCancelable(true);
 
             TextView data = dialog.findViewById(R.id.dataHint);
+            TextView head = dialog.findViewById(R.id.txHeadHint);
 
-            data.setText(HintString[0]);
-            Log.v("numHin", String.valueOf(HintString.length));
+            head.setText("Hint number : 1");
+
+            h1 = true;
+
+            hint1.setBackgroundResource(R.drawable.elevetorcircle_used);
+                data.setText(HintString[0]);
+
 
 
             dialog.show();
@@ -222,11 +240,53 @@ public class PlayPage extends AppCompatActivity {
             dialog.setContentView(R.layout.dialog_hint);
             dialog.setCancelable(true);
 
-            dialog.show();
+            final TextView data = dialog.findViewById(R.id.dataHint);
+            TextView head = dialog.findViewById(R.id.txHeadHint);
 
-            TextView data = dialog.findViewById(R.id.dataHint);
+            head.setText("Hint number : 2");
 
-            data.setText(HintString[1]);
+
+            if (h1){
+                hint2.setBackgroundResource(R.drawable.elevetorcircle_used);
+
+                h2 = true;
+
+                data.setText(HintString[1]);
+
+                hint1.setOnClickListener(hintTwo);
+
+                dialog.show();
+            } else {
+                AlertDialog.Builder dialogAsk = new AlertDialog.Builder(PlayPage.this);
+                dialogAsk.setTitle("Show Hint");
+                dialogAsk.setCancelable(true);
+                dialogAsk.setMessage("Do you want to croos hint 1 ?");
+                dialogAsk.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialogInterface, int which) {
+                        hint1.setBackgroundResource(R.drawable.elevetorcircle_used);
+                        hint2.setBackgroundResource(R.drawable.elevetorcircle_used);
+                        h1 = true;
+                        h2 = true;
+
+
+                        data.setText(HintString[1]);
+
+                        dialog.show();
+
+                        hint1.setOnClickListener(hintTwo);
+                    }
+                });
+
+                dialogAsk.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                dialogAsk.show();
+            }
+
+
         }
     };
 
@@ -239,11 +299,58 @@ public class PlayPage extends AppCompatActivity {
             dialog.setContentView(R.layout.dialog_hint);
             dialog.setCancelable(true);
 
-            dialog.show();
 
-            TextView data = dialog.findViewById(R.id.dataHint);
+            final TextView data = dialog.findViewById(R.id.dataHint);
+            TextView head = dialog.findViewById(R.id.txHeadHint);
 
-            data.setText(HintString[2]);
+            head.setText("Hint number : 3");
+
+            if (h2){
+                hint3.setBackgroundResource(R.drawable.elevetorcircle_used);
+
+                h3 = true;
+
+                data.setText(HintString[2]);
+
+                hint1.setOnClickListener(hintThree);
+                hint2.setOnClickListener(hintThree);
+
+                dialog.show();
+            } else {
+                AlertDialog.Builder dialogAsk = new AlertDialog.Builder(PlayPage.this);
+                dialogAsk.setTitle("Show Hint");
+                dialogAsk.setCancelable(true);
+                dialogAsk.setMessage("Do you want to croos hint 2 ?");
+                dialogAsk.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialogInterface, int which) {
+                        hint1.setBackgroundResource(R.drawable.elevetorcircle_used);
+                        hint2.setBackgroundResource(R.drawable.elevetorcircle_used);
+                        hint3.setBackgroundResource(R.drawable.elevetorcircle_used);
+                        h1 = true;
+                        h2 = true;
+                        h3 = true;
+
+
+                        data.setText(HintString[2]);
+
+                        dialog.show();
+
+                        hint1.setOnClickListener(hintThree);
+                        hint2.setOnClickListener(hintThree);
+
+                    }
+                });
+
+                dialogAsk.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                dialogAsk.show();
+            }
+
+
         }
     };
 
@@ -256,17 +363,69 @@ public class PlayPage extends AppCompatActivity {
             dialog.setContentView(R.layout.dialog_hint);
             dialog.setCancelable(true);
 
-            dialog.show();
+            final TextView data = dialog.findViewById(R.id.dataHint);
+            TextView head = dialog.findViewById(R.id.txHeadHint);
 
-            TextView data = dialog.findViewById(R.id.dataHint);
+            head.setText("Hint number : 4");
 
-            data.setText(HintString[3]);
+            if (h3){
+                hint4.setBackgroundResource(R.drawable.elevetorcircle_used);
+
+                h4 = true;
+
+                data.setText(HintString[3]);
+
+                hint1.setOnClickListener(hintFour);
+                hint2.setOnClickListener(hintFour);
+                hint3.setOnClickListener(hintFour);
+
+                dialog.show();
+            } else {
+                AlertDialog.Builder dialogAsk = new AlertDialog.Builder(PlayPage.this);
+                dialogAsk.setTitle("Show Hint");
+                dialogAsk.setCancelable(true);
+                dialogAsk.setMessage("Do you want to croos hint 3 ?");
+                dialogAsk.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialogInterface, int which) {
+                        hint1.setBackgroundResource(R.drawable.elevetorcircle_used);
+                        hint2.setBackgroundResource(R.drawable.elevetorcircle_used);
+                        hint3.setBackgroundResource(R.drawable.elevetorcircle_used);
+                        hint4.setBackgroundResource(R.drawable.elevetorcircle_used);
+                        h1 = true;
+                        h2 = true;
+                        h3 = true;
+                        h4 = true;
+
+
+                        data.setText(HintString[3]);
+
+                        dialog.show();
+
+                        hint1.setOnClickListener(hintFour);
+                        hint2.setOnClickListener(hintFour);
+                        hint3.setOnClickListener(hintFour);
+
+                    }
+                });
+
+                dialogAsk.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                dialogAsk.show();
+            }
+
+
         }
     };
 
     View.OnTouchListener Hilight = new View.OnTouchListener() {
         @Override
         public boolean onTouch(View view, MotionEvent motionEvent) {
+
+
 
             if (PermissionUtility.askPermissionForActivity(PlayPage.this, Manifest.permission.RECORD_AUDIO, WRITE_PERMISSON_REQUEST_CODE)) {
 
@@ -276,9 +435,14 @@ public class PlayPage extends AppCompatActivity {
             switch (motionEvent.getAction()) {
                 case MotionEvent.ACTION_DOWN:
 
+                    if (frameHint.getVisibility() == View.VISIBLE){
+                        frameHint.setVisibility(View.GONE);
+                    }
+
+
                     Log.d("motionEvent", "Action was DOWN");
                     view.setBackgroundResource(R.drawable.fram_hilight);
-                    ;
+
                     speechRecognizer.startListening(speechRecognizerIntent);
                     Keeper = "";
                     return true;
@@ -330,6 +494,8 @@ public class PlayPage extends AppCompatActivity {
         }
         hintList = Arrays.asList(HintString);
         numHint = HintString.length;
+
+        Log.v("currentHint", String.valueOf(numHint));
     }
 
     private void VerifyAnswer(List<String> missionAnswer, String userAnswer) {
@@ -423,6 +589,10 @@ public class PlayPage extends AppCompatActivity {
 
                     Answer.setText("");
                     Answer.setVisibility(View.INVISIBLE);
+
+//                    changeHint(numHint); //เปลี่ยนจำนวนของ Hint
+
+
                     recogni.setOnTouchListener(Hilight);
                     textclock.setTextColor(getResources().getColor(R.color.black));
 
@@ -430,6 +600,21 @@ public class PlayPage extends AppCompatActivity {
                     ms = 0;
                     minutes = 0;
                     seconds = 0;
+
+                    hint1.setOnClickListener(hintOne);
+                    hint2.setOnClickListener(hintTwo);
+                    hint3.setOnClickListener(hintThree);
+                    hint4.setOnClickListener(hintFour);
+
+                    h1 = false;
+                    h2 = false;
+                    h3 = false;
+                    h4 = false;
+
+                    hint1.setBackgroundResource(R.drawable.elevetorcircle);
+                    hint2.setBackgroundResource(R.drawable.elevetorcircle);
+                    hint3.setBackgroundResource(R.drawable.elevetorcircle);
+                    hint4.setBackgroundResource(R.drawable.elevetorcircle);
 
                     startTimer();
                 }
@@ -506,14 +691,12 @@ public class PlayPage extends AppCompatActivity {
 
         missionList = getData(id);
 
-//        getAnswerFun(id);
 
         SettingRecognizi();
 
 
 //        back.setOnTouchListener(Hilight);
 //        next.setOnTouchListener(Hilight);
-
 
 
         hint1.setOnClickListener(hintOne);
@@ -718,5 +901,21 @@ public class PlayPage extends AppCompatActivity {
         }
 
         stringList = Arrays.asList(textReturn);
+    }
+
+    void changeHint(int numHint) {
+        switch (numHint) {
+            case 1:
+                hint2.setVisibility(View.GONE);
+                hint3.setVisibility(View.GONE);
+                hint4.setVisibility(View.GONE);
+                break;
+            case 2:
+                hint3.setVisibility(View.GONE);
+                hint4.setVisibility(View.GONE);
+                break;
+            case 3:
+                hint4.setVisibility(View.GONE);
+        }
     }
 }

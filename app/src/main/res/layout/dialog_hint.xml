@@ -5,31 +5,46 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="@drawable/frameline"
-    android:padding="40dp"
+    android:background="@drawable/framehinttt"
+    android:padding="25dp"
     android:layout_gravity="center"
     >
 
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5"
-        />
 
     <TextView
         android:id="@+id/dataHint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/bold"
+        android:fontFamily="@font/thin"
         android:text="Password Admin"
         android:textColor="@color/gray"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline5"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txHeadHint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="TextView"
+        android:fontFamily="@font/bold"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toTopOf="@+id/dataHint"
+        app:layout_constraintEnd_toEndOf="@+id/dataHint"
+        app:layout_constraintStart_toStartOf="@+id/dataHint" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/txHeadHint"
+        app:layout_constraintEnd_toEndOf="@+id/txHeadHint"
+        app:layout_constraintStart_toStartOf="@+id/txHeadHint"
+        app:srcCompat="@drawable/hint"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

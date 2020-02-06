@@ -29,62 +29,66 @@
         android:background="@drawable/framehint"
         android:elevation="16dp"
         android:orientation="horizontal"
+        android:paddingStart="4dp"
         android:paddingTop="4dp"
+        android:paddingEnd="4dp"
         android:paddingBottom="4dp"
         android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/bar"
-        app:layout_constraintStart_toStartOf="@+id/bar"
-        android:paddingStart="4dp"
-        android:paddingEnd="4dp">
+        app:layout_constraintStart_toStartOf="@+id/bar">
 
         <TextView
             android:id="@+id/hint1"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_weight="1"
             android:background="@drawable/elevetorcircle"
             android:ems="1"
             android:fontFamily="@font/bold"
             android:gravity="center"
             android:text="1"
+            android:textSize="24dp"
 
             />
 
         <TextView
             android:id="@+id/hint2"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginStart="4dp"
             android:layout_weight="1"
             android:background="@drawable/elevetorcircle"
             android:ems="1"
             android:fontFamily="@font/bold"
             android:gravity="center"
-            android:text="2" />
+            android:text="2"
+            android:textSize="24dp" />
 
         <TextView
             android:id="@+id/hint3"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginStart="4dp"
             android:layout_weight="1"
             android:background="@drawable/elevetorcircle"
             android:ems="1"
             android:fontFamily="@font/bold"
             android:gravity="center"
-            android:text="3" />
+            android:text="3"
+            android:textSize="24dp" />
 
         <TextView
             android:id="@+id/hint4"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginStart="4dp"
             android:layout_weight="1"
             android:background="@drawable/elevetorcircle"
             android:ems="1"
             android:fontFamily="@font/bold"
             android:gravity="center"
-            android:text="4" />
+            android:text="4"
+            android:textSize="24dp" />
 
     </LinearLayout>
 
@@ -182,6 +186,7 @@
         android:textColor="@color/black"
         android:textSize="32dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
