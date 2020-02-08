@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.projectcpe.BeginMember;
+import com.example.projectcpe.ButtonServiceEffect;
 import com.example.projectcpe.LogoIntro;
 import com.example.projectcpe.R;
 import com.example.projectcpe.ViewModel.Member;
@@ -30,6 +32,7 @@ public class Feedback extends AppCompatActivity {
     List<Member> memberList;
     TextView MissionName,UserName;
     ImageView imUser, fullstar1,fullstar2,fullstar3,fullstar4,fullstar5,halfstar1,halfstar2,halfstar3,halfstar4,halfstar5, backMission;
+    MediaPlayer mediaPlayer;
     float Score;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +69,8 @@ public class Feedback extends AppCompatActivity {
     }
 
     private void Initiali() {
+
+        mediaPlayer = MediaPlayer.create(Feedback.this, R.raw.starsound);
         MissionName = findViewById(R.id.missionName);
         UserName = findViewById(R.id.userName);
         imUser = findViewById(R.id.imUser);
@@ -101,13 +106,16 @@ public class Feedback extends AppCompatActivity {
         Runnable star1 = new Runnable() {
             @Override
             public void run() {
-                halfstar1.setVisibility(View.VISIBLE);
+
+                mediaPlayer.start();
+            halfstar1.setVisibility(View.VISIBLE);
             }
         };
 
         Runnable star2 = new Runnable() {
             @Override
             public void run() {
+                mediaPlayer.start();
                 fullstar1.setVisibility(View.VISIBLE);
 
             }
@@ -116,6 +124,7 @@ public class Feedback extends AppCompatActivity {
         Runnable star3 = new Runnable() {
             @Override
             public void run() {
+                mediaPlayer.start();
                 fullstar1.setVisibility(View.VISIBLE);
                 halfstar1.setVisibility(View.VISIBLE);
 
@@ -125,6 +134,7 @@ public class Feedback extends AppCompatActivity {
         Runnable star4 = new Runnable() {
             @Override
             public void run() {
+                mediaPlayer.start();
                 fullstar1.setVisibility(View.VISIBLE);
                 fullstar2.setVisibility(View.VISIBLE);
 
@@ -134,6 +144,7 @@ public class Feedback extends AppCompatActivity {
         Runnable star5 = new Runnable() {
             @Override
             public void run() {
+                mediaPlayer.start();
                 fullstar1.setVisibility(View.VISIBLE);
                 fullstar2.setVisibility(View.VISIBLE);
                 halfstar3.setVisibility(View.VISIBLE);
@@ -144,6 +155,7 @@ public class Feedback extends AppCompatActivity {
         Runnable star6 = new Runnable() {
             @Override
             public void run() {
+                mediaPlayer.start();
                 fullstar1.setVisibility(View.VISIBLE);
                 fullstar2.setVisibility(View.VISIBLE);
                 fullstar3.setVisibility(View.VISIBLE);
@@ -153,6 +165,7 @@ public class Feedback extends AppCompatActivity {
         Runnable star7 = new Runnable() {
             @Override
             public void run() {
+                mediaPlayer.start();
                 fullstar1.setVisibility(View.VISIBLE);
                 fullstar2.setVisibility(View.VISIBLE);
                 fullstar3.setVisibility(View.VISIBLE);
@@ -163,6 +176,7 @@ public class Feedback extends AppCompatActivity {
         Runnable star8 = new Runnable() {
             @Override
             public void run() {
+                mediaPlayer.start();
                 fullstar1.setVisibility(View.VISIBLE);
                 fullstar2.setVisibility(View.VISIBLE);
                 fullstar3.setVisibility(View.VISIBLE);
@@ -173,6 +187,7 @@ public class Feedback extends AppCompatActivity {
         Runnable star9 = new Runnable() {
             @Override
             public void run() {
+                mediaPlayer.start();
                 fullstar1.setVisibility(View.VISIBLE);
                 fullstar2.setVisibility(View.VISIBLE);
                 fullstar3.setVisibility(View.VISIBLE);
@@ -184,6 +199,7 @@ public class Feedback extends AppCompatActivity {
         Runnable star10 = new Runnable() {
             @Override
             public void run() {
+                mediaPlayer.start();
                 fullstar1.setVisibility(View.VISIBLE);
                 fullstar2.setVisibility(View.VISIBLE);
                 fullstar3.setVisibility(View.VISIBLE);
@@ -278,6 +294,7 @@ public class Feedback extends AppCompatActivity {
 
 
     public void Onclickbacktohome(View view) {
+        new ButtonServiceEffect(Feedback.this).startEffect(); // Sound button effect
         Intent i = new Intent(Feedback.this, DetailMission.class);
         i.putExtra("MissionId", id);
         i.putExtra("MemberId", memberId);

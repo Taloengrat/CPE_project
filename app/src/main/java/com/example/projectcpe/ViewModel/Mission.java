@@ -195,18 +195,10 @@ public class Mission implements Serializable {
 
      @Ignore
 
-     public List<Mission> missionList;
+
     public Mission(String missionName, int age) {
         this.missionName = missionName;
         this.age = age;
-    }
-
-
-
-
-    public List<Mission> getDetailmissionList()
-    {
-        return missionList;
     }
 
 

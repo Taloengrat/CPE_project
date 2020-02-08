@@ -143,6 +143,8 @@ public class HomePage extends AppCompatActivity implements  MissionAdapter.OnCus
     @Override
     public void onCustomerClick(int id,int result, Mission mission) {
 
+        new ButtonServiceEffect(HomePage.this).startEffect(); // Sound button effect
+
     Intent i = new Intent(HomePage.this, DetailMission.class);
     i.putExtra("MissionId", id);
     i.putExtra("MemberId", this.id);
@@ -169,6 +171,8 @@ public class HomePage extends AppCompatActivity implements  MissionAdapter.OnCus
 
     @Override
     public boolean onSupportNavigateUp() {
+
+        new ButtonServiceEffect(HomePage.this).startEffect(); // Sound button effect
         onBackPressed();
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         return true;

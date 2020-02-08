@@ -2,6 +2,7 @@ package com.example.projectcpe.PlayingMode;
 
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,6 +16,8 @@ import android.widget.Toast;
 
 import com.example.projectcpe.Adapter.MissionAdapter;
 import com.example.projectcpe.Adapter.StatiticAdapter;
+import com.example.projectcpe.ButtonServiceEffect;
+import com.example.projectcpe.HomePage;
 import com.example.projectcpe.R;
 import com.example.projectcpe.ViewModel.Member;
 import com.example.projectcpe.ViewModel.Mission;
@@ -43,6 +46,12 @@ public class DetailMission extends AppCompatActivity {
         DetailMission = findViewById(R.id.DetailMission);
         txDetail = findViewById(R.id.txDetail);
         recyclerView = findViewById(R.id.recyclerView);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
 
         Bundle bundle = getIntent().getExtras();
@@ -94,6 +103,8 @@ public class DetailMission extends AppCompatActivity {
 
     public void setBtPlayClick(View view){
 
+        new ButtonServiceEffect(DetailMission.this).startEffect(); // Sound button effect
+
         Intent i = new Intent(DetailMission.this, PlayPage.class);
         i.putExtra("missionId", MissionId);
         i.putExtra("memberId", MemberId);
@@ -117,4 +128,12 @@ public class DetailMission extends AppCompatActivity {
         loadDataStatistic();
     }
 
+    @Override
+    public boolean onSupportNavigateUp() {
+
+        new ButtonServiceEffect(DetailMission.this).startEffect(); // Sound button effect
+        onBackPressed();
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        return true;
+    }
 }

@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
      ProgressDialog loadingDialog;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
 
 //                CreateMissionDefault();
 
-
+                startService(new Intent(MainActivity.this, ButtonServiceEffect.class)); // Sound button effect
                 _etPass.setVisibility(View.VISIBLE);
                 _btBegin.setText("LET's GO !");
 
@@ -98,6 +99,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
 
+                        startService(new Intent(MainActivity.this, ButtonServiceEffect.class)); // Sound button effect
                         String directory_path1 = Environment.getExternalStorageDirectory().getPath() + "/EnglishPractice/Color";
                         File file1 = new File(directory_path1);
                         if (!file1.exists()) {
@@ -292,16 +294,18 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public static Drawable getAssetImage(Context context, String filename) throws IOException {
-        AssetManager assets = context.getResources().getAssets();
-        InputStream buffer = new BufferedInputStream((assets.open("drawable/" + filename + ".png")));
-        Bitmap bitmap = BitmapFactory.decodeStream(buffer);
-        return new BitmapDrawable(context.getResources(), bitmap);
-    }
+//    public static Drawable getAssetImage(Context context, String filename) throws IOException {
+//        AssetManager assets = context.getResources().getAssets();
+//        InputStream buffer = new BufferedInputStream((assets.open("drawable/" + filename + ".png")));
+//        Bitmap bitmap = BitmapFactory.decodeStream(buffer);
+//        return new BitmapDrawable(context.getResources(), bitmap);
+//    }
 
     @Override
     protected void onStart() {
         super.onStart();
+
+        startService(new Intent(this, MusicService.class));
 
 
         SharedPreferences getPassword = getSharedPreferences(MY_PRE_PASSWORD_ADMIN, MODE_PRIVATE);
@@ -333,6 +337,7 @@ public class MainActivity extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                startService(new Intent(MainActivity.this, ButtonServiceEffect.class));
                 final Dialog dialog = new Dialog(MainActivity.this);
                 dialog.getWindow().setBackgroundDrawableResource(R.drawable.frameline);
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -344,6 +349,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
 
+                        startService(new Intent(MainActivity.this, ButtonServiceEffect.class)); // Sound button effect
                         imMedium = (ImageView) view;
 
                         Toast.makeText(getApplicationContext(), String.valueOf(imMedium.getDrawable()), Toast.LENGTH_SHORT).show();
@@ -394,6 +400,7 @@ public class MainActivity extends AppCompatActivity {
         Button btSubmit = (Button) dialog.findViewById(R.id.ok);
         btSubmit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                startService(new Intent(MainActivity.this, ButtonServiceEffect.class)); // Sound button effect
                 if (_etName.getText().toString().isEmpty()) {
                     _etName.setError("Name is required");
                     _etName.requestFocus();

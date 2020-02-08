@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".PlayingMode.SumaryPage"
-    android:background="#E9A540">
+    android:background="@color/blue50">
 
     <TextView
         android:id="@+id/textView6"
@@ -24,14 +24,18 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="24dp"
-        android:layout_below="@+id/textView6">
+        android:layout_above="@+id/btNext"
+        android:layout_below="@+id/textView6"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="16dp">
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewSumary"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/frame"
-            android:padding="16dp">
+          >
 
         </androidx.recyclerview.widget.RecyclerView>
     </androidx.core.widget.NestedScrollView>
@@ -45,6 +49,6 @@
         android:padding="15dp"
         android:fontFamily="@font/bold"
         android:textColor="#ffff"
-        android:background="#5F3B07"
+        android:background="@color/blue900"
         android:layout_alignParentBottom="true"/>
 </RelativeLayout>

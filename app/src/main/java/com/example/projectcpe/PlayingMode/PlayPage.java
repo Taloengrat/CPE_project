@@ -3,6 +3,7 @@ package com.example.projectcpe.PlayingMode;
 import com.example.projectcpe.Adapter.SlidePageAdapter;
 import com.example.projectcpe.CSV.Utility.PermissionUtility;
 import com.example.projectcpe.MainActivity;
+import com.example.projectcpe.MusicService;
 import com.example.projectcpe.ViewModel.Mission;
 import com.example.projectcpe.ViewModel.MissionDATABASE;
 
@@ -24,10 +25,12 @@ import android.os.Handler;
 import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
+import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -47,12 +50,13 @@ import java.util.TimerTask;
 public class PlayPage extends AppCompatActivity {
 
     private int ms = 0;
-    private int seconds = 0;
+    private int seconds = 56;
     private int minutes = 0;
     float Score;
     float SumScore;
     String Hint;
     int numHint;
+
 
     LinearLayout frameHint;
 
@@ -62,10 +66,10 @@ public class PlayPage extends AppCompatActivity {
     private Timer timer;
     private CountDownTimer countDownTimer;
     ViewPager pager;
-    ImageView check;
+    ImageView check, keyboard, confirm;
 
     boolean threadreset;
-    EditText putAnwer;
+    EditText etKeyboard;
     protected int id, stepnum;
     protected boolean running = false;
     TextView hint1, hint2, hint3, hint4;
@@ -84,6 +88,8 @@ public class PlayPage extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+
+        stopService(new Intent(PlayPage.this, MusicService.class));
         if (PermissionUtility.askPermissionForActivity(PlayPage.this, Manifest.permission.RECORD_AUDIO, WRITE_PERMISSON_REQUEST_CODE)) {
 
 
@@ -223,8 +229,7 @@ public class PlayPage extends AppCompatActivity {
             h1 = true;
 
             hint1.setBackgroundResource(R.drawable.elevetorcircle_used);
-                data.setText(HintString[0]);
-
+            data.setText(HintString[0]);
 
 
             dialog.show();
@@ -246,7 +251,7 @@ public class PlayPage extends AppCompatActivity {
             head.setText("Hint number : 2");
 
 
-            if (h1){
+            if (h1) {
                 hint2.setBackgroundResource(R.drawable.elevetorcircle_used);
 
                 h2 = true;
@@ -305,7 +310,7 @@ public class PlayPage extends AppCompatActivity {
 
             head.setText("Hint number : 3");
 
-            if (h2){
+            if (h2) {
                 hint3.setBackgroundResource(R.drawable.elevetorcircle_used);
 
                 h3 = true;
@@ -368,7 +373,7 @@ public class PlayPage extends AppCompatActivity {
 
             head.setText("Hint number : 4");
 
-            if (h3){
+            if (h3) {
                 hint4.setBackgroundResource(R.drawable.elevetorcircle_used);
 
                 h4 = true;
@@ -426,7 +431,6 @@ public class PlayPage extends AppCompatActivity {
         public boolean onTouch(View view, MotionEvent motionEvent) {
 
 
-
             if (PermissionUtility.askPermissionForActivity(PlayPage.this, Manifest.permission.RECORD_AUDIO, WRITE_PERMISSON_REQUEST_CODE)) {
 
 
@@ -435,7 +439,7 @@ public class PlayPage extends AppCompatActivity {
             switch (motionEvent.getAction()) {
                 case MotionEvent.ACTION_DOWN:
 
-                    if (frameHint.getVisibility() == View.VISIBLE){
+                    if (frameHint.getVisibility() == View.VISIBLE) {
                         frameHint.setVisibility(View.GONE);
                     }
 
@@ -601,6 +605,13 @@ public class PlayPage extends AppCompatActivity {
                     minutes = 0;
                     seconds = 0;
 
+                    if (etKeyboard.getVisibility() == View.VISIBLE) {
+                        etKeyboard.setText(null);
+                        etKeyboard.setVisibility(View.GONE);
+                        keyboard.setVisibility(View.GONE);
+                        confirm.setVisibility(View.GONE);
+                    }
+
                     hint1.setOnClickListener(hintOne);
                     hint2.setOnClickListener(hintTwo);
                     hint3.setOnClickListener(hintThree);
@@ -676,6 +687,9 @@ public class PlayPage extends AppCompatActivity {
         hint2 = findViewById(R.id.hint2);
         hint3 = findViewById(R.id.hint3);
         hint4 = findViewById(R.id.hint4);
+        keyboard = findViewById(R.id.keyboard);
+        etKeyboard = findViewById(R.id.etKeyboard);
+        confirm = findViewById(R.id.confirm);
 
         check = findViewById(R.id.check);
         recogni = findViewById(R.id.mic);
@@ -703,6 +717,9 @@ public class PlayPage extends AppCompatActivity {
         hint2.setOnClickListener(hintTwo);
         hint3.setOnClickListener(hintThree);
         hint4.setOnClickListener(hintFour);
+
+        keyboard.setOnClickListener(keyboardClick);
+        confirm.setOnClickListener(confirmClick);
 
         start.setOnClickListener(startTimeBegin);
 
@@ -840,6 +857,9 @@ public class PlayPage extends AppCompatActivity {
                 recogni.setOnTouchListener(null);
                 textclock.setText(String.format(Locale.getDefault(), "%02d:%02d", 1, 0));
                 textclock.setTextColor(getResources().getColor(R.color.red600));
+
+                keyboard.setVisibility(View.VISIBLE);
+
             } else {
                 updateTimerText();
                 updateMs();
@@ -903,19 +923,35 @@ public class PlayPage extends AppCompatActivity {
         stringList = Arrays.asList(textReturn);
     }
 
-    void changeHint(int numHint) {
-        switch (numHint) {
-            case 1:
-                hint2.setVisibility(View.GONE);
-                hint3.setVisibility(View.GONE);
-                hint4.setVisibility(View.GONE);
-                break;
-            case 2:
-                hint3.setVisibility(View.GONE);
-                hint4.setVisibility(View.GONE);
-                break;
-            case 3:
-                hint4.setVisibility(View.GONE);
+
+    View.OnClickListener keyboardClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            etKeyboard.setVisibility(View.VISIBLE);
+            confirm.setVisibility(View.VISIBLE);
+
+            if (Answer.getVisibility() == View.VISIBLE) {
+                Answer.setVisibility(View.INVISIBLE);
+            } else {
+
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.showSoftInput(etKeyboard, InputMethodManager.SHOW_IMPLICIT);
+            }
+
         }
-    }
+    };
+
+    View.OnClickListener confirmClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+
+            getAnswerFun(pager.getCurrentItem());
+            VerifyAnswer(stringList, etKeyboard.getText().toString().toLowerCase());
+
+            Log.v("Para1", Arrays.toString(new List[]{stringList}));
+            Log.v("Para2", etKeyboard.getText().toString().toLowerCase());
+
+
+        }
+    };
 }

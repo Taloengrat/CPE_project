@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PlayingMode.Feedback"
-    android:background="#E9A540">
+    android:background="@color/blue500">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -200,6 +200,7 @@
             android:fontFamily="@font/bold"
             android:text="Mission Name"
 
+            android:textColor="@color/white"
             android:textSize="35dp"
             app:layout_constraintEnd_toEndOf="@+id/mainStar"
             app:layout_constraintStart_toStartOf="@+id/mainStar"
@@ -232,6 +233,7 @@
         android:fontFamily="@font/thin"
         android:text="Profile Name"
         android:textSize="35dp"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/imUser"
         app:layout_constraintStart_toStartOf="@+id/imUser"
         app:layout_constraintTop_toBottomOf="@+id/imUser" />

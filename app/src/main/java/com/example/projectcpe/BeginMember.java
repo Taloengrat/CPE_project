@@ -32,6 +32,7 @@ public class BeginMember extends AppCompatActivity {
     CardView menu;
 
     public static final String MY_PRE_PASSWORD_ADMIN = "com.example.projectcpe.passwordasmin";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,50 +41,44 @@ public class BeginMember extends AppCompatActivity {
         Initia();
 
 
-        findViewById(R.id.imagemanage).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(BeginMember.this, Main2Activity.class));
-            }
-        });
-
-
         menu.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
+                new ButtonServiceEffect(BeginMember.this).startEffect(); // Sound button effect
                 VerifyAdmin();
 
             }
         });
     }
 
-    private List<Member> lodeMember () {
+    private List<Member> lodeMember() {
 
         return MissionDATABASE.getInstance(this).missionDAO().getAllMember();
 
     }
 
-    private void loadData () {
+    private void loadData() {
         RecyclerView.Adapter adapter = new MemberAdapterBegin(lodeMember(), this);
         MemberRecyclerview.setHasFixedSize(true);
         MemberRecyclerview.setLayoutManager(new LinearLayoutManager(this));
         MemberRecyclerview.setAdapter(adapter);
     }
 
-    private void Initia () {
+    private void Initia() {
         MemberRecyclerview = findViewById(R.id.MemberRecyclerView);
         addMember = findViewById(R.id.addmember);
         menu = findViewById(R.id.menu_begin);
     }
 
     @Override
-    protected void onStart () {
+    protected void onStart() {
         super.onStart();
         loadData();
     }
 
 
-    public void VerifyAdmin(){
+    public void VerifyAdmin() {
 
         final Dialog dialog = new Dialog(this);
         dialog.getWindow().setBackgroundDrawableResource(R.drawable.frameline);
@@ -99,11 +94,14 @@ public class BeginMember extends AppCompatActivity {
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final String pass= (input.getText().toString());
+
+                new ButtonServiceEffect(BeginMember.this).startEffect(); // Sound button effect
+
+                final String pass = (input.getText().toString());
 
                 if (input.getText().toString().isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Please enter your pass word", Toast.LENGTH_SHORT).show();
-                }else if (CheckPassword(Integer.parseInt(pass))) {
+                } else if (CheckPassword(Integer.parseInt(pass))) {
                     Toast.makeText(getApplicationContext(), "Password Correct :)", Toast.LENGTH_SHORT).show();
                     dialog.cancel();
                     startActivity(new Intent(BeginMember.this, AdminPage.class));
@@ -116,24 +114,21 @@ public class BeginMember extends AppCompatActivity {
             }
 
 
-
-
-
-
         });
 
     }
-    public boolean CheckPassword(int putpassword){
+
+    public boolean CheckPassword(int putpassword) {
 
 
         SharedPreferences getPassword = getSharedPreferences(MY_PRE_PASSWORD_ADMIN, MODE_PRIVATE);
         int gettingPassword = 0;
-        int gettedPassword  = getPassword.getInt("Pass", gettingPassword);
+        int gettedPassword = getPassword.getInt("Pass", gettingPassword);
         boolean resault;
-        if (putpassword == gettedPassword){
-            Toast.makeText(getApplicationContext(), "Password Verified",Toast.LENGTH_SHORT).show();
+        if (putpassword == gettedPassword) {
+            Toast.makeText(getApplicationContext(), "Password Verified", Toast.LENGTH_SHORT).show();
             resault = true;
-        }else{
+        } else {
             resault = false;
         }
         return resault;
@@ -147,7 +142,9 @@ public class BeginMember extends AppCompatActivity {
         dialog.setMessage("Do you want to exit?");
         dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
-                finish();
+
+                new ButtonServiceEffect(BeginMember.this).startEffect(); // Sound button effect
+                 finish();
             }
         });
 
@@ -156,7 +153,7 @@ public class BeginMember extends AppCompatActivity {
                 dialog.cancel();
             }
         });
-
+        new ButtonServiceEffect(BeginMember.this).startEffect(); // Sound button effect
         dialog.show();
     }
 

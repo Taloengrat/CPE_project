@@ -4,8 +4,76 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PlayingMode.PlayPage">
+    tools:context=".PlayingMode.PlayPage"
+    android:background="@color/blue50">
 
+    <LinearLayout
+        android:id="@+id/bar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/backbar"
+        android:orientation="horizontal"
+        app:itemIconSize="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHeight_percent="0.1"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+
+        <ImageView
+            android:id="@+id/hint"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="16dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/help"
+            tools:ignore="VectorDrawableCompat" />
+
+        <ImageView
+
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:visibility="invisible"
+            app:srcCompat="@drawable/mic"
+            tools:ignore="VectorDrawableCompat" />
+
+        <ImageView
+            android:id="@+id/speak"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="13dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/voice"
+            tools:ignore="VectorDrawableCompat" />
+
+        <!--        <ImageView-->
+        <!--            android:id="@+id/next"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="match_parent"-->
+        <!--            android:layout_weight="1"-->
+        <!--            app:srcCompat="@drawable/next"-->
+        <!--            tools:ignore="VectorDrawableCompat" />-->
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/keyboard"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:padding="8dp"
+        android:background="@drawable/elevetorcircle"
+        app:layout_constraintCircle="@id/mic"
+        app:layout_constraintCircleAngle="50"
+        app:layout_constraintCircleRadius="60dp"
+        app:srcCompat="@drawable/keyboard"
+        tools:layout_editor_absoluteX="225dp"
+        tools:layout_editor_absoluteY="594dp"
+        tools:ignore="MissingConstraints"
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/counttime"
@@ -104,67 +172,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textClock" />
 
-    <LinearLayout
-        android:id="@+id/bar"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/backbar"
-        android:orientation="horizontal"
-        app:itemIconSize="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHeight_percent="0.1"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-
-        >
-
-        <!--        <ImageView-->
-        <!--            android:id="@+id/back"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="match_parent"-->
-        <!--            android:layout_weight="1"-->
-        <!--            app:srcCompat="@drawable/back"-->
-        <!--            tools:ignore="VectorDrawableCompat" />-->
-
-        <ImageView
-            android:id="@+id/hint"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_margin="16dp"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/help"
-            tools:ignore="VectorDrawableCompat" />
-
-        <ImageView
-
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:visibility="invisible"
-            app:srcCompat="@drawable/mic"
-            tools:ignore="VectorDrawableCompat" />
-
-        <ImageView
-            android:id="@+id/speak"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_margin="13dp"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/voice"
-            tools:ignore="VectorDrawableCompat" />
-
-        <!--        <ImageView-->
-        <!--            android:id="@+id/next"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="match_parent"-->
-        <!--            android:layout_weight="1"-->
-        <!--            app:srcCompat="@drawable/next"-->
-        <!--            tools:ignore="VectorDrawableCompat" />-->
-    </LinearLayout>
-
     <ImageView
         android:id="@+id/mic"
         android:layout_width="85dp"
@@ -251,6 +258,30 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/etKeyboard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:gravity="center"
+        android:padding="8dp"
+        android:background="@drawable/frame"
+        app:layout_constraintCircle="@id/answer"
+        tools:ignore="MissingConstraints"
+        android:visibility="invisible"/>
+
+    <ImageView
+        android:id="@+id/confirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/etKeyboard"
+        app:layout_constraintStart_toEndOf="@+id/etKeyboard"
+        app:layout_constraintTop_toTopOf="@+id/etKeyboard"
+        app:srcCompat="@drawable/confirm"
+        android:visibility="invisible"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

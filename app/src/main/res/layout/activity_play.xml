@@ -66,7 +66,7 @@
                 android:layout_below="@id/imagecreate"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/bold"
-                android:text="CREATE"
+                android:text="CREATE\nMISSION"
                 android:textSize="25dp" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
@@ -111,7 +111,7 @@
                 android:layout_below="@id/imagedelete"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/bold"
-                android:text="DELETE"
+                android:text="DELETE\nMISSION"
                 android:textSize="25dp" />
 
         </RelativeLayout>
@@ -155,7 +155,7 @@
                 android:layout_below="@id/imageimport"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/bold"
-                android:text="IMPORT"
+                android:text="IMPORT\nMISSION"
                 android:textSize="25dp" />
 
 
@@ -201,7 +201,7 @@
                 android:layout_below="@id/imageexport"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/bold"
-                android:text="EXPORT"
+                android:text="EXPORT\nMISSION"
                 android:textSize="25dp" />
 
         </RelativeLayout>

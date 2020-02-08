@@ -21,6 +21,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projectcpe.BeginMember;
+import com.example.projectcpe.ButtonServiceEffect;
 import com.example.projectcpe.HomePage;
 import com.example.projectcpe.MainActivity;
 import com.example.projectcpe.R;
@@ -32,7 +33,7 @@ import java.util.List;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public class MemberAdapterBegin extends RecyclerView.Adapter<MemberAdapterBegin.MemberViewHolder>{
+public class MemberAdapterBegin extends RecyclerView.Adapter<MemberAdapterBegin.MemberViewHolder> {
 
     Activity activity;
     public static List<Member> memberListb, User;
@@ -46,7 +47,7 @@ public class MemberAdapterBegin extends RecyclerView.Adapter<MemberAdapterBegin.
     @NonNull
     @Override
     public MemberViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_member_list_begin, parent,false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_member_list_begin, parent, false);
         return new MemberViewHolder(v);
     }
 
@@ -55,21 +56,17 @@ public class MemberAdapterBegin extends RecyclerView.Adapter<MemberAdapterBegin.
         final Member member = memberListb.get(position);
         Bitmap bitmap = BitmapFactory.decodeByteArray(member.getProfile(), 0, member.getProfile().length);
 
-        holder.name.setText("name : "+member.getName());
-        holder.age.setText("age : " +member.getAge());
+        holder.name.setText("name : " + member.getName());
+        holder.age.setText("age : " + member.getAge());
         holder.imUser.setImageBitmap(bitmap);
 
-        holder.imUser.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(activity, member.getProfile().length, Toast.LENGTH_LONG).show();
-            }
-        });
+
         holder.option.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                new ButtonServiceEffect(activity).startEffect(); // Sound button effect
                 Intent i = new Intent(activity, StatisticMember.class);
-                i.putExtra("id",member.getId());
+                i.putExtra("id", member.getId());
                 activity.startActivity(i);
                 activity.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
@@ -83,10 +80,10 @@ public class MemberAdapterBegin extends RecyclerView.Adapter<MemberAdapterBegin.
         return memberListb.size();
     }
 
-    public class MemberViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class MemberViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView name, age;
-        ImageView imUser,option;
+        ImageView imUser, option;
         ViewGroup layout;
 
         public MemberViewHolder(@NonNull final View itemView) {
@@ -96,20 +93,18 @@ public class MemberAdapterBegin extends RecyclerView.Adapter<MemberAdapterBegin.
             name = itemView.findViewById(R.id.name);
             age = itemView.findViewById(R.id.age);
             layout = itemView.findViewById(R.id.layout);
-            imUser =itemView.findViewById(R.id.imUser);
+            imUser = itemView.findViewById(R.id.imUser);
             option = itemView.findViewById(R.id.option);
 
 
-
-
         }
-
 
 
         @Override
         public void onClick(View view) {
 
 
+            new ButtonServiceEffect(activity).startEffect(); // Sound button effect
 
             final Dialog dialog = new Dialog(activity);
             dialog.getWindow().setBackgroundDrawableResource(R.drawable.bg_dialog_custom);
@@ -122,17 +117,20 @@ public class MemberAdapterBegin extends RecyclerView.Adapter<MemberAdapterBegin.
 
             final int iddd = MissionDATABASE.getInstance(activity).missionDAO().getDesMember(memberListb.get(getAdapterPosition()).getId());
 
-            User =getData(iddd);
+            User = getData(iddd);
 
             final SharedPreferences getPassword = activity.getSharedPreferences(MY_PRE_PASSWORD_ADMIN, MODE_PRIVATE);
             int gettingPassword = 0;
-            final int gettedPassword  = getPassword.getInt("Pass", gettingPassword);
+            final int gettedPassword = getPassword.getInt("Pass", gettingPassword);
 
             btSubmit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+
+                    new ButtonServiceEffect(activity).startEffect(); // Sound button effect
+
                     if (_etPassword.getText().toString().equals(String.valueOf(User.get(0).getPassword()))
-                    || _etPassword.getText().toString().equals(String.valueOf(gettedPassword))){
+                            || _etPassword.getText().toString().equals(String.valueOf(gettedPassword))) {
                         Intent i = new Intent(activity, HomePage.class);
                         i.putExtra("NAME", name.getText().toString());
                         i.putExtra("AGE", age.getText().toString());
@@ -142,15 +140,15 @@ public class MemberAdapterBegin extends RecyclerView.Adapter<MemberAdapterBegin.
                         activity.finish();
                         dialog.cancel();
 
-                    }else{
+                    } else {
 
-                        Toast.makeText(activity, String.valueOf(User.get(0).getPassword()),Toast.LENGTH_SHORT).show();
+                        Toast.makeText(activity, String.valueOf(User.get(0).getPassword()), Toast.LENGTH_SHORT).show();
                     }
                 }
             });
 
 
-dialog.show();
+            dialog.show();
 
 
         }

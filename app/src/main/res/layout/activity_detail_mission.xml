@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PlayingMode.DetailMission"
-    android:background="@color/yel50"
+    android:background="@color/blue50"
     >
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -22,6 +22,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+
 
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
@@ -48,6 +49,7 @@
             android:layout_marginTop="8dp"
             android:text="Step of mission"
             android:textSize="20dp"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="@+id/Name"
             app:layout_constraintStart_toStartOf="@+id/Name"
             app:layout_constraintTop_toBottomOf="@+id/Name" />
@@ -60,6 +62,7 @@
             android:fontFamily="@font/bold"
             android:text="Mission Name"
             android:textSize="30dp"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toStartOf="@+id/guideline8"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -71,6 +74,7 @@
             android:layout_marginTop="8dp"
             android:text="Step of mission"
             android:textSize="20dp"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="@+id/Name"
             app:layout_constraintStart_toStartOf="@+id/Name"
             app:layout_constraintTop_toBottomOf="@+id/numstep" />
@@ -117,6 +121,7 @@
             android:fontFamily="@font/thin"
             android:text="TextView"
             android:textSize="16dp"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/DetailMission"
             app:layout_constraintStart_toStartOf="@+id/DetailMission"

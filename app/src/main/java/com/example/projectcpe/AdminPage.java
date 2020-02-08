@@ -11,6 +11,8 @@ import com.example.projectcpe.CreateMission.MissionCreate;
 import com.example.projectcpe.CreateMission.MissionDelete;
 import com.example.projectcpe.CreateMission.Export.MissionExport;
 import com.example.projectcpe.CreateMission.Import.MissionImport;
+import com.example.projectcpe.PlayingMode.DetailMission;
+import com.example.projectcpe.ViewModel.Admin;
 
 public class AdminPage extends AppCompatActivity {
 
@@ -29,6 +31,7 @@ public class AdminPage extends AppCompatActivity {
 
     }
     public void FunctionAdmin(View view) {
+        new ButtonServiceEffect(AdminPage.this).startEffect(); // Sound button effect
         switch (view.getId())
         {
             case R.id.CardCreate : startActivity(new Intent(AdminPage.this, MissionCreate.class)); break;
@@ -44,6 +47,8 @@ public class AdminPage extends AppCompatActivity {
 
     @Override
     public boolean onSupportNavigateUp() {
+
+        new ButtonServiceEffect(AdminPage.this).startEffect(); // Sound button effect
         onBackPressed();
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         return true;
