@@ -207,5 +207,18 @@ dialog.cancel();
         return true;
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        stopService(new Intent(FunctionEditProfile.this, MusicService.class));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        stopService(new Intent(FunctionEditProfile.this, MusicService.class));
+        startService(new Intent(FunctionEditProfile.this, MusicService.class));
+    }
 
 }

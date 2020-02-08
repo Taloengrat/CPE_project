@@ -17,6 +17,8 @@ import android.widget.Toast;
 import com.example.projectcpe.AdminPage;
 import com.example.projectcpe.BeginMember;
 import com.example.projectcpe.HomePage;
+import com.example.projectcpe.MusicService;
+import com.example.projectcpe.PlayingMode.DetailMission;
 import com.example.projectcpe.R;
 import com.example.projectcpe.ViewModel.Mission;
 import com.example.projectcpe.ViewModel.MissionDATABASE;
@@ -122,6 +124,20 @@ public class MissionCreate extends AppCompatActivity {
         onBackPressed();
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         return true;
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        stopService(new Intent(MissionCreate.this, MusicService.class));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        stopService(new Intent(MissionCreate.this, MusicService.class));
+        startService(new Intent(MissionCreate.this, MusicService.class));
     }
 
 }

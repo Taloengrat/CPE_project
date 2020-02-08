@@ -15,6 +15,7 @@ import com.example.projectcpe.Adapter.MissionAdapter;
 import com.example.projectcpe.AdminPage;
 import com.example.projectcpe.BeginMember;
 import com.example.projectcpe.HomePage;
+import com.example.projectcpe.MusicService;
 import com.example.projectcpe.R;
 import com.example.projectcpe.ViewModel.Mission;
 import com.example.projectcpe.ViewModel.MissionDATABASE;
@@ -112,5 +113,19 @@ switch (result){
         onBackPressed();
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         return true;
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        stopService(new Intent(MissionDelete.this, MusicService.class));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        stopService(new Intent(MissionDelete.this, MusicService.class));
+        startService(new Intent(MissionDelete.this, MusicService.class));
     }
 }

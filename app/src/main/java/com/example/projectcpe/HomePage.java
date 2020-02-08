@@ -177,4 +177,20 @@ public class HomePage extends AppCompatActivity implements  MissionAdapter.OnCus
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         return true;
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        stopService(new Intent(HomePage.this, MusicService.class));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        stopService(new Intent(HomePage.this, MusicService.class));
+        startService(new Intent(HomePage.this, MusicService.class));
+    }
+
+
 }

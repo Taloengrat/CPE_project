@@ -18,6 +18,7 @@ import com.example.projectcpe.Adapter.MissionAdapter;
 import com.example.projectcpe.Adapter.StatiticAdapter;
 import com.example.projectcpe.ButtonServiceEffect;
 import com.example.projectcpe.HomePage;
+import com.example.projectcpe.MusicService;
 import com.example.projectcpe.R;
 import com.example.projectcpe.ViewModel.Member;
 import com.example.projectcpe.ViewModel.Mission;
@@ -135,5 +136,19 @@ public class DetailMission extends AppCompatActivity {
         onBackPressed();
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         return true;
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        stopService(new Intent(DetailMission.this, MusicService.class));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        stopService(new Intent(DetailMission.this, MusicService.class));
+        startService(new Intent(DetailMission.this, MusicService.class));
     }
 }

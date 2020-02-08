@@ -3,9 +3,11 @@ package com.example.projectcpe.CreateMission.Export;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 
+import com.example.projectcpe.MusicService;
 import com.example.projectcpe.R;
 
 import java.io.File;
@@ -39,5 +41,19 @@ public class ExportOnGoogleDrive extends AppCompatActivity {
         onBackPressed();
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         return true;
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        stopService(new Intent(ExportOnGoogleDrive.this, MusicService.class));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        stopService(new Intent(ExportOnGoogleDrive.this, MusicService.class));
+        startService(new Intent(ExportOnGoogleDrive.this, MusicService.class));
     }
 }

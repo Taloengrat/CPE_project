@@ -9,6 +9,8 @@ import android.view.View;
 
 import com.example.projectcpe.CreateMission.Import.ImportOnDevice;
 import com.example.projectcpe.CreateMission.Import.ImportOnGoogledrive;
+import com.example.projectcpe.CreateMission.Import.MissionImport;
+import com.example.projectcpe.MusicService;
 import com.example.projectcpe.R;
 
 public class MissionExport extends AppCompatActivity {
@@ -63,6 +65,20 @@ public class MissionExport extends AppCompatActivity {
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 break;
         }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        stopService(new Intent(MissionExport.this, MusicService.class));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        stopService(new Intent(MissionExport.this, MusicService.class));
+        startService(new Intent(MissionExport.this, MusicService.class));
     }
 
 }

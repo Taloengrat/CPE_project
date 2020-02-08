@@ -54,4 +54,17 @@ public class AdminPage extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        stopService(new Intent(AdminPage.this, MusicService.class));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        stopService(new Intent(AdminPage.this, MusicService.class));
+        startService(new Intent(AdminPage.this, MusicService.class));
+    }
 }

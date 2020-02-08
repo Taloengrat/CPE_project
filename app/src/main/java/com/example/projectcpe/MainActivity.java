@@ -12,6 +12,7 @@ import android.content.SharedPreferences;
 import com.example.projectcpe.Adapter.MemberAdapterBegin;
 import com.example.projectcpe.CSV.Utility.PermissionUtility;
 import com.example.projectcpe.CSV.Utility.StoreCSV;
+import com.example.projectcpe.CreateMission.Export.ExportOnDevice;
 import com.example.projectcpe.ViewModel.Member;
 import com.example.projectcpe.ViewModel.Mission;
 import com.example.projectcpe.ViewModel.MissionDATABASE;
@@ -499,6 +500,20 @@ public class MainActivity extends AppCompatActivity {
 
 
         }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        stopService(new Intent(MainActivity.this, MusicService.class));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        stopService(new Intent(MainActivity.this, MusicService.class));
+        startService(new Intent(MainActivity.this, MusicService.class));
+    }
     }
 
 

@@ -63,5 +63,17 @@ public class    LogoIntro extends AppCompatActivity {
         pd.postDelayed(Delay, 3000);
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
 
+        stopService(new Intent(LogoIntro.this, MusicService.class));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        stopService(new Intent(LogoIntro.this, MusicService.class));
+        startService(new Intent(LogoIntro.this, MusicService.class));
+    }
 }

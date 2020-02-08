@@ -19,9 +19,11 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
+import android.provider.MediaStore;
 import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
@@ -50,7 +52,7 @@ import java.util.TimerTask;
 public class PlayPage extends AppCompatActivity {
 
     private int ms = 0;
-    private int seconds = 56;
+    private int seconds = 0;
     private int minutes = 0;
     float Score;
     float SumScore;
@@ -453,7 +455,7 @@ public class PlayPage extends AppCompatActivity {
 
                 case MotionEvent.ACTION_UP:
                     Log.d("motionEvent", "Action was UP");
-                    view.setBackgroundResource(R.drawable.fram_unhilight);
+                    view.setBackgroundResource(R.drawable.backgroundmic);
                     speechRecognizer.stopListening();
                     return true;
                 default:
@@ -773,6 +775,7 @@ public class PlayPage extends AppCompatActivity {
         countDownTimer = new CountDownTimer(4000, 1000) {
 
             public void onTick(long millisUntilFinished) {
+                MediaPlayer.create(PlayPage.this, R.raw.starsound).start();
                 timecount.setText(String.valueOf(millisUntilFinished / 1000));
                 //here you can have your logic to set text to edittext
             }
@@ -780,6 +783,7 @@ public class PlayPage extends AppCompatActivity {
             public void onFinish() {
                 timecount.setText("Start !!!");
 
+                MediaPlayer.create(PlayPage.this, R.raw.start).start();
                 Runnable Delay = new Runnable() {
                     @SuppressLint("ClickableViewAccessibility")
                     @Override

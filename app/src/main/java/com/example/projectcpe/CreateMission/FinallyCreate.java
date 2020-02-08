@@ -45,6 +45,7 @@ import com.example.projectcpe.Adapter.StepAdapter;
 import com.example.projectcpe.AdminPage;
 import com.example.projectcpe.Main2Activity;
 import com.example.projectcpe.MainActivity;
+import com.example.projectcpe.MusicService;
 import com.example.projectcpe.R;
 import com.example.projectcpe.ViewModel.Mission;
 import com.example.projectcpe.ViewModel.MissionDATABASE;
@@ -664,6 +665,20 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
         MissionDATABASE.getInstance(FinallyCreate.this).missionDAO().create(mission);
 
         stopThread = true;
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        stopService(new Intent(FinallyCreate.this, MusicService.class));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        stopService(new Intent(FinallyCreate.this, MusicService.class));
+        startService(new Intent(FinallyCreate.this, MusicService.class));
     }
 }
 

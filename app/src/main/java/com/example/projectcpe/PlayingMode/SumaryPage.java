@@ -16,6 +16,7 @@ import com.example.projectcpe.Adapter.MemberAdapterBegin;
 import com.example.projectcpe.Adapter.SumaryAdapter;
 import com.example.projectcpe.AdminPage;
 import com.example.projectcpe.ButtonServiceEffect;
+import com.example.projectcpe.MusicService;
 import com.example.projectcpe.R;
 import com.example.projectcpe.ViewModel.Mission;
 import com.example.projectcpe.ViewModel.MissionDATABASE;
@@ -113,6 +114,15 @@ public class SumaryPage extends AppCompatActivity {
     private List<Mission> getData(int id) {
         return MissionDATABASE.getInstance(SumaryPage.this).missionDAO().getAllinfoOfMission(id);
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        stopService(new Intent(SumaryPage.this, MusicService.class));
+    }
+
+
 
 
 }

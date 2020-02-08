@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.net.wifi.hotspot2.pps.Credential;
 import android.os.Bundle;
 
+import com.example.projectcpe.MusicService;
 import com.example.projectcpe.R;
 
 
@@ -45,5 +46,18 @@ public class ImportOnGoogledrive extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        stopService(new Intent(ImportOnGoogledrive.this, MusicService.class));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        stopService(new Intent(ImportOnGoogledrive.this, MusicService.class));
+        startService(new Intent(ImportOnGoogledrive.this, MusicService.class));
+    }
 
 }

@@ -29,6 +29,7 @@ import com.example.projectcpe.CSV.Utility.FileCallback;
 import com.example.projectcpe.CreateMission.MissionDelete;
 import com.example.projectcpe.LogoIntro;
 import com.example.projectcpe.MainActivity;
+import com.example.projectcpe.MusicService;
 import com.example.projectcpe.R;
 import com.example.projectcpe.ViewModel.Mission;
 import com.example.projectcpe.ViewModel.MissionDATABASE;
@@ -475,5 +476,19 @@ public class ExportOnDevice extends AppCompatActivity implements  MissionAdapter
 
 
 
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        stopService(new Intent(ExportOnDevice.this, MusicService.class));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        stopService(new Intent(ExportOnDevice.this, MusicService.class));
+        startService(new Intent(ExportOnDevice.this, MusicService.class));
     }
 }

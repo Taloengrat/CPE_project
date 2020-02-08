@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.example.projectcpe.BeginMember;
 import com.example.projectcpe.ButtonServiceEffect;
 import com.example.projectcpe.LogoIntro;
+import com.example.projectcpe.MusicService;
 import com.example.projectcpe.R;
 import com.example.projectcpe.ViewModel.Member;
 import com.example.projectcpe.ViewModel.MemberStatic;
@@ -294,12 +295,23 @@ public class Feedback extends AppCompatActivity {
 
 
     public void Onclickbacktohome(View view) {
+
+        startService(new Intent(Feedback.this, MusicService.class));
         new ButtonServiceEffect(Feedback.this).startEffect(); // Sound button effect
         Intent i = new Intent(Feedback.this, DetailMission.class);
         i.putExtra("MissionId", id);
         i.putExtra("MemberId", memberId);
         startActivity(i);
-        fileList();
+        finish();
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        stopService(new Intent(Feedback.this, MusicService.class));
+    }
+
+
 }

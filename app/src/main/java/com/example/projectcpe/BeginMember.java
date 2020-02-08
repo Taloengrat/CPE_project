@@ -157,4 +157,17 @@ public class BeginMember extends AppCompatActivity {
         dialog.show();
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        stopService(new Intent(BeginMember.this, MusicService.class));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        stopService(new Intent(BeginMember.this, MusicService.class));
+        startService(new Intent(BeginMember.this, MusicService.class));
+    }
 }

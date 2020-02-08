@@ -96,4 +96,18 @@ public class FunctionEditPassword extends AppCompatActivity {
         return resault;
 
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        stopService(new Intent(FunctionEditPassword.this, MusicService.class));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        stopService(new Intent(FunctionEditPassword.this, MusicService.class));
+        startService(new Intent(FunctionEditPassword.this, MusicService.class));
+    }
 }

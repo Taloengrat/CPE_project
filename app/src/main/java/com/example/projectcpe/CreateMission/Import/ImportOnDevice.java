@@ -5,11 +5,14 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 
 import com.example.projectcpe.Adapter.CsvImportAdapter;
 import com.example.projectcpe.Adapter.MissionAdapter;
+import com.example.projectcpe.CreateMission.MissionDelete;
+import com.example.projectcpe.MusicService;
 import com.example.projectcpe.R;
 import com.example.projectcpe.ViewModel.Csv;
 import com.example.projectcpe.ViewModel.Mission;
@@ -88,5 +91,18 @@ public class ImportOnDevice extends AppCompatActivity {
         onBackPressed();
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         return true;
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        stopService(new Intent(ImportOnDevice.this, MusicService.class));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        stopService(new Intent(ImportOnDevice.this, MusicService.class));
+        startService(new Intent(ImportOnDevice.this, MusicService.class));
     }
 }

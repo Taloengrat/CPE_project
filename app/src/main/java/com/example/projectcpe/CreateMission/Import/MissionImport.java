@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
 
+import com.example.projectcpe.MusicService;
 import com.example.projectcpe.R;
 
 import java.io.File;
@@ -69,5 +70,18 @@ public class MissionImport extends AppCompatActivity {
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 break;
         }
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        stopService(new Intent(MissionImport.this, MusicService.class));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        stopService(new Intent(MissionImport.this, MusicService.class));
+        startService(new Intent(MissionImport.this, MusicService.class));
     }
 }
