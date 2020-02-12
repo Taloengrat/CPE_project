@@ -627,7 +627,7 @@ public class PlayPage extends AppCompatActivity {
         SumScoreWorng = scoreWrong / 3;
 
         SumScore = SumScoreCorrect - SumScoreWorng;
-        //
+        ////
 
 
 
