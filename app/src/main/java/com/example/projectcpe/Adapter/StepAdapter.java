@@ -114,6 +114,7 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
                 final Button bSave = dialog.findViewById(R.id.ok);
 
                 final LinearLayout linearDetail = dialog.findViewById(R.id.linearDetail);
+                TextView answerDetail = dialog.findViewById(R.id.answerDetail);
 
 
                 int childCount = stepViewHolder.frameEdittextthis.getChildCount();
@@ -151,11 +152,14 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
 
                         // LayoutParams Properties.
                         final LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-                        layoutParams.setMargins(0, 5, 0, 0);
+                        layoutParams.setMargins(0, 5, 0, 5);
                         layoutParams.weight = 1;
+//                        layoutParams.width = 150;
 
                         // LinearLayout Properties.
                         final LinearLayout linearLayout = new LinearLayout(mCtx);
+                        linearLayout.setPadding(2,2,2,2);
+
 
                         // TextView Properties.
                         final TextView textView = new TextView(mCtx);
@@ -166,6 +170,7 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
                         textView.setBackgroundResource(R.drawable.bgtext);
                         textView.setHint("Put your answer");
                         textView.setMaxEms(8);
+
 
                         // Spinner Properties.
                         final Spinner spinner = new Spinner(mCtx);
@@ -196,6 +201,9 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
                         textSet.setText(textGeted.getText());
                         childAt[0]++;
                     }
+
+                    answerDetail.setText(Answer.getText().toString());
+
                     dialog.show();
                 }
 
