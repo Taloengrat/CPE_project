@@ -18,6 +18,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.widget.ProgressBar;
 import android.widget.Switch;
 import android.widget.Toast;
@@ -73,6 +74,8 @@ public class ExportOnDevice extends AppCompatActivity implements  MissionAdapter
         setSupportActionBar(toolbar);
 
         recyclerView = findViewById(R.id.recyclerView);
+
+
 
 
 
@@ -311,38 +314,40 @@ public class ExportOnDevice extends AppCompatActivity implements  MissionAdapter
 
             case 10 :
 
-                headerList.add("MissionName.DetailMission.ForAge.NumberOfMission" +
-                        ".Question1.Question2.Question3.Question4.Question5.Question6.Question7.Question8.Question9.Question10" +
-                        ".Answer1.Answer2.Answer3.Answer4.Answer5.Answer6.Answer7.Answer8.Answer9.Answer10" +
-                        ".Score1.Score2.Score3.Score4.Score5.Score6.Score7.Score8.Score9.Score10" +
-                        ".Hint1.Hint2.Hint3.Hint4.Hint5.Hint6.Hint7.Hint8.Hint9.Hint10-");
-
-                dataList.add(missionList.get(0).getMissionName()+"."+missionList.get(0).getDetailMission()+"."+missionList.get(0).getAge()+"."+missionList.get(0).getNumberofMission()
-                        +"."+missionList.get(0).getQ1()+"."+missionList.get(0).getQ2()+"."+missionList.get(0).getQ3()+"."+missionList.get(0).getQ4()+"."+missionList.get(0).getQ5()+"."+missionList.get(0).getQ6()+"."+missionList.get(0).getQ7()+"."+missionList.get(0).getQ8()+"."+missionList.get(0).getQ9()+"."+missionList.get(0).getQ10()
-                        +"."+missionList.get(0).getA1()+"."+missionList.get(0).getA2()+"."+missionList.get(0).getA3()+"."+missionList.get(0).getA4()+"."+missionList.get(0).getA5()+"."+missionList.get(0).getA6()+"."+missionList.get(0).getA7()+"."+missionList.get(0).getA8()+"."+missionList.get(0).getA9()+"."+missionList.get(0).getA10()
-                        +"."+missionList.get(0).getS1()+"."+missionList.get(0).getS2()+"."+missionList.get(0).getS3()+"."+missionList.get(0).getS4()+"."+missionList.get(0).getS5()+"."+missionList.get(0).getS5()+"."+missionList.get(0).getS7()+"."+missionList.get(0).getS8()+"."+missionList.get(0).getS9()+"."+missionList.get(0).getS10()
-                        +"."+missionList.get(0).getH1()+"."+missionList.get(0).getH2()+"."+missionList.get(0).getH3()+"."+missionList.get(0).getH4()+"."+missionList.get(0).getH5()+"."+missionList.get(0).getH6()+"."+missionList.get(0).getH7()+"."+missionList.get(0).getH8()+"."+missionList.get(0).getH9()+"."+missionList.get(0).getH10()+"-");
-
-                createFileCsv();
-
                 try {
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/"+missionList.get(0).getMissionName(),"picture1.png"))),"picture1");
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/"+missionList.get(0).getMissionName(),"picture2.png"))),"picture2");
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/"+missionList.get(0).getMissionName(),"picture3.png"))),"picture3");
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/"+missionList.get(0).getMissionName(),"picture4.png"))),"picture4");
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/"+missionList.get(0).getMissionName(),"picture5.png"))),"picture5");
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/"+missionList.get(0).getMissionName(),"picture6.png"))),"picture6");
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/"+missionList.get(0).getMissionName(),"picture7.png"))),"picture7");
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/"+missionList.get(0).getMissionName(),"picture8.png"))),"picture8");
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/"+missionList.get(0).getMissionName(),"picture9.png"))),"picture9");
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/"+missionList.get(0).getMissionName(),"picture10.png"))),"picture10");
+                    headerList.add("MissionName.DetailMission.ForAge.NumberOfMission" +
+                            ".Question1.Question2.Question3.Question4.Question5.Question6.Question7.Question8.Question9.Question10" +
+                            ".Answer1.Answer2.Answer3.Answer4.Answer5.Answer6.Answer7.Answer8.Answer9.Answer10" +
+                            ".Score1.Score2.Score3.Score4.Score5.Score6.Score7.Score8.Score9.Score10" +
+                            ".Hint1.Hint2.Hint3.Hint4.Hint5.Hint6.Hint7.Hint8.Hint9.Hint10-");
 
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
+                    dataList.add(missionList.get(0).getMissionName()+"."+missionList.get(0).getDetailMission()+"."+missionList.get(0).getAge()+"."+missionList.get(0).getNumberofMission()
+                            +"."+missionList.get(0).getQ1()+"."+missionList.get(0).getQ2()+"."+missionList.get(0).getQ3()+"."+missionList.get(0).getQ4()+"."+missionList.get(0).getQ5()+"."+missionList.get(0).getQ6()+"."+missionList.get(0).getQ7()+"."+missionList.get(0).getQ8()+"."+missionList.get(0).getQ9()+"."+missionList.get(0).getQ10()
+                            +"."+missionList.get(0).getA1()+"."+missionList.get(0).getA2()+"."+missionList.get(0).getA3()+"."+missionList.get(0).getA4()+"."+missionList.get(0).getA5()+"."+missionList.get(0).getA6()+"."+missionList.get(0).getA7()+"."+missionList.get(0).getA8()+"."+missionList.get(0).getA9()+"."+missionList.get(0).getA10()
+                            +"."+missionList.get(0).getS1()+"."+missionList.get(0).getS2()+"."+missionList.get(0).getS3()+"."+missionList.get(0).getS4()+"."+missionList.get(0).getS5()+"."+missionList.get(0).getS5()+"."+missionList.get(0).getS7()+"."+missionList.get(0).getS8()+"."+missionList.get(0).getS9()+"."+missionList.get(0).getS10()
+                            +"."+missionList.get(0).getH1()+"."+missionList.get(0).getH2()+"."+missionList.get(0).getH3()+"."+missionList.get(0).getH4()+"."+missionList.get(0).getH5()+"."+missionList.get(0).getH6()+"."+missionList.get(0).getH7()+"."+missionList.get(0).getH8()+"."+missionList.get(0).getH9()+"."+missionList.get(0).getH10()+"-");
+
+                }catch (Exception ex){
+                    Log.v("NIGHT" , ex.getMessage());
+                }finally {
+                    createFileCsv();
+
+                    try {
+                        saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/"+missionList.get(0).getMissionName(),"picture1.png"))),"picture1");
+                        saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/"+missionList.get(0).getMissionName(),"picture2.png"))),"picture2");
+                        saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/"+missionList.get(0).getMissionName(),"picture3.png"))),"picture3");
+                        saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/"+missionList.get(0).getMissionName(),"picture4.png"))),"picture4");
+                        saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/"+missionList.get(0).getMissionName(),"picture5.png"))),"picture5");
+                        saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/"+missionList.get(0).getMissionName(),"picture6.png"))),"picture6");
+                        saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/"+missionList.get(0).getMissionName(),"picture7.png"))),"picture7");
+                        saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/"+missionList.get(0).getMissionName(),"picture8.png"))),"picture8");
+                        saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/"+missionList.get(0).getMissionName(),"picture9.png"))),"picture9");
+                        saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/"+missionList.get(0).getMissionName(),"picture10.png"))),"picture10");
+
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
                 }
-
-
-
                 break;
         }
 
@@ -404,12 +409,20 @@ public class ExportOnDevice extends AppCompatActivity implements  MissionAdapter
         easyCsv.setSeperatorLine("-");
 
         /// create folder
-        String directory_path = Environment.getExternalStorageDirectory().getPath() + "/MyMissionExport/" +missionList.get(0).getMissionName();
+        String directory_path = Environment.getExternalStorageDirectory().getPath() + "/MyMissionExport/" + missionList.get(0).getMissionName();
         File file = new File(directory_path);
         if (!file.exists())
         {
             file.mkdirs();
         }
+
+
+
+//        String directory_path1 = Environment.getExternalStorageDirectory().getPath() + "/EnglishPractice/Color";
+//        File file1 = new File(directory_path1);
+//        if (!file1.exists()) {
+//            file1.mkdirs();
+//        }
 
         String fileName="Data";
 

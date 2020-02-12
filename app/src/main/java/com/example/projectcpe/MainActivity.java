@@ -9,10 +9,7 @@ import android.content.ContextWrapper;
 import android.content.Intent;
 import android.content.SharedPreferences;
 
-import com.example.projectcpe.Adapter.MemberAdapterBegin;
 import com.example.projectcpe.CSV.Utility.PermissionUtility;
-import com.example.projectcpe.CSV.Utility.StoreCSV;
-import com.example.projectcpe.CreateMission.Export.ExportOnDevice;
 import com.example.projectcpe.ViewModel.Member;
 import com.example.projectcpe.ViewModel.Mission;
 import com.example.projectcpe.ViewModel.MissionDATABASE;
@@ -26,25 +23,20 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -119,6 +111,11 @@ public class MainActivity extends AppCompatActivity {
                             file3.mkdirs();
                         }
 
+                        String directory_path4 = Environment.getExternalStorageDirectory().getPath() + "/EnglishPractice/Career";
+                        File file4 = new File(directory_path4);
+                        if (!file4.exists()) {
+                            file4.mkdirs();
+                        }
                         if (_etPass.getText().toString().isEmpty()) {
                             Snackbar.make(_etPass, "Plese enter your password for Admin !", Snackbar.LENGTH_SHORT).show();
                         } else {
@@ -158,38 +155,7 @@ public class MainActivity extends AppCompatActivity {
         saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.gray)).getBitmap(), "picture9", "Color");
         saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.orange)).getBitmap(), "picture10", "Color");
 
-//        ByteArrayOutputStream baos1 = new ByteArrayOutputStream();
-//        ByteArrayOutputStream baos2 = new ByteArrayOutputStream();
-//        ByteArrayOutputStream baos3 = new ByteArrayOutputStream();
-//        ByteArrayOutputStream baos4 = new ByteArrayOutputStream();
-//        ByteArrayOutputStream baos5 = new ByteArrayOutputStream();
-//        ByteArrayOutputStream baos6 = new ByteArrayOutputStream();
-//        ByteArrayOutputStream baos7 = new ByteArrayOutputStream();
-//        ByteArrayOutputStream baos8 = new ByteArrayOutputStream();
-//        ByteArrayOutputStream baos9 = new ByteArrayOutputStream();
-//        ByteArrayOutputStream baos10 = new ByteArrayOutputStream();
 
-//        bitmap1.compress(Bitmap.CompressFormat.JPEG, 100, baos1);
-//        bitmap2.compress(Bitmap.CompressFormat.JPEG, 100, baos2);
-//        bitmap3.compress(Bitmap.CompressFormat.JPEG, 100, baos3);
-//        bitmap4.compress(Bitmap.CompressFormat.JPEG, 100, baos4);
-//        bitmap5.compress(Bitmap.CompressFormat.JPEG, 100, baos5);
-//        bitmap6.compress(Bitmap.CompressFormat.JPEG, 100, baos6);
-//        bitmap7.compress(Bitmap.CompressFormat.JPEG, 100, baos7);
-//        bitmap8.compress(Bitmap.CompressFormat.JPEG, 100, baos8);
-//        bitmap9.compress(Bitmap.CompressFormat.JPEG, 100, baos9);
-//        bitmap10.compress(Bitmap.CompressFormat.JPEG, 100, baos10);
-//
-//        byte[] imageInByte1 = baos1.toByteArray();
-//        byte[] imageInByte2 = baos2.toByteArray();
-//        byte[] imageInByte3 = baos3.toByteArray();
-//        byte[] imageInByte4 = baos4.toByteArray();
-//        byte[] imageInByte5 = baos5.toByteArray();
-//        byte[] imageInByte6 = baos6.toByteArray();
-//        byte[] imageInByte7 = baos7.toByteArray();
-//        byte[] imageInByte8 = baos8.toByteArray();
-//        byte[] imageInByte9 = baos9.toByteArray();
-//        byte[] imageInByte10 = baos10.toByteArray();
 
 
         Mission mission = new Mission("Color", "Various colors", 5, 10
@@ -295,12 +261,52 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-//    public static Drawable getAssetImage(Context context, String filename) throws IOException {
-//        AssetManager assets = context.getResources().getAssets();
-//        InputStream buffer = new BufferedInputStream((assets.open("drawable/" + filename + ".png")));
-//        Bitmap bitmap = BitmapFactory.decodeStream(buffer);
-//        return new BitmapDrawable(context.getResources(), bitmap);
-//    }
+    private void CreateMissionCareer() {
+
+            saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c1)).getBitmap(), "picture1", "Career");
+            saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c2)).getBitmap(), "picture2", "Career");
+            saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c3)).getBitmap(), "picture3", "Career");
+            saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c4)).getBitmap(), "picture4", "Career");
+            saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c5)).getBitmap(), "picture5", "Career");
+            saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c6)).getBitmap(), "picture6", "Career");
+            saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c7)).getBitmap(), "picture7", "Career");
+            saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c8)).getBitmap(), "picture8", "Career");
+            saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c9)).getBitmap(), "picture9", "Career");
+            saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c10)).getBitmap(), "picture10", "Career");
+
+
+        Mission mission3 = new Mission( "Career", "Various career", 9 , 10
+                , directory_path + "Career" + "/picture1.png", directory_path + "Career" + "/picture2png", directory_path + "Career" + "/picture3.png", directory_path + "Career" + "/picture4.png", directory_path + "Career" + "/picture5png", directory_path + "Career" + "/picture6.png", directory_path + "Career" + "/picture7.png", directory_path + "Career" + "/picture8.png", directory_path + "Career" + "/picture9.png", directory_path + "Career" + "/picture10.png"
+                , getResources().getString(R.string.q4_1), getResources().getString(R.string.q4_2), getResources().getString(R.string.q4_3), getResources().getString(R.string.q4_4), getResources().getString(R.string.q4_5)
+                , getResources().getString(R.string.q4_6), getResources().getString(R.string.q4_7), getResources().getString(R.string.q4_8)
+                , getResources().getString(R.string.q4_9), getResources().getString(R.string.q4_10)
+                , getResources().getString(R.string.a4_1).trim(), getResources().getString(R.string.a4_2).trim(), getResources().getString(R.string.a4_3).trim()
+                , getResources().getString(R.string.a4_4).trim(), getResources().getString(R.string.a4_5).trim()
+                , getResources().getString(R.string.a4_6).trim(), getResources().getString(R.string.a4_7).trim(), getResources().getString(R.string.a4_8).trim()
+                , getResources().getString(R.string.a4_9).trim(), getResources().getString(R.string.a4_10).trim()
+
+                , getResources().getString(R.string.s4_1).trim(), getResources().getString(R.string.s4_2).trim(), getResources().getString(R.string.s4_3).trim()
+                , getResources().getString(R.string.s4_4).trim(), getResources().getString(R.string.s4_5).trim(), getResources().getString(R.string.s4_6).trim()
+                , getResources().getString(R.string.s4_7).trim(), getResources().getString(R.string.s4_8).trim(), getResources().getString(R.string.s4_9).trim()
+                , getResources().getString(R.string.s4_10).trim()
+
+                , getResources().getString(R.string.h4_1).trim(), getResources().getString(R.string.h4_2).trim(), getResources().getString(R.string.h4_3).trim()
+                , getResources().getString(R.string.h4_4).trim(), getResources().getString(R.string.h4_5).trim(), getResources().getString(R.string.h4_6).trim()
+                , getResources().getString(R.string.h4_7).trim(), getResources().getString(R.string.h4_8).trim(), getResources().getString(R.string.h4_9).trim()
+                , getResources().getString(R.string.h4_10).trim());
+
+
+        MissionDATABASE.getInstance(MainActivity.this).missionDAO().create(mission3);
+
+
+    }
+
+    public static Drawable getAssetImage(Context context, String filename) throws IOException {
+        AssetManager assets = context.getResources().getAssets();
+        InputStream buffer = new BufferedInputStream((assets.open( filename + ".png")));
+        Bitmap bitmap = BitmapFactory.decodeStream(buffer);
+        return new BitmapDrawable(context.getResources(), bitmap);
+    }
 
     @Override
     protected void onStart() {
@@ -473,6 +479,7 @@ public class MainActivity extends AppCompatActivity {
                 CreateMissionDefault();
                 CreateMissionZoo();
                 CreateMissionTwo();
+                CreateMissionCareer();
 
 
 

@@ -61,6 +61,7 @@
 
         <ImageView
 
+            android:id="@+id/michide"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -69,12 +70,12 @@
             tools:ignore="VectorDrawableCompat" />
 
         <ImageView
-            android:id="@+id/speak"
-            android:layout_width="wrap_content"
+            android:id="@+id/surrender"
+            android:layout_width="40dp"
             android:layout_height="match_parent"
             android:layout_margin="13dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/voice"
+            app:srcCompat="@drawable/bug"
             tools:ignore="VectorDrawableCompat" />
 
         <!--        <ImageView-->
@@ -96,8 +97,6 @@
         app:layout_constraintCircleAngle="50"
         app:layout_constraintCircleRadius="60dp"
         app:srcCompat="@drawable/keyboard"
-        tools:layout_editor_absoluteX="225dp"
-        tools:layout_editor_absoluteY="594dp"
         tools:ignore="MissingConstraints"
         android:visibility="gone"/>
 
@@ -205,6 +204,7 @@
         android:layout_weight="1"
         android:background="@drawable/backgroundmic"
         android:elevation="16dp"
+        android:padding="8dp"
         app:layout_constraintCircle="@id/bar"
         app:srcCompat="@drawable/mic"
         tools:ignore="VectorDrawableCompat" />
@@ -215,9 +215,9 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:fontFamily="@font/bold"
-        android:text="Timer"
         android:textColor="@color/black"
         android:textSize="32dp"
+        android:text="1 : 00"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -237,14 +237,25 @@
 
     <ImageView
         android:id="@+id/startClick"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="230dp"
+        android:layout_height="230dp"
         android:padding="32dp"
         app:layout_constraintBottom_toBottomOf="@+id/bar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/clickstart" />
+
+    <TextView
+        android:id="@+id/txPlay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PLAY"
+        android:textSize="50dp"
+        android:fontFamily="@font/bold"
+        app:layout_constraintCircle="@id/startClick"
+        app:layout_constraintCircleRadius="110dp"
+        />
 
 
     <TextView

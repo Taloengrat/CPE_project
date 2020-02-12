@@ -12,8 +12,6 @@
     <ImageView
         android:id="@+id/logoApp"
         android:layout_width="0dp"
-        android:background="@drawable/elevetorcircle"
-        android:elevation="2dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="116dp"

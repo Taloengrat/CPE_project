@@ -587,56 +587,56 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
                         mission.setQ1(StepAdapter.stepList.get(i).getQuestion());
                         mission.setA1(StepAdapter.stepList.get(i).getAnswer());
                         mission.setS1(StepAdapter.stepList.get(i).getScore());
-                        mission.setH1(StepAdapter.stepList.get(i).getScore());
+                        mission.setH1(StepAdapter.stepList.get(i).getHint());
                         break;
                     case 1:
                         saveToInternalStorage(b2, "picture2", getName);
                         mission.setQ2(StepAdapter.stepList.get(i).getQuestion());
                         mission.setA2(StepAdapter.stepList.get(i).getAnswer());
                         mission.setS2(StepAdapter.stepList.get(i).getScore());
-                        mission.setH2(StepAdapter.stepList.get(i).getScore());
+                        mission.setH2(StepAdapter.stepList.get(i).getHint());
                         break;
                     case 2:
                         saveToInternalStorage(b3, "picture3", getName);
                         mission.setQ3(StepAdapter.stepList.get(i).getQuestion());
                         mission.setA3(StepAdapter.stepList.get(i).getAnswer());
                         mission.setS3(StepAdapter.stepList.get(i).getScore());
-                        mission.setH3(StepAdapter.stepList.get(i).getScore());
+                        mission.setH3(StepAdapter.stepList.get(i).getHint());
                         break;
                     case 3:
                         saveToInternalStorage(b4, "picture4", getName);
                         mission.setQ4(StepAdapter.stepList.get(i).getQuestion());
                         mission.setA4(StepAdapter.stepList.get(i).getAnswer());
                         mission.setS4(StepAdapter.stepList.get(i).getScore());
-                        mission.setH4(StepAdapter.stepList.get(i).getScore());
+                        mission.setH4(StepAdapter.stepList.get(i).getHint());
                         break;
                     case 4:
                         saveToInternalStorage(b5, "picture5", getName);
                         mission.setQ5(StepAdapter.stepList.get(i).getQuestion());
                         mission.setA5(StepAdapter.stepList.get(i).getAnswer());
                         mission.setS5(StepAdapter.stepList.get(i).getScore());
-                        mission.setH5(StepAdapter.stepList.get(i).getScore());
+                        mission.setH5(StepAdapter.stepList.get(i).getHint());
                         break;
                     case 5:
                         saveToInternalStorage(b6, "picture6", getName);
                         mission.setQ6(StepAdapter.stepList.get(i).getQuestion());
                         mission.setA6(StepAdapter.stepList.get(i).getAnswer());
                         mission.setS6(StepAdapter.stepList.get(i).getScore());
-                        mission.setH6(StepAdapter.stepList.get(i).getScore());
+                        mission.setH6(StepAdapter.stepList.get(i).getHint());
                         break;
                     case 6:
                         saveToInternalStorage(b7, "picture7", getName);
                         mission.setQ7(StepAdapter.stepList.get(i).getQuestion());
                         mission.setA7(StepAdapter.stepList.get(i).getAnswer());
                         mission.setS7(StepAdapter.stepList.get(i).getScore());
-                        mission.setH7(StepAdapter.stepList.get(i).getScore());
+                        mission.setH7(StepAdapter.stepList.get(i).getHint());
                         break;
                     case 7:
                         saveToInternalStorage(b8, "picture8", getName);
                         mission.setQ8(StepAdapter.stepList.get(i).getQuestion());
                         mission.setA8(StepAdapter.stepList.get(i).getAnswer());
                         mission.setS8(StepAdapter.stepList.get(i).getScore());
-                        mission.setH8(StepAdapter.stepList.get(i).getScore());
+                        mission.setH8(StepAdapter.stepList.get(i).getHint());
 
 
                         break;
@@ -645,14 +645,14 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
                         mission.setQ9(StepAdapter.stepList.get(i).getQuestion());
                         mission.setA9(StepAdapter.stepList.get(i).getAnswer());
                         mission.setS9(StepAdapter.stepList.get(i).getScore());
-                        mission.setH9(StepAdapter.stepList.get(i).getScore());
+                        mission.setH9(StepAdapter.stepList.get(i).getHint());
                         break;
                     case 9:
                         saveToInternalStorage(b10, "picture10", getName);
                         mission.setQ10(StepAdapter.stepList.get(i).getQuestion());
                         mission.setA10(StepAdapter.stepList.get(i).getAnswer());
                         mission.setS10(StepAdapter.stepList.get(i).getScore());
-                        mission.setH10(StepAdapter.stepList.get(i).getScore());
+                        mission.setH10(StepAdapter.stepList.get(i).getHint());
                         break;
                 }
 
@@ -662,6 +662,8 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
 
 
         }
+
+        Log.v("check : ", steplist.get(0).getAnswer());
         MissionDATABASE.getInstance(FinallyCreate.this).missionDAO().create(mission);
 
         stopThread = true;

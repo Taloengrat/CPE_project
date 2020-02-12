@@ -11,9 +11,9 @@ import java.util.List;
 import io.reactivex.annotations.NonNull;
 
 @Entity(tableName = "mission")
-public class Mission implements Serializable {
+public class Mission {
 
-    @NonNull
+
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     private int idMission;
@@ -193,9 +193,12 @@ public class Mission implements Serializable {
 
 
 
-     @Ignore
 
 
+    public Mission() {
+    }
+
+    @Ignore
     public Mission(String missionName, int age) {
         this.missionName = missionName;
         this.age = age;
@@ -203,7 +206,7 @@ public class Mission implements Serializable {
 
 
 
-
+    @Ignore
     public Mission(String missionName, String detailMission, int age, int numberofMission) {
 //        this.idMission = idMission;
         this.missionName = missionName;
@@ -214,7 +217,7 @@ public class Mission implements Serializable {
 //        this.question = question;
     }
 
-
+    @Ignore
     public Mission( String missionName, String detailMission, int age, int numberofMission
             , String p1, String p2, String p3, String p4, String p5, String p6, String p7, String p8, String p9, String p10
             , String q1, String q2, String q3, String q4, String q5, String q6, String q7, String q8, String q9, String q10
@@ -278,8 +281,9 @@ public class Mission implements Serializable {
         H10 = h10;
     }
 
-    public Mission() {
-    }
+
+
+
 
     public int getIdMission() {
         return idMission;

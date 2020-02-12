@@ -581,7 +581,7 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
 
                         TextView textView = (TextView) frameEdittextthis.getChildAt(childAt + 2);
                         String nextText = textView.getText().toString();
-                        sumAnswer = sumAnswer + " / " + nextText;
+                        sumAnswer += nextText+"/";
 
                         childAt++;
                     }
@@ -614,7 +614,7 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.StepViewHolder
 
                         TextView textView = (TextView) frameEdittextthis.getChildAt(childAt + 2);
                         String nextText = textView.getText().toString();
-                        sumAnswer = sumAnswer + " / " + nextText;
+                        sumAnswer += nextText+"/";
 
                         childAt++;
                     }

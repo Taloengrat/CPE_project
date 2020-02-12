@@ -1,7 +1,10 @@
 package com.example.projectcpe.PlayingMode;
 
 import com.example.projectcpe.Adapter.SlidePageAdapter;
+import com.example.projectcpe.BeginMember;
 import com.example.projectcpe.CSV.Utility.PermissionUtility;
+import com.example.projectcpe.CreateMission.Export.ExportOnDevice;
+import com.example.projectcpe.LogoIntro;
 import com.example.projectcpe.MainActivity;
 import com.example.projectcpe.MusicService;
 import com.example.projectcpe.ViewModel.Mission;
@@ -52,11 +55,11 @@ import java.util.TimerTask;
 public class PlayPage extends AppCompatActivity {
 
     private int ms = 0;
-    private int seconds = 0;
+    private int seconds = 5;
     private int minutes = 0;
     float Score;
     float SumScore;
-    String Hint;
+
     int numHint;
 
 
@@ -64,17 +67,16 @@ public class PlayPage extends AppCompatActivity {
 
     private SlidePageAdapter adapter;
     private TextView textclock, timecount, Answer;
-    ImageView recogni, back, next, voice, help, start;
+    ImageView recogni, surrender, help, start;
     private Timer timer;
     private CountDownTimer countDownTimer;
     ViewPager pager;
     ImageView check, keyboard, confirm;
 
-    boolean threadreset;
     EditText etKeyboard;
     protected int id, stepnum;
     protected boolean running = false;
-    TextView hint1, hint2, hint3, hint4;
+    TextView hint1, hint2, hint3, hint4, txPlay;
 
     boolean h1 = false, h2 = false, h3 = false, h4 = false;
 
@@ -505,6 +507,9 @@ public class PlayPage extends AppCompatActivity {
     }
 
     private void VerifyAnswer(List<String> missionAnswer, String userAnswer) {
+
+        Log.v("check ็รืะ", Arrays.toString(new List[]{missionAnswer}));
+        Log.v("check Anser", Arrays.toString(HintString));
         if (missionAnswer.contains(userAnswer)) {
             CorrectStep();
             getScore(pager.getCurrentItem());
@@ -599,13 +604,15 @@ public class PlayPage extends AppCompatActivity {
 //                    changeHint(numHint); //เปลี่ยนจำนวนของ Hint
 
 
+                    textclock.setTextSize(32);
+
                     recogni.setOnTouchListener(Hilight);
                     textclock.setTextColor(getResources().getColor(R.color.black));
 
                     stopTimer();
                     ms = 0;
                     minutes = 0;
-                    seconds = 0;
+                    seconds = 60;
 
                     if (etKeyboard.getVisibility() == View.VISIBLE) {
                         etKeyboard.setText(null);
@@ -684,6 +691,7 @@ public class PlayPage extends AppCompatActivity {
         memberId = bundle.getInt("memberId");
 
 
+        txPlay = findViewById(R.id.txPlay);
         frameHint = findViewById(R.id.frameHint);
         hint1 = findViewById(R.id.hint1);
         hint2 = findViewById(R.id.hint2);
@@ -698,7 +706,7 @@ public class PlayPage extends AppCompatActivity {
 //        back = findViewById(R.id.back);
 //        next = findViewById(R.id.next);
         help = findViewById(R.id.hint);
-        voice = findViewById(R.id.speak);
+        surrender = findViewById(R.id.surrender);
         start = findViewById(R.id.startClick);
         timecount = findViewById(R.id.counttime);
         pager = findViewById(R.id.ViewPage);
@@ -793,7 +801,7 @@ public class PlayPage extends AppCompatActivity {
                         startTimer();
                         ShowViewPage();
 
-                        voice.setOnTouchListener(Hilight);// ใหปุ่ม speech อ่านออกเสียง เริ่มทำงานหลังจาก นับถอยหลังเสร็จ
+                        surrender.setOnTouchListener(Hilight);// ใหปุ่ม speech อ่านออกเสียง เริ่มทำงานหลังจาก นับถอยหลังเสร็จ
                         help.setOnClickListener(HintStep);// ใหปุ่ม speech hint เริ่มทำงานหลังจาก นับถอยหลังเสร็จ
                         recogni.setOnTouchListener(Hilight);// ใหปุ่ม speech recog เริ่มทำงานหลังจาก นับถอยหลังเสร็จ
 
@@ -810,6 +818,7 @@ public class PlayPage extends AppCompatActivity {
     }
 
     private void startTimer() {
+
 
         timer = new Timer();
 
@@ -837,10 +846,10 @@ public class PlayPage extends AppCompatActivity {
 
     private void updateSeconds() {
         ms = 0;
-        seconds++;
-        if (seconds == 60) {
-            seconds = 0;
-            minutes++;
+        seconds--;
+        if (seconds == 0) {
+
+            minutes--;
         }
     }
 
@@ -848,7 +857,10 @@ public class PlayPage extends AppCompatActivity {
     private void updateTimerText() {
 
 
-        textclock.setText(String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds));
+
+
+            textclock.setText(String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds));
+
 
     }
 
@@ -856,15 +868,20 @@ public class PlayPage extends AppCompatActivity {
         @Override
         public void run() {
 
-            if (minutes >= 1 || threadreset) {
+            if (seconds == 0) {
+
                 stopTimer();
                 recogni.setOnTouchListener(null);
-                textclock.setText(String.format(Locale.getDefault(), "%02d:%02d", 1, 0));
+                textclock.setText(String.format(Locale.getDefault(), "%02d:%02d", 0, 0));
                 textclock.setTextColor(getResources().getColor(R.color.red600));
-
                 keyboard.setVisibility(View.VISIBLE);
 
+                MediaPlayer.create(PlayPage.this, R.raw.timeout).start();
+                textclock.setTextSize(60);
+
+
             } else {
+
                 updateTimerText();
                 updateMs();
             }
@@ -876,6 +893,7 @@ public class PlayPage extends AppCompatActivity {
         @Override
         public void onClick(View view) {
 
+            txPlay.setVisibility(View.GONE);
             view.setVisibility(View.GONE);
             timecount.setVisibility(View.VISIBLE);
             countDownTimer();
@@ -958,4 +976,7 @@ public class PlayPage extends AppCompatActivity {
 
         }
     };
+
+
+
 }
