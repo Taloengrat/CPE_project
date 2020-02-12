@@ -59,6 +59,8 @@ public class PlayPage extends AppCompatActivity {
     private int minutes = 0;
     float Score;
     float SumScore;
+    float SumScoreCorrect,SumScoreWorng;
+    float scoreWrong = 0;
 
     int numHint;
 
@@ -183,7 +185,6 @@ public class PlayPage extends AppCompatActivity {
     View.OnClickListener HintStep = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-
             if (frameHint.getVisibility() == View.GONE) {
                 frameHint.setVisibility(View.VISIBLE);
                 switch (numHint) {
@@ -508,8 +509,12 @@ public class PlayPage extends AppCompatActivity {
 
     private void VerifyAnswer(List<String> missionAnswer, String userAnswer) {
 
-        Log.v("check ็รืะ", Arrays.toString(new List[]{missionAnswer}));
-        Log.v("check Anser", Arrays.toString(HintString));
+        Log.v("check", Arrays.toString(new List[]{missionAnswer}));
+        Log.v("check Answer", Arrays.toString(HintString));
+
+
+
+
         if (missionAnswer.contains(userAnswer)) {
             CorrectStep();
             getScore(pager.getCurrentItem());
@@ -545,14 +550,85 @@ public class PlayPage extends AppCompatActivity {
 
             }
 
-            SumScore += Score;
+            // Answer Score 50%
+            float percenAnswerStep = 50.0f / stepnum;               // เปอร์เว็นของแต่ละ Step
+            float oneAnswerStep = percenAnswerStep / 10.0f;         // อัตราส่วนของ 1%
+            float answerScore = Score*oneAnswerStep;                // จำนวนคะแนน คูณด้วยอัตราส่วน จะได้คะแนนของแต่ละ Step
+
+            // Time Score 20%
+            float timeFinish = Float.valueOf(seconds);
+
+            float percenTimeStep = 20.0f / stepnum;
+            float oneTimeStep = percenTimeStep / 30.0f;
+            float timeScore = 0;
+
+            if (timeFinish >= 30){
+                timeScore = percenTimeStep;
+            }else if (timeFinish < 30){
+                timeScore = timeFinish * oneTimeStep;
+            }
+
+
+
+            // Hint Score 30%
+
+            float percenHintStep = 30.0f / stepnum;
+            float oneHintStep = percenHintStep / 5.0f;
+            float hintScore;
+
+            if (h1==true && h2 == false && h3 == false && h4 == false){
+                hintScore = percenHintStep - oneHintStep;
+            }else if (h1==true && h2 == true && h3 == false && h4 == false){
+                hintScore = percenHintStep - (oneHintStep*2);
+            }else if (h1==true && h2 == true && h3 == true && h4 == false){
+                hintScore = percenHintStep - (oneHintStep*3);
+            }else if (h1==true && h2 == true && h3 == true && h4 == true){
+                hintScore = percenHintStep - (oneHintStep*4);
+            }else {
+                hintScore = percenHintStep;
+            }
+
+
+
+
+            Log.e("stepnum", String.valueOf(stepnum));
+
+//            Log.e("percenAnswerStep", String.valueOf(percenAnswerStep));
+//            Log.e("oneAnswerStep", String.valueOf(oneAnswerStep));
+            Log.e("answerScore", String.valueOf(answerScore));
+
+//            Log.e("textclock", timeclock);
+
+//            Log.e("percenHintStep", String.valueOf(percenHintStep));
+//            Log.e("oneHintStep", String.valueOf(oneHintStep));
+            Log.e("hintScore", String.valueOf(hintScore));
+
+
+            Log.e("timeFinish", String.valueOf(timeFinish));
+            Log.e("timeScore", String.valueOf(timeScore));
+
+
+            float newSumScore = answerScore + hintScore + timeScore;
+            Log.e("newSumScore", String.valueOf(newSumScore));
+
+
+
+            SumScoreCorrect += newSumScore;
             Toast.makeText(getApplicationContext(), "point this step : " + String.valueOf(Score)
-                    + "\n All Score : " + SumScore, Toast.LENGTH_SHORT).show();
+                    + "\n All Score : " + SumScoreCorrect, Toast.LENGTH_SHORT).show();
 
 
         } else {
             WrongStep();
+            scoreWrong++;
+            Toast.makeText(getApplicationContext(),"Wrong" + " " + scoreWrong,Toast.LENGTH_SHORT).show();
         }
+
+        SumScoreWorng = scoreWrong / 3;
+
+        SumScore = SumScoreCorrect - SumScoreWorng;
+
+
 
         Runnable Delay = new Runnable() {
             @Override
@@ -580,6 +656,9 @@ public class PlayPage extends AppCompatActivity {
         Runnable Delay = new Runnable() {
             @Override
             public void run() {
+
+
+
 
 
                 if (pager.getCurrentItem() + 1 == missionList.get(0).getNumberofMission()) {
@@ -614,12 +693,12 @@ public class PlayPage extends AppCompatActivity {
                     minutes = 0;
                     seconds = 60;
 
-                    if (etKeyboard.getVisibility() == View.VISIBLE) {
-                        etKeyboard.setText(null);
-                        etKeyboard.setVisibility(View.GONE);
-                        keyboard.setVisibility(View.GONE);
-                        confirm.setVisibility(View.GONE);
-                    }
+//                    if (etKeyboard.getVisibility() == View.VISIBLE) {
+//                        etKeyboard.setText(null);
+//                        etKeyboard.setVisibility(View.GONE);
+//                        keyboard.setVisibility(View.GONE);
+//                        confirm.setVisibility(View.GONE);
+//                    }
 
                     hint1.setOnClickListener(hintOne);
                     hint2.setOnClickListener(hintTwo);
@@ -732,6 +811,10 @@ public class PlayPage extends AppCompatActivity {
         confirm.setOnClickListener(confirmClick);
 
         start.setOnClickListener(startTimeBegin);
+
+
+        keyboard.setVisibility(View.VISIBLE);
+
 
 
     }
