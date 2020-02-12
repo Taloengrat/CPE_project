@@ -179,6 +179,8 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
 //                                test.setImageBitmap(b5);
                                 loadingDialog = ProgressDialog.show(FinallyCreate.this, "Create Mission", "Creating...", true, false);
                                 startThread();
+
+
                             }
                         });
 
@@ -301,8 +303,6 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
 
     @Override
     public void oncustompictureclick(final int pos, final ImageView imageView) {
-
-        Toast.makeText(getApplicationContext(), String.valueOf(pos), Toast.LENGTH_SHORT).show();
 
         position = pos;
 
@@ -555,6 +555,9 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
 
                         loadingDialog.dismiss();
 
+                        Intent i = new Intent(FinallyCreate.this,MainActivity.class);
+                        startActivity(i);
+                        finish();
 
                     }
                 });

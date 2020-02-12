@@ -109,7 +109,6 @@ public class MissionCreate extends AppCompatActivity {
         i.putExtra("NumOfStep",Integer.parseInt(spinner.getSelectedItem().toString()));
         startActivity(i);
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-        Toast.makeText(getApplicationContext(), spinner.getSelectedItem().toString(), Toast.LENGTH_LONG).show();
     }
 
     @Override
