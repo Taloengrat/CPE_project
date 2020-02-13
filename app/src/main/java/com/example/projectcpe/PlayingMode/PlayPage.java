@@ -5,9 +5,11 @@ import com.example.projectcpe.BeginMember;
 import com.example.projectcpe.ButtonServiceEffect;
 import com.example.projectcpe.CSV.Utility.PermissionUtility;
 import com.example.projectcpe.CreateMission.Export.ExportOnDevice;
+import com.example.projectcpe.HomePage;
 import com.example.projectcpe.LogoIntro;
 import com.example.projectcpe.MainActivity;
 import com.example.projectcpe.MusicService;
+import com.example.projectcpe.ViewModel.Member;
 import com.example.projectcpe.ViewModel.Mission;
 import com.example.projectcpe.ViewModel.MissionDATABASE;
 
@@ -1167,4 +1169,40 @@ public class PlayPage extends AppCompatActivity {
 
         }
     };
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+        dialog.setTitle("Exit game");
+        dialog.setCancelable(true);
+        dialog.setMessage("Do You want to exit the game ?");
+        dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+
+                Intent i = new Intent(PlayPage.this, HomePage.class);
+                i.putExtra("ID", memberId);
+                i.putExtra("NAME", getDataMember(memberId).get(0).getName());
+                i.putExtra("AGE",getDataMember(memberId).get(0).getAge());
+                startActivity(i);
+                finish();
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+
+            }
+        });
+
+        dialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        new ButtonServiceEffect(PlayPage.this).startEffect(); // Sound button effect
+        dialog.show();
+        // your code.
+
+    }
+
+    private List<Member> getDataMember(int id) {
+        return MissionDATABASE.getInstance(PlayPage.this).missionDAO().getAllinfoOfMember(id);
+    }
+
 }

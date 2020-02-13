@@ -1,5 +1,6 @@
 package com.example.projectcpe;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -7,6 +8,7 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -163,18 +165,34 @@ public class HomePage extends AppCompatActivity implements  MissionAdapter.OnCus
 
     @Override
     public void onBackPressed() {
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+        dialog.setTitle("Logout Accout");
+        dialog.setCancelable(true);
+        dialog.setMessage("Do you want to logout?");
+        dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                startActivity(new Intent(HomePage.this, BeginMember.class));
+                finish();
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+
+            }
+        });
+
+        dialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        new ButtonServiceEffect(HomePage.this).startEffect(); // Sound button effect
+        dialog.show();
         // your code.
-        startActivity(new Intent(HomePage.this, BeginMember.class));
-        finish();
-        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+
     }
 
     @Override
     public boolean onSupportNavigateUp() {
 
-        new ButtonServiceEffect(HomePage.this).startEffect(); // Sound button effect
-        onBackPressed();
-        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+     onBackPressed();
         return true;
     }
 

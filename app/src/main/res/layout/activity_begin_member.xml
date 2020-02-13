@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     tools:context=".FunctionEditProfile"
     android:background= "@color/white">
 
@@ -72,15 +71,15 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/menu_begin"
         android:layout_width="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:cardBackgroundColor="@color/blue100"
+        app:cardCornerRadius="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:cardBackgroundColor="@color/blue100"
-        app:layout_constraintStart_toStartOf="parent"
-        app:cardCornerRadius="5dp">
+        app:layout_constraintStart_toStartOf="parent">
 
 
         <LinearLayout
@@ -88,23 +87,22 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/signin"
-            android:layout_gravity="center"
-            android:layout_marginTop="8dp"
-            />
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/signin" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Admin Mode"
-                android:fontFamily="@font/bold"
-                android:textSize="20dp"
                 android:layout_gravity="center"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="@font/bold"
                 android:gravity="bottom"
-                android:layout_marginBottom="4dp"/>
+                android:text="Admin Mode"
+                android:textSize="20dp" />
 
         </LinearLayout>
 
