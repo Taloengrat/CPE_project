@@ -21,6 +21,7 @@ public class EasyCsv {
     private File file;
     private OutputStream outputStream;
 
+
     private String separatorColumn=",";
     private String seperatorLine="\r\n";
 

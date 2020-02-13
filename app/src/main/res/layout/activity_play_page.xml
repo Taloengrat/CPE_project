@@ -52,12 +52,13 @@
 
         <ImageView
             android:id="@+id/hint"
-            android:layout_width="wrap_content"
+            android:layout_width="40dp"
             android:layout_height="match_parent"
             android:layout_margin="16dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/help"
             tools:ignore="VectorDrawableCompat" />
+
 
         <ImageView
 
@@ -75,7 +76,7 @@
             android:layout_height="match_parent"
             android:layout_margin="13dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/bug"
+            app:srcCompat="@drawable/flagsurrender"
             tools:ignore="VectorDrawableCompat" />
 
         <!--        <ImageView-->
@@ -87,18 +88,7 @@
         <!--            tools:ignore="VectorDrawableCompat" />-->
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/keyboard"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:padding="8dp"
-        android:background="@drawable/elevetorcircle"
-        app:layout_constraintCircle="@id/mic"
-        app:layout_constraintCircleAngle="50"
-        app:layout_constraintCircleRadius="60dp"
-        app:srcCompat="@drawable/keyboard"
-        tools:ignore="MissingConstraints"
-        android:visibility="gone"/>
+
 
     <TextView
         android:id="@+id/counttime"
@@ -197,6 +187,44 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textClock" />
 
+    <LinearLayout
+        android:id="@+id/layoutUnion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintCircle="@id/bar"
+        tools:ignore="MissingConstraints"
+        android:background="@drawable/bg_mic_and_keyboard"
+        android:elevation="16dp"
+        android:visibility="gone">
+
+        <ImageView
+
+            android:id="@+id/micUnion"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            android:layout_weight="1"
+            android:visibility="visible"
+            app:srcCompat="@drawable/mic"
+            tools:ignore="VectorDrawableCompat"
+
+            android:padding="16dp"/>
+
+        <ImageView
+
+            android:id="@+id/keyboardUnion"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            android:layout_weight="1"
+            android:visibility="visible"
+            app:srcCompat="@drawable/keyboard"
+            tools:ignore="VectorDrawableCompat"
+
+            android:padding="16dp"/>
+
+
+    </LinearLayout>
+
     <ImageView
         android:id="@+id/mic"
         android:layout_width="85dp"
@@ -207,7 +235,8 @@
         android:padding="8dp"
         app:layout_constraintCircle="@id/bar"
         app:srcCompat="@drawable/mic"
-        tools:ignore="VectorDrawableCompat" />
+        tools:ignore="MissingConstraints,VectorDrawableCompat"
+        android:visibility="visible"/>
 
     <TextView
         android:id="@+id/textClock"

@@ -2,6 +2,7 @@ package com.example.projectcpe.PlayingMode;
 
 import com.example.projectcpe.Adapter.SlidePageAdapter;
 import com.example.projectcpe.BeginMember;
+import com.example.projectcpe.ButtonServiceEffect;
 import com.example.projectcpe.CSV.Utility.PermissionUtility;
 import com.example.projectcpe.CreateMission.Export.ExportOnDevice;
 import com.example.projectcpe.LogoIntro;
@@ -59,7 +60,7 @@ public class PlayPage extends AppCompatActivity {
     private int minutes = 0;
     float Score;
     float SumScore;
-    float SumScoreCorrect,SumScoreWorng;
+    float SumScoreCorrect, SumScoreWorng;
     float scoreWrong = 0;
 
     int numHint;
@@ -73,7 +74,9 @@ public class PlayPage extends AppCompatActivity {
     private Timer timer;
     private CountDownTimer countDownTimer;
     ViewPager pager;
-    ImageView check, keyboard, confirm;
+    ImageView check, keyboard, confirm, micUnion, keyboardUnion;
+
+    LinearLayout layoutUnion;
 
     EditText etKeyboard;
     protected int id, stepnum;
@@ -185,6 +188,7 @@ public class PlayPage extends AppCompatActivity {
     View.OnClickListener HintStep = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
+
             if (frameHint.getVisibility() == View.GONE) {
                 frameHint.setVisibility(View.VISIBLE);
                 switch (numHint) {
@@ -431,6 +435,46 @@ public class PlayPage extends AppCompatActivity {
         }
     };
 
+    View.OnClickListener onClickSurrender = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            AlertDialog.Builder dialog = new AlertDialog.Builder(PlayPage.this);
+            dialog.setTitle("SKIP");
+            dialog.setCancelable(true);
+            dialog.setMessage("Do you want to skip this quiz?");
+            dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+
+                    Handler pd = new Handler();
+                    pd.postDelayed(CheckPagerBeforeSkip, 500);
+
+
+//                    if (pager.getCurrentItem() + 1 == missionList.get(0).getNumberofMission()) {
+//                        Toast.makeText(PlayPage.this, "end of step", Toast.LENGTH_SHORT).show();
+//                        Intent i = new Intent(PlayPage.this, SumaryPage.class);
+//                        i.putExtra("IDmission", id);
+//                        i.putExtra("score", SumScore);
+//                        i.putExtra("memberId", memberId);
+//                        startActivity(i);
+//                        finish();
+//                        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+//                    } else {
+//                        pager.setCurrentItem(pager.getCurrentItem() + 1);
+//                    }
+                }
+            });
+
+            dialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+            new ButtonServiceEffect(PlayPage.this).startEffect(); // Sound button effect
+            dialog.show();
+
+        }
+    };
+
     View.OnTouchListener Hilight = new View.OnTouchListener() {
         @Override
         public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -451,6 +495,47 @@ public class PlayPage extends AppCompatActivity {
 
                     Log.d("motionEvent", "Action was DOWN");
                     view.setBackgroundResource(R.drawable.fram_hilight);
+
+                    speechRecognizer.startListening(speechRecognizerIntent);
+                    Keeper = "";
+                    return true;
+
+                case MotionEvent.ACTION_UP:
+                    Log.d("motionEvent", "Action was UP");
+                    view.setBackgroundResource(R.drawable.backgroundmic);
+                    speechRecognizer.stopListening();
+                    return true;
+                default:
+                    return false;
+            }
+        }
+    };
+
+    View.OnTouchListener speechTouchTimeOut = new View.OnTouchListener() {
+        @Override
+        public boolean onTouch(View view, MotionEvent motionEvent) {
+
+
+            if (PermissionUtility.askPermissionForActivity(PlayPage.this, Manifest.permission.RECORD_AUDIO, WRITE_PERMISSON_REQUEST_CODE)) {
+
+
+            }
+
+            switch (motionEvent.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+
+                    if (etKeyboard.getVisibility() == View.VISIBLE) {
+                        etKeyboard.setVisibility(View.GONE);
+                        confirm.setVisibility(View.GONE);
+                    }
+
+                    if (frameHint.getVisibility() == View.VISIBLE) {
+                        frameHint.setVisibility(View.GONE);
+                    }
+
+
+                    Log.d("motionEvent", "Action was DOWN");
+                    view.setBackgroundResource(R.drawable.reg_back);
 
                     speechRecognizer.startListening(speechRecognizerIntent);
                     Keeper = "";
@@ -513,8 +598,6 @@ public class PlayPage extends AppCompatActivity {
         Log.v("check Answer", Arrays.toString(HintString));
 
 
-
-
         if (missionAnswer.contains(userAnswer)) {
             CorrectStep();
             getScore(pager.getCurrentItem());
@@ -553,7 +636,7 @@ public class PlayPage extends AppCompatActivity {
             // Answer Score 50%
             float percenAnswerStep = 50.0f / stepnum;               // เปอร์เว็นของแต่ละ Step
             float oneAnswerStep = percenAnswerStep / 10.0f;         // อัตราส่วนของ 1%
-            float answerScore = Score*oneAnswerStep;                // จำนวนคะแนน คูณด้วยอัตราส่วน จะได้คะแนนของแต่ละ Step
+            float answerScore = Score * oneAnswerStep;                // จำนวนคะแนน คูณด้วยอัตราส่วน จะได้คะแนนของแต่ละ Step
 
             // Time Score 20%
             float timeFinish = Float.valueOf(seconds);
@@ -562,12 +645,11 @@ public class PlayPage extends AppCompatActivity {
             float oneTimeStep = percenTimeStep / 30.0f;
             float timeScore = 0;
 
-            if (timeFinish >= 30){
+            if (timeFinish >= 30) {
                 timeScore = percenTimeStep;
-            }else if (timeFinish < 30){
+            } else if (timeFinish < 30) {
                 timeScore = timeFinish * oneTimeStep;
             }
-
 
 
             // Hint Score 30%
@@ -576,19 +658,17 @@ public class PlayPage extends AppCompatActivity {
             float oneHintStep = percenHintStep / 5.0f;
             float hintScore;
 
-            if (h1==true && h2 == false && h3 == false && h4 == false){
+            if (h1 == true && h2 == false && h3 == false && h4 == false) {
                 hintScore = percenHintStep - oneHintStep;
-            }else if (h1==true && h2 == true && h3 == false && h4 == false){
-                hintScore = percenHintStep - (oneHintStep*2);
-            }else if (h1==true && h2 == true && h3 == true && h4 == false){
-                hintScore = percenHintStep - (oneHintStep*3);
-            }else if (h1==true && h2 == true && h3 == true && h4 == true){
-                hintScore = percenHintStep - (oneHintStep*4);
-            }else {
+            } else if (h1 == true && h2 == true && h3 == false && h4 == false) {
+                hintScore = percenHintStep - (oneHintStep * 2);
+            } else if (h1 == true && h2 == true && h3 == true && h4 == false) {
+                hintScore = percenHintStep - (oneHintStep * 3);
+            } else if (h1 == true && h2 == true && h3 == true && h4 == true) {
+                hintScore = percenHintStep - (oneHintStep * 4);
+            } else {
                 hintScore = percenHintStep;
             }
-
-
 
 
             Log.e("stepnum", String.valueOf(stepnum));
@@ -612,7 +692,6 @@ public class PlayPage extends AppCompatActivity {
             Log.e("newSumScore", String.valueOf(newSumScore));
 
 
-
             SumScoreCorrect += newSumScore;
             Toast.makeText(getApplicationContext(), "point this step : " + String.valueOf(Score)
                     + "\n All Score : " + SumScoreCorrect, Toast.LENGTH_SHORT).show();
@@ -621,14 +700,13 @@ public class PlayPage extends AppCompatActivity {
         } else {
             WrongStep();
             scoreWrong++;
-            Toast.makeText(getApplicationContext(),"Wrong" + " " + scoreWrong,Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Wrong" + " " + scoreWrong, Toast.LENGTH_SHORT).show();
         }
 
         SumScoreWorng = scoreWrong / 3;
 
         SumScore = SumScoreCorrect - SumScoreWorng;
         ////
-
 
 
         Runnable Delay = new Runnable() {
@@ -654,77 +732,10 @@ public class PlayPage extends AppCompatActivity {
         check.setImageResource(R.drawable.correct);
 
 
-        Runnable Delay = new Runnable() {
-            @Override
-            public void run() {
 
-
-
-
-
-                if (pager.getCurrentItem() + 1 == missionList.get(0).getNumberofMission()) {
-                    Toast.makeText(PlayPage.this, "end of step", Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(PlayPage.this, SumaryPage.class);
-                    i.putExtra("IDmission", id);
-                    i.putExtra("score", SumScore);
-                    i.putExtra("memberId", memberId);
-                    startActivity(i);
-                    finish();
-                    overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-                } else {
-                    check.setVisibility(View.GONE);
-                    pager.setCurrentItem(pager.getCurrentItem() + 1);
-
-                    getHint(pager.getCurrentItem()); //เปลี่ยนค่าของ hint
-                    frameHint.setVisibility(View.GONE); // ซ่อนกรอบของ Hint ก่อนที่จะเปลี่ยนเพจ
-
-                    Answer.setText("");
-                    Answer.setVisibility(View.INVISIBLE);
-
-//                    changeHint(numHint); //เปลี่ยนจำนวนของ Hint
-
-
-                    textclock.setTextSize(32);
-
-                    recogni.setOnTouchListener(Hilight);
-                    textclock.setTextColor(getResources().getColor(R.color.black));
-
-                    stopTimer();
-                    ms = 0;
-                    minutes = 0;
-                    seconds = 60;
-
-//                    if (etKeyboard.getVisibility() == View.VISIBLE) {
-//                        etKeyboard.setText(null);
-//                        etKeyboard.setVisibility(View.GONE);
-//                        keyboard.setVisibility(View.GONE);
-//                        confirm.setVisibility(View.GONE);
-//                    }
-
-                    hint1.setOnClickListener(hintOne);
-                    hint2.setOnClickListener(hintTwo);
-                    hint3.setOnClickListener(hintThree);
-                    hint4.setOnClickListener(hintFour);
-
-                    h1 = false;
-                    h2 = false;
-                    h3 = false;
-                    h4 = false;
-
-                    hint1.setBackgroundResource(R.drawable.elevetorcircle);
-                    hint2.setBackgroundResource(R.drawable.elevetorcircle);
-                    hint3.setBackgroundResource(R.drawable.elevetorcircle);
-                    hint4.setBackgroundResource(R.drawable.elevetorcircle);
-
-                    startTimer();
-                }
-
-
-            }
-        };
 
         Handler pd = new Handler();
-        pd.postDelayed(Delay, 2000);
+        pd.postDelayed(CheckPagerBeforeSkip, 2000);
     }
 
     private void SettingRecognizi() {
@@ -777,9 +788,13 @@ public class PlayPage extends AppCompatActivity {
         hint2 = findViewById(R.id.hint2);
         hint3 = findViewById(R.id.hint3);
         hint4 = findViewById(R.id.hint4);
-        keyboard = findViewById(R.id.keyboard);
+
         etKeyboard = findViewById(R.id.etKeyboard);
         confirm = findViewById(R.id.confirm);
+
+        layoutUnion = findViewById(R.id.layoutUnion);
+        micUnion = findViewById(R.id.micUnion);
+        keyboardUnion = findViewById(R.id.keyboardUnion);
 
         check = findViewById(R.id.check);
         recogni = findViewById(R.id.mic);
@@ -808,14 +823,14 @@ public class PlayPage extends AppCompatActivity {
         hint3.setOnClickListener(hintThree);
         hint4.setOnClickListener(hintFour);
 
-        keyboard.setOnClickListener(keyboardClick);
+
         confirm.setOnClickListener(confirmClick);
 
         start.setOnClickListener(startTimeBegin);
 
+        keyboardUnion.setOnClickListener(keyboardClick);
 
-        keyboard.setVisibility(View.VISIBLE);
-
+        micUnion.setOnTouchListener(speechTouchTimeOut);
 
 
     }
@@ -885,7 +900,7 @@ public class PlayPage extends AppCompatActivity {
                         startTimer();
                         ShowViewPage();
 
-                        surrender.setOnTouchListener(Hilight);// ใหปุ่ม speech อ่านออกเสียง เริ่มทำงานหลังจาก นับถอยหลังเสร็จ
+                        surrender.setOnClickListener(onClickSurrender);// ใหปุ่ม speech อ่านออกเสียง เริ่มทำงานหลังจาก นับถอยหลังเสร็จ
                         help.setOnClickListener(HintStep);// ใหปุ่ม speech hint เริ่มทำงานหลังจาก นับถอยหลังเสร็จ
                         recogni.setOnTouchListener(Hilight);// ใหปุ่ม speech recog เริ่มทำงานหลังจาก นับถอยหลังเสร็จ
 
@@ -941,9 +956,7 @@ public class PlayPage extends AppCompatActivity {
     private void updateTimerText() {
 
 
-
-
-            textclock.setText(String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds));
+        textclock.setText(String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds));
 
 
     }
@@ -955,13 +968,14 @@ public class PlayPage extends AppCompatActivity {
             if (seconds == 0) {
 
                 stopTimer();
-                recogni.setOnTouchListener(null);
                 textclock.setText(String.format(Locale.getDefault(), "%02d:%02d", 0, 0));
                 textclock.setTextColor(getResources().getColor(R.color.red600));
-                keyboard.setVisibility(View.VISIBLE);
 
                 MediaPlayer.create(PlayPage.this, R.raw.timeout).start();
                 textclock.setTextSize(60);
+
+                recogni.setVisibility(View.INVISIBLE);
+                layoutUnion.setVisibility(View.VISIBLE);
 
 
             } else {
@@ -1062,5 +1076,76 @@ public class PlayPage extends AppCompatActivity {
     };
 
 
+    Runnable CheckPagerBeforeSkip = new Runnable() {
+        @Override
+        public void run() {
 
+
+            if (pager.getCurrentItem() + 1 == missionList.get(0).getNumberofMission()) {
+                Toast.makeText(PlayPage.this, "end of step", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(PlayPage.this, SumaryPage.class);
+                i.putExtra("IDmission", id);
+                i.putExtra("score", SumScore);
+                i.putExtra("memberId", memberId);
+                startActivity(i);
+                finish();
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            } else {
+                check.setVisibility(View.GONE);
+                pager.setCurrentItem(pager.getCurrentItem() + 1);
+
+                getHint(pager.getCurrentItem()); //เปลี่ยนค่าของ hint
+                frameHint.setVisibility(View.GONE); // ซ่อนกรอบของ Hint ก่อนที่จะเปลี่ยนเพจ
+
+                Answer.setText("");
+                Answer.setVisibility(View.INVISIBLE);
+
+//                    changeHint(numHint); //เปลี่ยนจำนวนของ Hint
+
+
+                textclock.setTextSize(32);
+
+                recogni.setVisibility(View.VISIBLE);
+                layoutUnion.setVisibility(View.GONE);
+                recogni.setOnTouchListener(Hilight);
+                textclock.setTextColor(getResources().getColor(R.color.black));
+
+                stopTimer();
+                ms = 0;
+                minutes = 0;
+                seconds = 60;
+
+                if (etKeyboard.getVisibility() == View.VISIBLE) {
+
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(etKeyboard.getWindowToken(), 0);
+                    etKeyboard.setText(null);
+                    etKeyboard.setVisibility(View.GONE);
+
+                    confirm.setVisibility(View.GONE);
+
+
+                }
+
+                hint1.setOnClickListener(hintOne);
+                hint2.setOnClickListener(hintTwo);
+                hint3.setOnClickListener(hintThree);
+                hint4.setOnClickListener(hintFour);
+
+                h1 = false;
+                h2 = false;
+                h3 = false;
+                h4 = false;
+
+                hint1.setBackgroundResource(R.drawable.elevetorcircle);
+                hint2.setBackgroundResource(R.drawable.elevetorcircle);
+                hint3.setBackgroundResource(R.drawable.elevetorcircle);
+                hint4.setBackgroundResource(R.drawable.elevetorcircle);
+
+                startTimer();
+            }
+
+
+        }
+    };
 }
