@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projectcpe.BeginMember;
@@ -83,8 +84,9 @@ public class MemberAdapterBegin extends RecyclerView.Adapter<MemberAdapterBegin.
     public class MemberViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView name, age;
-        ImageView imUser, option;
+        ImageView imUser ;
         ViewGroup layout;
+        CardView option;
 
         public MemberViewHolder(@NonNull final View itemView) {
             super(itemView);
