@@ -59,7 +59,43 @@
                 app:layout_constraintEnd_toStartOf="@+id/speak"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/imUser"
-                app:layout_constraintTop_toTopOf="@+id/imUser" />
+                app:layout_constraintTop_toTopOf="@+id/imUser"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/scoreStep"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/thin"
+                android:text="Your Score"
+                android:textColor="#000000"
+                android:textSize="16dp"
+                app:layout_constraintBottom_toBottomOf="@+id/imUser"
+                app:layout_constraintEnd_toStartOf="@+id/speak"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/imUser"
+                app:layout_constraintTop_toTopOf="@+id/imUser"
+                app:layout_constraintVertical_bias="0.857" />
+
+            <TextView
+                android:id="@+id/scoreWrongStep"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/thin"
+                android:text="Your Wrong"
+                android:textColor="#000000"
+                android:textSize="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/speak"
+                app:layout_constraintStart_toEndOf="@+id/imUser"
+                app:layout_constraintTop_toBottomOf="@+id/scoreStep" />
 
 
             <ImageView

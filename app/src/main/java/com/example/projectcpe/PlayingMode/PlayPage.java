@@ -63,8 +63,14 @@ public class PlayPage extends AppCompatActivity {
     float SumScore;
     float SumScoreCorrect, SumScoreWorng;
     float scoreWrong = 0;
+    int countWrong = 0;
+    float countAllWrong = 0;
 
     int numHint;
+
+    int numberStep = 0;
+    String[] scoreStep = new String[10];
+    String[] scoreWrongStep = new String[10];
 
 
     LinearLayout frameHint;
@@ -665,25 +671,25 @@ public class PlayPage extends AppCompatActivity {
             }
 
 
-            Log.e("stepnum", String.valueOf(stepnum));
+//            Log.e("stepnum", String.valueOf(stepnum));
 
 //            Log.e("percenAnswerStep", String.valueOf(percenAnswerStep));
 //            Log.e("oneAnswerStep", String.valueOf(oneAnswerStep));
-            Log.e("answerScore", String.valueOf(answerScore));
+//            Log.e("answerScore", String.valueOf(answerScore));
 
 //            Log.e("textclock", timeclock);
 
 //            Log.e("percenHintStep", String.valueOf(percenHintStep));
 //            Log.e("oneHintStep", String.valueOf(oneHintStep));
-            Log.e("hintScore", String.valueOf(hintScore));
+//            Log.e("hintScore", String.valueOf(hintScore));
 
 
-            Log.e("timeFinish", String.valueOf(timeFinish));
-            Log.e("timeScore", String.valueOf(timeScore));
+//            Log.e("timeFinish", String.valueOf(timeFinish));
+//            Log.e("timeScore", String.valueOf(timeScore));
 
 
             float newSumScore = answerScore + hintScore + timeScore;
-            Log.e("newSumScore", String.valueOf(newSumScore));
+//            Log.e("newSumScore", String.valueOf(newSumScore));
 
 
             SumScoreCorrect += newSumScore;
@@ -691,13 +697,26 @@ public class PlayPage extends AppCompatActivity {
                     + "\n All Score : " + SumScoreCorrect, Toast.LENGTH_SHORT).show();
 
 
+            scoreStep[numberStep] = String.format("%.1f",newSumScore);
+            scoreWrongStep[numberStep] = String.valueOf(countWrong);
+
+
+            Log.e("countWrong", String.valueOf(countWrong));
+            Log.e("scoreWrongStep", Arrays.toString(scoreWrongStep));
+
+            numberStep++;
+            countWrong = 0;
+
+
+
         } else {
             WrongStep();
-            scoreWrong++;
-            Toast.makeText(getApplicationContext(), "Wrong" + " " + scoreWrong, Toast.LENGTH_SHORT).show();
+            countWrong++;
+            countAllWrong++;
+            Toast.makeText(getApplicationContext(),"Wrong " + countWrong + "\nAll Wrong " + countAllWrong,Toast.LENGTH_SHORT).show();
         }
 
-        SumScoreWorng = scoreWrong / 3;
+        SumScoreWorng = countAllWrong / 3;
 
         SumScore = SumScoreCorrect - SumScoreWorng;
         ////
@@ -825,6 +844,8 @@ public class PlayPage extends AppCompatActivity {
         keyboardUnion.setOnClickListener(keyboardClick);
 
         micUnion.setOnTouchListener(speechTouchTimeOut);
+
+        layoutUnion.setVisibility(View.VISIBLE);
 
 
     }
@@ -1081,6 +1102,8 @@ public class PlayPage extends AppCompatActivity {
                 i.putExtra("IDmission", id);
                 i.putExtra("score", SumScore);
                 i.putExtra("memberId", memberId);
+                i.putExtra("scoreStep", scoreStep);
+                i.putExtra("scoreWrongStep", scoreWrongStep);
                 startActivity(i);
                 finish();
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
@@ -1100,7 +1123,9 @@ public class PlayPage extends AppCompatActivity {
                 textclock.setTextSize(32);
 
                 recogni.setVisibility(View.VISIBLE);
-                layoutUnion.setVisibility(View.GONE);
+
+//                layoutUnion.setVisibility(View.GONE);
+
                 recogni.setOnTouchListener(Hilight);
                 textclock.setTextColor(getResources().getColor(R.color.black));
 

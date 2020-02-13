@@ -3,6 +3,7 @@ package com.example.projectcpe.Adapter;
 import android.app.Activity;
 import android.os.Build;
 import android.speech.tts.TextToSpeech;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,8 +47,13 @@ public class SumaryAdapter extends RecyclerView.Adapter<SumaryAdapter.SumaryView
     @Override
     public void onBindViewHolder(@NonNull final SumaryViewHolder holder, int position) {
         final Sumary sumary = sumaryList.get(position);
+        float totalScore = 100.0f / sumaryList.size();
+
+        Log.e("totalScore", String.valueOf(totalScore));
 
         holder.word.setText(sumary.getWord());
+        holder.scoreStep.setText("Your Score is " + sumary.getScoreStep() + " of " + String.format("%.1f",totalScore) );
+        holder.scoreWrongStep.setText("Wrong speech " + sumary.getScoreWrongStep() + " time.");
 
         mTTs = new TextToSpeech(activity, new TextToSpeech.OnInitListener() {
             @Override
@@ -88,7 +94,7 @@ public class SumaryAdapter extends RecyclerView.Adapter<SumaryAdapter.SumaryView
 
     public class SumaryViewHolder extends RecyclerView.ViewHolder {
 
-        TextView word;
+        TextView word,scoreStep,scoreWrongStep;
         ImageView speker;
 
         public SumaryViewHolder(@NonNull View itemView) {
@@ -96,6 +102,8 @@ public class SumaryAdapter extends RecyclerView.Adapter<SumaryAdapter.SumaryView
 
             word = itemView.findViewById(R.id.word);
             speker = itemView.findViewById(R.id.speak);
+            scoreStep = itemView.findViewById(R.id.scoreStep);
+            scoreWrongStep = itemView.findViewById(R.id.scoreWrongStep);
 
         }
     }

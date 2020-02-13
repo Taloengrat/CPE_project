@@ -31,6 +31,8 @@ public class SumaryPage extends AppCompatActivity {
     Button btNext;
     private int id, memberId;
     private float Score;
+    String[] scoreStep = new String[10];
+    String[] scoreWrongStep = new String[10];
 
     List<Mission> missionList;
     RecyclerView recyclerView;
@@ -49,6 +51,8 @@ public class SumaryPage extends AppCompatActivity {
         id = bundle.getInt("IDmission");
         memberId = bundle.getInt("memberId");
         Score = bundle.getFloat("score");
+        scoreStep = bundle.getStringArray("scoreStep");
+        scoreWrongStep = bundle.getStringArray("scoreWrongStep");
 
         missionList = getData(id);
 
@@ -83,25 +87,46 @@ public class SumaryPage extends AppCompatActivity {
         for (int i =0 ; i<num; i++) {
             Sumary sumary = new Sumary();
             switch (i){
-                case 0 : sumary.setWord(missionList.get(0).getA1());
+                case 0 :
+                    sumary.setWord(missionList.get(0).getA1());
+                    sumary.setScoreStep(scoreStep[0]);
+                    sumary.setScoreWrongStep(scoreWrongStep[0]);
                     break;
                 case 1 : sumary.setWord(missionList.get(0).getA2());
+                    sumary.setScoreStep(scoreStep[1]);
+                    sumary.setScoreWrongStep(scoreWrongStep[1]);
                     break;
                 case 2 : sumary.setWord(missionList.get(0).getA3());
+                    sumary.setScoreStep(scoreStep[2]);
+                    sumary.setScoreWrongStep(scoreWrongStep[2]);
                     break;
                 case 3 : sumary.setWord(missionList.get(0).getA4());
+                    sumary.setScoreStep(scoreStep[3]);
+                    sumary.setScoreWrongStep(scoreWrongStep[3]);
                     break;
                 case 4 : sumary.setWord(missionList.get(0).getA5());
+                    sumary.setScoreStep(scoreStep[4]);
+                    sumary.setScoreWrongStep(scoreWrongStep[4]);
                     break;
                 case 5 : sumary.setWord(missionList.get(0).getA6());
+                    sumary.setScoreStep(scoreStep[5]);
+                    sumary.setScoreWrongStep(scoreWrongStep[5]);
                     break;
                 case 6 : sumary.setWord(missionList.get(0).getA7());
+                    sumary.setScoreStep(scoreStep[6]);
+                    sumary.setScoreWrongStep(scoreWrongStep[6]);
                     break;
                 case 7 : sumary.setWord(missionList.get(0).getA8());
+                    sumary.setScoreStep(scoreStep[7]);
+                    sumary.setScoreWrongStep(scoreWrongStep[7]);
                     break;
                 case 8 : sumary.setWord(missionList.get(0).getA9());
+                    sumary.setScoreStep(scoreStep[8]);
+                    sumary.setScoreWrongStep(scoreWrongStep[8]);
                     break;
                 case 9 : sumary.setWord(missionList.get(0).getA10());
+                    sumary.setScoreStep(scoreStep[9]);
+                    sumary.setScoreWrongStep(scoreWrongStep[9]);
                     break;
                     default:
             }
