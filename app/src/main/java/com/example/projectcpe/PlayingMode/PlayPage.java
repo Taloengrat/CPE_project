@@ -37,6 +37,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -438,38 +439,31 @@ public class PlayPage extends AppCompatActivity {
     View.OnClickListener onClickSurrender = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            AlertDialog.Builder dialog = new AlertDialog.Builder(PlayPage.this);
-            dialog.setTitle("SKIP");
+            final Dialog dialog = new Dialog(PlayPage.this);
+            dialog.getWindow().setBackgroundDrawableResource(R.drawable.bg_dialog_custom);
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            dialog.setContentView(R.layout.dialog_surrender);
             dialog.setCancelable(true);
-            dialog.setMessage("Do you want to skip this quiz?");
-            dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int which) {
 
+
+            Button btYes = dialog.findViewById(R.id.btYes);
+            Button btNo = dialog.findViewById(R.id.btNo);
+
+            btYes.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
                     Handler pd = new Handler();
-                    pd.postDelayed(CheckPagerBeforeSkip, 500);
-
-
-//                    if (pager.getCurrentItem() + 1 == missionList.get(0).getNumberofMission()) {
-//                        Toast.makeText(PlayPage.this, "end of step", Toast.LENGTH_SHORT).show();
-//                        Intent i = new Intent(PlayPage.this, SumaryPage.class);
-//                        i.putExtra("IDmission", id);
-//                        i.putExtra("score", SumScore);
-//                        i.putExtra("memberId", memberId);
-//                        startActivity(i);
-//                        finish();
-//                        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-//                    } else {
-//                        pager.setCurrentItem(pager.getCurrentItem() + 1);
-//                    }
-                }
-            });
-
-            dialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int which) {
+                    pd.postDelayed(CheckPagerBeforeSkip, 0);
                     dialog.cancel();
                 }
             });
-            new ButtonServiceEffect(PlayPage.this).startEffect(); // Sound button effect
+
+            btNo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    dialog.cancel();
+                }
+            });
             dialog.show();
 
         }
