@@ -30,6 +30,9 @@ public class Mission {
     @ColumnInfo(name = "age")
     private int age;
 
+    @ColumnInfo(name = "time")
+    private String time;
+
 
     ///////////// attribute Picture
     @ColumnInfo(name = "P1")
@@ -156,7 +159,7 @@ public class Mission {
 
     @ColumnInfo(name = "S10")
     private String S10;
-//
+    //
 /////////////// attribute Hint
     @ColumnInfo(name = "H1")
     private String H1;
@@ -189,12 +192,6 @@ public class Mission {
     private String H10;
 
 
-
-
-
-
-
-
     public Mission() {
     }
 
@@ -203,7 +200,6 @@ public class Mission {
         this.missionName = missionName;
         this.age = age;
     }
-
 
 
     @Ignore
@@ -218,7 +214,7 @@ public class Mission {
     }
 
     @Ignore
-    public Mission( String missionName, String detailMission, int age, int numberofMission
+    public Mission(String missionName, String detailMission, int age, int numberofMission
             , String p1, String p2, String p3, String p4, String p5, String p6, String p7, String p8, String p9, String p10
             , String q1, String q2, String q3, String q4, String q5, String q6, String q7, String q8, String q9, String q10
             , String a1, String a2, String a3, String a4, String a5, String a6, String a7, String a8, String a9, String a10
@@ -282,9 +278,6 @@ public class Mission {
     }
 
 
-
-
-
     public int getIdMission() {
         return idMission;
     }
@@ -321,209 +314,417 @@ public class Mission {
         return age;
     }
 
-    public String getP1() { return P1; }
+    public String getP1() {
+        return P1;
+    }
 
-    public void setP1(String p1) { P1 = p1; }
+    public void setP1(String p1) {
+        P1 = p1;
+    }
 
-    public String getP2() { return P2; }
+    public String getP2() {
+        return P2;
+    }
 
-    public void setP2(String p2) { P2 = p2; }
+    public void setP2(String p2) {
+        P2 = p2;
+    }
 
-    public String getP3() { return P3; }
+    public String getP3() {
+        return P3;
+    }
 
-    public void setP3(String p3) { P3 = p3; }
+    public void setP3(String p3) {
+        P3 = p3;
+    }
 
-    public String getP4() { return P4; }
+    public String getP4() {
+        return P4;
+    }
 
-    public void setP4(String p4) { P4 = p4; }
+    public void setP4(String p4) {
+        P4 = p4;
+    }
 
-    public String getP5() { return P5; }
+    public String getP5() {
+        return P5;
+    }
 
-    public void setP5(String p5) { P5 = p5; }
+    public void setP5(String p5) {
+        P5 = p5;
+    }
 
-    public String getP6() { return P6; }
+    public String getP6() {
+        return P6;
+    }
 
-    public void setP6(String p6) { P6 = p6; }
+    public String getTime() {
+        return time;
+    }
 
-    public String getP7() { return P7; }
+    public void setTime(String time) {
+        this.time = time;
+    }
 
-    public void setP7(String p7) { P7 = p7; }
+    public void setP6(String p6) {
+        P6 = p6;
+    }
 
-    public String getP8() { return P8; }
+    public String getP7() {
+        return P7;
+    }
 
-    public void setP8(String p8) { P8 = p8; }
+    public void setP7(String p7) {
+        P7 = p7;
+    }
 
-    public String getP9() { return P9; }
+    public String getP8() {
+        return P8;
+    }
 
-    public void setP9(String p9) { P9 = p9; }
+    public void setP8(String p8) {
+        P8 = p8;
+    }
 
-    public String getP10() { return P10; }
+    public String getP9() {
+        return P9;
+    }
 
-    public void setP10(String p10) { P10 = p10; }
+    public void setP9(String p9) {
+        P9 = p9;
+    }
 
-    public String getQ1() { return Q1; }
+    public String getP10() {
+        return P10;
+    }
 
-    public void setQ1(String q1) { Q1 = q1; }
+    public void setP10(String p10) {
+        P10 = p10;
+    }
 
-    public String getQ2() { return Q2; }
+    public String getQ1() {
+        return Q1;
+    }
 
-    public void setQ2(String q2) { Q2 = q2; }
+    public void setQ1(String q1) {
+        Q1 = q1;
+    }
 
-    public String getQ3() { return Q3; }
+    public String getQ2() {
+        return Q2;
+    }
 
-    public void setQ3(String q3) { Q3 = q3; }
+    public void setQ2(String q2) {
+        Q2 = q2;
+    }
 
-    public String getQ4() { return Q4; }
+    public String getQ3() {
+        return Q3;
+    }
 
-    public void setQ4(String q4) { Q4 = q4; }
+    public void setQ3(String q3) {
+        Q3 = q3;
+    }
 
-    public String getQ5() { return Q5; }
+    public String getQ4() {
+        return Q4;
+    }
 
-    public void setQ5(String q5) { Q5 = q5; }
+    public void setQ4(String q4) {
+        Q4 = q4;
+    }
 
-    public String getQ6() { return Q6; }
+    public String getQ5() {
+        return Q5;
+    }
 
-    public void setQ6(String q6) { Q6 = q6; }
+    public void setQ5(String q5) {
+        Q5 = q5;
+    }
 
-    public String getQ7() { return Q7; }
+    public String getQ6() {
+        return Q6;
+    }
 
-    public void setQ7(String q7) { Q7 = q7; }
+    public void setQ6(String q6) {
+        Q6 = q6;
+    }
 
-    public String getQ8() { return Q8; }
+    public String getQ7() {
+        return Q7;
+    }
 
-    public void setQ8(String q8) { Q8 = q8; }
+    public void setQ7(String q7) {
+        Q7 = q7;
+    }
 
-    public String getQ9() { return Q9; }
+    public String getQ8() {
+        return Q8;
+    }
 
-    public void setQ9(String q9) { Q9 = q9; }
+    public void setQ8(String q8) {
+        Q8 = q8;
+    }
 
-    public String getQ10() { return Q10; }
+    public String getQ9() {
+        return Q9;
+    }
 
-    public void setQ10(String q10) { Q10 = q10; }
+    public void setQ9(String q9) {
+        Q9 = q9;
+    }
 
-    public String getA1() { return A1; }
+    public String getQ10() {
+        return Q10;
+    }
 
-    public void setA1(String a1) { A1 = a1; }
+    public void setQ10(String q10) {
+        Q10 = q10;
+    }
 
-    public String getA2() { return A2; }
+    public String getA1() {
+        return A1;
+    }
 
-    public void setA2(String a2) { A2 = a2; }
+    public void setA1(String a1) {
+        A1 = a1;
+    }
 
-    public String getA3() { return A3; }
+    public String getA2() {
+        return A2;
+    }
 
-    public void setA3(String a3) { A3 = a3; }
+    public void setA2(String a2) {
+        A2 = a2;
+    }
 
-    public String getA4() { return A4; }
+    public String getA3() {
+        return A3;
+    }
 
-    public void setA4(String a4) { A4 = a4; }
+    public void setA3(String a3) {
+        A3 = a3;
+    }
 
-    public String getA5() { return A5; }
+    public String getA4() {
+        return A4;
+    }
 
-    public void setA5(String a5) { A5 = a5; }
+    public void setA4(String a4) {
+        A4 = a4;
+    }
 
-    public String getA6() { return A6; }
+    public String getA5() {
+        return A5;
+    }
 
-    public void setA6(String a6) { A6 = a6; }
+    public void setA5(String a5) {
+        A5 = a5;
+    }
 
-    public String getA7() { return A7; }
+    public String getA6() {
+        return A6;
+    }
 
-    public void setA7(String a7) { A7 = a7; }
+    public void setA6(String a6) {
+        A6 = a6;
+    }
 
-    public String getA8() { return A8; }
+    public String getA7() {
+        return A7;
+    }
 
-    public void setA8(String a8) { A8 = a8; }
+    public void setA7(String a7) {
+        A7 = a7;
+    }
 
-    public String getA9() { return A9; }
+    public String getA8() {
+        return A8;
+    }
 
-    public void setA9(String a9) { A9 = a9; }
+    public void setA8(String a8) {
+        A8 = a8;
+    }
 
-    public String getA10() { return A10; }
+    public String getA9() {
+        return A9;
+    }
 
-    public void setA10(String a10) { A10 = a10; }
+    public void setA9(String a9) {
+        A9 = a9;
+    }
+
+    public String getA10() {
+        return A10;
+    }
+
+    public void setA10(String a10) {
+        A10 = a10;
+    }
 
     public void setAge(int age) {
         this.age = age;
     }
 
-    public String getS1() { return S1; }
+    public String getS1() {
+        return S1;
+    }
 
-    public void setS1(String s1) { S1 = s1; }
+    public void setS1(String s1) {
+        S1 = s1;
+    }
 
-    public String getS2() { return S2; }
+    public String getS2() {
+        return S2;
+    }
 
-    public void setS2(String s2) { S2 = s2; }
+    public void setS2(String s2) {
+        S2 = s2;
+    }
 
-    public String getS3() { return S3; }
+    public String getS3() {
+        return S3;
+    }
 
-    public void setS3(String s3) { S3 = s3; }
+    public void setS3(String s3) {
+        S3 = s3;
+    }
 
-    public String getS4() { return S4; }
+    public String getS4() {
+        return S4;
+    }
 
-    public void setS4(String s4) { S4 = s4; }
+    public void setS4(String s4) {
+        S4 = s4;
+    }
 
-    public String getS5() { return S5; }
+    public String getS5() {
+        return S5;
+    }
 
-    public void setS5(String s5) { S5 = s5; }
+    public void setS5(String s5) {
+        S5 = s5;
+    }
 
-    public String getS6() { return S6; }
+    public String getS6() {
+        return S6;
+    }
 
-    public void setS6(String s6) { S6 = s6; }
+    public void setS6(String s6) {
+        S6 = s6;
+    }
 
-    public String getS7() { return S7; }
+    public String getS7() {
+        return S7;
+    }
 
-    public void setS7(String s7) { S7 = s7; }
+    public void setS7(String s7) {
+        S7 = s7;
+    }
 
-    public String getS8() { return S8; }
+    public String getS8() {
+        return S8;
+    }
 
-    public void setS8(String s8) { S8 = s8; }
+    public void setS8(String s8) {
+        S8 = s8;
+    }
 
-    public String getS9() { return S9; }
+    public String getS9() {
+        return S9;
+    }
 
-    public void setS9(String s9) { S9 = s9; }
+    public void setS9(String s9) {
+        S9 = s9;
+    }
 
-    public String getS10() { return S10; }
+    public String getS10() {
+        return S10;
+    }
 
-    public void setS10(String s10) { S10 = s10; }
+    public void setS10(String s10) {
+        S10 = s10;
+    }
 
-    public String getH1() { return H1; }
+    public String getH1() {
+        return H1;
+    }
 
-    public void setH1(String h1) { H1 = h1; }
+    public void setH1(String h1) {
+        H1 = h1;
+    }
 
-    public String getH2() { return H2; }
+    public String getH2() {
+        return H2;
+    }
 
-    public void setH2(String h2) { H2 = h2; }
+    public void setH2(String h2) {
+        H2 = h2;
+    }
 
-    public String getH3() { return H3; }
+    public String getH3() {
+        return H3;
+    }
 
-    public void setH3(String h3) { H3 = h3; }
+    public void setH3(String h3) {
+        H3 = h3;
+    }
 
-    public String getH4() { return H4; }
+    public String getH4() {
+        return H4;
+    }
 
-    public void setH4(String h4) { H4 = h4; }
+    public void setH4(String h4) {
+        H4 = h4;
+    }
 
-    public String getH5() { return H5; }
+    public String getH5() {
+        return H5;
+    }
 
-    public void setH5(String h5) { H5 = h5; }
+    public void setH5(String h5) {
+        H5 = h5;
+    }
 
-    public String getH6() { return H6; }
+    public String getH6() {
+        return H6;
+    }
 
-    public void setH6(String h6) { H6 = h6; }
+    public void setH6(String h6) {
+        H6 = h6;
+    }
 
-    public String getH7() { return H7; }
+    public String getH7() {
+        return H7;
+    }
 
-    public void setH7(String h7) { H7 = h7; }
+    public void setH7(String h7) {
+        H7 = h7;
+    }
 
-    public String getH8() { return H8; }
+    public String getH8() {
+        return H8;
+    }
 
-    public void setH8(String h8) { H8 = h8; }
+    public void setH8(String h8) {
+        H8 = h8;
+    }
 
-    public String getH9() { return H9; }
+    public String getH9() {
+        return H9;
+    }
 
-    public void setH9(String h9) { H9 = h9; }
+    public void setH9(String h9) {
+        H9 = h9;
+    }
 
-    public String getH10() { return H10; }
+    public String getH10() {
+        return H10;
+    }
 
-    public void setH10(String h10) { H10 = h10; }
+    public void setH10(String h10) {
+        H10 = h10;
+    }
 
     //    public int[] getQuestion() {
 //        return question;

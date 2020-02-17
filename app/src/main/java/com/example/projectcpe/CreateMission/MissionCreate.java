@@ -46,7 +46,7 @@ public class MissionCreate extends AppCompatActivity {
 
 
     private void bindMenuSpinnertime() {
-        String[] items = new String[]{"1:10", "1:20", "1:30", "1:40", "1:50", "2:00"};
+        String[] items = new String[]{"1:00","1:10", "1:20", "1:30", "1:40", "1:50", "2:00"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
         spinnertime.setAdapter(adapter);
     }
@@ -114,6 +114,7 @@ public class MissionCreate extends AppCompatActivity {
         i.putExtra("detail",etDetail.getText().toString());
         i.putExtra("age",Integer.parseInt(etAge.getText().toString()));
         i.putExtra("NumOfStep",Integer.parseInt(spinner.getSelectedItem().toString()));
+        i.putExtra("time", spinnertime.getSelectedItem().toString());
         startActivity(i);
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }

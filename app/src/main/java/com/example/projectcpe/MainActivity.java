@@ -178,6 +178,8 @@ public class MainActivity extends AppCompatActivity {
                 , getResources().getString(R.string.h1_7).trim(), getResources().getString(R.string.h1_8).trim(), getResources().getString(R.string.h1_9).trim()
                 , getResources().getString(R.string.h1_10).trim());
 
+        mission.setTime("1:00");
+
 
         MissionDATABASE.getInstance(MainActivity.this).missionDAO().create(mission);
 
@@ -216,6 +218,7 @@ public class MainActivity extends AppCompatActivity {
                 , getResources().getString(R.string.h2_7).trim(), getResources().getString(R.string.h2_8).trim(), getResources().getString(R.string.h2_9).trim()
                 , getResources().getString(R.string.h2_10).trim());
 
+        mission2.setTime("1:10");
 
         MissionDATABASE.getInstance(MainActivity.this).missionDAO().create(mission2);
         stopThread = true;
@@ -255,6 +258,7 @@ public class MainActivity extends AppCompatActivity {
                 , getResources().getString(R.string.h3_7).trim(), getResources().getString(R.string.h3_8).trim(), getResources().getString(R.string.h3_9).trim()
                 , getResources().getString(R.string.h3_10).trim());
 
+        mission3.setTime("1:00");
 
         MissionDATABASE.getInstance(MainActivity.this).missionDAO().create(mission3);
 
@@ -295,7 +299,7 @@ public class MainActivity extends AppCompatActivity {
                 , getResources().getString(R.string.h4_7).trim(), getResources().getString(R.string.h4_8).trim(), getResources().getString(R.string.h4_9).trim()
                 , getResources().getString(R.string.h4_10).trim());
 
-
+        mission3.setTime("1:10");
         MissionDATABASE.getInstance(MainActivity.this).missionDAO().create(mission3);
 
 

@@ -78,9 +78,10 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
     int getNumOfStep, getAge;
     Button btSubmit;
     LinearLayout frameEdittext;
+    String getTime;
     public final int WRITE_PERMISSON_REQUEST_CODE = 1;
 
-
+    Bundle bundle = getIntent().getExtras();
 
     public ImageView mediumImage;
     private volatile boolean stopThread = false;
@@ -105,12 +106,12 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
 
 
 
-        Bundle bundle = getIntent().getExtras();
+
         getNumOfStep = bundle.getInt("NumOfStep");
         getName = bundle.getString("name");
         getDetail = bundle.getString("detail");
         getAge = bundle.getInt("age");
-
+        getTime = bundle.getString("time");
         Initia();
 
 
@@ -232,6 +233,8 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
 
 
     }
+
+
 
     private String saveToInternalStorage(Bitmap bitmapImage, String picturename, String missionName) {
         ContextWrapper cw = new ContextWrapper(getApplicationContext());
@@ -563,6 +566,7 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
         mission.setDetailMission(getDetail);
         mission.setAge(getAge);
         mission.setNumberofMission(getNumOfStep);
+        mission.setTime(getTime);
 
 
         for (int i = 0; i < StepAdapter.stepList.size(); i++) {
