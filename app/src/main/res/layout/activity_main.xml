@@ -58,7 +58,7 @@
         android:layout_marginTop="76dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
-        android:textColor="#ffff"
+        android:textColor="@color/black"
         android:hint="Create Password Admin"
         android:visibility="gone"
         android:fontFamily="@font/thin"

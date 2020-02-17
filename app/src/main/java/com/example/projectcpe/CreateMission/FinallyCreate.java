@@ -81,7 +81,7 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
     String getTime;
     public final int WRITE_PERMISSON_REQUEST_CODE = 1;
 
-    Bundle bundle = getIntent().getExtras();
+    Bundle bundle ;
 
     public ImageView mediumImage;
     private volatile boolean stopThread = false;
@@ -106,7 +106,7 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
 
 
 
-
+bundle = getIntent().getExtras();
         getNumOfStep = bundle.getInt("NumOfStep");
         getName = bundle.getString("name");
         getDetail = bundle.getString("detail");
