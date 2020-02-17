@@ -74,7 +74,7 @@ public class StatiticAdapter extends RecyclerView.Adapter<StatiticAdapter.Statis
 
         holder.improfile.setImageBitmap(bitmap);
         holder.txName.setText(statistic.getName());
-        holder.txScore.setText("Score : "+statistic.getScore());
+        holder.txScore.setText("Score : "+ String.format("%.1f",statistic.getScore()));
         holder.txAge.setText(String.valueOf(statistic.getAge()));
 
         switch (statistic.getNumStar()){

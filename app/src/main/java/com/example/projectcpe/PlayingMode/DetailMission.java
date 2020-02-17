@@ -96,7 +96,7 @@ public class DetailMission extends AppCompatActivity {
         txName.setText(missionData.get(0).getMissionName());
         txAge.setText("age : " +String.valueOf(missionData.get(0).getAge()));
         txNumstep.setText("step : " + String.valueOf(missionData.get(0).getNumberofMission()));
-        txDetail.setText(missionData.get(0).getDetailMission());
+        txDetail.setText("This Mission is about " + missionData.get(0).getDetailMission());
 
 
 

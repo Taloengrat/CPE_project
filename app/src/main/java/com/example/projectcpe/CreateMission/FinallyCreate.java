@@ -327,7 +327,7 @@ bundle = getIntent().getExtras();
                         Toast.makeText(FinallyCreate.this, "ไม่สามารถใช้งานกล้องได้", Toast.LENGTH_LONG).show();
                     }
                     requestPermissions(new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, CAMERA_RESULT_CODE);
-                }
+                }dialog.cancel();
             }
         });
 
@@ -547,7 +547,7 @@ bundle = getIntent().getExtras();
                         loadingDialog.dismiss();
 
                         Intent i = new Intent(FinallyCreate.this,AdminPage.class);
-                        startActivity(i);
+                        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         finish();
 
                     }

@@ -121,7 +121,7 @@ public class BeginMember extends AppCompatActivity {
                 final String pass = (input.getText().toString());
 
                 if (input.getText().toString().isEmpty()) {
-                    Toast.makeText(getApplicationContext(), "Please enter your pass word", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Please enter your password", Toast.LENGTH_SHORT).show();
                 } else if (CheckPassword(Integer.parseInt(pass))) {
                     Toast.makeText(getApplicationContext(), "Password Correct :)", Toast.LENGTH_SHORT).show();
                     dialog.cancel();

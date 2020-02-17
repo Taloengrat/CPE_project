@@ -1,7 +1,10 @@
 package com.example.projectcpe.Adapter;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Build;
+import android.os.Environment;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -18,8 +22,13 @@ import com.example.projectcpe.ButtonServiceEffect;
 import com.example.projectcpe.PlayingMode.SumaryPage;
 import com.example.projectcpe.R;
 import com.example.projectcpe.ViewModel.Member;
+import com.example.projectcpe.ViewModel.Mission;
+import com.example.projectcpe.ViewModel.MissionDATABASE;
 import com.example.projectcpe.ViewModel.Sumary;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Locale;
 
@@ -27,14 +36,19 @@ public class SumaryAdapter extends RecyclerView.Adapter<SumaryAdapter.SumaryView
 
 
     private TextToSpeech mTTs;
+    public List<Mission> missionData;
+
+
 
 
     Activity activity;
+    int id;
     public static List<Sumary> sumaryList;
 
     public SumaryAdapter(List<Sumary> sumaryList, Activity activity){
         this.activity = activity;
         this.sumaryList = sumaryList;
+        this.id = id;
     }
 
     @NonNull
@@ -54,6 +68,19 @@ public class SumaryAdapter extends RecyclerView.Adapter<SumaryAdapter.SumaryView
         holder.word.setText(sumary.getWord());
         holder.scoreStep.setText("Your Score is " + sumary.getScoreStep() + " of " + String.format("%.1f",totalScore) );
         holder.scoreWrongStep.setText("Wrong speech " + sumary.getScoreWrongStep() + " time.");
+
+//        missionData = getData(id);
+
+//        try {
+//            File directory = new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/"+missionData.get(0).getMissionName(),"picture"+ position+1 +".png");
+//            Bitmap b = BitmapFactory.decodeStream(new FileInputStream(directory));
+//            holder.picture.setImageBitmap(b);
+//
+//        }
+//        catch (FileNotFoundException e)
+//        {
+//            e.printStackTrace();
+//        }
 
         mTTs = new TextToSpeech(activity, new TextToSpeech.OnInitListener() {
             @Override
@@ -80,7 +107,7 @@ public class SumaryAdapter extends RecyclerView.Adapter<SumaryAdapter.SumaryView
             @Override
             public void onClick(View view) {
 
-                new ButtonServiceEffect(activity).startEffect(); // Sound button effect
+//                new ButtonServiceEffect(activity).startEffect(); // Sound button effect
                 speak(holder.word.getText().toString());
             }
         });
@@ -95,15 +122,21 @@ public class SumaryAdapter extends RecyclerView.Adapter<SumaryAdapter.SumaryView
     public class SumaryViewHolder extends RecyclerView.ViewHolder {
 
         TextView word,scoreStep,scoreWrongStep;
-        ImageView speker;
+        ImageView speker,picture;
+        int numPic;
 
         public SumaryViewHolder(@NonNull View itemView) {
             super(itemView);
+
 
             word = itemView.findViewById(R.id.word);
             speker = itemView.findViewById(R.id.speak);
             scoreStep = itemView.findViewById(R.id.scoreStep);
             scoreWrongStep = itemView.findViewById(R.id.scoreWrongStep);
+//            picture = itemView.findViewById(R.id.picture);
+
+
+
 
         }
     }
@@ -114,6 +147,10 @@ public class SumaryAdapter extends RecyclerView.Adapter<SumaryAdapter.SumaryView
         mTTs.speak(text.replace("/","  or  "), TextToSpeech.QUEUE_FLUSH, null, null);
 
 
+    }
+
+    private List<Mission> getData(int id) {
+        return MissionDATABASE.getInstance(activity).missionDAO().getAllinfoOfMission(id);
     }
 
 

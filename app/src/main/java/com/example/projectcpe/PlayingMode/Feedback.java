@@ -32,7 +32,7 @@ public class Feedback extends AppCompatActivity {
     int id, memberId, numstar;
     List<Mission> missionList;
     List<Member> memberList;
-    TextView MissionName, UserName;
+    TextView MissionName, UserName,UserScore;
     ImageView  imUser, fullstar1, fullstar2, fullstar3, fullstar4, fullstar5, halfstar1, halfstar2, halfstar3, halfstar4, halfstar5, backMission;
     MediaPlayer mediaPlayer;
     float Score;
@@ -53,6 +53,8 @@ public class Feedback extends AppCompatActivity {
         MissionName.setText(missionList.get(0).getMissionName());
         UserName.setText(memberList.get(0).getName());
         imUser.setImageBitmap(bitmap);
+
+        UserScore.setText("Your score is " + String.format("%.1f",Score) + " of 100");
 
         ShowStar(Score); //Show Star
 
@@ -87,6 +89,8 @@ public class Feedback extends AppCompatActivity {
         MissionName = findViewById(R.id.missionName);
 
         UserName = findViewById(R.id.userName);
+        UserScore = findViewById(R.id.userScore);
+
         imUser = findViewById(R.id.imUser);
         fullstar1 = findViewById(R.id.fullstar1);
         fullstar2 = findViewById(R.id.fullstar2);

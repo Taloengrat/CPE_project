@@ -125,6 +125,16 @@ public class PlayPage extends AppCompatActivity {
         Initial();
         getTime();
 
+        int s1 = scoreStep.length;
+        for (int i = 0 ; i < s1 ; i++){
+            scoreStep[i] = String.valueOf(0);
+        }
+
+        int sw1 = scoreWrongStep.length;
+        for (int i = 0 ; i < sw1 ; i++){
+            scoreWrongStep[i] = String.valueOf(0);
+        }
+
         getHint(pager.getCurrentItem());
 
 
@@ -761,6 +771,7 @@ public class PlayPage extends AppCompatActivity {
 
             Log.e("countWrong", String.valueOf(countWrong));
             Log.e("scoreWrongStep", Arrays.toString(scoreWrongStep));
+            Log.e("scoreStep", Arrays.toString(scoreStep));
 
             numberStep++;
             countWrong = 0;

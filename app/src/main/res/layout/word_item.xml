@@ -36,13 +36,10 @@
                 android:layout_gravity="center"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/photo"
-                tools:ignore="RedundantNamespace,VectorDrawableCompat"
-                xmlns:app="http://schemas.android.com/apk/res-auto"/>
+                tools:ignore="RedundantNamespace,VectorDrawableCompat" />
 
             <TextView
                 android:id="@+id/word"
@@ -64,21 +61,20 @@
 
             <TextView
                 android:id="@+id/scoreStep"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_width="243dp"
+                android:layout_height="21dp"
                 android:layout_gravity="center"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:fontFamily="@font/thin"
                 android:text="Your Score"
                 android:textColor="#000000"
-                android:textSize="16dp"
-                app:layout_constraintBottom_toBottomOf="@+id/imUser"
-                app:layout_constraintEnd_toStartOf="@+id/speak"
+                android:textSize="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/imUser"
-                app:layout_constraintTop_toTopOf="@+id/imUser"
-                app:layout_constraintVertical_bias="0.857" />
+                app:layout_constraintTop_toBottomOf="@+id/word" />
 
             <TextView
                 android:id="@+id/scoreWrongStep"
@@ -86,12 +82,12 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:fontFamily="@font/thin"
                 android:text="Your Wrong"
                 android:textColor="#000000"
-                android:textSize="16dp"
+                android:textSize="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/speak"
                 app:layout_constraintStart_toEndOf="@+id/imUser"

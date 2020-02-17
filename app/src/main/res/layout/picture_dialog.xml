@@ -22,7 +22,7 @@
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:text="Camera"
-        android:textColor="#ffff"
+        android:textColor="@color/black"
         android:textSize="30dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
         app:layout_constraintStart_toStartOf="parent" />
@@ -46,7 +46,7 @@
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:text="Gallaly"
-        android:textColor="#ffff"
+        android:textColor="@color/black"
         android:textSize="30dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline5" />
