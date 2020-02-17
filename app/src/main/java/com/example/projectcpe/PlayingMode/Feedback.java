@@ -8,6 +8,7 @@ import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -28,13 +29,14 @@ import java.util.List;
 
 public class Feedback extends AppCompatActivity {
 
-    int id, memberId,numstar;
+    int id, memberId, numstar;
     List<Mission> missionList;
     List<Member> memberList;
-    TextView MissionName,UserName;
-    ImageView imUser, fullstar1,fullstar2,fullstar3,fullstar4,fullstar5,halfstar1,halfstar2,halfstar3,halfstar4,halfstar5, backMission;
+    TextView MissionName, UserName;
+    ImageView  imUser, fullstar1, fullstar2, fullstar3, fullstar4, fullstar5, halfstar1, halfstar2, halfstar3, halfstar4, halfstar5, backMission;
     MediaPlayer mediaPlayer;
     float Score;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,28 +45,38 @@ public class Feedback extends AppCompatActivity {
         Initiali();
 
 
-       missionList = getDataMission(id);
-       memberList = getDataMember(memberId);
+        missionList = getDataMission(id);
+        memberList = getDataMember(memberId);
 
-        Bitmap bitmap = BitmapFactory.decodeByteArray(memberList.get(0).getProfile(), 0,memberList.get(0).getProfile().length);
+        Bitmap bitmap = BitmapFactory.decodeByteArray(memberList.get(0).getProfile(), 0, memberList.get(0).getProfile().length);
 
-       MissionName.setText(missionList.get(0).getMissionName());
-       UserName.setText(memberList.get(0).getName());
-       imUser.setImageBitmap(bitmap);
+        MissionName.setText(missionList.get(0).getMissionName());
+        UserName.setText(memberList.get(0).getName());
+        imUser.setImageBitmap(bitmap);
 
-       ShowStar(Score); //Show Star
-
-       Toast.makeText(Feedback.this,String.valueOf(Score), Toast.LENGTH_SHORT).show();
+        ShowStar(Score); //Show Star
 
 
-        Static statistic = new Static(id,memberId,memberList.get(0).getProfile(),memberList.get(0).getName(),Integer.valueOf(memberList.get(0).getAge())
-                ,Score,numstar);
-        MissionDATABASE.getInstance(Feedback.this).missionDAO().createStatistic(statistic);
+        Static statistic = new Static(id, memberId, memberList.get(0).getProfile(), memberList.get(0).getName(), Integer.valueOf(memberList.get(0).getAge())
+                , Score, numstar);
 
 
+        if (CheckForUpdate(memberId) == null) {
 
-        MemberStatic memberStatic = new MemberStatic(id, missionList.get(0).getMissionName(),String.valueOf(missionList.get(0).getAge()),numstar,Score);
+            MissionDATABASE.getInstance(Feedback.this).missionDAO().createStatistic(statistic);
+
+        } else {
+
+            if (CheckForUpdate(memberId).getScore() < Score) {
+                MissionDATABASE.getInstance(Feedback.this).missionDAO().updateStatistic2(Score, CheckForUpdate(memberId).getId());
+            } else {
+
+            }
+        }
+        MemberStatic memberStatic = new MemberStatic(id, missionList.get(0).getMissionName(), String.valueOf(missionList.get(0).getAge()), numstar, Score);
         MissionDATABASE.getInstance(Feedback.this).missionDAO().createMemberStatic(memberStatic);
+
+
 
 
     }
@@ -73,6 +85,7 @@ public class Feedback extends AppCompatActivity {
 
         mediaPlayer = MediaPlayer.create(Feedback.this, R.raw.starsound);
         MissionName = findViewById(R.id.missionName);
+
         UserName = findViewById(R.id.userName);
         imUser = findViewById(R.id.imUser);
         fullstar1 = findViewById(R.id.fullstar1);
@@ -96,11 +109,17 @@ public class Feedback extends AppCompatActivity {
         return MissionDATABASE.getInstance(Feedback.this).missionDAO().getAllinfoOfMission(id);
     }
 
+    private Static CheckForUpdate(int id) {
+        return MissionDATABASE.getInstance(Feedback.this).missionDAO().CheckForUpdateStatistic(id);
+    }
+
     private List<Member> getDataMember(int id) {
         return MissionDATABASE.getInstance(Feedback.this).missionDAO().getAllinfoOfMember(id);
     }
 
-
+    private Static getStatisticForUpdate(int id) {
+        return MissionDATABASE.getInstance(Feedback.this).missionDAO().CheckForUpdateStatistic(id);
+    }
 
 
     private void ShowStar(float score) {
@@ -109,7 +128,7 @@ public class Feedback extends AppCompatActivity {
             public void run() {
 
                 mediaPlayer.start();
-            halfstar1.setVisibility(View.VISIBLE);
+                halfstar1.setVisibility(View.VISIBLE);
             }
         };
 
@@ -212,85 +231,85 @@ public class Feedback extends AppCompatActivity {
         Handler pd = new Handler();
 
 
-       if (score < 10 && score>0){
+        if (score < 10 && score > 0) {
             numstar = 1;
             pd.postDelayed(star1, 1000);
-        }else if (score < 20 && score>=10){
+        } else if (score < 20 && score >= 10) {
             numstar = 2;
             pd.postDelayed(star1, 1000);
             pd.postDelayed(star2, 1500);
-        }else if (score < 30 && score>=20){
+        } else if (score < 30 && score >= 20) {
             numstar = 3;
             pd.postDelayed(star1, 1000);
             pd.postDelayed(star2, 1500);
             pd.postDelayed(star3, 2000);
-        }else if (score < 40 && score>=30){
+        } else if (score < 40 && score >= 30) {
             numstar = 4;
             pd.postDelayed(star1, 1000);
             pd.postDelayed(star2, 1500);
             pd.postDelayed(star3, 2000);
             pd.postDelayed(star4, 2500);
-        }else if ( score <= 50 && score >= 40){
+        } else if (score <= 50 && score >= 40) {
             numstar = 5;
             pd.postDelayed(star1, 1000);
             pd.postDelayed(star2, 1500);
             pd.postDelayed(star3, 2000);
             pd.postDelayed(star4, 2500);
             pd.postDelayed(star5, 3000);
-        }else if ( score <= 60 && score >= 50){
-           numstar = 6;
-           pd.postDelayed(star1, 1000);
-           pd.postDelayed(star2, 1500);
-           pd.postDelayed(star3, 2000);
-           pd.postDelayed(star4, 2500);
-           pd.postDelayed(star5, 3000);
-           pd.postDelayed(star6, 3500);
+        } else if (score <= 60 && score >= 50) {
+            numstar = 6;
+            pd.postDelayed(star1, 1000);
+            pd.postDelayed(star2, 1500);
+            pd.postDelayed(star3, 2000);
+            pd.postDelayed(star4, 2500);
+            pd.postDelayed(star5, 3000);
+            pd.postDelayed(star6, 3500);
 
-        }else if ( score <= 70 && score >= 60){
-           numstar = 7;
-           pd.postDelayed(star1, 1000);
-           pd.postDelayed(star2, 1500);
-           pd.postDelayed(star3, 2000);
-           pd.postDelayed(star4, 2500);
-           pd.postDelayed(star5, 3000);
-           pd.postDelayed(star6, 3500);
-           pd.postDelayed(star7, 4000);
-       }else if ( score <= 80 && score >= 70){
-           numstar = 8;
-           pd.postDelayed(star1, 1000);
-           pd.postDelayed(star2, 1500);
-           pd.postDelayed(star3, 2000);
-           pd.postDelayed(star4, 2500);
-           pd.postDelayed(star5, 3000);
-           pd.postDelayed(star6, 3500);
-           pd.postDelayed(star7, 4000);
-           pd.postDelayed(star8, 4500);
-       }else if ( score <= 90 && score >= 80){
-           numstar = 9;
-           pd.postDelayed(star1, 1000);
-           pd.postDelayed(star2, 1500);
-           pd.postDelayed(star3, 2000);
-           pd.postDelayed(star4, 2500);
-           pd.postDelayed(star5, 3000);
-           pd.postDelayed(star6, 3500);
-           pd.postDelayed(star7, 4000);
-           pd.postDelayed(star8, 4500);
-           pd.postDelayed(star9, 5000);
-       }else if ( score <= 100 && score >= 90){
-           numstar = 10;
-           pd.postDelayed(star1, 1000);
-           pd.postDelayed(star2, 1500);
-           pd.postDelayed(star3, 2000);
-           pd.postDelayed(star4, 2500);
-           pd.postDelayed(star5, 3000);
-           pd.postDelayed(star6, 3500);
-           pd.postDelayed(star7, 4000);
-           pd.postDelayed(star8, 4500);
-           pd.postDelayed(star9, 5000);
-           pd.postDelayed(star10, 5500);
-       }else{
-           numstar = 0;
-       }
+        } else if (score <= 70 && score >= 60) {
+            numstar = 7;
+            pd.postDelayed(star1, 1000);
+            pd.postDelayed(star2, 1500);
+            pd.postDelayed(star3, 2000);
+            pd.postDelayed(star4, 2500);
+            pd.postDelayed(star5, 3000);
+            pd.postDelayed(star6, 3500);
+            pd.postDelayed(star7, 4000);
+        } else if (score <= 80 && score >= 70) {
+            numstar = 8;
+            pd.postDelayed(star1, 1000);
+            pd.postDelayed(star2, 1500);
+            pd.postDelayed(star3, 2000);
+            pd.postDelayed(star4, 2500);
+            pd.postDelayed(star5, 3000);
+            pd.postDelayed(star6, 3500);
+            pd.postDelayed(star7, 4000);
+            pd.postDelayed(star8, 4500);
+        } else if (score <= 90 && score >= 80) {
+            numstar = 9;
+            pd.postDelayed(star1, 1000);
+            pd.postDelayed(star2, 1500);
+            pd.postDelayed(star3, 2000);
+            pd.postDelayed(star4, 2500);
+            pd.postDelayed(star5, 3000);
+            pd.postDelayed(star6, 3500);
+            pd.postDelayed(star7, 4000);
+            pd.postDelayed(star8, 4500);
+            pd.postDelayed(star9, 5000);
+        } else if (score <= 100 && score >= 90) {
+            numstar = 10;
+            pd.postDelayed(star1, 1000);
+            pd.postDelayed(star2, 1500);
+            pd.postDelayed(star3, 2000);
+            pd.postDelayed(star4, 2500);
+            pd.postDelayed(star5, 3000);
+            pd.postDelayed(star6, 3500);
+            pd.postDelayed(star7, 4000);
+            pd.postDelayed(star8, 4500);
+            pd.postDelayed(star9, 5000);
+            pd.postDelayed(star10, 5500);
+        } else {
+            numstar = 0;
+        }
     }
 
 

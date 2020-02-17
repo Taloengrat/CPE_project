@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PlayingMode.Feedback"
-    android:background="@color/blue500">
+    android:background="@color/blue900">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -39,7 +39,7 @@ public class EasyCsv {
      * @param permissionRequestCode requested write file code for catch at in activity
      * @param fileCallback Callback of file
      */
-    public void createCsvFile(String foldername ,String fileName, List<String> headerList, List<String> data, int permissionRequestCode, final FileCallback fileCallback) {
+    public void createCsvFile(String foldername ,String fileName, List<String> headerList, List<String> data, int permissionRequestCode, final FileCallback fileCallback) throws IOException {
         if (PermissionUtility.askPermissionForActivity(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE, permissionRequestCode)) {
             fileName = fileName.replace(" ", "_").replace(":", "_");
 

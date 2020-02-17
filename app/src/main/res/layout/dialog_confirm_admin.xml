@@ -21,7 +21,7 @@
         android:gravity="center"
         android:hint="Password"
         android:inputType="numberPassword"
-        android:textColor="#ffff"
+        android:textColor="@color/black"
         android:fontFamily="@font/thin"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
         app:layout_constraintEnd_toEndOf="@+id/textView9"

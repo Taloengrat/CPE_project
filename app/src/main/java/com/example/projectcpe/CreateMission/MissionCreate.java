@@ -25,7 +25,7 @@ import com.example.projectcpe.ViewModel.MissionDATABASE;
 
 public class MissionCreate extends AppCompatActivity {
 
-    Spinner spinner;
+    Spinner spinner,spinnertime;
     Button btNext;
     EditText etName, etDetail, etAge;
     String asdf = "10/9/5/7";
@@ -38,12 +38,18 @@ public class MissionCreate extends AppCompatActivity {
 
         bindVariable();
         bindMenuSpinner();
+        bindMenuSpinnertime();
 
 
         asdf = asdfdsa[0]+asdfdsa[1]+asdfdsa[2]+asdfdsa[3];
     }
 
 
+    private void bindMenuSpinnertime() {
+        String[] items = new String[]{"1:10", "1:20", "1:30", "1:40", "1:50", "2:00"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
+        spinnertime.setAdapter(adapter);
+    }
 
     private void bindMenuSpinner() {
         String[] items = new String[]{"5", "6", "7", "8", "9", "10"};
@@ -59,6 +65,7 @@ public class MissionCreate extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        spinnertime = findViewById(R.id.spinertime);
         spinner = findViewById(R.id.snMissionStep);
         btNext = findViewById(R.id.btNext);
         etName = findViewById(R.id.etMissionName);

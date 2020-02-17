@@ -38,6 +38,8 @@ public interface MissionDAO {
     @Query("select * from static where id=:id")
     int getDesStatic(int id);
 
+
+
     ////////////////////////////////////////////
 
     @Query("select * from mission where id=:id")
@@ -46,8 +48,8 @@ public interface MissionDAO {
     @Query("select * from member where id=:id")
     List<Member> getAllinfoOfMember(int id);
 
-    @Query("select * from static where id=:id")
-    List<Static> getAllinfoOfStatic(int id);
+    @Query("select * from static where memberId=:id")
+    Static CheckForUpdateStatistic(int id);
 
 
 /////////////////////////////////////////////////
@@ -74,6 +76,9 @@ public interface MissionDAO {
 
     @Update
     void updateStatistic(Static statistic);
+
+    @Query("UPDATE static SET score=:price WHERE id = :id")
+    void updateStatistic2(Float price, int id);
 
     ////////////////////////////////////////////////
 

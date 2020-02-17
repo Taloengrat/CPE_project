@@ -7,6 +7,43 @@
     tools:context=".CreateMission.MissionCreate"
     android:background="@color/blue50">
 
+    <LinearLayout
+        android:id="@+id/linear"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/bgtext"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout4"
+        app:layout_constraintHorizontal_bias="0.602"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout4"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+
+
+        <TextView
+            android:id="@+id/txtime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="@font/thin"
+            android:text="Time quiz"
+            android:textColor="#ADA8A8"
+            android:textSize="25dp"
+            android:paddingStart="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/linearLayout4"
+            app:layout_constraintEnd_toStartOf="@+id/linearLayout4"
+            app:layout_constraintTop_toTopOf="@+id/linearLayout4" />
+
+        <Spinner
+            android:id="@+id/spinertime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dropdown"
+            android:textAlignment="center" />
+
+    </LinearLayout>
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -82,7 +119,7 @@
 
     <EditText
         android:id="@+id/etMissionAge"
-        android:layout_width="60dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_weight="1"
@@ -90,6 +127,8 @@
         android:textSize="25dp"
         android:background="@drawable/bgtext"
         android:ems="10"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
         android:textColor="#000000"
         android:fontFamily="@font/thin"
         android:gravity="center"
@@ -102,7 +141,7 @@
 
     <LinearLayout
         android:id="@+id/linearLayout4"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@drawable/bgtext"
@@ -111,6 +150,22 @@
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="@+id/etMisisionDetail"
         app:layout_constraintTop_toBottomOf="@+id/etMissionAge">
+
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="@font/thin"
+            android:text="Number quiz"
+            android:textSize="25dp"
+            android:paddingStart="8dp"
+            android:textColor="#ADA8A8"
+            android:layout_gravity="center"
+            app:layout_constraintBottom_toBottomOf="@+id/linearLayout4"
+            app:layout_constraintEnd_toStartOf="@+id/linearLayout4"
+            app:layout_constraintTop_toTopOf="@+id/linearLayout4" />
 
         <Spinner
             android:id="@+id/snMissionStep"
@@ -124,19 +179,22 @@
 
     <Button
         android:id="@+id/btNext"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/button"
+        android:elevation="4dp"
+        android:fontFamily="@font/bold"
         android:gravity="center"
         android:onClick="setBtNextOnClick"
         android:text="NEXT"
-        android:fontFamily="@font/bold"
-        android:elevation="4dp"
-        android:textSize="25dp"
         android:textColor="#ffff"
-        app:layout_constraintEnd_toEndOf="@+id/etMissionAge"
-        app:layout_constraintStart_toStartOf="@+id/etMissionAge"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

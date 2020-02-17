@@ -3,6 +3,7 @@ package com.example.projectcpe.PlayingMode;
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -29,11 +30,12 @@ import java.util.List;
 
 public class DetailMission extends AppCompatActivity {
 
-    ImageView btPlay;
+    ImageView btPlay,expand;
     TextView txName, txNumstep, txAge, DetailMission, txDetail;
     public int MissionId,MemberId;
     public List<Mission> missionData;
     RecyclerView recyclerView;
+    ConstraintLayout constraintLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +49,8 @@ public class DetailMission extends AppCompatActivity {
         DetailMission = findViewById(R.id.DetailMission);
         txDetail = findViewById(R.id.txDetail);
         recyclerView = findViewById(R.id.recyclerView);
+        expand = findViewById(R.id.expand);
+        constraintLayout = findViewById(R.id.constraintLayout3);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -62,6 +66,19 @@ public class DetailMission extends AppCompatActivity {
         this.missionData = getData(MissionId);
 
         loadDataStatistic();
+
+        expand.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (constraintLayout.getVisibility() == View.GONE){
+                    constraintLayout.setVisibility(View.VISIBLE);
+                }else{
+                    constraintLayout.setVisibility(View.GONE);
+                }
+
+            }
+        });
 
 
 

@@ -1,5 +1,6 @@
 package com.example.projectcpe.Adapter;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projectcpe.R;
@@ -40,6 +42,7 @@ public class StatiticAdapter extends RecyclerView.Adapter<StatiticAdapter.Statis
         return new StatisticViewHolder(v);
     }
 
+    @SuppressLint("ResourceAsColor")
     @Override
     public void onBindViewHolder(@NonNull StatiticAdapter.StatisticViewHolder holder, int position) {
 
@@ -52,10 +55,12 @@ public class StatiticAdapter extends RecyclerView.Adapter<StatiticAdapter.Statis
             case 0 :
                 holder.range.setVisibility(View.VISIBLE);
                 holder.range.setImageResource(R.drawable.first);
+
                 break;
             case 1 :
                 holder.range.setVisibility(View.VISIBLE);
                 holder.range.setImageResource(R.drawable.second);
+
                 break;
             case 2 :
                 holder.range.setVisibility(View.VISIBLE);
@@ -63,7 +68,7 @@ public class StatiticAdapter extends RecyclerView.Adapter<StatiticAdapter.Statis
                 break;
 
                 default:
-                    holder.textRange.setVisibility(View.VISIBLE);
+                    holder.cardView.setVisibility(View.VISIBLE);
                     holder.textRange.setText(String.valueOf(position+1));
         }
 
@@ -133,6 +138,7 @@ public class StatiticAdapter extends RecyclerView.Adapter<StatiticAdapter.Statis
     public class StatisticViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         TextView txName, txAge, txScore, textRange;
+        CardView cardView,home;
         ImageView improfile, star1, star2, star3, star4, star5,range,halfstar1, halfstar2, halfstar3, halfstar4, halfstar5;
         public StatisticViewHolder(@NonNull View itemView) {
 
@@ -143,11 +149,13 @@ public class StatiticAdapter extends RecyclerView.Adapter<StatiticAdapter.Statis
             txAge = itemView.findViewById(R.id.txAge);
             txScore = itemView.findViewById(R.id.txScore);
             improfile = itemView.findViewById(R.id.imPro);
+            cardView = itemView.findViewById(R.id.bgtext);
             star1 = itemView.findViewById(R.id.star1);
             star2 = itemView.findViewById(R.id.star2);
             star3 = itemView.findViewById(R.id.star3);
             star4 = itemView.findViewById(R.id.star4);
             star5 = itemView.findViewById(R.id.star5);
+            home = itemView.findViewById(R.id.homebg);
 
             halfstar1 = itemView.findViewById(R.id.halfstar1);
             halfstar2 = itemView.findViewById(R.id.halfstar2);

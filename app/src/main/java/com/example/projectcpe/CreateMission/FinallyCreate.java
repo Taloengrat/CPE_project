@@ -43,6 +43,10 @@ import android.widget.Toast;
 
 import com.example.projectcpe.Adapter.StepAdapter;
 import com.example.projectcpe.AdminPage;
+import com.example.projectcpe.CSV.Utility.EasyCsv;
+import com.example.projectcpe.CSV.Utility.FileCallback;
+import com.example.projectcpe.CreateMission.Export.ExportOnDevice;
+import com.example.projectcpe.CreateMission.Export.ExportOnGoogleDrive;
 import com.example.projectcpe.Main2Activity;
 import com.example.projectcpe.MainActivity;
 import com.example.projectcpe.MusicService;
@@ -53,6 +57,8 @@ import com.example.projectcpe.ViewModel.Step;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -72,6 +78,9 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
     int getNumOfStep, getAge;
     Button btSubmit;
     LinearLayout frameEdittext;
+    public final int WRITE_PERMISSON_REQUEST_CODE = 1;
+
+
 
     public ImageView mediumImage;
     private volatile boolean stopThread = false;
@@ -79,6 +88,8 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
     Mission mission = new Mission();
     ImageView test;
     public Bitmap b1, b2, b3, b4, b5, b6, b7, b8, b9, b10;
+    List<String> headerList = new ArrayList<>();
+    List<String> dataList = new ArrayList<>();
 
 
     private final int CAMERA_RESULT_CODE = 100;
@@ -101,7 +112,7 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
         getAge = bundle.getInt("age");
 
         Initia();
-        NumStepListener(this.getNumOfStep);
+
 
 
         for (int i = 0; i < StepAdapter.stepList.size(); i++) {
@@ -244,29 +255,6 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
             }
         }
         return directory.getAbsolutePath();
-    }
-
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-//        if (requestCode == 1) {
-//            if(resultCode == Activity.RESULT_OK){
-//
-//
-//                data.getIntExtra("NumOfStep",this.mediumNum);
-//
-//
-//                NumStepListener(this.mediumNum);
-//            }
-//            if (resultCode == Activity.RESULT_CANCELED) {
-//                //Write your code if there's no result
-//            }
-//        }
-//    }
-
-    private void NumStepListener(int mediumNum) {
-
-
-
     }
 
     private List<Step> getStepList() {
@@ -555,7 +543,7 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
 
                         loadingDialog.dismiss();
 
-                        Intent i = new Intent(FinallyCreate.this,MainActivity.class);
+                        Intent i = new Intent(FinallyCreate.this,AdminPage.class);
                         startActivity(i);
                         finish();
 
@@ -685,6 +673,47 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
         stopService(new Intent(FinallyCreate.this, MusicService.class));
         startService(new Intent(FinallyCreate.this, MusicService.class));
     }
+
+    private void createFileCsv() throws IOException {
+
+
+        EasyCsv easyCsv = new EasyCsv(FinallyCreate.this);
+
+        easyCsv.setSeparatorColumn(".");
+        easyCsv.setSeperatorLine("-");
+
+        /// create folder
+        String directory_path = Environment.getExternalStorageDirectory().getPath() + "/EnglishPractice/" + getName;
+        File file = new File(directory_path);
+        if (!file.exists())
+        {
+            file.mkdirs();
+        }
+
+
+        String fileName="Data";
+
+        easyCsv.createCsvFile(getName,getName+fileName, headerList, dataList, WRITE_PERMISSON_REQUEST_CODE, new FileCallback() {
+
+
+            @Override
+            public void onSuccess(File file) {
+
+//                Toast.makeText(getApplicationContext(),"saved",Toast.LENGTH_SHORT).show();
+
+
+            }
+
+            @Override
+            public void onFail(String err) {
+//                Toast.makeText(getApplicationContext(),"Error",Toast.LENGTH_SHORT).show();
+
+            }
+        });
+    }
+
+
+
 }
 
 

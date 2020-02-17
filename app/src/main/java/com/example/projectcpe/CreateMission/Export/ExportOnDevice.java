@@ -161,7 +161,7 @@ public class ExportOnDevice extends AppCompatActivity implements  MissionAdapter
 
 
 
-    private void SwitchAddListString(int number) {
+    private void SwitchAddListString(int number) throws IOException {
 
 
 
@@ -400,7 +400,7 @@ public class ExportOnDevice extends AppCompatActivity implements  MissionAdapter
         return directory.getAbsolutePath();
     }
 
-    private void createFileCsv(){
+    private void createFileCsv() throws IOException {
 
 
         EasyCsv easyCsv = new EasyCsv(ExportOnDevice.this);
@@ -444,6 +444,7 @@ public class ExportOnDevice extends AppCompatActivity implements  MissionAdapter
             }
         });
     }
+
     public void startThread() {
         stopThread = false;
         ExampleRunnable runnable = new ExampleRunnable();
@@ -463,7 +464,11 @@ public class ExportOnDevice extends AppCompatActivity implements  MissionAdapter
         public void run() {
 
 
-            SwitchAddListString(missionList.get(0).getNumberofMission());
+            try {
+                SwitchAddListString(missionList.get(0).getNumberofMission());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
             if (stopThread) {
 
