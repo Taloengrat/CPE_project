@@ -7,7 +7,7 @@
     tools:context=".PlayingMode.PlayPage"
     android:background="@color/blue50">
 
-    <androidx.viewpager.widget.ViewPager
+    <com.example.projectcpe.ViewPage.CustomViewPage
         android:id="@+id/ViewPage"
         android:layout_width="match_parent"
         android:layout_height="0dp"

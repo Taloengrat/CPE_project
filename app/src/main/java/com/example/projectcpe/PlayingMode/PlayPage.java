@@ -58,15 +58,17 @@ import java.util.TimerTask;
 
 public class PlayPage extends AppCompatActivity {
 
-    private int ms = 0;
-    private int seconds = 5;
-    private int minutes = 0;
+    private int ms;
+    private int seconds;
+    int cloneSec=0;
+    private int minutes;
     float Score;
     float SumScore;
     float SumScoreCorrect, SumScoreWorng;
     float scoreWrong = 0;
     int countWrong = 0;
     float countAllWrong = 0;
+    float timeDevide;
 
     int numHint;
 
@@ -121,6 +123,7 @@ public class PlayPage extends AppCompatActivity {
         setContentView(R.layout.activity_play_page);
 
         Initial();
+        getTime();
 
         getHint(pager.getCurrentItem());
 
@@ -192,6 +195,57 @@ public class PlayPage extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void getTime() {
+        textclock.setText(missionList.get(0).getTime());
+        switch (missionList.get(0).getTime()) {
+            case "1:00":
+                cloneSec = 60;
+                seconds = 60;
+                minutes = 0;
+                timeDevide = 30;
+                break;
+            case "1:10":
+                cloneSec = 70;
+                seconds = 10;
+                minutes = 1;
+                timeDevide = 35;
+                break;
+            case "1:20":
+                cloneSec = 80;
+                seconds = 20;
+                minutes = 1;
+                timeDevide = 40;
+                break;
+            case "1:30":
+                cloneSec = 90;
+                seconds = 30;
+                minutes = 1;
+                timeDevide = 45;
+                break;
+            case "1:40":
+                cloneSec = 100;
+                seconds = 40;
+                minutes = 1;
+                timeDevide = 50;
+                break;
+            case "1:50":
+                cloneSec = 110;
+                seconds = 50;
+                minutes = 1;
+                timeDevide  = 55;
+                break;
+            case "2:00":
+                cloneSec = 120;
+                seconds = 0;
+                minutes = 2;
+                timeDevide = 60;
+                break;
+            default:
+                Toast.makeText(getApplicationContext(), "ERROR404", Toast.LENGTH_SHORT).show();
+
+        }
     }
 
     View.OnClickListener HintStep = new View.OnClickListener() {
@@ -644,12 +698,12 @@ public class PlayPage extends AppCompatActivity {
             float timeFinish = Float.valueOf(seconds);
 
             float percenTimeStep = 20.0f / stepnum;
-            float oneTimeStep = percenTimeStep / 30.0f;
+            float oneTimeStep = percenTimeStep / timeDevide;
             float timeScore = 0;
 
-            if (timeFinish >= 30) {
+            if (timeFinish >= timeDevide) {
                 timeScore = percenTimeStep;
-            } else if (timeFinish < 30) {
+            } else if (timeFinish < timeDevide) {
                 timeScore = timeFinish * oneTimeStep;
             }
 
@@ -686,8 +740,10 @@ public class PlayPage extends AppCompatActivity {
 //            Log.e("hintScore", String.valueOf(hintScore));
 
 
-//            Log.e("timeFinish", String.valueOf(timeFinish));
-//            Log.e("timeScore", String.valueOf(timeScore));
+            Log.e("timeFinish", String.valueOf(timeFinish));
+            Log.e("timeScore", String.valueOf(timeScore));
+            Log.e("timeDevide", String.valueOf(timeDevide));
+
 
 
             float newSumScore = answerScore + hintScore + timeScore;
@@ -699,7 +755,7 @@ public class PlayPage extends AppCompatActivity {
                     + "\n All Score : " + SumScoreCorrect, Toast.LENGTH_SHORT).show();
 
 
-            scoreStep[numberStep] = String.format("%.1f",newSumScore);
+            scoreStep[numberStep] = String.format("%.1f", newSumScore);
             scoreWrongStep[numberStep] = String.valueOf(countWrong);
 
 
@@ -710,12 +766,11 @@ public class PlayPage extends AppCompatActivity {
             countWrong = 0;
 
 
-
         } else {
             WrongStep();
             countWrong++;
             countAllWrong++;
-            Toast.makeText(getApplicationContext(),"Wrong " + countWrong + "\nAll Wrong " + countAllWrong,Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Wrong " + countWrong + "\nAll Wrong " + countAllWrong, Toast.LENGTH_SHORT).show();
         }
 
         SumScoreWorng = countAllWrong / 3;
@@ -747,8 +802,6 @@ public class PlayPage extends AppCompatActivity {
         check.setImageResource(R.drawable.correct);
 
 
-
-
         Handler pd = new Handler();
         pd.postDelayed(CheckPagerBeforeSkip, 2000);
     }
@@ -761,7 +814,6 @@ public class PlayPage extends AppCompatActivity {
         speechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "en-US");
 
         speechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-        speechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
     }
 
     public class LanguageDetailsChecker extends BroadcastReceiver {
@@ -847,7 +899,7 @@ public class PlayPage extends AppCompatActivity {
 
         micUnion.setOnTouchListener(speechTouchTimeOut);
 
-        layoutUnion.setVisibility(View.VISIBLE);
+//        layoutUnion.setVisibility(View.VISIBLE);
 
 
     }
@@ -963,8 +1015,9 @@ public class PlayPage extends AppCompatActivity {
     private void updateSeconds() {
         ms = 0;
         seconds--;
-        if (seconds == 0) {
-
+        cloneSec--;
+        if (seconds < 0) {
+           seconds=59;
             minutes--;
         }
     }
@@ -982,7 +1035,7 @@ public class PlayPage extends AppCompatActivity {
         @Override
         public void run() {
 
-            if (seconds == 0) {
+            if (cloneSec == 0) {
 
                 stopTimer();
                 textclock.setText(String.format(Locale.getDefault(), "%02d:%02d", 0, 0));
@@ -1126,15 +1179,13 @@ public class PlayPage extends AppCompatActivity {
 
                 recogni.setVisibility(View.VISIBLE);
 
-//                layoutUnion.setVisibility(View.GONE);
+                layoutUnion.setVisibility(View.GONE);
 
                 recogni.setOnTouchListener(Hilight);
                 textclock.setTextColor(getResources().getColor(R.color.black));
 
                 stopTimer();
-                ms = 0;
-                minutes = 0;
-                seconds = 60;
+                getTime();
 
                 if (etKeyboard.getVisibility() == View.VISIBLE) {
 
@@ -1182,7 +1233,7 @@ public class PlayPage extends AppCompatActivity {
                 Intent i = new Intent(PlayPage.this, HomePage.class);
                 i.putExtra("ID", memberId);
                 i.putExtra("NAME", getDataMember(memberId).get(0).getName());
-                i.putExtra("AGE",getDataMember(memberId).get(0).getAge());
+                i.putExtra("AGE", getDataMember(memberId).get(0).getAge());
                 startActivity(i);
                 finish();
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
