@@ -97,7 +97,7 @@ public class MissionAdapter extends RecyclerView.Adapter<MissionAdapter.MissionV
             onCustomerItemClick.onCustomerClick(iddd, 0, missionList.get(getAdapterPosition()));
 
 
-          Toast.makeText(mCtx, "Mission ID : "+String.valueOf(iddd), Toast.LENGTH_LONG).show();
+//          Toast.makeText(mCtx, "Mission ID : "+String.valueOf(iddd), Toast.LENGTH_LONG).show();
 
 
         }
