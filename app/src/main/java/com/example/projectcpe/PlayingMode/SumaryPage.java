@@ -56,7 +56,7 @@ public class SumaryPage extends AppCompatActivity {
 
         missionList = getData(id);
 
-        SumaryAdapter adapter = new SumaryAdapter(getSumary(missionList.get(0).getNumberofMission()), this);
+        SumaryAdapter adapter = new SumaryAdapter(getSumary(missionList.get(0).getNumberofMission()), this,missionList);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);

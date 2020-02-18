@@ -198,7 +198,7 @@ public class MainActivity extends AppCompatActivity {
         saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.mt10)).getBitmap(), "picture10", "TalktoJame");
 
 
-        Mission mission2 = new Mission("TalktoJame", "Talk to K.Jame", 18, 10
+        Mission mission2 = new Mission("TalktoJame", "Talk to KJame", 18, 10
                 , directory_path + "Talktojame" + "/picture1.png", directory_path + "Talktojame" + "/picture2png", directory_path + "Talktojame" + "/picture3.png", directory_path + "Talktojame" + "/picture4.png", directory_path + "Talktojame" + "/picture5png", directory_path + "Talktojame" + "/picture6.png", directory_path + "Talktojame" + "/picture7.png", directory_path + "Talktojame" + "/picture8.png", directory_path + "Talktojame" + "/picture9.png", directory_path + "Talktojame" + "/picture10.png"
                 , getResources().getString(R.string.q2_1), getResources().getString(R.string.q2_2), getResources().getString(R.string.q2_3), getResources().getString(R.string.q2_4), getResources().getString(R.string.q2_5)
                 , getResources().getString(R.string.q2_6), getResources().getString(R.string.q2_7), getResources().getString(R.string.q2_8)
@@ -279,7 +279,7 @@ public class MainActivity extends AppCompatActivity {
             saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c10)).getBitmap(), "picture10", "Career");
 
 
-        Mission mission3 = new Mission( "Career", "Various career", 9 , 10
+        Mission career = new Mission( "Career", "Various career", 9 , 10
                 , directory_path + "Career" + "/picture1.png", directory_path + "Career" + "/picture2png", directory_path + "Career" + "/picture3.png", directory_path + "Career" + "/picture4.png", directory_path + "Career" + "/picture5png", directory_path + "Career" + "/picture6.png", directory_path + "Career" + "/picture7.png", directory_path + "Career" + "/picture8.png", directory_path + "Career" + "/picture9.png", directory_path + "Career" + "/picture10.png"
                 , getResources().getString(R.string.q4_1), getResources().getString(R.string.q4_2), getResources().getString(R.string.q4_3), getResources().getString(R.string.q4_4), getResources().getString(R.string.q4_5)
                 , getResources().getString(R.string.q4_6), getResources().getString(R.string.q4_7), getResources().getString(R.string.q4_8)
@@ -299,8 +299,8 @@ public class MainActivity extends AppCompatActivity {
                 , getResources().getString(R.string.h4_7).trim(), getResources().getString(R.string.h4_8).trim(), getResources().getString(R.string.h4_9).trim()
                 , getResources().getString(R.string.h4_10).trim());
 
-        mission3.setTime("1:10");
-        MissionDATABASE.getInstance(MainActivity.this).missionDAO().create(mission3);
+        career.setTime("1:10");
+        MissionDATABASE.getInstance(MainActivity.this).missionDAO().create(career);
 
 
     }

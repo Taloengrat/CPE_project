@@ -30,7 +30,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:id="@+id/imUser"
+                android:id="@+id/imUserSumary"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_gravity="center"
@@ -46,8 +46,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
                 android:fontFamily="@font/thin"
                 android:text="word"
                 android:textColor="#000000"
@@ -55,7 +55,7 @@
                 app:layout_constraintBottom_toBottomOf="@+id/imUser"
                 app:layout_constraintEnd_toStartOf="@+id/speak"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/imUser"
+                app:layout_constraintStart_toEndOf="@+id/imUserSumary"
                 app:layout_constraintTop_toTopOf="@+id/imUser"
                 app:layout_constraintVertical_bias="0.0" />
 
@@ -64,16 +64,16 @@
                 android:layout_width="243dp"
                 android:layout_height="21dp"
                 android:layout_gravity="center"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="8dp"
                 android:fontFamily="@font/thin"
                 android:text="Your Score"
                 android:textColor="#000000"
                 android:textSize="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/imUser"
+                app:layout_constraintStart_toEndOf="@+id/imUserSumary"
                 app:layout_constraintTop_toBottomOf="@+id/word" />
 
             <TextView
@@ -81,16 +81,16 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="8dp"
                 android:fontFamily="@font/thin"
                 android:text="Your Wrong"
                 android:textColor="#000000"
                 android:textSize="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/speak"
-                app:layout_constraintStart_toEndOf="@+id/imUser"
+                app:layout_constraintStart_toEndOf="@+id/imUserSumary"
                 app:layout_constraintTop_toBottomOf="@+id/scoreStep" />
 
 

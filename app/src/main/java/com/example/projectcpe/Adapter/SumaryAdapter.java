@@ -1,6 +1,7 @@
 package com.example.projectcpe.Adapter;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -37,7 +39,7 @@ public class SumaryAdapter extends RecyclerView.Adapter<SumaryAdapter.SumaryView
 
     private TextToSpeech mTTs;
     public List<Mission> missionData;
-
+    Bitmap b;
 
 
 
@@ -45,10 +47,10 @@ public class SumaryAdapter extends RecyclerView.Adapter<SumaryAdapter.SumaryView
     int id;
     public static List<Sumary> sumaryList;
 
-    public SumaryAdapter(List<Sumary> sumaryList, Activity activity){
+    public SumaryAdapter(List<Sumary> sumaryList, Activity activity, List<Mission> missionData){
         this.activity = activity;
         this.sumaryList = sumaryList;
-        this.id = id;
+       this.missionData = missionData;
     }
 
     @NonNull
@@ -68,6 +70,51 @@ public class SumaryAdapter extends RecyclerView.Adapter<SumaryAdapter.SumaryView
         holder.word.setText(sumary.getWord());
         holder.scoreStep.setText("Your Score is " + sumary.getScoreStep() + " of " + String.format("%.1f",totalScore) );
         holder.scoreWrongStep.setText("Wrong speech " + sumary.getScoreWrongStep() + " time.");
+
+        try {
+            File directory = new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/"+missionData.get(0).getMissionName(),"picture"+(position+1)+".png");
+            b = BitmapFactory.decodeStream(new FileInputStream(directory));
+            holder.picture.setImageBitmap(b);
+
+        }
+        catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+
+        holder.picture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final Dialog dialog = new Dialog(activity);
+                dialog.getWindow().setBackgroundDrawableResource(R.drawable.bg_dialog_custom);
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                dialog.setContentView(R.layout.showdetail_picture);
+                dialog.setCancelable(true);
+
+                ImageView imageDetail = dialog.findViewById(R.id.imDetail);
+
+                try {
+                    File directory = new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/"+missionData.get(0).getMissionName(),"picture"+(position+1)+".png");
+                    Bitmap b2 = BitmapFactory.decodeStream(new FileInputStream(directory));
+                    imageDetail.setImageBitmap(b2);
+
+                }
+                catch (FileNotFoundException e)
+                {
+                    e.printStackTrace();
+                }
+
+
+                imageDetail.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
+                    }
+                });
+
+                dialog.show();
+            }
+        });
 
 //        missionData = getData(id);
 
@@ -107,7 +154,6 @@ public class SumaryAdapter extends RecyclerView.Adapter<SumaryAdapter.SumaryView
             @Override
             public void onClick(View view) {
 
-//                new ButtonServiceEffect(activity).startEffect(); // Sound button effect
                 speak(holder.word.getText().toString());
             }
         });
@@ -133,7 +179,7 @@ public class SumaryAdapter extends RecyclerView.Adapter<SumaryAdapter.SumaryView
             speker = itemView.findViewById(R.id.speak);
             scoreStep = itemView.findViewById(R.id.scoreStep);
             scoreWrongStep = itemView.findViewById(R.id.scoreWrongStep);
-//            picture = itemView.findViewById(R.id.picture);
+            picture = itemView.findViewById(R.id.imUserSumary);
 
 
 
