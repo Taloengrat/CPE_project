@@ -144,7 +144,7 @@ public class MemberAdapterBegin extends RecyclerView.Adapter<MemberAdapterBegin.
 
                     } else {
 
-                        Toast.makeText(activity, String.valueOf(User.get(0).getPassword()), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(activity, "Incorrect password.", Toast.LENGTH_SHORT).show();
                     }
                 }
             });

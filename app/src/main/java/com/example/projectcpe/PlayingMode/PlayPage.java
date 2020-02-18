@@ -253,7 +253,7 @@ public class PlayPage extends AppCompatActivity {
                 timeDevide = 60;
                 break;
             default:
-                Toast.makeText(getApplicationContext(), "ERROR404", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(), "ERROR404", Toast.LENGTH_SHORT).show();
 
         }
     }
@@ -761,8 +761,8 @@ public class PlayPage extends AppCompatActivity {
 
 
             SumScoreCorrect += newSumScore;
-            Toast.makeText(getApplicationContext(), "point this step : " + String.valueOf(Score)
-                    + "\n All Score : " + SumScoreCorrect, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getApplicationContext(), "point this step : " + String.valueOf(Score)
+//                    + "\n All Score : " + SumScoreCorrect, Toast.LENGTH_SHORT).show();
 
 
             scoreStep[numberStep] = String.format("%.1f", newSumScore);
@@ -781,7 +781,7 @@ public class PlayPage extends AppCompatActivity {
             WrongStep();
             countWrong++;
             countAllWrong++;
-            Toast.makeText(getApplicationContext(), "Wrong " + countWrong + "\nAll Wrong " + countAllWrong, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getApplicationContext(), "Wrong " + countWrong + "\nAll Wrong " + countAllWrong, Toast.LENGTH_SHORT).show();
         }
 
         SumScoreWorng = countAllWrong / 3;
@@ -805,7 +805,7 @@ public class PlayPage extends AppCompatActivity {
         check.setVisibility(View.VISIBLE);
         check.setImageResource(R.drawable.wrong);
 //        pager.setCurrentItem(pager.getCurrentItem()-1);
-        Toast.makeText(getApplicationContext(), "Wrong", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(), "Wrong", Toast.LENGTH_SHORT).show();
     }
 
     private void CorrectStep() {
@@ -1085,7 +1085,7 @@ public class PlayPage extends AppCompatActivity {
     }
 
     private void getAnswerFun(int position) {
-        Toast.makeText(getApplicationContext(), String.valueOf(pager.getCurrentItem()), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(), String.valueOf(pager.getCurrentItem()), Toast.LENGTH_SHORT).show();
         switch (position) {
             case 0:
                 textReturn = missionList.get(0).getA1().toLowerCase().split("/");
@@ -1118,7 +1118,7 @@ public class PlayPage extends AppCompatActivity {
                 textReturn = missionList.get(0).getA10().toLowerCase().split("/");
                 break;
             default:
-                Toast.makeText(getApplicationContext(), "not answer", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(), "not answer", Toast.LENGTH_SHORT).show();
         }
 
         stringList = Arrays.asList(textReturn);
@@ -1163,7 +1163,7 @@ public class PlayPage extends AppCompatActivity {
 
 
             if (pager.getCurrentItem() + 1 == missionList.get(0).getNumberofMission()) {
-                Toast.makeText(PlayPage.this, "end of step", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(PlayPage.this, "end of step", Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(PlayPage.this, SumaryPage.class);
                 i.putExtra("IDmission", id);
                 i.putExtra("score", SumScore);
