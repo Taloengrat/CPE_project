@@ -44,17 +44,6 @@ android {
 
     dependencies {
 
-        //google drive
-
-        implementation('com.google.apis:google-api-services-drive:v3-rev136-1.25.0')
-                {
-                    exclude group: 'org.apache.httpcomponents'
-                }
-        implementation('com.google.api-client:google-api-client-android:1.26.0')
-                {
-                    exclude group: 'org.apache.httpcomponents'
-                }
-        implementation('com.google.http-client:google-http-client-gson:1.26.0')
 
 
         implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -98,12 +87,23 @@ android {
         implementation 'androidx.multidex:multidex:2.0.1'
 
 
+        implementation 'com.google.android.gms:play-services-auth:17.0.0'
+        implementation ('com.google.apis:google-api-services-drive:v3-rev136-1.25.0')
+                {
+                    exclude group : 'org.apache.httpcomponents'
+                }
+
+        implementation ('com.google.api-client:google-api-client-android:1.26.0')
+                {
+                    exclude group : 'org.apache.httpcomponents'
+                }
+
+        implementation ('com.google.http-client:google-http-client-gson:1.26.0')
+
+
     }
 
 
 }
 
-dependencies {
-    implementation 'androidx.appcompat:appcompat:+'
-    implementation 'androidx.constraintlayout:constraintlayout:+'
-}
+

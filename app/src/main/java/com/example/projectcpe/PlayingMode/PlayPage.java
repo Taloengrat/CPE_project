@@ -343,34 +343,6 @@ public class PlayPage extends AppCompatActivity {
                 hint1.setOnClickListener(hintTwo);
 
                 dialog.show();
-            } else {
-                AlertDialog.Builder dialogAsk = new AlertDialog.Builder(PlayPage.this);
-                dialogAsk.setTitle("Show Hint");
-                dialogAsk.setCancelable(true);
-                dialogAsk.setMessage("Do you want to croos hint 1 ?");
-                dialogAsk.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialogInterface, int which) {
-                        hint1.setBackgroundResource(R.drawable.elevetorcircle_used);
-                        hint2.setBackgroundResource(R.drawable.elevetorcircle_used);
-                        h1 = true;
-                        h2 = true;
-
-
-                        data.setText(HintString[1]);
-
-                        dialog.show();
-
-                        hint1.setOnClickListener(hintTwo);
-                    }
-                });
-
-                dialogAsk.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
-
-                dialogAsk.show();
             }
 
 
@@ -403,38 +375,7 @@ public class PlayPage extends AppCompatActivity {
                 hint2.setOnClickListener(hintThree);
 
                 dialog.show();
-            } else {
-                AlertDialog.Builder dialogAsk = new AlertDialog.Builder(PlayPage.this);
-                dialogAsk.setTitle("Show Hint");
-                dialogAsk.setCancelable(true);
-                dialogAsk.setMessage("Do you want to croos hint 2 ?");
-                dialogAsk.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialogInterface, int which) {
-                        hint1.setBackgroundResource(R.drawable.elevetorcircle_used);
-                        hint2.setBackgroundResource(R.drawable.elevetorcircle_used);
-                        hint3.setBackgroundResource(R.drawable.elevetorcircle_used);
-                        h1 = true;
-                        h2 = true;
-                        h3 = true;
 
-
-                        data.setText(HintString[2]);
-
-                        dialog.show();
-
-                        hint1.setOnClickListener(hintThree);
-                        hint2.setOnClickListener(hintThree);
-
-                    }
-                });
-
-                dialogAsk.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
-
-                dialogAsk.show();
             }
 
 
@@ -467,41 +408,6 @@ public class PlayPage extends AppCompatActivity {
                 hint3.setOnClickListener(hintFour);
 
                 dialog.show();
-            } else {
-                AlertDialog.Builder dialogAsk = new AlertDialog.Builder(PlayPage.this);
-                dialogAsk.setTitle("Show Hint");
-                dialogAsk.setCancelable(true);
-                dialogAsk.setMessage("Do you want to croos hint 3 ?");
-                dialogAsk.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialogInterface, int which) {
-                        hint1.setBackgroundResource(R.drawable.elevetorcircle_used);
-                        hint2.setBackgroundResource(R.drawable.elevetorcircle_used);
-                        hint3.setBackgroundResource(R.drawable.elevetorcircle_used);
-                        hint4.setBackgroundResource(R.drawable.elevetorcircle_used);
-                        h1 = true;
-                        h2 = true;
-                        h3 = true;
-                        h4 = true;
-
-
-                        data.setText(HintString[3]);
-
-                        dialog.show();
-
-                        hint1.setOnClickListener(hintFour);
-                        hint2.setOnClickListener(hintFour);
-                        hint3.setOnClickListener(hintFour);
-
-                    }
-                });
-
-                dialogAsk.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
-
-                dialogAsk.show();
             }
 
 
@@ -1130,6 +1036,10 @@ public class PlayPage extends AppCompatActivity {
         public void onClick(View view) {
             etKeyboard.setVisibility(View.VISIBLE);
             confirm.setVisibility(View.VISIBLE);
+
+            if (frameHint.getVisibility() == View.VISIBLE){
+                frameHint.setVisibility(View.GONE);
+            }
 
             if (Answer.getVisibility() == View.VISIBLE) {
                 Answer.setVisibility(View.INVISIBLE);

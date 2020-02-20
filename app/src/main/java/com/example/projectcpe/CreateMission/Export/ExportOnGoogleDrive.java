@@ -27,9 +27,12 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.Tasks;
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential;
 import com.google.api.client.http.FileContent;
@@ -42,18 +45,24 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 public class ExportOnGoogleDrive extends AppCompatActivity implements MissionAdapter.OnCustomerItemClick {
 
     RecyclerView recyclerView;
     List<Mission> missionList;
     ProgressDialog progressDialog;
+    private final Executor mExecutor = Executors.newSingleThreadExecutor();
 
-    Drive drive;
     List<String> headerList = new ArrayList<>();
     List<String> dataList = new ArrayList<>();
     public final int WRITE_PERMISSON_REQUEST_CODE = 1;
     Drive googleDriveService;
+    GoogleApiClient googleApiClient;
+    GoogleSignInClient googleSignInClient;
+    GoogleSignInAccount googleSignInAccount;
+    private String folderId;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -70,8 +79,9 @@ public class ExportOnGoogleDrive extends AppCompatActivity implements MissionAda
     public void requestSignIn() {
         GoogleSignInOptions signInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail().requestScopes(new Scope(DriveScopes.DRIVE_FILE)).build();
-        GoogleSignInClient client = GoogleSignIn.getClient(this, signInOptions);
-        startActivityForResult(client.getSignInIntent(), 48);
+         googleSignInClient = GoogleSignIn.getClient(this, signInOptions);
+        googleSignInAccount = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
+        startActivityForResult(googleSignInClient.getSignInIntent(), 48);
     }
 
     private void handleSignInIntent(Intent data) {
@@ -166,7 +176,7 @@ public class ExportOnGoogleDrive extends AppCompatActivity implements MissionAda
 
 
                 try {
-                    createFileCsv();
+                    CreateFolder();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -408,16 +418,6 @@ public class ExportOnGoogleDrive extends AppCompatActivity implements MissionAda
             @Override
             public void onSuccess(File file) throws IOException {
 
-                Toast.makeText(getApplicationContext(), "csv file created", Toast.LENGTH_SHORT).show();
-
-                com.google.api.services.drive.model.File fileMetadata = new com.google.api.services.drive.model.File();
-                fileMetadata.setName("textgoogledrive.csv");
-                java.io.File filePath = file;
-                FileContent mediaContent = new FileContent("csv", file);
-                com.google.api.services.drive.model.File files = googleDriveService.files().create(fileMetadata, mediaContent)
-                        .setFields("id")
-                        .execute();
-//                System.out.println("File ID: " + file.getId());
 
 
             }
@@ -428,6 +428,28 @@ public class ExportOnGoogleDrive extends AppCompatActivity implements MissionAda
 
             }
         });
+
+
+    }
+
+    public void CreateFolder() throws IOException {
+
+        String path = Environment.getExternalStorageDirectory().getPath() + "/MyMissionExport/" + "Color" + "/Color"  + "Data.csv";
+
+
+        com.google.api.services.drive.model.File fileMetadata = new com.google.api.services.drive.model.File();
+        fileMetadata.setName("Invoices");
+        fileMetadata.setMimeType("application/vnd.google-apps.folder");
+
+        com.google.api.services.drive.model.File file = googleDriveService.files().create(fileMetadata)
+                .setFields("id")
+                .execute();
+        System.out.println("Folder ID: " + file.getId());
+
+    }
+
+    protected synchronized void buildGoogleApiClient(){
+
 
 
     }
