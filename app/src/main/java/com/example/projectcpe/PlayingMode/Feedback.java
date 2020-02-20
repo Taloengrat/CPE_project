@@ -75,7 +75,10 @@ public class Feedback extends AppCompatActivity {
 
             }
         }
+
+
         MemberStatic memberStatic = new MemberStatic(id, missionList.get(0).getMissionName(), String.valueOf(missionList.get(0).getAge()), numstar, Score);
+
         MissionDATABASE.getInstance(Feedback.this).missionDAO().createMemberStatic(memberStatic);
 
 

@@ -130,6 +130,12 @@ Toast.makeText(getApplicationContext(), String.valueOf(imMedium.getDrawable()), 
                             _etName.setError("Name is required");
                             _etName.requestFocus();
                             return;
+                        }else if (_etAge.getText().toString().isEmpty()){
+                            _etAge.setError("Age is required");
+                            _etAge.requestFocus();
+                        }else if (_etPassword.getText().toString().isEmpty()){
+                            _etPassword.setError("Password is required");
+                            _etPassword.requestFocus();
                         } else if (imMedium != null){
 
 

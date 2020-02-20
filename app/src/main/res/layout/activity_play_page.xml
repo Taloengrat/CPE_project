@@ -45,7 +45,7 @@
         app:itemIconSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHeight_percent="0.1"
-
+        android:visibility="gone"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
 
@@ -169,6 +169,14 @@
             android:gravity="center"
             android:textSize="24dp" />
 
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/speacker"
+            android:layout_marginStart="4dp"
+            />
+
+
     </LinearLayout>
 
     <FrameLayout
@@ -232,7 +240,7 @@
         app:layout_constraintCircle="@id/bar"
         app:srcCompat="@drawable/mic"
         tools:ignore="MissingConstraints,VectorDrawableCompat"
-        android:visibility="visible"/>
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/textClock"

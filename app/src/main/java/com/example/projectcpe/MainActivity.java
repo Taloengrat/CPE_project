@@ -416,7 +416,13 @@ public class MainActivity extends AppCompatActivity {
                     _etName.setError("Name is required");
                     _etName.requestFocus();
                     return;
-                } else if (imMedium != null){
+                } else if (_etAge.getText().toString().isEmpty()){
+                    _etAge.setError("Age is required");
+                    _etAge.requestFocus();
+                }else if (_etPassword.getText().toString().isEmpty()){
+                    _etPassword.setError("Password is required");
+                    _etPassword.requestFocus();
+                }else if (imMedium != null){
 
                     Bitmap bitmap = ((BitmapDrawable) imMedium.getDrawable()).getBitmap();
                     ByteArrayOutputStream baos = new ByteArrayOutputStream();

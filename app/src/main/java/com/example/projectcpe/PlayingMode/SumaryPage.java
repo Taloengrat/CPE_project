@@ -1,10 +1,12 @@
 package com.example.projectcpe.PlayingMode;
 
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -16,6 +18,7 @@ import com.example.projectcpe.Adapter.MemberAdapterBegin;
 import com.example.projectcpe.Adapter.SumaryAdapter;
 import com.example.projectcpe.AdminPage;
 import com.example.projectcpe.ButtonServiceEffect;
+import com.example.projectcpe.HomePage;
 import com.example.projectcpe.MusicService;
 import com.example.projectcpe.R;
 import com.example.projectcpe.ViewModel.Mission;
@@ -160,6 +163,12 @@ public class SumaryPage extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onBackPressed() {
+
+
+
+    }
 
 
 }

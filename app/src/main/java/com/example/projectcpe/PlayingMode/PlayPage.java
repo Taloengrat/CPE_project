@@ -69,6 +69,7 @@ public class PlayPage extends AppCompatActivity {
     int countWrong = 0;
     float countAllWrong = 0;
     float timeDevide;
+    LinearLayout bar;
 
     int numHint;
 
@@ -78,6 +79,7 @@ public class PlayPage extends AppCompatActivity {
 
 
     LinearLayout frameHint;
+
 
     private SlidePageAdapter adapter;
     private TextView textclock, timecount, Answer;
@@ -766,6 +768,7 @@ public class PlayPage extends AppCompatActivity {
         memberId = bundle.getInt("memberId");
 
 
+        bar = findViewById(R.id.bar);
         txPlay = findViewById(R.id.txPlay);
         frameHint = findViewById(R.id.frameHint);
         hint1 = findViewById(R.id.hint1);
@@ -883,6 +886,8 @@ public class PlayPage extends AppCompatActivity {
                     public void run() {
 
                         timecount.setVisibility(View.GONE);
+                        bar.setVisibility(View.VISIBLE);
+                        recogni.setVisibility(View.VISIBLE);
                         startTimer();
                         ShowViewPage();
 
