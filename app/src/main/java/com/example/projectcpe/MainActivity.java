@@ -14,6 +14,7 @@ import com.example.projectcpe.ViewModel.Member;
 import com.example.projectcpe.ViewModel.Mission;
 import com.example.projectcpe.ViewModel.MissionDATABASE;
 import com.google.android.material.snackbar.Snackbar;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.res.AssetManager;
@@ -26,6 +27,8 @@ import android.os.Environment;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -44,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     EditText _etPass;
     ImageView imMedium;
     Button _btBegin;
+    boolean box1, box2, box3, box4, box5;
 
     ProgressBar progressBar;
 
@@ -53,11 +57,9 @@ public class MainActivity extends AppCompatActivity {
     public final int WRITE_PERMISSON_REQUEST_CODE = 1;
 
 
-
     public static final String MY_PRE_PASSWORD_ADMIN = "com.example.projectcpe.passwordasmin";
     private volatile boolean stopThread = false;
-     ProgressDialog loadingDialog;
-
+    ProgressDialog loadingDialog;
 
 
     @Override
@@ -125,11 +127,9 @@ public class MainActivity extends AppCompatActivity {
                             Snackbar.make(_etPass, "Created Password For Admin", Snackbar.LENGTH_SHORT).show();
 
 
-
-                            loadingDialog  = ProgressDialog.show(MainActivity.this, "Fetch photos", "Loading...", true, false);
-
 //
-                            startThread();
+                            ChooseMission();
+
 
                         }
                     }
@@ -144,6 +144,8 @@ public class MainActivity extends AppCompatActivity {
     private void CreateMissionDefault() {
 
 
+
+
         saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.red)).getBitmap(), "picture1", "Color");
         saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.green)).getBitmap(), "picture2", "Color");
         saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.blue)).getBitmap(), "picture3", "Color");
@@ -154,8 +156,6 @@ public class MainActivity extends AppCompatActivity {
         saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.purple)).getBitmap(), "picture8", "Color");
         saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.gray)).getBitmap(), "picture9", "Color");
         saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.orange)).getBitmap(), "picture10", "Color");
-
-
 
 
         Mission mission = new Mission("Color", "Various colors", 5, 10
@@ -186,6 +186,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void CreateMissionTwo() {
+
+
         saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.mt1)).getBitmap(), "picture1", "TalktoJame");
         saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.mt2)).getBitmap(), "picture2", "TalktoJame");
         saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.mt3)).getBitmap(), "picture3", "TalktoJame");
@@ -221,11 +223,13 @@ public class MainActivity extends AppCompatActivity {
         mission2.setTime("1:10");
 
         MissionDATABASE.getInstance(MainActivity.this).missionDAO().create(mission2);
-        stopThread = true;
+
 
     }
 
     private void CreateMissionZoo() {
+
+
         saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.z1)).getBitmap(), "picture1", "Animal");
         saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.z2)).getBitmap(), "picture2", "Animal");
         saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.z3)).getBitmap(), "picture3", "Animal");
@@ -238,7 +242,7 @@ public class MainActivity extends AppCompatActivity {
         saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.z10)).getBitmap(), "picture10", "Animal");
 
 
-        Mission mission3 = new Mission( "Animal", "Various animals", 9 , 10
+        Mission mission3 = new Mission("Animal", "Various animals", 9, 10
                 , directory_path + "Animal" + "/picture1.png", directory_path + "Animal" + "/picture2png", directory_path + "Animal" + "/picture3.png", directory_path + "Animal" + "/picture4.png", directory_path + "Animal" + "/picture5png", directory_path + "Animal" + "/picture6.png", directory_path + "Animal" + "/picture7.png", directory_path + "Animal" + "/picture8.png", directory_path + "Animal" + "/picture9.png", directory_path + "Animal" + "/picture10.png"
                 , getResources().getString(R.string.q3_1), getResources().getString(R.string.q3_2), getResources().getString(R.string.q3_3), getResources().getString(R.string.q3_4), getResources().getString(R.string.q3_5)
                 , getResources().getString(R.string.q3_6), getResources().getString(R.string.q3_7), getResources().getString(R.string.q3_8)
@@ -267,19 +271,19 @@ public class MainActivity extends AppCompatActivity {
 
     private void CreateMissionCareer() {
 
-            saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c1)).getBitmap(), "picture1", "Career");
-            saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c2)).getBitmap(), "picture2", "Career");
-            saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c3)).getBitmap(), "picture3", "Career");
-            saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c4)).getBitmap(), "picture4", "Career");
-            saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c5)).getBitmap(), "picture5", "Career");
-            saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c6)).getBitmap(), "picture6", "Career");
-            saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c7)).getBitmap(), "picture7", "Career");
-            saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c8)).getBitmap(), "picture8", "Career");
-            saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c9)).getBitmap(), "picture9", "Career");
-            saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c10)).getBitmap(), "picture10", "Career");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c1)).getBitmap(), "picture1", "Career");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c2)).getBitmap(), "picture2", "Career");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c3)).getBitmap(), "picture3", "Career");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c4)).getBitmap(), "picture4", "Career");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c5)).getBitmap(), "picture5", "Career");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c6)).getBitmap(), "picture6", "Career");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c7)).getBitmap(), "picture7", "Career");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c8)).getBitmap(), "picture8", "Career");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c9)).getBitmap(), "picture9", "Career");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c10)).getBitmap(), "picture10", "Career");
 
 
-        Mission career = new Mission( "Career", "Various career", 9 , 10
+        Mission career = new Mission("Career", "Various career", 9, 10
                 , directory_path + "Career" + "/picture1.png", directory_path + "Career" + "/picture2png", directory_path + "Career" + "/picture3.png", directory_path + "Career" + "/picture4.png", directory_path + "Career" + "/picture5png", directory_path + "Career" + "/picture6.png", directory_path + "Career" + "/picture7.png", directory_path + "Career" + "/picture8.png", directory_path + "Career" + "/picture9.png", directory_path + "Career" + "/picture10.png"
                 , getResources().getString(R.string.q4_1), getResources().getString(R.string.q4_2), getResources().getString(R.string.q4_3), getResources().getString(R.string.q4_4), getResources().getString(R.string.q4_5)
                 , getResources().getString(R.string.q4_6), getResources().getString(R.string.q4_7), getResources().getString(R.string.q4_8)
@@ -307,7 +311,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static Drawable getAssetImage(Context context, String filename) throws IOException {
         AssetManager assets = context.getResources().getAssets();
-        InputStream buffer = new BufferedInputStream((assets.open( filename + ".png")));
+        InputStream buffer = new BufferedInputStream((assets.open(filename + ".png")));
         Bitmap bitmap = BitmapFactory.decodeStream(buffer);
         return new BitmapDrawable(context.getResources(), bitmap);
     }
@@ -341,9 +345,9 @@ public class MainActivity extends AppCompatActivity {
         //
 
         final EditText _etName = dialog.findViewById(R.id.etname);
-        final EditText _etAge = dialog.findViewById(R.id.etage);
+        final EditText _etAge = dialog.findViewById(R.id.checkbox2);
         final ImageView profile = dialog.findViewById(R.id.head);
-        final EditText _etPassword = dialog.findViewById(R.id.etpassword);
+        final EditText _etPassword = dialog.findViewById(R.id.checkbox3);
 
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -416,13 +420,13 @@ public class MainActivity extends AppCompatActivity {
                     _etName.setError("Name is required");
                     _etName.requestFocus();
                     return;
-                } else if (_etAge.getText().toString().isEmpty()){
+                } else if (_etAge.getText().toString().isEmpty()) {
                     _etAge.setError("Age is required");
                     _etAge.requestFocus();
-                }else if (_etPassword.getText().toString().isEmpty()){
+                } else if (_etPassword.getText().toString().isEmpty()) {
                     _etPassword.setError("Password is required");
                     _etPassword.requestFocus();
-                }else if (imMedium != null){
+                } else if (imMedium != null) {
 
                     Bitmap bitmap = ((BitmapDrawable) imMedium.getDrawable()).getBitmap();
                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -437,10 +441,67 @@ public class MainActivity extends AppCompatActivity {
                     finish();
                     overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 
-                }else {Toast.makeText(getApplicationContext(),"กรุณาเลือกรูปโปรไฟล์",Toast.LENGTH_SHORT).show();}
+
+                } else {
+                    Toast.makeText(getApplicationContext(), "กรุณาเลือกรูปโปรไฟล์", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         dialog.show();
+    }
+
+    private void ChooseMission() {
+
+        final Dialog dialog = new Dialog(MainActivity.this);
+        dialog.getWindow().setBackgroundDrawableResource(R.drawable.frameloadmission);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.select_mission);
+        dialog.setCancelable(false);
+
+        CheckBox checkBox1 = dialog.findViewById(R.id.checkbox1);
+        CheckBox checkBox2 = dialog.findViewById(R.id.checkbox2);
+        CheckBox checkBox3 = dialog.findViewById(R.id.checkbox3);
+        CheckBox checkBox4 = dialog.findViewById(R.id.checkbox4);
+        CheckBox checkBox5 = dialog.findViewById(R.id.checkbox5);
+
+        Button ok = dialog.findViewById(R.id.ok);
+
+
+        ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (checkBox1.isChecked()) {
+                    box1 = true;
+                }
+
+                if (checkBox2.isChecked()) {
+                    box2 = true;
+                }
+                if (checkBox3.isChecked()) {
+                    box3 = true;
+                }
+
+                if (checkBox4.isChecked()) {
+                    box4 = true;
+                }
+
+                if (checkBox5.isChecked()) {
+                    box5 = true;
+                }
+
+                loadingDialog = ProgressDialog.show(MainActivity.this, "เตรียมข้อมูลแบบทดสอบ", "กำลังเตรียมแบบทดสอบ...", true, false);
+
+                dialog.dismiss();
+                startThread();
+
+            }
+        });
+
+
+        dialog.show();
+
+
     }
 
     private String saveToInternalStorage(Bitmap bitmapImage, String picturename, String missionName) {
@@ -477,7 +538,6 @@ public class MainActivity extends AppCompatActivity {
     class ExampleRunnable implements Runnable {
 
 
-
         ExampleRunnable() {
 
         }
@@ -486,15 +546,7 @@ public class MainActivity extends AppCompatActivity {
         public void run() {
 
 
-
-                CreateMissionDefault();
-                CreateMissionZoo();
-                CreateMissionTwo();
-                CreateMissionCareer();
-
-
-
-            if (stopThread) {
+            if (box1) {
 
 
                 runOnUiThread(new Runnable() {
@@ -502,6 +554,71 @@ public class MainActivity extends AppCompatActivity {
                     public void run() {
 
 
+                        loadingDialog.setTitle("กำลังเตรียมแบบทดสอบที่ 1");
+
+
+
+                    }
+                });
+
+                CreateMissionDefault();
+            }
+
+            if (box2) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+
+                        loadingDialog.setTitle("กำลังเตรียมแบบทดสอบที่ 2");
+
+
+
+                    }
+                });
+
+                CreateMissionZoo();
+            }
+
+            if (box3) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+
+                        loadingDialog.setTitle("กำลังเตรียมแบบทดสอบที่ 3");
+
+
+
+                    }
+                });
+
+                CreateMissionTwo();
+            }
+            if (box4) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+
+                        loadingDialog.setTitle("กำลังเตรียมแบบทดสอบที่ 4");
+
+
+
+                    }
+                });
+                CreateMissionCareer();
+            }
+
+
+    stopThread = true;
+
+            if (stopThread) {
+
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
 
 
                         loadingDialog.dismiss();
@@ -513,11 +630,10 @@ public class MainActivity extends AppCompatActivity {
             }
 
 
-            }
-
-
-
         }
+
+
+    }
 
     @Override
     protected void onPause() {
@@ -534,7 +650,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    }
+}
 
 
 

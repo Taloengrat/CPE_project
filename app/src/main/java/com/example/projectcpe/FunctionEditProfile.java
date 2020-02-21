@@ -4,7 +4,6 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -13,14 +12,12 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projectcpe.Adapter.MemberAdapter;
-import com.example.projectcpe.CreateMission.MissionCreate;
 import com.example.projectcpe.ViewModel.Member;
 import com.example.projectcpe.ViewModel.MissionDATABASE;
 
@@ -56,8 +53,8 @@ public class FunctionEditProfile extends AppCompatActivity {
                 //
 
                 final EditText _etName = dialog.findViewById(R.id.etname);
-                final EditText _etAge = dialog.findViewById(R.id.etage);
-                final EditText _etPassword = dialog.findViewById(R.id.etpassword);
+                final EditText _etAge = dialog.findViewById(R.id.checkbox2);
+                final EditText _etPassword = dialog.findViewById(R.id.checkbox3);
                 final ImageView profile = dialog.findViewById(R.id.head);
 
                 profile.setOnClickListener(new View.OnClickListener() {

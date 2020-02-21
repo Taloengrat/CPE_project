@@ -5,41 +5,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@drawable/frameline"
+    android:background="@drawable/frameloadmission"
     android:padding="40dp"
     android:layout_gravity="center"
     >
 
-    <EditText
-        android:id="@+id/etname"
+    <CheckBox
+        android:id="@+id/checkbox1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Mission 1"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/bgtext"
         android:ems="10"
         android:gravity="center"
-        android:hint="Name"
         android:fontFamily="@font/thin"
-        android:inputType="textPersonName"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/head" />
+        app:layout_constraintTop_toBottomOf="@+id/head"/>
+
+
 
     <ImageView
         android:id="@+id/head"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="8dp"
-        android:layout_marginBottom="10dp"
         android:layout_marginEnd="8dp"
-        app:layout_constraintBottom_toTopOf="@id/etname"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@id/checkbox1"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.67"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/accout"
+        android:text="Mission 1"
+        app:srcCompat="@drawable/target"
         tools:ignore="VectorDrawableCompat" />
 
 
@@ -66,7 +69,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline5" />
 
-    <EditText
+    <CheckBox
         android:id="@+id/checkbox2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -74,29 +77,57 @@
         android:background="@drawable/bgtext"
         android:ems="10"
         android:gravity="center"
-        android:hint="Age"
         android:fontFamily="@font/thin"
         android:textColor="@color/black"
-        android:inputType="number"
+        android:text="Mission 2"
         app:layout_constraintEnd_toEndOf="@+id/etname"
         app:layout_constraintStart_toStartOf="@+id/etname"
-        app:layout_constraintTop_toBottomOf="@+id/etname" />
+        app:layout_constraintTop_toBottomOf="@+id/checkbox1" />
 
-    <EditText
+    <CheckBox
         android:id="@+id/checkbox3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
         android:layout_marginTop="8dp"
-        android:inputType="numberPassword"
         android:background="@drawable/bgtext"
-        android:gravity="center"
-        android:hint="Password"
-        android:textColor="@color/black"
+        android:ems="10"
         android:fontFamily="@font/thin"
-        app:layout_constraintBottom_toTopOf="@+id/guideline5"
+        android:gravity="center"
+        android:text="Mission 3"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="@+id/checkbox2"
         app:layout_constraintStart_toStartOf="@+id/checkbox2"
         app:layout_constraintTop_toBottomOf="@+id/checkbox2" />
+
+    <CheckBox
+        android:id="@+id/checkbox4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Mission 4"
+        android:ems="10"
+        android:gravity="center"
+        android:fontFamily="@font/thin"
+        android:background="@drawable/bgtext"
+        app:layout_constraintEnd_toEndOf="@+id/checkbox3"
+        app:layout_constraintStart_toStartOf="@+id/checkbox3"
+        app:layout_constraintTop_toBottomOf="@+id/checkbox3" />
+
+    <CheckBox
+        android:id="@+id/checkbox5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Mission 5"
+        android:ems="10"
+        android:fontFamily="@font/thin"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:background="@drawable/bgtext"
+        app:layout_constraintBottom_toTopOf="@+id/guideline5"
+        app:layout_constraintEnd_toEndOf="@+id/checkbox4"
+        app:layout_constraintStart_toStartOf="@+id/checkbox4"
+        app:layout_constraintTop_toBottomOf="@+id/checkbox4" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

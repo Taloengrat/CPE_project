@@ -2,7 +2,6 @@ package com.example.projectcpe.Adapter;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -21,10 +20,8 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.projectcpe.BeginMember;
 import com.example.projectcpe.ButtonServiceEffect;
 import com.example.projectcpe.HomePage;
-import com.example.projectcpe.MainActivity;
 import com.example.projectcpe.R;
 import com.example.projectcpe.StatisticMember;
 import com.example.projectcpe.ViewModel.Member;
@@ -114,7 +111,7 @@ public class MemberAdapterBegin extends RecyclerView.Adapter<MemberAdapterBegin.
             dialog.setContentView(R.layout.verify_member);
             dialog.setCancelable(true);
 
-            final EditText _etPassword = dialog.findViewById(R.id.etpassword);
+            final EditText _etPassword = dialog.findViewById(R.id.checkbox3);
             Button btSubmit = dialog.findViewById(R.id.okverify);
 
             final int iddd = MissionDATABASE.getInstance(activity).missionDAO().getDesMember(memberListb.get(getAdapterPosition()).getId());
