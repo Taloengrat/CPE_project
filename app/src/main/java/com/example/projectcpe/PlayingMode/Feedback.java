@@ -339,5 +339,11 @@ public class Feedback extends AppCompatActivity {
         stopService(new Intent(Feedback.this, MusicService.class));
     }
 
+    @Override
+    public void onBackPressed() {
+
+
+
+    }
 
 }
