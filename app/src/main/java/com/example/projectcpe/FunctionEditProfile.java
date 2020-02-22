@@ -73,13 +73,13 @@ public class FunctionEditProfile extends AppCompatActivity {
 
                                 imMedium = (ImageView) view;
 
-Toast.makeText(getApplicationContext(), String.valueOf(imMedium.getDrawable()), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), String.valueOf(imMedium.getDrawable()), Toast.LENGTH_SHORT).show();
                                 profile.setImageDrawable(imMedium.getDrawable());
                                 dialog.cancel();
                             }
                         };
 
-                        ImageView pro1, pro2, pro3, pro4, pro5, pro6, pro7, pro8, pro9, pro10,pro11, pro12, pro13, pro14, pro15;
+                        ImageView pro1, pro2, pro3, pro4, pro5, pro6, pro7, pro8, pro9, pro10, pro11, pro12, pro13, pro14, pro15;
 
                         pro1 = dialog.findViewById(R.id.pro1);
                         pro2 = dialog.findViewById(R.id.pro2);
@@ -114,8 +114,6 @@ Toast.makeText(getApplicationContext(), String.valueOf(imMedium.getDrawable()), 
                         pro15.setOnClickListener(Clickkk);
 
 
-
-
                         dialog.show();
                     }
                 });
@@ -127,31 +125,40 @@ Toast.makeText(getApplicationContext(), String.valueOf(imMedium.getDrawable()), 
                             _etName.setError("Name is required");
                             _etName.requestFocus();
                             return;
-                        }else if (_etAge.getText().toString().isEmpty()){
+                        } else if ((_etName.length() > 13)) {
+
+                            _etName.setError("Length name is 13");
+                            _etName.requestFocus();
+                        } else if (_etAge.getText().toString().isEmpty()) {
                             _etAge.setError("Age is required");
                             _etAge.requestFocus();
-                        }else if (_etPassword.getText().toString().isEmpty()){
+                        } else if (!(Integer.valueOf(_etAge.getText().toString()) <= 120)) {
+                            _etAge.setError("Age Not defined");
+                            _etAge.requestFocus();
+                        } else if (_etPassword.getText().toString().isEmpty()) {
                             _etPassword.setError("Password is required");
                             _etPassword.requestFocus();
-                        } else if (imMedium != null){
+                        } else if (_etPassword.length() > 6) {
+                            _etPassword.setError("Length Password is over 6");
+                            _etPassword.requestFocus();
+                        } else if (imMedium != null) {
 
 
                             Bitmap bitmap = ((BitmapDrawable) imMedium.getDrawable()).getBitmap();
-
 
 
                             ByteArrayOutputStream baos = new ByteArrayOutputStream();
                             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
                             byte[] imageInByte = baos.toByteArray();
 
-                            Member newMember = new Member(_etName.getText().toString(), _etAge.getText().toString(), imageInByte,Integer.valueOf(_etPassword.getText().toString()));
+                            Member newMember = new Member(_etName.getText().toString(), _etAge.getText().toString(), imageInByte, Integer.valueOf(_etPassword.getText().toString()));
 
                             MissionDATABASE.getInstance(FunctionEditProfile.this).missionDAO().createMember(newMember);
-dialog.cancel();
+                            dialog.cancel();
                             recreate();
 
-                        }else{
-                            Toast.makeText(getApplicationContext(),"กรุณาเลือกรูปโปรไฟล์",Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getApplicationContext(), "กรุณาเลือกรูปโปรไฟล์", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -160,41 +167,39 @@ dialog.cancel();
         });
 
 
+    }
 
+    private void loadData() {
+
+        RecyclerView.Adapter adapter = new MemberAdapter(lodeMember(), this);
+        MemberRecyclerview.setHasFixedSize(true);
+        MemberRecyclerview.setLayoutManager(new LinearLayoutManager(this));
+        MemberRecyclerview.setAdapter(adapter);
+    }
+
+    private List<Member> lodeMember() {
+
+        return MissionDATABASE.getInstance(this).missionDAO().getAllMember();
 
     }
 
-        private void loadData () {
+    private void Initia() {
 
-            RecyclerView.Adapter adapter = new MemberAdapter(lodeMember(), this);
-            MemberRecyclerview.setHasFixedSize(true);
-            MemberRecyclerview.setLayoutManager(new LinearLayoutManager(this));
-            MemberRecyclerview.setAdapter(adapter);
-        }
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-        private List<Member> lodeMember () {
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-            return MissionDATABASE.getInstance(this).missionDAO().getAllMember();
+        MemberRecyclerview = findViewById(R.id.MemberRecyclerView);
+        addMember = findViewById(R.id.addmember);
+    }
 
-        }
-
-        private void Initia () {
-
-            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-            setSupportActionBar(toolbar);
-
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-            MemberRecyclerview = findViewById(R.id.MemberRecyclerView);
-            addMember = findViewById(R.id.addmember);
-        }
-
-        @Override
-        protected void onStart () {
-            super.onStart();
-            loadData();
-        }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        loadData();
+    }
 
     @Override
     public void onBackPressed() {

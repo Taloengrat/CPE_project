@@ -58,9 +58,9 @@ import java.util.TimerTask;
 
 public class PlayPage extends AppCompatActivity {
 
+    int cloneSec=0;
     private int ms;
     private int seconds;
-    int cloneSec=0;
     private int minutes;
     float Score;
     float SumScore;

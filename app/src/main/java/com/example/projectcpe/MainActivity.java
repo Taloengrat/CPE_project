@@ -10,9 +10,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 
 import com.example.projectcpe.CSV.Utility.PermissionUtility;
+import com.example.projectcpe.PlayingMode.PlayPage;
 import com.example.projectcpe.ViewModel.Member;
 import com.example.projectcpe.ViewModel.Mission;
 import com.example.projectcpe.ViewModel.MissionDATABASE;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,6 +24,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
@@ -40,6 +43,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Locale;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -49,8 +55,13 @@ public class MainActivity extends AppCompatActivity {
     Button _btBegin;
     boolean box1, box2, box3, box4, box5;
 
-    ProgressBar progressBar;
+    private int ms = 0;
+    private int seconds = 0;
+    private int minutes;
 
+    ProgressBar progressBar;
+    private Timer timer;
+    protected boolean running = false;
 
     String directory_path = Environment.getExternalStorageDirectory().getPath() + "/EnglishPractice/";
 
@@ -60,6 +71,78 @@ public class MainActivity extends AppCompatActivity {
     public static final String MY_PRE_PASSWORD_ADMIN = "com.example.projectcpe.passwordasmin";
     private volatile boolean stopThread = false;
     ProgressDialog loadingDialog;
+    private int percent = 0;
+
+    ///////////////////// progress dialog percent
+
+    private void updateTimerText() {
+
+        loadingDialog.setMessage(String.format("ความคืบหน้า : %02d ", percent)+"%");
+
+    }
+
+    private void updateSeconds() {
+        ms = 0;
+
+        percent+=2;
+        if (percent > 100) {
+            percent = 0;
+
+        }
+    }
+
+    private void updateMs() {
+        ms+=2;
+        if (ms == 10) {
+            updateSeconds();
+        }
+    }
+
+
+    private void startTimer() {
+
+
+        timer = new Timer();
+
+        running = true;
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                runTimer();
+            }
+        }, 0, 100);
+
+
+    }
+
+    private void stopTimer() {
+        running = false;
+//        btnStart.setText("Start");
+        timer.cancel();
+    }
+
+    Runnable percentTick = new Runnable() {
+        @Override
+        public void run() {
+
+            if (percent == 100) {
+
+                stopTimer();
+                percent = 0;
+
+            } else {
+
+                updateTimerText();
+                updateMs();
+            }
+        }
+    };
+
+    private void runTimer() {
+        {
+            this.runOnUiThread(percentTick);
+        }
+    }
 
 
     @Override
@@ -144,8 +227,6 @@ public class MainActivity extends AppCompatActivity {
     private void CreateMissionDefault() {
 
 
-
-
         saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.red)).getBitmap(), "picture1", "Color");
         saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.green)).getBitmap(), "picture2", "Color");
         saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.blue)).getBitmap(), "picture3", "Color");
@@ -182,6 +263,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         MissionDATABASE.getInstance(MainActivity.this).missionDAO().create(mission);
+
+
 
     }
 
@@ -223,6 +306,7 @@ public class MainActivity extends AppCompatActivity {
         mission2.setTime("1:10");
 
         MissionDATABASE.getInstance(MainActivity.this).missionDAO().create(mission2);
+
 
 
     }
@@ -307,6 +391,7 @@ public class MainActivity extends AppCompatActivity {
         MissionDATABASE.getInstance(MainActivity.this).missionDAO().create(career);
 
 
+
     }
 
     public static Drawable getAssetImage(Context context, String filename) throws IOException {
@@ -366,8 +451,6 @@ public class MainActivity extends AppCompatActivity {
 
                         startService(new Intent(MainActivity.this, ButtonServiceEffect.class)); // Sound button effect
                         imMedium = (ImageView) view;
-
-                        Toast.makeText(getApplicationContext(), String.valueOf(imMedium.getDrawable()), Toast.LENGTH_SHORT).show();
                         profile.setImageDrawable(imMedium.getDrawable());
                         dialog.cancel();
                     }
@@ -420,11 +503,21 @@ public class MainActivity extends AppCompatActivity {
                     _etName.setError("Name is required");
                     _etName.requestFocus();
                     return;
+                } else if ((_etName.length() > 13)) {
+
+                    _etName.setError("Length your name is over");
+                    _etName.requestFocus();
                 } else if (_etAge.getText().toString().isEmpty()) {
                     _etAge.setError("Age is required");
                     _etAge.requestFocus();
+                } else if (!(Integer.valueOf(_etAge.getText().toString()) <= 120)) {
+                    _etAge.setError("Age Not defined");
+                    _etAge.requestFocus();
                 } else if (_etPassword.getText().toString().isEmpty()) {
                     _etPassword.setError("Password is required");
+                    _etPassword.requestFocus();
+                } else if (_etPassword.length() > 6) {
+                    _etPassword.setError("Length Password is over 6");
                     _etPassword.requestFocus();
                 } else if (imMedium != null) {
 
@@ -552,16 +645,18 @@ public class MainActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-
-
+                        startTimer();
                         loadingDialog.setTitle("กำลังเตรียมแบบทดสอบที่ 1");
-
-
-
                     }
                 });
 
                 CreateMissionDefault();
+
+                percent = 99;
+
+
+
+
             }
 
             if (box2) {
@@ -569,15 +664,17 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void run() {
 
-
+                        startTimer();
                         loadingDialog.setTitle("กำลังเตรียมแบบทดสอบที่ 2");
-
 
 
                     }
                 });
 
                 CreateMissionZoo();
+
+                percent = 99;
+
             }
 
             if (box3) {
@@ -585,33 +682,36 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void run() {
 
-
+                        startTimer();
                         loadingDialog.setTitle("กำลังเตรียมแบบทดสอบที่ 3");
-
 
 
                     }
                 });
 
                 CreateMissionTwo();
+
+                percent = 99;
+
             }
             if (box4) {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
 
-
+                        startTimer();
                         loadingDialog.setTitle("กำลังเตรียมแบบทดสอบที่ 4");
-
 
 
                     }
                 });
                 CreateMissionCareer();
+
+                percent = 99;
             }
 
 
-    stopThread = true;
+            stopThread = true;
 
             if (stopThread) {
 
