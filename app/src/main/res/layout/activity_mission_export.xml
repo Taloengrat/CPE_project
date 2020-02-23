@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CreateMission.Export.MissionExport"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:id="@+id/exxx">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -83,7 +84,7 @@
                     android:layout_height="200dp"
                     android:layout_gravity="center_vertical"
                     android:layout_margin="16dp"
-                    android:src="@drawable/googledrive"
+                    android:src="@drawable/google"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -94,7 +95,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Google Drive"
+                android:text="Google Account"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/cardView4"

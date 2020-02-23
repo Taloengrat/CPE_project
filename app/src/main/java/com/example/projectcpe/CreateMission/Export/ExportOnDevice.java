@@ -281,7 +281,6 @@ public class ExportOnDevice extends AppCompatActivity implements MissionAdapter.
                         + "," + missionList.get(0).getTime() + "-");
 
 
-                Log.v("Timeexport", missionList.get(0).getTime());
                 createFileCsv();
 
                 try {
@@ -318,7 +317,7 @@ public class ExportOnDevice extends AppCompatActivity implements MissionAdapter.
                         + "," + missionList.get(0).getH1() + "," + missionList.get(0).getH2() + "," + missionList.get(0).getH3() + "," + missionList.get(0).getH4() + "," + missionList.get(0).getH5() + "," + missionList.get(0).getH6() + "," + missionList.get(0).getH7() + "," + missionList.get(0).getH8() + "," + missionList.get(0).getH9() + "," + missionList.get(0).getH10()
                         + "," + missionList.get(0).getTime() + "-");
 
-                Log.v("Timeexport", missionList.get(0).getTime());
+
                 createFileCsv();
 
                 try {
@@ -339,31 +338,29 @@ public class ExportOnDevice extends AppCompatActivity implements MissionAdapter.
                 break;
 
 
-
-    }
-
-    File dir = new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName());
-    File folder = new File(Environment.getExternalStorageDirectory() + "/EnglishPractice");
-        if(dir.isDirectory())
-
-    {
-        String[] children = dir.list();
-        for (int i = 0; i < children.length; i++) {
-            new File(dir, children[i]).delete();
         }
 
-        dir.delete();
-    }
+        File dir = new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName());
+        File folder = new File(Environment.getExternalStorageDirectory() + "/EnglishPractice");
+        if (dir.isDirectory()) {
+            String[] children = dir.list();
+            for (int i = 0; i < children.length; i++) {
+                new File(dir, children[i]).delete();
+            }
+
+            dir.delete();
+        }
 
 
-    stopThread =true;
+        stopThread = true;
 
         MissionDATABASE.getInstance(ExportOnDevice.this).missionDAO().delete(missionList.get(0));
 
 
-}
+    }
 
     private String saveToInternalStorage(Bitmap bitmapImage, String foldername) {
+
         ContextWrapper cw = new ContextWrapper(getApplicationContext());
         // path to /data/data/yourapp/app_data/imageDir
         File directory = new File(Environment.getExternalStorageDirectory() + "/MyMissionExport/" + missionList.get(0).getMissionName() + "/");
@@ -384,7 +381,9 @@ public class ExportOnDevice extends AppCompatActivity implements MissionAdapter.
                 e.printStackTrace();
             }
         }
+
         return directory.getAbsolutePath();
+
     }
 
     private void createFileCsv() throws IOException {
@@ -401,13 +400,6 @@ public class ExportOnDevice extends AppCompatActivity implements MissionAdapter.
         if (!file.exists()) {
             file.mkdirs();
         }
-
-
-//        String directory_path1 = Environment.getExternalStorageDirectory().getPath() + "/EnglishPractice/Color";
-//        File file1 = new File(directory_path1);
-//        if (!file1.exists()) {
-//            file1.mkdirs();
-//        }
 
         String fileName = "Data";
 
@@ -437,44 +429,42 @@ public class ExportOnDevice extends AppCompatActivity implements MissionAdapter.
 
     }
 
-class ExampleRunnable implements Runnable {
+    class ExampleRunnable implements Runnable {
 
 
-    ExampleRunnable() {
+        ExampleRunnable() {
 
-    }
-
-    @Override
-    public void run() {
-
-
-        try {
-            SwitchAddListString(missionList.get(0).getNumberofMission());
-        } catch (IOException e) {
-            e.printStackTrace();
         }
 
-        if (stopThread) {
+        @Override
+        public void run() {
 
 
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
+            try {
+                SwitchAddListString(missionList.get(0).getNumberofMission());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            if (stopThread) {
 
 
-                    progressDialog.dismiss();
-                    recreate();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
 
 
-                }
-            });
+                        progressDialog.dismiss();
+                        recreate();
+
+
+                    }
+                });
+            }
         }
 
 
     }
-
-
-}
 
     @Override
     protected void onPause() {

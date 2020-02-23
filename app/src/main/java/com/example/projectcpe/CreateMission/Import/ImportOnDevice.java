@@ -84,6 +84,7 @@ public class ImportOnDevice extends AppCompatActivity {
 
         finish();
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+
     }
 
     @Override
