@@ -102,7 +102,7 @@ public class CsvImportAdapter extends RecyclerView.Adapter<CsvImportAdapter.CsvV
 
                 }
 
-                private void SwitchImport(int numberstep, String filePath) throws FileNotFoundException {
+                private void SwitchImport(int numberstep) throws FileNotFoundException {
 
                     String createFolder = Environment.getExternalStorageDirectory().getPath() + "/EnglishPractice/" + txName.getText();
                     File file = new File(createFolder);
@@ -517,7 +517,7 @@ public class CsvImportAdapter extends RecyclerView.Adapter<CsvImportAdapter.CsvV
                                 if (reader.getLinesRead() == 2) {
                                     Log.v("Lineeeeeeeee", String.valueOf(reader.getLinesRead()));
 
-                                    SwitchImport(Integer.valueOf(nextLine[3]), path);
+                                    SwitchImport(Integer.valueOf(nextLine[3]));
                                 }
 
 

@@ -341,7 +341,7 @@ public class ExportOnDevice extends AppCompatActivity implements MissionAdapter.
         }
 
         File dir = new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName());
-        File folder = new File(Environment.getExternalStorageDirectory() + "/EnglishPractice");
+
         if (dir.isDirectory()) {
             String[] children = dir.list();
             for (int i = 0; i < children.length; i++) {

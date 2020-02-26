@@ -59,6 +59,7 @@ public class MissionExport extends AppCompatActivity {
     ProgressDialog progressDialog;
      FirebaseAuth mAuth;
     GoogleSignInClient googleSignInClient;
+    FirebaseUser user;
 
 
 
@@ -67,11 +68,13 @@ public class MissionExport extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mission_export);
 
-        progressDialog = ProgressDialog.show(MissionExport.this, "เข้าสู่ระบบ", "กำลังเข้าสู่ระบบ...", true, false);
+
         BindVariable();
 
         mAuth = FirebaseAuth.getInstance();
 
+
+        user = mAuth.getCurrentUser();
 
 
 
@@ -128,28 +131,6 @@ public class MissionExport extends AppCompatActivity {
 
 
 
-
-//                final Dialog dialog = new Dialog(this);
-//                dialog.getWindow().setBackgroundDrawableResource(R.drawable.bg_dialog_custom);
-//                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-//                dialog.setContentView(R.layout.login_layout);
-//                dialog.setCancelable(true);
-//
-//                 _etUsername = dialog.findViewById(R.id.etUsername);
-//                 _etPassword = dialog.findViewById(R.id.etPassword);
-//                Button _btLogin = dialog.findViewById(R.id.btLogin);
-//
-//                _btLogin.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//
-//
-//                        UserLogin();
-//                    }
-//                });
-//
-//                dialog.show();
-
             break;
         }
     }
@@ -168,60 +149,6 @@ public class MissionExport extends AppCompatActivity {
         startService(new Intent(MissionExport.this, MusicService.class));
     }
 
-
-    private void UserLogin() {
-
-        String username = _etUsername.getText().toString().trim();
-        String password = _etPassword.getText().toString().trim();
-
-        if (username.isEmpty()) {
-            _etUsername.setError("Email is required");
-            _etUsername.requestFocus();
-            return;
-        }
-
-        if (!Patterns.EMAIL_ADDRESS.matcher(username).matches()) {
-            _etUsername.setError("Please enter a valid email");
-            _etUsername.requestFocus();
-            return;
-        }
-
-        if (password.isEmpty()) {
-            _etPassword.setError("Password is required");
-            _etPassword.requestFocus();
-            return;
-        }
-
-        if (password.length() < 6) {
-            _etPassword.setError("Minimum lenght of password should be  6 ");
-            _etPassword.requestFocus();
-            return;
-        }
-
-
-
-
-//        mAuth.signInWithEmailAndPassword(username, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-//            @Override
-//            public void onComplete(@NonNull Task<AuthResult> task) {
-//                progressBar.setVisibility(View.GONE);
-//                if (task.isSuccessful())
-//                {
-//                    finish();
-//                    Intent i = new Intent(new Intent(MissionExport.this, ExportOnGoogleDrive.class));
-//                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                    startActivity(i);
-//
-//
-//
-//
-//                }else{
-//                    Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        });
-//
-    }
 
     private void signIn() {
         Intent signInIntent = googleSignInClient.getSignInIntent();
@@ -247,14 +174,6 @@ public class MissionExport extends AppCompatActivity {
         }
     }
 
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        updateUI(currentUser);
-    }
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
         Log.d("accoutId", "firebaseAuthWithGoogle:" + acct.getId());
@@ -302,6 +221,7 @@ public class MissionExport extends AppCompatActivity {
 
         } else {
 
+            signIn();
             Toast.makeText(getApplicationContext(), "User result : null",Toast.LENGTH_LONG).show();
 
         }

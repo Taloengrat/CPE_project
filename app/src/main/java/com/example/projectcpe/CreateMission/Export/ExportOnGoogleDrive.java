@@ -54,14 +54,18 @@ import com.google.api.services.drive.Drive;
 import com.google.api.services.drive.DriveScopes;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.UploadTask;
+import com.opencsv.CSVReader;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -82,6 +86,7 @@ public class ExportOnGoogleDrive extends AppCompatActivity implements MissionAda
     TextView txName;
     private final Executor mExecutor = Executors.newSingleThreadExecutor();
     private volatile boolean stopThread = false;
+    private volatile boolean stopThreadFirebase = false;
     GoogleSignInClient googleSignInClient;
     List<String> headerList = new ArrayList<>();
     List<String> dataList = new ArrayList<>();
@@ -90,8 +95,11 @@ public class ExportOnGoogleDrive extends AppCompatActivity implements MissionAda
 
 
     FirebaseAuth mAuth;
-    FirebaseUser currentUser ;
+    FirebaseUser currentUser;
     ImageView imageUser;
+
+    FirebaseDatabase database;
+    DatabaseReference myRef;
 
 
     @Override
@@ -102,6 +110,9 @@ public class ExportOnGoogleDrive extends AppCompatActivity implements MissionAda
         mAuth = FirebaseAuth.getInstance();
 
         currentUser = mAuth.getCurrentUser();
+
+        database = FirebaseDatabase.getInstance();
+
 
 //        imageUser.setImageURI(currentUser.getPhotoUrl());
 
@@ -140,13 +151,6 @@ public class ExportOnGoogleDrive extends AppCompatActivity implements MissionAda
         txName.setText(name);
         Toast.makeText(getApplicationContext(), Uid, Toast.LENGTH_LONG).show();
 
-
-        if (CheckInternet()) {
-            requestSignIn();
-            Log.v("dddddddddddddddd", "true");
-        } else {
-            Log.v("dddddddddddddddd", "fail");
-        }
 
     }
 
@@ -195,11 +199,11 @@ public class ExportOnGoogleDrive extends AppCompatActivity implements MissionAda
 
                 missionClone = mission;
 
+
                 progressDialog = ProgressDialog.show(ExportOnGoogleDrive.this, "Export to google drive ", "exporting...", true, false);
 
 
                 startThread();
-
 
 
             }
@@ -317,31 +321,20 @@ public class ExportOnGoogleDrive extends AppCompatActivity implements MissionAda
                         ",Score1,Score2,Score3,Score4,Score5,Score6,Score7,Score8,Score9,Score10" +
                         ",Hint1,Hint2,Hint3,Hint4,Hint5,Hint6,Hint7,Hint8,Hint9,Hint10,Time-");
 
-                dataList.add(missionList.get(0).getMissionName() + "," + missionList.get(0).getDetailMission() + "," + missionList.get(0).getAge() + "," + missionList.get(0).getNumberofMission()
-                        + "," + missionList.get(0).getQ1() + "," + missionList.get(0).getQ2() + "," + missionList.get(0).getQ3() + "," + missionList.get(0).getQ4() + "," + missionList.get(0).getQ5() + "," + missionList.get(0).getQ6() + "," + missionList.get(0).getQ7() + "," + missionList.get(0).getQ8() + "," + missionList.get(0).getQ9() + "," + missionList.get(0).getQ10()
-                        + "," + missionList.get(0).getA1() + "," + missionList.get(0).getA2() + "," + missionList.get(0).getA3() + "," + missionList.get(0).getA4() + "," + missionList.get(0).getA5() + "," + missionList.get(0).getA6() + "," + missionList.get(0).getA7() + "," + missionList.get(0).getA8() + "," + missionList.get(0).getA9() + "," + missionList.get(0).getA10()
-                        + "," + missionList.get(0).getS1() + "," + missionList.get(0).getS2() + "," + missionList.get(0).getS3() + "," + missionList.get(0).getS4() + "," + missionList.get(0).getS5() + "," + missionList.get(0).getS6() + "," + missionList.get(0).getS7() + "," + missionList.get(0).getS8() + "," + missionList.get(0).getS9() + "," + missionList.get(0).getS10()
-                        + "," + missionList.get(0).getH1() + "," + missionList.get(0).getH2() + "," + missionList.get(0).getH3() + "," + missionList.get(0).getH4() + "," + missionList.get(0).getH5() + "," + missionList.get(0).getH6() + "," + missionList.get(0).getH7() + "," + missionList.get(0).getH8() + "," + missionList.get(0).getH9() + "," + missionList.get(0).getH10()
-                        + "," + missionList.get(0).getTime() + "-");
+                dataList.add(missionClone.getMissionName() + "," + missionClone.getDetailMission() + "," + missionClone.getAge() + "," + missionClone.getNumberofMission()
+                        + "," + missionClone.getQ1() + "," + missionClone.getQ2() + "," + missionClone.getQ3() + "," + missionClone.getQ4() + "," + missionClone.getQ5() + "," + missionClone.getQ6() + "," + missionClone.getQ7() + "," + missionClone.getQ8() + "," + missionClone.getQ9() + "," + missionClone.getQ10()
+                        + "," + missionClone.getA1() + "," + missionClone.getA2() + "," + missionClone.getA3() + "," + missionClone.getA4() + "," + missionClone.getA5() + "," + missionClone.getA6() + "," + missionClone.getA7() + "," + missionClone.getA8() + "," + missionClone.getA9() + "," + missionClone.getA10()
+                        + "," + missionClone.getS1() + "," + missionClone.getS2() + "," + missionClone.getS3() + "," + missionClone.getS4() + "," + missionClone.getS5() + "," + missionClone.getS6() + "," + missionClone.getS7() + "," + missionClone.getS8() + "," + missionClone.getS9() + "," + missionClone.getS10()
+                        + "," + missionClone.getH1() + "," + missionClone.getH2() + "," + missionClone.getH3() + "," + missionClone.getH4() + "," + missionClone.getH5() + "," + missionClone.getH6() + "," + missionClone.getH7() + "," + missionClone.getH8() + "," + missionClone.getH9() + "," + missionClone.getH10()
+                        + "," + missionClone.getTime() + "-");
 
                 createFileCsv();
 
                 break;
         }
 
-        File dir = new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName());
 
-        if (dir.isDirectory()) {
-            String[] children = dir.list();
-            for (int i = 0; i < children.length; i++) {
-                new File(dir, children[i]).delete();
-            }
-
-            dir.delete();
-        }
-
-
-        MissionDATABASE.getInstance(ExportOnGoogleDrive.this).missionDAO().delete(missionList.get(0));
+        MissionDATABASE.getInstance(ExportOnGoogleDrive.this).missionDAO().delete(missionClone);
 
 
     }
@@ -354,20 +347,28 @@ public class ExportOnGoogleDrive extends AppCompatActivity implements MissionAda
         easyCsv.setSeparatorColumn(",");
         easyCsv.setSeperatorLine("-");
 
+        String directory_path = Environment.getExternalStorageDirectory().getPath() + "/MyMissionExport/" + missionClone.getMissionName();
+        File file = new File(directory_path);
+        if (!file.exists()) {
+            file.mkdirs();
+        }
+
         String fileName = "Data";
 
-        easyCsv.createCsvFile(missionList.get(0).getMissionName().trim(), missionList.get(0).getMissionName() + fileName, headerList, dataList, WRITE_PERMISSON_REQUEST_CODE, new FileCallback() {
+        easyCsv.createCsvFile(missionClone.getMissionName().trim(), missionClone.getMissionName() + fileName, headerList, dataList, WRITE_PERMISSON_REQUEST_CODE, new FileCallback() {
 
 
             @Override
-            public void onSuccess(File file) {
+            public void onSuccess(File file) throws FileNotFoundException {
 
+                stopThread = true;
 
             }
 
             @Override
             public void onFail(String err) {
 
+                Log.v("fail", err);
 
             }
         });
@@ -378,6 +379,7 @@ public class ExportOnGoogleDrive extends AppCompatActivity implements MissionAda
 
     public void startThread() {
         stopThread = false;
+        stopThreadFirebase = false;
         ExampleRunnable runnable = new ExampleRunnable();
         new Thread(runnable).start();
 
@@ -393,151 +395,95 @@ public class ExportOnGoogleDrive extends AppCompatActivity implements MissionAda
         @Override
         public void run() {
 
+            try {
+                SwitchAddListString(missionClone.getNumberofMission());
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                if (stopThread) {
+                    for (int i = 0; i < missionClone.getNumberofMission(); i++) {
 
-//            try {
-//                SwitchAddListString(missionList.get(0).getNumberofMission());
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-
-
-            for (int i = 0; i < missionClone.getNumberofMission(); i++) {
-
-
-
-
-
-                int finalI1 = i;
-                FirebaseStorage.getInstance().getReference(FirebaseAuth.getInstance().getCurrentUser().getUid() + "/" + missionClone.getMissionName() + "/" + "picture" + (i + 1) +
-                        ".png")
-                        .putFile(Uri.fromFile(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/"
-                                + missionClone.getMissionName(), "picture" + (i + 1) + ".png")))
-                        .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                            @Override
-                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        int finalI1 = i;
+                        FirebaseStorage.getInstance().getReference(FirebaseAuth.getInstance().getCurrentUser().getUid() + "/" + missionClone.getMissionName() + "/" + "picture" + (i + 1) +
+                                ".png")
+                                .putFile(Uri.fromFile(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/"
+                                        + missionClone.getMissionName(), "picture" + (i + 1) + ".png")))
+                                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                    @Override
+                                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
 
-
-                                if (finalI1 == 9){
-                                    runOnUiThread(new Runnable() {
-                                        @Override
-                                        public void run() {
+                                        FirebaseDatabase.getInstance().getReference(FirebaseAuth.getInstance().getCurrentUser().getUid() + "/" +
+                                                missionClone.getMissionName()).child("picture" + (finalI1 + 1)).setValue("picture" + (finalI1 + 1) + ".png");
 
 
-                                            progressDialog.dismiss();
-                                            recreate();
+                                        if (finalI1 == 9) {
+                                            runOnUiThread(new Runnable() {
+                                                @Override
+                                                public void run() {
+
+                                                    FirebaseDatabase.getInstance().getReference(FirebaseAuth.getInstance().getCurrentUser().getUid() + "/" +
+                                                            missionClone.getMissionName()).child("CSVfile").setValue(missionClone.getMissionName() + "Data.csv");
 
 
+                                                    FirebaseDatabase.getInstance().getReference(FirebaseAuth.getInstance().getCurrentUser().getUid() + "/" +
+                                                            missionClone.getMissionName()).child("AGE").setValue(missionClone.getAge());
+
+
+                                                    FirebaseStorage.getInstance().getReference(FirebaseAuth.getInstance().getCurrentUser().getUid() + "/" + missionClone.getMissionName() + "/" + missionClone.getMissionName() + "Data" +
+                                                            ".csv")
+                                                            .putFile(Uri.fromFile(new File(Environment.getExternalStorageDirectory().getPath() + "/MyMissionExport/"
+                                                                    + missionClone.getMissionName() + "/" + missionClone.getMissionName() + "Data.csv")))
+                                                            .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                                                @Override
+                                                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                                                                    Toast.makeText(getApplicationContext(), "นำออกแบบทดสอบเสร็จเรียบร้อย", Toast.LENGTH_LONG).show();
+                                                                    progressDialog.dismiss();
+                                                                    recreate();
+
+                                                                }
+                                                            })
+                                                            .addOnFailureListener(new OnFailureListener() {
+                                                                @Override
+                                                                public void onFailure(@NonNull Exception e) {
+                                                                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                                                                }
+                                                            });
+                                                }
+                                            });
                                         }
-                                    });
-                                }
 
 
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    }
+                                }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                             @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                            public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                                int progress = (int) ((100 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount());
+                                progressDialog.setTitle("นำออกแบบทดสอบ " + "(" + finalI1 + "/" + missionClone.getNumberofMission() + ")");
+                                progressDialog.setMessage("ความคืบหน้า : " + progress + "%");
+
+
                             }
-                        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                        int progress = (int) ((100 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount());
-                        progressDialog.setTitle("นำออกแบบทดสอบ "  +"("+ finalI1+"/"+missionClone.getNumberofMission()+")");
-                       progressDialog.setMessage("ความคืบหน้า : "+progress + "%");
-
-
+                        });
 
 
                     }
-                });
-
-
-
-            }
-
-
-
-
-
-        }
-
-
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        switch (requestCode) {
-            case 48:
-                if (resultCode == RESULT_OK) {
-                    handleSignInIntent(data);
                 }
-                break;
-        }
-    }
-
-    public void requestSignIn() {
-        GoogleSignInOptions signInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestEmail().requestScopes(new Scope(DriveScopes.DRIVE_FILE)).build();
-        GoogleSignInClient client = GoogleSignIn.getClient(this, signInOptions);
-        startActivityForResult(client.getSignInIntent(), 48);
-    }
-
-    private void handleSignInIntent(Intent data) {
-        GoogleSignIn.getSignedInAccountFromIntent(data).addOnSuccessListener(new OnSuccessListener<GoogleSignInAccount>() {
-            @Override
-            public void onSuccess(GoogleSignInAccount googleSignInAccount) {
-                GoogleAccountCredential credential = GoogleAccountCredential.usingOAuth2(getApplicationContext(),
-                        Collections.singleton(DriveScopes.DRIVE_FILE));
-
-                credential.setSelectedAccount(googleSignInAccount.getAccount());
-
-                googleDriveService = new Drive.Builder(AndroidHttp.newCompatibleTransport(), new GsonFactory(), credential)
-                        .setApplicationName("MMSE Drive").build();
-
-//                driveServiceHelper = new DriveServiceHelper(googleDriveService);
-
             }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
 
-            }
-        });
-    }
 
-    public boolean CheckInternet() {
-        boolean connected;
-        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        if (connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
-                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
-            //we are connected to a network
-            connected = true;
-        } else {
-            connected = false;
         }
-        return connected;
+
+
     }
 
-//    public Task<String> create_folder() {
-//        return Tasks.call(mExecutor,()-> {
-//            com.google.api.services.drive.model.File fileMetadata = new com.google.api.services.drive.model.File();
-//            fileMetadata.setName("English Practice"); //ตั่งชื่อ folder ใน google drive
-//            fileMetadata.setMimeType("application/vnd.google-apps.folder");
-//            com.google.api.services.drive.model.File file = null;
-//            try {
-//                file = googleDriveService.files().create(fileMetadata)
-//                        .setFields("id")
-//                        .execute();
-//                System.out.println("Folder ID: " + file.getId());
-//                folderId = file.getId();
-//            } catch (Exception e){
-//                throw  new IOException("Null result");
-//            }
-//            return file.getId();
-//        });}
 
     @Override
     public void onBackPressed() {

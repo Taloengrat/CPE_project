@@ -170,10 +170,12 @@
             android:textSize="24dp" />
 
         <ImageView
+            android:id="@+id/speakHint"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:src="@drawable/speacker"
             android:layout_marginStart="4dp"
+            android:visibility="gone"
             />
 
 

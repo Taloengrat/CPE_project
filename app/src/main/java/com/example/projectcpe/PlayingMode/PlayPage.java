@@ -13,6 +13,7 @@ import com.example.projectcpe.ViewModel.Member;
 import com.example.projectcpe.ViewModel.Mission;
 import com.example.projectcpe.ViewModel.MissionDATABASE;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
@@ -26,6 +27,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -58,7 +61,7 @@ import java.util.TimerTask;
 
 public class PlayPage extends AppCompatActivity {
 
-    int cloneSec=0;
+    int cloneSec = 0;
     private int ms;
     private int seconds;
     private int minutes;
@@ -79,6 +82,7 @@ public class PlayPage extends AppCompatActivity {
 
 
     LinearLayout frameHint;
+    int checkSpeakHint = 0;
 
 
     private SlidePageAdapter adapter;
@@ -104,6 +108,7 @@ public class PlayPage extends AppCompatActivity {
     private String[] textReturn, ScoreString, HintString;
     int memberId;
     List<Mission> missionList;
+    ImageView speakHint;
     List<String> stringList, scoreList, hintList;
     public final int WRITE_PERMISSON_REQUEST_CODE = 1;
 
@@ -112,6 +117,7 @@ public class PlayPage extends AppCompatActivity {
         super.onStart();
 
         stopService(new Intent(PlayPage.this, MusicService.class));
+
         if (PermissionUtility.askPermissionForActivity(PlayPage.this, Manifest.permission.RECORD_AUDIO, WRITE_PERMISSON_REQUEST_CODE)) {
 
 
@@ -127,13 +133,15 @@ public class PlayPage extends AppCompatActivity {
         Initial();
         getTime();
 
+
+
         int s1 = scoreStep.length;
-        for (int i = 0 ; i < s1 ; i++){
+        for (int i = 0; i < s1; i++) {
             scoreStep[i] = String.valueOf(0);
         }
 
         int sw1 = scoreWrongStep.length;
-        for (int i = 0 ; i < sw1 ; i++){
+        for (int i = 0; i < sw1; i++) {
             scoreWrongStep[i] = String.valueOf(0);
         }
 
@@ -209,6 +217,35 @@ public class PlayPage extends AppCompatActivity {
 
     }
 
+//    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+//    private void speak() {
+//
+//       TextToSpeech mTTs = new TextToSpeech(PlayPage.this, new TextToSpeech.OnInitListener() {
+//            @Override
+//            public void onInit(int status) {
+//                if (status == TextToSpeech.SUCCESS) {
+//                    int result = mTTs.setLanguage(new Locale("en-US"));
+//
+//                    mTTs.setSpeechRate(0.6f);
+//
+//                    if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+//
+//                    } else {
+//                        //                        speakbt.setEnabled(true);
+//
+//                    }
+//                } else {
+//                }
+//            }
+//        });
+//        mTTs.speak(HintString[HintString.length-1], TextToSpeech.QUEUE_FLUSH, null, null);
+//
+//
+//    }
+
+
+
+
     private void getTime() {
         textclock.setText(missionList.get(0).getTime());
         switch (missionList.get(0).getTime()) {
@@ -246,7 +283,7 @@ public class PlayPage extends AppCompatActivity {
                 cloneSec = 110;
                 seconds = 50;
                 minutes = 1;
-                timeDevide  = 55;
+                timeDevide = 55;
                 break;
             case "2:00":
                 cloneSec = 120;
@@ -310,7 +347,15 @@ public class PlayPage extends AppCompatActivity {
 
             head.setText("Hint number : 1");
 
+            checkSpeakHint +=1;
             h1 = true;
+
+            if (checkSpeakHint == HintString.length){
+                speakHint.setVisibility(View.VISIBLE);
+                speakHint.setOnClickListener(clickSpeakHintEnd);
+            }else {
+                speakHint.setVisibility(View.GONE);
+            }
 
             hint1.setBackgroundResource(R.drawable.elevetorcircle_used);
             data.setText(HintString[0]);
@@ -338,7 +383,14 @@ public class PlayPage extends AppCompatActivity {
             if (h1) {
                 hint2.setBackgroundResource(R.drawable.elevetorcircle_used);
 
+                checkSpeakHint +=1;
                 h2 = true;
+
+                if (checkSpeakHint == HintString.length){
+                    speakHint.setVisibility(View.VISIBLE);
+                }else {
+                    speakHint.setVisibility(View.GONE);
+                }
 
                 data.setText(HintString[1]);
 
@@ -369,7 +421,14 @@ public class PlayPage extends AppCompatActivity {
             if (h2) {
                 hint3.setBackgroundResource(R.drawable.elevetorcircle_used);
 
+                checkSpeakHint +=1;
                 h3 = true;
+
+                if (checkSpeakHint == HintString.length){
+                    speakHint.setVisibility(View.VISIBLE);
+                }else {
+                    speakHint.setVisibility(View.GONE);
+                }
 
                 data.setText(HintString[2]);
 
@@ -401,7 +460,16 @@ public class PlayPage extends AppCompatActivity {
             if (h3) {
                 hint4.setBackgroundResource(R.drawable.elevetorcircle_used);
 
+                checkSpeakHint +=1;
+
                 h4 = true;
+
+                if (checkSpeakHint == HintString.length){
+
+                    speakHint.setVisibility(View.VISIBLE);
+                }else {
+                    speakHint.setVisibility(View.GONE);
+                }
 
                 data.setText(HintString[3]);
 
@@ -415,6 +483,8 @@ public class PlayPage extends AppCompatActivity {
 
         }
     };
+
+
 
     View.OnClickListener onClickSurrender = new View.OnClickListener() {
         @Override
@@ -663,7 +733,6 @@ public class PlayPage extends AppCompatActivity {
             Log.e("timeDevide", String.valueOf(timeDevide));
 
 
-
             float newSumScore = answerScore + hintScore + timeScore;
 //            Log.e("newSumScore", String.valueOf(newSumScore));
 
@@ -767,7 +836,7 @@ public class PlayPage extends AppCompatActivity {
         stepnum = bundle.getInt("step");
         memberId = bundle.getInt("memberId");
 
-
+        speakHint = findViewById(R.id.speakHint);
         bar = findViewById(R.id.bar);
         txPlay = findViewById(R.id.txPlay);
         frameHint = findViewById(R.id.frameHint);
@@ -819,10 +888,19 @@ public class PlayPage extends AppCompatActivity {
 
         micUnion.setOnTouchListener(speechTouchTimeOut);
 
+
 //        layoutUnion.setVisibility(View.VISIBLE);
 
 
     }
+
+    View.OnClickListener clickSpeakHintEnd = new View.OnClickListener() {
+        @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+        @Override
+        public void onClick(View v) {
+//            z
+        }
+    };
 
     private void getScore(int position) {
 
@@ -939,7 +1017,7 @@ public class PlayPage extends AppCompatActivity {
         seconds--;
         cloneSec--;
         if (seconds < 0) {
-           seconds=59;
+            seconds = 59;
             minutes--;
         }
     }
@@ -1042,7 +1120,7 @@ public class PlayPage extends AppCompatActivity {
             etKeyboard.setVisibility(View.VISIBLE);
             confirm.setVisibility(View.VISIBLE);
 
-            if (frameHint.getVisibility() == View.VISIBLE){
+            if (frameHint.getVisibility() == View.VISIBLE) {
                 frameHint.setVisibility(View.GONE);
             }
 
@@ -1076,6 +1154,19 @@ public class PlayPage extends AppCompatActivity {
         @Override
         public void run() {
 
+            checkSpeakHint = 0;
+
+            if (speakHint.getVisibility() == View.VISIBLE){
+                speakHint.setVisibility(View.GONE);
+            }
+            if (frameHint.getVisibility() == View.VISIBLE){
+
+
+                Toast.makeText(getApplicationContext(), "เก็บแล้ว" ,Toast.LENGTH_LONG).show();
+
+                frameHint.setVisibility(View.GONE);
+
+            }
 
             if (pager.getCurrentItem() + 1 == missionList.get(0).getNumberofMission()) {
 //                Toast.makeText(PlayPage.this, "end of step", Toast.LENGTH_SHORT).show();
@@ -1112,6 +1203,8 @@ public class PlayPage extends AppCompatActivity {
 
                 stopTimer();
                 getTime();
+
+
 
                 if (etKeyboard.getVisibility() == View.VISIBLE) {
 
