@@ -53,7 +53,7 @@ public class MissionCreate extends AppCompatActivity {
 
     //debug
     private void bindMenuSpinner() {
-        String[] items = new String[]{"5", "6", "7", "8", "9", "10"};
+        String[] items = new String[]{"1", "6", "7", "8", "9", "10"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
         spinner.setAdapter(adapter);
     }

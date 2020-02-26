@@ -16,7 +16,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="24dp"
         android:fontFamily="@font/bold"
-        android:text="SUMARY"
+        android:text="SUMMARY"
         android:textSize="35dp"
         tools:layout_editor_absoluteX="176dp"
         tools:layout_editor_absoluteY="84dp" />
