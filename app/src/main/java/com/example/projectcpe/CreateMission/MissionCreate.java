@@ -8,6 +8,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,11 +26,19 @@ import com.example.projectcpe.ViewModel.MissionDATABASE;
 
 public class MissionCreate extends AppCompatActivity {
 
-    Spinner spinner,spinnertime;
+    Spinner spinner,spinnertime,spinerdeduction;
     Button btNext;
     EditText etName, etDetail, etAge;
     String asdf = "10/9/5/7";
     String[] asdfdsa= new String[] {"10", "9", "8", "7"};
+
+    String[] items1_00 = new String[]{"60", "55", "50", "45", "40", "35","30"};
+    String[] items1_10 = new String[]{"70","65","60", "55", "50", "45", "40", "35","30"};
+    String[] items1_20 = new String[]{"80","75","70","65","60", "55", "50", "45", "40", "35","30"};
+    String[] items1_30 = new String[]{"90","85","80","75","70","65","60", "55", "50", "45", "40", "35","30"};
+    String[] items1_40 = new String[]{"100","95","90","85","80","75","70","65","60", "55", "50", "45", "40", "35","30"};
+    String[] items1_50 = new String[]{"110","105","100","95","90","85","80","75","70","65","60", "55", "50", "45", "40", "35","30"};
+    String[] items2_00 = new String[]{"120","115","110","105","100","95","90","85","80","75","70","65","60", "55", "50", "45", "40", "35","30"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,10 +50,46 @@ public class MissionCreate extends AppCompatActivity {
         bindMenuSpinnertime();
 
 
-        asdf = asdfdsa[0]+asdfdsa[1]+asdfdsa[2]+asdfdsa[3];
+        asdf = asdfdsa[0] + asdfdsa[1] + asdfdsa[2] + asdfdsa[3];
+
+        spinnertime.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                // your code here
+                switch (position) {
+                    case 0:
+                        bindMenuSpinnerDeduction(items1_00);
+                        break;
+                    case 1:
+                        bindMenuSpinnerDeduction(items1_10);
+                        break;
+                    case 2:
+                        bindMenuSpinnerDeduction(items1_20);
+                        break;
+                    case 3:
+                        bindMenuSpinnerDeduction(items1_30);
+                        break;
+                    case 4:
+                        bindMenuSpinnerDeduction(items1_40);
+                        break;
+                    case 5:
+                        bindMenuSpinnerDeduction(items1_50);
+                        break;
+                    case 6:
+                        bindMenuSpinnerDeduction(items2_00);
+                        break;
+
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // your code here
+            }
+
+        });
+
     }
-
-
     private void bindMenuSpinnertime() {
         String[] items = new String[]{"1:00","1:10", "1:20", "1:30", "1:40", "1:50", "2:00"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
@@ -68,10 +113,12 @@ public class MissionCreate extends AppCompatActivity {
 
         spinnertime = findViewById(R.id.spinertime);
         spinner = findViewById(R.id.snMissionStep);
+        spinerdeduction = findViewById(R.id.spinerdeduction);
         btNext = findViewById(R.id.btNext);
         etName = findViewById(R.id.etMissionName);
         etDetail = findViewById(R.id.etMisisionDetail);
         etAge = findViewById(R.id.etMissionAge);
+
     }
 
     public void setBtNextOnClick(View v){
@@ -148,4 +195,9 @@ public class MissionCreate extends AppCompatActivity {
         startService(new Intent(MissionCreate.this, MusicService.class));
     }
 
+    private void bindMenuSpinnerDeduction(String[] items) {
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
+        spinerdeduction.setAdapter(adapter);
+    }
 }
