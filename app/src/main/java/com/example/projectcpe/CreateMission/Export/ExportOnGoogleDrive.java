@@ -227,14 +227,14 @@ public class ExportOnGoogleDrive extends AppCompatActivity implements MissionAda
                         ",Question1,Question2,Question3,Question4,Question5" +
                         ",Answer1,Answer2,Answer3,Answer4,Answer5" +
                         ",Score1,Score2,Score3,Score4,Score5" +
-                        ",Hint1,Hint2,Hint3,Hint4,Hint5,Time-");
+                        ",Hint1,Hint2,Hint3,Hint4,Hint5,Time,TimeDeduction-");
 
-                dataList.add(missionList.get(0).getMissionName() + "," + missionList.get(0).getDetailMission() + "," + missionList.get(0).getAge() + "," + missionList.get(0).getNumberofMission()
-                        + "," + missionList.get(0).getQ1() + "," + missionList.get(0).getQ2() + "," + missionList.get(0).getQ3() + "," + missionList.get(0).getQ4() + "," + missionList.get(0).getQ5()
-                        + "," + missionList.get(0).getA1() + "," + missionList.get(0).getA2() + "," + missionList.get(0).getA3() + "," + missionList.get(0).getA4() + "," + missionList.get(0).getA5()
-                        + "," + missionList.get(0).getS1() + "," + missionList.get(0).getS2() + "," + missionList.get(0).getS3() + "," + missionList.get(0).getS4() + "," + missionList.get(0).getS5()
-                        + "," + missionList.get(0).getH1() + "," + missionList.get(0).getH2() + "," + missionList.get(0).getH3() + "," + missionList.get(0).getH4() + "," + missionList.get(0).getH5()
-                        + "," + missionList.get(0).getTime() + "-");
+                dataList.add(missionClone.getMissionName() + "," + missionClone.getDetailMission() + "," + missionClone.getAge() + "," + missionClone.getNumberofMission()
+                        + "," + missionClone.getQ1() + "," + missionClone.getQ2() + "," + missionClone.getQ3() + "," + missionClone.getQ4() + "," + missionClone.getQ5()
+                        + "," + missionClone.getA1() + "," + missionClone.getA2() + "," + missionClone.getA3() + "," + missionClone.getA4() + "," + missionClone.getA5()
+                        + "," + missionClone.getS1() + "," + missionClone.getS2() + "," + missionClone.getS3() + "," + missionClone.getS4() + "," + missionClone.getS5()
+                        + "," + missionClone.getH1() + "," + missionClone.getH2() + "," + missionClone.getH3() + "," + missionClone.getH4() + "," + missionClone.getH5()
+                        + "," + missionClone.getTime()  + ","+ missionClone.getTimeDeduction()+ "-");
                 createFileCsv();
 
                 break;
@@ -243,14 +243,14 @@ public class ExportOnGoogleDrive extends AppCompatActivity implements MissionAda
                         ",Question1,Question2,Question3,Question4,Question5,Question6" +
                         ",Answer1,Answer2,Answer3,Answer4,Answer5,Answer6" +
                         ",Score1,Score2,Score3,Score4,Score5,Score6" +
-                        ",Hint1,Hint2,Hint3,Hint4,Hint5,Hint6,Time-");
+                        ",Hint1,Hint2,Hint3,Hint4,Hint5,Hint6,Time,TimeDeduction-");
 
-                dataList.add(missionList.get(0).getMissionName() + "," + missionList.get(0).getDetailMission() + "," + missionList.get(0).getAge() + "," + missionList.get(0).getNumberofMission()
-                        + "," + missionList.get(0).getQ1() + "," + missionList.get(0).getQ2() + "," + missionList.get(0).getQ3() + "," + missionList.get(0).getQ4() + "," + missionList.get(0).getQ5() + "," + missionList.get(0).getQ6()
-                        + "," + missionList.get(0).getA1() + "," + missionList.get(0).getA2() + "," + missionList.get(0).getA3() + "," + missionList.get(0).getA4() + "," + missionList.get(0).getA5() + "," + missionList.get(0).getA6()
-                        + "," + missionList.get(0).getS1() + "," + missionList.get(0).getS2() + "," + missionList.get(0).getS3() + "," + missionList.get(0).getS4() + "," + missionList.get(0).getS5() + "," + missionList.get(0).getS6()
-                        + "," + missionList.get(0).getH1() + "," + missionList.get(0).getH2() + "," + missionList.get(0).getH3() + "," + missionList.get(0).getH4() + "," + missionList.get(0).getH5() + "," + missionList.get(0).getH6()
-                        + "," + missionList.get(0).getTime() + "-");
+                dataList.add(missionClone.getMissionName() + "," + missionClone.getDetailMission() + "," + missionClone.getAge() + "," + missionClone.getNumberofMission()
+                        + "," + missionClone.getQ1() + "," + missionClone.getQ2() + "," + missionClone.getQ3() + "," + missionClone.getQ4() + "," + missionClone.getQ5() + "," + missionClone.getQ6()
+                        + "," + missionClone.getA1() + "," + missionClone.getA2() + "," + missionClone.getA3() + "," + missionClone.getA4() + "," + missionClone.getA5() + "," + missionClone.getA6()
+                        + "," + missionClone.getS1() + "," + missionClone.getS2() + "," + missionClone.getS3() + "," + missionClone.getS4() + "," + missionClone.getS5() + "," + missionClone.getS6()
+                        + "," + missionClone.getH1() + "," + missionClone.getH2() + "," + missionClone.getH3() + "," + missionClone.getH4() + "," + missionClone.getH5() + "," + missionClone.getH6()
+                        + "," + missionClone.getTime() + "," + missionClone.getTimeDeduction()+ "-");
 
 
                 createFileCsv();
@@ -262,14 +262,14 @@ public class ExportOnGoogleDrive extends AppCompatActivity implements MissionAda
                         ",Question1,Question2,Question3,Question4,Question5,Question6,Question7" +
                         ",Answer1,Answer2,Answer3,Answer4,Answer5,Answer6,Answer7" +
                         ",Score1,Score2,Score3,Score4,Score5,Score6,Score7" +
-                        ",Hint1,Hint2,Hint3,Hint4,Hint5,Hint6,Hint7,Time-");
+                        ",Hint1,Hint2,Hint3,Hint4,Hint5,Hint6,Hint7,Time,TimeDeduction-");
 
-                dataList.add(missionList.get(0).getMissionName() + "," + missionList.get(0).getDetailMission() + "," + missionList.get(0).getAge() + "," + missionList.get(0).getNumberofMission()
-                        + "," + missionList.get(0).getQ1() + "," + missionList.get(0).getQ2() + "," + missionList.get(0).getQ3() + "," + missionList.get(0).getQ4() + "," + missionList.get(0).getQ5() + "," + missionList.get(0).getQ6() + "," + missionList.get(0).getQ7()
-                        + "," + missionList.get(0).getA1() + "," + missionList.get(0).getA2() + "," + missionList.get(0).getA3() + "," + missionList.get(0).getA4() + "," + missionList.get(0).getA5() + "," + missionList.get(0).getA6() + "," + missionList.get(0).getA7()
-                        + "," + missionList.get(0).getS1() + "," + missionList.get(0).getS2() + "," + missionList.get(0).getS3() + "," + missionList.get(0).getS4() + "," + missionList.get(0).getS5() + "," + missionList.get(0).getS6() + "," + missionList.get(0).getS7()
-                        + "," + missionList.get(0).getH1() + "," + missionList.get(0).getH2() + "," + missionList.get(0).getH3() + "," + missionList.get(0).getH4() + "," + missionList.get(0).getH5() + "," + missionList.get(0).getH6() + "," + missionList.get(0).getH7()
-                        + "," + missionList.get(0).getTime() + "-");
+                dataList.add(missionClone.getMissionName() + "," + missionClone.getDetailMission() + "," + missionClone.getAge() + "," + missionClone.getNumberofMission()
+                        + "," + missionClone.getQ1() + "," + missionClone.getQ2() + "," + missionClone.getQ3() + "," + missionClone.getQ4() + "," + missionClone.getQ5() + "," + missionClone.getQ6() + "," + missionClone.getQ7()
+                        + "," + missionClone.getA1() + "," + missionClone.getA2() + "," + missionClone.getA3() + "," + missionClone.getA4() + "," + missionClone.getA5() + "," + missionClone.getA6() + "," + missionClone.getA7()
+                        + "," + missionClone.getS1() + "," + missionClone.getS2() + "," + missionClone.getS3() + "," + missionClone.getS4() + "," + missionClone.getS5() + "," + missionClone.getS6() + "," + missionClone.getS7()
+                        + "," + missionClone.getH1() + "," + missionClone.getH2() + "," + missionClone.getH3() + "," + missionClone.getH4() + "," + missionClone.getH5() + "," + missionClone.getH6() + "," + missionClone.getH7()
+                        + "," + missionClone.getTime() + "," + missionClone.getTimeDeduction()+ "-");
 
 
                 createFileCsv();
@@ -280,14 +280,14 @@ public class ExportOnGoogleDrive extends AppCompatActivity implements MissionAda
                         ",Question1,Question2,Question3,Question4,Question5,Question6,Question7,Question8" +
                         ",Answer1,Answer2,Answer3,Answer4,Answer5,Answer6,Answer7,Answer8" +
                         ",Score1,Score2,Score3,Score4,Score5,Score6,Score7,Score8" +
-                        ",Hint1,Hint2,Hint3,Hint4,Hint5,Hint6,Hint7,Hint8,Time-");
+                        ",Hint1,Hint2,Hint3,Hint4,Hint5,Hint6,Hint7,Hint8,Time,TimeDeduction-");
 
-                dataList.add(missionList.get(0).getMissionName() + "," + missionList.get(0).getDetailMission() + "," + missionList.get(0).getAge() + "," + missionList.get(0).getNumberofMission()
-                        + "," + missionList.get(0).getQ1() + "," + missionList.get(0).getQ2() + "," + missionList.get(0).getQ3() + "," + missionList.get(0).getQ4() + "," + missionList.get(0).getQ5() + "," + missionList.get(0).getQ6() + "," + missionList.get(0).getQ7() + "," + missionList.get(0).getQ8()
-                        + "," + missionList.get(0).getA1() + "," + missionList.get(0).getA2() + "," + missionList.get(0).getA3() + "," + missionList.get(0).getA4() + "," + missionList.get(0).getA5() + "," + missionList.get(0).getA6() + "," + missionList.get(0).getA7() + "," + missionList.get(0).getA8()
-                        + "," + missionList.get(0).getS1() + "," + missionList.get(0).getS2() + "," + missionList.get(0).getS3() + "," + missionList.get(0).getS4() + "," + missionList.get(0).getS5() + "," + missionList.get(0).getS6() + "," + missionList.get(0).getS7() + "," + missionList.get(0).getS8()
-                        + "," + missionList.get(0).getH1() + "," + missionList.get(0).getH2() + "," + missionList.get(0).getH3() + "," + missionList.get(0).getH4() + "," + missionList.get(0).getH5() + "," + missionList.get(0).getH6() + "," + missionList.get(0).getH7() + "," + missionList.get(0).getH8()
-                        + "," + missionList.get(0).getTime() + "-");
+                dataList.add(missionClone.getMissionName() + "," + missionClone.getDetailMission() + "," + missionClone.getAge() + "," + missionClone.getNumberofMission()
+                        + "," + missionClone.getQ1() + "," + missionClone.getQ2() + "," + missionClone.getQ3() + "," + missionClone.getQ4() + "," + missionClone.getQ5() + "," + missionClone.getQ6() + "," + missionClone.getQ7() + "," + missionClone.getQ8()
+                        + "," + missionClone.getA1() + "," + missionClone.getA2() + "," + missionClone.getA3() + "," + missionClone.getA4() + "," + missionClone.getA5() + "," + missionClone.getA6() + "," + missionClone.getA7() + "," + missionClone.getA8()
+                        + "," + missionClone.getS1() + "," + missionClone.getS2() + "," + missionClone.getS3() + "," + missionClone.getS4() + "," + missionClone.getS5() + "," + missionClone.getS6() + "," + missionClone.getS7() + "," + missionClone.getS8()
+                        + "," + missionClone.getH1() + "," + missionClone.getH2() + "," + missionClone.getH3() + "," + missionClone.getH4() + "," + missionClone.getH5() + "," + missionClone.getH6() + "," + missionClone.getH7() + "," + missionClone.getH8()
+                        + "," + missionClone.getTime() + "," + missionClone.getTimeDeduction()+ "-");
 
 
                 createFileCsv();
@@ -299,14 +299,14 @@ public class ExportOnGoogleDrive extends AppCompatActivity implements MissionAda
                         ",Question1,Question2,Question3,Question4,Question5,Question6,Question7,Question8,Question9" +
                         ",Answer1,Answer2,Answer3,Answer4,Answer5,Answer6,Answer7,Answer8,Answer9" +
                         ",Score1,Score2,Score3,Score4,Score5,Score6,Score7,Score8,Score9" +
-                        ",Hint1,Hint2,Hint3,Hint4,Hint5,Hint6,Hint7,Hint8,Hint9,Time-");
+                        ",Hint1,Hint2,Hint3,Hint4,Hint5,Hint6,Hint7,Hint8,Hint9,Time,TimeDeduction-");
 
-                dataList.add(missionList.get(0).getMissionName() + "," + missionList.get(0).getDetailMission() + "," + missionList.get(0).getAge() + "," + missionList.get(0).getNumberofMission()
-                        + "," + missionList.get(0).getQ1() + "," + missionList.get(0).getQ2() + "," + missionList.get(0).getQ3() + "," + missionList.get(0).getQ4() + "," + missionList.get(0).getQ5() + "," + missionList.get(0).getQ6() + "," + missionList.get(0).getQ7() + "," + missionList.get(0).getQ8() + "," + missionList.get(0).getQ9()
-                        + "," + missionList.get(0).getA1() + "," + missionList.get(0).getA2() + "," + missionList.get(0).getA3() + "," + missionList.get(0).getA4() + "," + missionList.get(0).getA5() + "," + missionList.get(0).getA6() + "," + missionList.get(0).getA7() + "," + missionList.get(0).getA8() + "," + missionList.get(0).getA9()
-                        + "," + missionList.get(0).getS1() + "," + missionList.get(0).getS2() + "," + missionList.get(0).getS3() + "," + missionList.get(0).getS4() + "," + missionList.get(0).getS5() + "," + missionList.get(0).getS6() + "," + missionList.get(0).getS7() + "," + missionList.get(0).getS8() + "," + missionList.get(0).getS9()
-                        + "," + missionList.get(0).getH1() + "," + missionList.get(0).getH2() + "," + missionList.get(0).getH3() + "," + missionList.get(0).getH4() + "," + missionList.get(0).getH5() + "," + missionList.get(0).getH6() + "," + missionList.get(0).getH7() + "," + missionList.get(0).getH8() + "," + missionList.get(0).getH9()
-                        + "," + missionList.get(0).getTime() + "-");
+                dataList.add(missionClone.getMissionName() + "," + missionClone.getDetailMission() + "," + missionClone.getAge() + "," + missionClone.getNumberofMission()
+                        + "," + missionClone.getQ1() + "," + missionClone.getQ2() + "," + missionClone.getQ3() + "," + missionClone.getQ4() + "," + missionClone.getQ5() + "," + missionClone.getQ6() + "," + missionClone.getQ7() + "," + missionClone.getQ8() + "," + missionClone.getQ9()
+                        + "," + missionClone.getA1() + "," + missionClone.getA2() + "," + missionClone.getA3() + "," + missionClone.getA4() + "," + missionClone.getA5() + "," + missionClone.getA6() + "," + missionClone.getA7() + "," + missionClone.getA8() + "," + missionClone.getA9()
+                        + "," + missionClone.getS1() + "," + missionClone.getS2() + "," + missionClone.getS3() + "," + missionClone.getS4() + "," + missionClone.getS5() + "," + missionClone.getS6() + "," + missionClone.getS7() + "," + missionClone.getS8() + "," + missionClone.getS9()
+                        + "," + missionClone.getH1() + "," + missionClone.getH2() + "," + missionClone.getH3() + "," + missionClone.getH4() + "," + missionClone.getH5() + "," + missionClone.getH6() + "," + missionClone.getH7() + "," + missionClone.getH8() + "," + missionClone.getH9()
+                        + "," + missionClone.getTime() + "," + missionClone.getTimeDeduction()+ "-");
 
 
                 createFileCsv();
@@ -319,14 +319,14 @@ public class ExportOnGoogleDrive extends AppCompatActivity implements MissionAda
                         ",Question1,Question2,Question3,Question4,Question5,Question6,Question7,Question8,Question9,Question10" +
                         ",Answer1,Answer2,Answer3,Answer4,Answer5,Answer6,Answer7,Answer8,Answer9,Answer10" +
                         ",Score1,Score2,Score3,Score4,Score5,Score6,Score7,Score8,Score9,Score10" +
-                        ",Hint1,Hint2,Hint3,Hint4,Hint5,Hint6,Hint7,Hint8,Hint9,Hint10,Time-");
+                        ",Hint1,Hint2,Hint3,Hint4,Hint5,Hint6,Hint7,Hint8,Hint9,Hint10,Time,TimeDeduction-");
 
                 dataList.add(missionClone.getMissionName() + "," + missionClone.getDetailMission() + "," + missionClone.getAge() + "," + missionClone.getNumberofMission()
                         + "," + missionClone.getQ1() + "," + missionClone.getQ2() + "," + missionClone.getQ3() + "," + missionClone.getQ4() + "," + missionClone.getQ5() + "," + missionClone.getQ6() + "," + missionClone.getQ7() + "," + missionClone.getQ8() + "," + missionClone.getQ9() + "," + missionClone.getQ10()
                         + "," + missionClone.getA1() + "," + missionClone.getA2() + "," + missionClone.getA3() + "," + missionClone.getA4() + "," + missionClone.getA5() + "," + missionClone.getA6() + "," + missionClone.getA7() + "," + missionClone.getA8() + "," + missionClone.getA9() + "," + missionClone.getA10()
                         + "," + missionClone.getS1() + "," + missionClone.getS2() + "," + missionClone.getS3() + "," + missionClone.getS4() + "," + missionClone.getS5() + "," + missionClone.getS6() + "," + missionClone.getS7() + "," + missionClone.getS8() + "," + missionClone.getS9() + "," + missionClone.getS10()
                         + "," + missionClone.getH1() + "," + missionClone.getH2() + "," + missionClone.getH3() + "," + missionClone.getH4() + "," + missionClone.getH5() + "," + missionClone.getH6() + "," + missionClone.getH7() + "," + missionClone.getH8() + "," + missionClone.getH9() + "," + missionClone.getH10()
-                        + "," + missionClone.getTime() + "-");
+                        + "," + missionClone.getTime()  + ","+ missionClone.getTimeDeduction()+ "-");
 
                 createFileCsv();
 
@@ -417,7 +417,7 @@ public class ExportOnGoogleDrive extends AppCompatActivity implements MissionAda
                                                 missionClone.getMissionName()).child("picture" + (finalI1 + 1)).setValue("picture" + (finalI1 + 1) + ".png");
 
 
-                                        if (finalI1 == 9) {
+                                        if (finalI1 == (missionClone.getNumberofMission() - 1)) {
                                             runOnUiThread(new Runnable() {
                                                 @Override
                                                 public void run() {
@@ -428,6 +428,9 @@ public class ExportOnGoogleDrive extends AppCompatActivity implements MissionAda
 
                                                     FirebaseDatabase.getInstance().getReference(FirebaseAuth.getInstance().getCurrentUser().getUid() + "/" +
                                                             missionClone.getMissionName()).child("AGE").setValue(missionClone.getAge());
+
+                                                    FirebaseDatabase.getInstance().getReference(FirebaseAuth.getInstance().getCurrentUser().getUid() + "/" +
+                                                            missionClone.getMissionName()).child("NumberQuiz").setValue(missionClone.getNumberofMission());
 
 
                                                     FirebaseStorage.getInstance().getReference(FirebaseAuth.getInstance().getCurrentUser().getUid() + "/" + missionClone.getMissionName() + "/" + missionClone.getMissionName() + "Data" +

@@ -90,7 +90,7 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
     int getNumOfStep, getAge;
     Button btSubmit;
     LinearLayout frameEdittext;
-    String getTime;
+    String getTime,getTimeDeduction;
     public final int WRITE_PERMISSON_REQUEST_CODE = 1;
 
     Bundle bundle ;
@@ -124,6 +124,7 @@ bundle = getIntent().getExtras();
         getDetail = bundle.getString("detail");
         getAge = bundle.getInt("age");
         getTime = bundle.getString("time");
+        getTimeDeduction = bundle.getString("timededuction");
         Initia();
 
 
@@ -860,6 +861,7 @@ bundle = getIntent().getExtras();
         mission.setAge(getAge);
         mission.setNumberofMission(getNumOfStep);
         mission.setTime(getTime);
+        mission.setTimeDeduction(getTimeDeduction);
 
 
         for (int i = 0; i < StepAdapter.stepList.size(); i++) {

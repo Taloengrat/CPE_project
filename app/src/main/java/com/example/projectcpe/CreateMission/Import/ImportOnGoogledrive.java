@@ -327,7 +327,7 @@ public class ImportOnGoogledrive extends AppCompatActivity implements MissionAda
                 Log.e("firebase ", ";local tem file created  created " + localFile.toString());
                 //  updateDb(timestamp,localFile.toString(),position);
 
-                if (i == 10) {
+                if (i == missionClone.getNumberofMission()) {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -336,7 +336,7 @@ public class ImportOnGoogledrive extends AppCompatActivity implements MissionAda
                             RefCSV.getFile(localFileCSV).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                                 @Override
                                 public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                                    Toast.makeText(getApplicationContext(), "นำเข้าแบบทดสอบเสร็จเรียบร้อย", Toast.LENGTH_LONG).show();
+
 
                                     startThreadCSVimportData();
 
@@ -399,8 +399,9 @@ public class ImportOnGoogledrive extends AppCompatActivity implements MissionAda
                                                 public void run() {
 
 
-                                                    Toast.makeText(getApplicationContext(), "นำเข้าแบบทดสอบเรียบร้อย",Toast.LENGTH_LONG).show();
+
                                                     progressDialog.dismiss();
+                                                    Toast.makeText(getApplicationContext(), "นำเข้าแบบทดสอบเสร็จเรียบร้อย", Toast.LENGTH_LONG).show();
 //
 
 
@@ -456,6 +457,7 @@ public class ImportOnGoogledrive extends AppCompatActivity implements MissionAda
 
 
                                                 mission.setTime(nextLine[24]);
+                                                mission.setTimeDeduction(nextLine[25]);
 
 
                                                 break;
@@ -497,6 +499,7 @@ public class ImportOnGoogledrive extends AppCompatActivity implements MissionAda
                                                 mission.setH6(nextLine[27]);
 
                                                 mission.setTime(nextLine[28]);
+                                                mission.setTimeDeduction(nextLine[29]);
 
                                                 break;
                                             case 7:
@@ -538,6 +541,7 @@ public class ImportOnGoogledrive extends AppCompatActivity implements MissionAda
                                                 mission.setH7(nextLine[31]);
 
                                                 mission.setTime(nextLine[32]);
+                                                mission.setTimeDeduction(nextLine[33]);
 
                                                 break;
                                             case 8:
@@ -583,6 +587,7 @@ public class ImportOnGoogledrive extends AppCompatActivity implements MissionAda
                                                 mission.setS8(nextLine[35]);
 
                                                 mission.setTime(nextLine[36]);
+                                                mission.setTimeDeduction(nextLine[37]);
                                                 break;
                                             case 9:
 
@@ -631,6 +636,7 @@ public class ImportOnGoogledrive extends AppCompatActivity implements MissionAda
                                                 mission.setH9(nextLine[39]);
 
                                                 mission.setTime(nextLine[40]);
+                                                mission.setTimeDeduction(nextLine[41]);
                                                 break;
                                             case 10:
 
@@ -682,6 +688,7 @@ public class ImportOnGoogledrive extends AppCompatActivity implements MissionAda
                                                 mission.setH10(nextLine[43]);
 
                                                 mission.setTime(nextLine[44]);
+                                                mission.setTimeDeduction(nextLine[45]);
 
                                                 break;
                                         }

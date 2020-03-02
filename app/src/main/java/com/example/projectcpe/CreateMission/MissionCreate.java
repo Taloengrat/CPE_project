@@ -26,19 +26,19 @@ import com.example.projectcpe.ViewModel.MissionDATABASE;
 
 public class MissionCreate extends AppCompatActivity {
 
-    Spinner spinner,spinnertime,spinerdeduction;
+    Spinner spinner, spinnertime, spinerdeduction;
     Button btNext;
     EditText etName, etDetail, etAge;
     String asdf = "10/9/5/7";
-    String[] asdfdsa= new String[] {"10", "9", "8", "7"};
+    String[] asdfdsa = new String[]{"10", "9", "8", "7"};
 
-    String[] items1_00 = new String[]{"60", "55", "50", "45", "40", "35","30"};
-    String[] items1_10 = new String[]{"70","65","60", "55", "50", "45", "40", "35","30"};
-    String[] items1_20 = new String[]{"80","75","70","65","60", "55", "50", "45", "40", "35","30"};
-    String[] items1_30 = new String[]{"90","85","80","75","70","65","60", "55", "50", "45", "40", "35","30"};
-    String[] items1_40 = new String[]{"100","95","90","85","80","75","70","65","60", "55", "50", "45", "40", "35","30"};
-    String[] items1_50 = new String[]{"110","105","100","95","90","85","80","75","70","65","60", "55", "50", "45", "40", "35","30"};
-    String[] items2_00 = new String[]{"120","115","110","105","100","95","90","85","80","75","70","65","60", "55", "50", "45", "40", "35","30"};
+    String[] items1_00 = new String[]{"1:00", "0:55", "0:50", "0:45", "0:40", "0:35", "0:30"};
+    String[] items1_10 = new String[]{"1:10", "1:05", "1:00", "0:55", "0:50", "0:45", "0:40", "0:35", "0:30"};
+    String[] items1_20 = new String[]{"1:20", "1:15", "1:10", "1:05", "1:00", "0:55", "0:50", "0:45", "0:40", "0:35", "0:30"};
+    String[] items1_30 = new String[]{"1:30", "1:25", "1:20", "1:15", "1:10", "1:05", "1:00", "0:55", "0:50", "0:45", "0:40", "0:35", "0:30"};
+    String[] items1_40 = new String[]{"1:40", "1:35", "1:30", "1:25", "1:20", "1:15", "1:10", "1:05", "1:00", "0:55", "0:50", "0:45", "0:40", "0:35", "0:30"};
+    String[] items1_50 = new String[]{"1:50", "1:45", "1:40", "1:35", "1:30", "1:25", "1:20", "1:15", "1:10", "1:05", "1:00", "0:55", "0:50", "0:45", "0:40", "0:35", "0:30"};
+    String[] items2_00 = new String[]{"2:00", "1:55", "1:50", "1:45", "1:40", "1:35", "1:30", "1:25", "1:20", "1:15", "1:10", "1:05", "1:00", "0:55", "0:50", "0:45", "0:40", "0:35", "0:30"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,8 +90,9 @@ public class MissionCreate extends AppCompatActivity {
         });
 
     }
+
     private void bindMenuSpinnertime() {
-        String[] items = new String[]{"1:00","1:10", "1:20", "1:30", "1:40", "1:50", "2:00"};
+        String[] items = new String[]{"1:00", "1:10", "1:20", "1:30", "1:40", "1:50", "2:00"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
         spinnertime.setAdapter(adapter);
     }
@@ -103,7 +104,7 @@ public class MissionCreate extends AppCompatActivity {
         spinner.setAdapter(adapter);
     }
 
-    private void bindVariable(){
+    private void bindVariable() {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -121,28 +122,28 @@ public class MissionCreate extends AppCompatActivity {
 
     }
 
-    public void setBtNextOnClick(View v){
+    public void setBtNextOnClick(View v) {
 
 
-        if (TextUtils.isEmpty(etName.getText().toString())){
+        if (TextUtils.isEmpty(etName.getText().toString())) {
             etName.setError("Current Password is required");
             etName.requestFocus();
             return;
         }
 
-        if (TextUtils.isEmpty(etDetail.getText().toString())){
+        if (TextUtils.isEmpty(etDetail.getText().toString())) {
             etDetail.setError("Current Password is required");
             etDetail.requestFocus();
             return;
         }
 
-        if (TextUtils.isEmpty(etAge.getText().toString())){
+        if (TextUtils.isEmpty(etAge.getText().toString())) {
             etDetail.setError("Current Password is required");
             etDetail.requestFocus();
             return;
         }
 
-        if (TextUtils.isEmpty(spinner.getSelectedItem().toString())){
+        if (TextUtils.isEmpty(spinner.getSelectedItem().toString())) {
             Toast.makeText(getApplicationContext(), "Please your number of step", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -158,11 +159,12 @@ public class MissionCreate extends AppCompatActivity {
 //          finish();
 
         Intent i = new Intent(this, FinallyCreate.class);
-        i.putExtra("name",etName.getText().toString());
-        i.putExtra("detail",etDetail.getText().toString());
-        i.putExtra("age",Integer.parseInt(etAge.getText().toString()));
-        i.putExtra("NumOfStep",Integer.parseInt(spinner.getSelectedItem().toString()));
+        i.putExtra("name", etName.getText().toString());
+        i.putExtra("detail", etDetail.getText().toString());
+        i.putExtra("age", Integer.parseInt(etAge.getText().toString()));
+        i.putExtra("NumOfStep", Integer.parseInt(spinner.getSelectedItem().toString()));
         i.putExtra("time", spinnertime.getSelectedItem().toString());
+        i.putExtra("timededuction", spinerdeduction.getSelectedItem().toString());
         startActivity(i);
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }

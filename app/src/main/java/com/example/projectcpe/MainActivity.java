@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
     EditText _etPass;
     ImageView imMedium;
     Button _btBegin;
-    boolean box1, box2, box3, box4, box5;
+    boolean box1=true, box2=true, box3=true, box4=true, box5=true;
 
     private int ms = 0;
     private int seconds = 0;
@@ -211,7 +211,10 @@ public class MainActivity extends AppCompatActivity {
 
 
 //
-                            ChooseMission();
+                            loadingDialog = ProgressDialog.show(MainActivity.this, "เตรียมข้อมูลแบบทดสอบ", "กำลังเตรียมแบบทดสอบ...", true, false);
+
+
+                            startThread();
 
 
                         }
@@ -260,6 +263,7 @@ public class MainActivity extends AppCompatActivity {
                 , getResources().getString(R.string.h1_10).trim());
 
         mission.setTime("1:00");
+        mission.setTimeDeduction("0:30");
 
 
         MissionDATABASE.getInstance(MainActivity.this).missionDAO().create(mission);
@@ -304,6 +308,7 @@ public class MainActivity extends AppCompatActivity {
                 , getResources().getString(R.string.h2_10).trim());
 
         mission2.setTime("1:10");
+        mission2.setTimeDeduction("0:35");
 
         MissionDATABASE.getInstance(MainActivity.this).missionDAO().create(mission2);
 
@@ -347,7 +352,7 @@ public class MainActivity extends AppCompatActivity {
                 , getResources().getString(R.string.h3_10).trim());
 
         mission3.setTime("1:00");
-
+        mission3.setTimeDeduction("0:30");
         MissionDATABASE.getInstance(MainActivity.this).missionDAO().create(mission3);
 
 
@@ -388,6 +393,7 @@ public class MainActivity extends AppCompatActivity {
                 , getResources().getString(R.string.h4_10).trim());
 
         career.setTime("1:10");
+        career.setTimeDeduction("0:35");
         MissionDATABASE.getInstance(MainActivity.this).missionDAO().create(career);
 
 
@@ -564,24 +570,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if (checkBox1.isChecked()) {
-                    box1 = true;
-                }
 
-                if (checkBox2.isChecked()) {
-                    box2 = true;
-                }
-                if (checkBox3.isChecked()) {
-                    box3 = true;
-                }
-
-                if (checkBox4.isChecked()) {
-                    box4 = true;
-                }
-
-                if (checkBox5.isChecked()) {
-                    box5 = true;
-                }
 
                 loadingDialog = ProgressDialog.show(MainActivity.this, "เตรียมข้อมูลแบบทดสอบ", "กำลังเตรียมแบบทดสอบ...", true, false);
 

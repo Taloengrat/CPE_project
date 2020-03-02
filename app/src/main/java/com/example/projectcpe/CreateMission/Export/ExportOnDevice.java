@@ -153,14 +153,14 @@ public class ExportOnDevice extends AppCompatActivity implements MissionAdapter.
                         ",Question1,Question2,Question3,Question4,Question5" +
                         ",Answer1,Answer2,Answer3,Answer4,Answer5" +
                         ",Score1,Score2,Score3,Score4,Score5" +
-                        ",Hint1,Hint2,Hint3,Hint4,Hint5,Time-");
+                        ",Hint1,Hint2,Hint3,Hint4,Hint5,Time,TimeDeduction-");
 
                 dataList.add(missionList.get(0).getMissionName() + "," + missionList.get(0).getDetailMission() + "," + missionList.get(0).getAge() + "," + missionList.get(0).getNumberofMission()
                         + "," + missionList.get(0).getQ1() + "," + missionList.get(0).getQ2() + "," + missionList.get(0).getQ3() + "," + missionList.get(0).getQ4() + "," + missionList.get(0).getQ5()
                         + "," + missionList.get(0).getA1() + "," + missionList.get(0).getA2() + "," + missionList.get(0).getA3() + "," + missionList.get(0).getA4() + "," + missionList.get(0).getA5()
                         + "," + missionList.get(0).getS1() + "," + missionList.get(0).getS2() + "," + missionList.get(0).getS3() + "," + missionList.get(0).getS4() + "," + missionList.get(0).getS5()
                         + "," + missionList.get(0).getH1() + "," + missionList.get(0).getH2() + "," + missionList.get(0).getH3() + "," + missionList.get(0).getH4() + "," + missionList.get(0).getH5()
-                        + "," + missionList.get(0).getTime() + "-");
+                        + "," + missionList.get(0).getTime()+ "," + missionList.get(0).getTimeDeduction()+ "-");
                 createFileCsv();
 
 
@@ -180,14 +180,14 @@ public class ExportOnDevice extends AppCompatActivity implements MissionAdapter.
                         ",Question1,Question2,Question3,Question4,Question5,Question6" +
                         ",Answer1,Answer2,Answer3,Answer4,Answer5,Answer6" +
                         ",Score1,Score2,Score3,Score4,Score5,Score6" +
-                        ",Hint1,Hint2,Hint3,Hint4,Hint5,Hint6,Time-");
+                        ",Hint1,Hint2,Hint3,Hint4,Hint5,Hint6,Time,TimeDeduction-");
 
                 dataList.add(missionList.get(0).getMissionName() + "," + missionList.get(0).getDetailMission() + "," + missionList.get(0).getAge() + "," + missionList.get(0).getNumberofMission()
                         + "," + missionList.get(0).getQ1() + "," + missionList.get(0).getQ2() + "," + missionList.get(0).getQ3() + "," + missionList.get(0).getQ4() + "," + missionList.get(0).getQ5() + "," + missionList.get(0).getQ6()
                         + "," + missionList.get(0).getA1() + "," + missionList.get(0).getA2() + "," + missionList.get(0).getA3() + "," + missionList.get(0).getA4() + "," + missionList.get(0).getA5() + "," + missionList.get(0).getA6()
                         + "," + missionList.get(0).getS1() + "," + missionList.get(0).getS2() + "," + missionList.get(0).getS3() + "," + missionList.get(0).getS4() + "," + missionList.get(0).getS5() + "," + missionList.get(0).getS6()
                         + "," + missionList.get(0).getH1() + "," + missionList.get(0).getH2() + "," + missionList.get(0).getH3() + "," + missionList.get(0).getH4() + "," + missionList.get(0).getH5() + "," + missionList.get(0).getH6()
-                        + "," + missionList.get(0).getTime() + "-");
+                        + "," + missionList.get(0).getTime() + ","+ missionList.get(0).getTimeDeduction()+ "-");
 
 
                 createFileCsv();
@@ -209,14 +209,14 @@ public class ExportOnDevice extends AppCompatActivity implements MissionAdapter.
                         ",Question1,Question2,Question3,Question4,Question5,Question6,Question7" +
                         ",Answer1,Answer2,Answer3,Answer4,Answer5,Answer6,Answer7" +
                         ",Score1,Score2,Score3,Score4,Score5,Score6,Score7" +
-                        ",Hint1,Hint2,Hint3,Hint4,Hint5,Hint6,Hint7,Time-");
+                        ",Hint1,Hint2,Hint3,Hint4,Hint5,Hint6,Hint7,Time,TimeDeduction-");
 
                 dataList.add(missionList.get(0).getMissionName() + "," + missionList.get(0).getDetailMission() + "," + missionList.get(0).getAge() + "," + missionList.get(0).getNumberofMission()
                         + "," + missionList.get(0).getQ1() + "," + missionList.get(0).getQ2() + "," + missionList.get(0).getQ3() + "," + missionList.get(0).getQ4() + "," + missionList.get(0).getQ5() + "," + missionList.get(0).getQ6() + "," + missionList.get(0).getQ7()
                         + "," + missionList.get(0).getA1() + "," + missionList.get(0).getA2() + "," + missionList.get(0).getA3() + "," + missionList.get(0).getA4() + "," + missionList.get(0).getA5() + "," + missionList.get(0).getA6() + "," + missionList.get(0).getA7()
                         + "," + missionList.get(0).getS1() + "," + missionList.get(0).getS2() + "," + missionList.get(0).getS3() + "," + missionList.get(0).getS4() + "," + missionList.get(0).getS5() + "," + missionList.get(0).getS6() + "," + missionList.get(0).getS7()
                         + "," + missionList.get(0).getH1() + "," + missionList.get(0).getH2() + "," + missionList.get(0).getH3() + "," + missionList.get(0).getH4() + "," + missionList.get(0).getH5() + "," + missionList.get(0).getH6() + "," + missionList.get(0).getH7()
-                        + "," + missionList.get(0).getTime() + "-");
+                        + "," + missionList.get(0).getTime()+ "," + missionList.get(0).getTimeDeduction()+ "-");
 
 
                 createFileCsv();
@@ -239,14 +239,14 @@ public class ExportOnDevice extends AppCompatActivity implements MissionAdapter.
                         ",Question1,Question2,Question3,Question4,Question5,Question6,Question7,Question8" +
                         ",Answer1,Answer2,Answer3,Answer4,Answer5,Answer6,Answer7,Answer8" +
                         ",Score1,Score2,Score3,Score4,Score5,Score6,Score7,Score8" +
-                        ",Hint1,Hint2,Hint3,Hint4,Hint5,Hint6,Hint7,Hint8,Time-");
+                        ",Hint1,Hint2,Hint3,Hint4,Hint5,Hint6,Hint7,Hint8,Time,TimeDeduction-");
 
                 dataList.add(missionList.get(0).getMissionName() + "," + missionList.get(0).getDetailMission() + "," + missionList.get(0).getAge() + "," + missionList.get(0).getNumberofMission()
                         + "," + missionList.get(0).getQ1() + "," + missionList.get(0).getQ2() + "," + missionList.get(0).getQ3() + "," + missionList.get(0).getQ4() + "," + missionList.get(0).getQ5() + "," + missionList.get(0).getQ6() + "," + missionList.get(0).getQ7() + "," + missionList.get(0).getQ8()
                         + "," + missionList.get(0).getA1() + "," + missionList.get(0).getA2() + "," + missionList.get(0).getA3() + "," + missionList.get(0).getA4() + "," + missionList.get(0).getA5() + "," + missionList.get(0).getA6() + "," + missionList.get(0).getA7() + "," + missionList.get(0).getA8()
                         + "," + missionList.get(0).getS1() + "," + missionList.get(0).getS2() + "," + missionList.get(0).getS3() + "," + missionList.get(0).getS4() + "," + missionList.get(0).getS5() + "," + missionList.get(0).getS6() + "," + missionList.get(0).getS7() + "," + missionList.get(0).getS8()
                         + "," + missionList.get(0).getH1() + "," + missionList.get(0).getH2() + "," + missionList.get(0).getH3() + "," + missionList.get(0).getH4() + "," + missionList.get(0).getH5() + "," + missionList.get(0).getH6() + "," + missionList.get(0).getH7() + "," + missionList.get(0).getH8()
-                        + "," + missionList.get(0).getTime() + "-");
+                        + "," + missionList.get(0).getTime()+ ","+ missionList.get(0).getTimeDeduction() + "-");
 
 
                 createFileCsv();
@@ -271,14 +271,14 @@ public class ExportOnDevice extends AppCompatActivity implements MissionAdapter.
                         ",Question1,Question2,Question3,Question4,Question5,Question6,Question7,Question8,Question9" +
                         ",Answer1,Answer2,Answer3,Answer4,Answer5,Answer6,Answer7,Answer8,Answer9" +
                         ",Score1,Score2,Score3,Score4,Score5,Score6,Score7,Score8,Score9" +
-                        ",Hint1,Hint2,Hint3,Hint4,Hint5,Hint6,Hint7,Hint8,Hint9,Time-");
+                        ",Hint1,Hint2,Hint3,Hint4,Hint5,Hint6,Hint7,Hint8,Hint9,Time,TimeDeduction-");
 
                 dataList.add(missionList.get(0).getMissionName() + "," + missionList.get(0).getDetailMission() + "," + missionList.get(0).getAge() + "," + missionList.get(0).getNumberofMission()
                         + "," + missionList.get(0).getQ1() + "," + missionList.get(0).getQ2() + "," + missionList.get(0).getQ3() + "," + missionList.get(0).getQ4() + "," + missionList.get(0).getQ5() + "," + missionList.get(0).getQ6() + "," + missionList.get(0).getQ7() + "," + missionList.get(0).getQ8() + "," + missionList.get(0).getQ9()
                         + "," + missionList.get(0).getA1() + "," + missionList.get(0).getA2() + "," + missionList.get(0).getA3() + "," + missionList.get(0).getA4() + "," + missionList.get(0).getA5() + "," + missionList.get(0).getA6() + "," + missionList.get(0).getA7() + "," + missionList.get(0).getA8() + "," + missionList.get(0).getA9()
                         + "," + missionList.get(0).getS1() + "," + missionList.get(0).getS2() + "," + missionList.get(0).getS3() + "," + missionList.get(0).getS4() + "," + missionList.get(0).getS5() + "," + missionList.get(0).getS6() + "," + missionList.get(0).getS7() + "," + missionList.get(0).getS8() + "," + missionList.get(0).getS9()
                         + "," + missionList.get(0).getH1() + "," + missionList.get(0).getH2() + "," + missionList.get(0).getH3() + "," + missionList.get(0).getH4() + "," + missionList.get(0).getH5() + "," + missionList.get(0).getH6() + "," + missionList.get(0).getH7() + "," + missionList.get(0).getH8() + "," + missionList.get(0).getH9()
-                        + "," + missionList.get(0).getTime() + "-");
+                        + "," + missionList.get(0).getTime()+ ","+ missionList.get(0).getTimeDeduction() + "-");
 
 
                 createFileCsv();
@@ -308,14 +308,14 @@ public class ExportOnDevice extends AppCompatActivity implements MissionAdapter.
                         ",Question1,Question2,Question3,Question4,Question5,Question6,Question7,Question8,Question9,Question10" +
                         ",Answer1,Answer2,Answer3,Answer4,Answer5,Answer6,Answer7,Answer8,Answer9,Answer10" +
                         ",Score1,Score2,Score3,Score4,Score5,Score6,Score7,Score8,Score9,Score10" +
-                        ",Hint1,Hint2,Hint3,Hint4,Hint5,Hint6,Hint7,Hint8,Hint9,Hint10,Time-");
+                        ",Hint1,Hint2,Hint3,Hint4,Hint5,Hint6,Hint7,Hint8,Hint9,Hint10,Time,TimeDeduction-");
 
                 dataList.add(missionList.get(0).getMissionName() + "," + missionList.get(0).getDetailMission() + "," + missionList.get(0).getAge() + "," + missionList.get(0).getNumberofMission()
                         + "," + missionList.get(0).getQ1() + "," + missionList.get(0).getQ2() + "," + missionList.get(0).getQ3() + "," + missionList.get(0).getQ4() + "," + missionList.get(0).getQ5() + "," + missionList.get(0).getQ6() + "," + missionList.get(0).getQ7() + "," + missionList.get(0).getQ8() + "," + missionList.get(0).getQ9() + "," + missionList.get(0).getQ10()
                         + "," + missionList.get(0).getA1() + "," + missionList.get(0).getA2() + "," + missionList.get(0).getA3() + "," + missionList.get(0).getA4() + "," + missionList.get(0).getA5() + "," + missionList.get(0).getA6() + "," + missionList.get(0).getA7() + "," + missionList.get(0).getA8() + "," + missionList.get(0).getA9() + "," + missionList.get(0).getA10()
                         + "," + missionList.get(0).getS1() + "," + missionList.get(0).getS2() + "," + missionList.get(0).getS3() + "," + missionList.get(0).getS4() + "," + missionList.get(0).getS5() + "," + missionList.get(0).getS6() + "," + missionList.get(0).getS7() + "," + missionList.get(0).getS8() + "," + missionList.get(0).getS9() + "," + missionList.get(0).getS10()
                         + "," + missionList.get(0).getH1() + "," + missionList.get(0).getH2() + "," + missionList.get(0).getH3() + "," + missionList.get(0).getH4() + "," + missionList.get(0).getH5() + "," + missionList.get(0).getH6() + "," + missionList.get(0).getH7() + "," + missionList.get(0).getH8() + "," + missionList.get(0).getH9() + "," + missionList.get(0).getH10()
-                        + "," + missionList.get(0).getTime() + "-");
+                        + "," + missionList.get(0).getTime()  + ","+ missionList.get(0).getTimeDeduction()+ "-");
 
 
                 createFileCsv();

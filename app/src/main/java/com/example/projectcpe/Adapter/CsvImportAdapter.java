@@ -169,6 +169,7 @@ public class CsvImportAdapter extends RecyclerView.Adapter<CsvImportAdapter.CsvV
 
 
                             mission.setTime(nextLine[24]);
+                            mission.setTimeDeduction(nextLine[25]);
 
 
                             break;
@@ -218,6 +219,7 @@ public class CsvImportAdapter extends RecyclerView.Adapter<CsvImportAdapter.CsvV
                             mission.setH6(nextLine[27]);
 
                             mission.setTime(nextLine[28]);
+                            mission.setTimeDeduction(nextLine[29]);
 
                             break;
                         case 7:
@@ -274,6 +276,7 @@ public class CsvImportAdapter extends RecyclerView.Adapter<CsvImportAdapter.CsvV
                             mission.setH7(nextLine[31]);
 
                             mission.setTime(nextLine[32]);
+                            mission.setTimeDeduction(nextLine[33]);
 
                             break;
                         case 8:
@@ -336,6 +339,7 @@ public class CsvImportAdapter extends RecyclerView.Adapter<CsvImportAdapter.CsvV
                             mission.setS8(nextLine[35]);
 
                             mission.setTime(nextLine[36]);
+                            mission.setTimeDeduction(nextLine[37]);
                             break;
                         case 9:
 
@@ -404,6 +408,7 @@ public class CsvImportAdapter extends RecyclerView.Adapter<CsvImportAdapter.CsvV
                             mission.setH9(nextLine[39]);
 
                             mission.setTime(nextLine[40]);
+                            mission.setTimeDeduction(nextLine[41]);
                             break;
                         case 10:
 
@@ -477,6 +482,7 @@ public class CsvImportAdapter extends RecyclerView.Adapter<CsvImportAdapter.CsvV
                             mission.setH10(nextLine[43]);
 
                             mission.setTime(nextLine[44]);
+                            mission.setTimeDeduction(nextLine[45]);
 
                             break;
                     }

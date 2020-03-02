@@ -33,6 +33,10 @@ public class Mission {
     @ColumnInfo(name = "time")
     private String time;
 
+    @ColumnInfo(name = "timeDeduction")
+    private String timeDeduction;
+
+
 
     ///////////// attribute Picture
     @ColumnInfo(name = "P1")
@@ -724,6 +728,14 @@ public class Mission {
 
     public void setH10(String h10) {
         H10 = h10;
+    }
+
+    public String getTimeDeduction() {
+        return timeDeduction;
+    }
+
+    public void setTimeDeduction(String timeDeduction) {
+        this.timeDeduction = timeDeduction;
     }
 
     //    public int[] getQuestion() {

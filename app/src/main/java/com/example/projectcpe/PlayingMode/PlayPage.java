@@ -134,7 +134,6 @@ public class PlayPage extends AppCompatActivity {
         getTime();
 
 
-
         int s1 = scoreStep.length;
         for (int i = 0; i < s1; i++) {
             scoreStep[i] = String.valueOf(0);
@@ -244,8 +243,6 @@ public class PlayPage extends AppCompatActivity {
 //    }
 
 
-
-
     private void getTime() {
         textclock.setText(missionList.get(0).getTime());
         switch (missionList.get(0).getTime()) {
@@ -253,47 +250,92 @@ public class PlayPage extends AppCompatActivity {
                 cloneSec = 60;
                 seconds = 60;
                 minutes = 0;
-                timeDevide = 30;
+
                 break;
             case "1:10":
                 cloneSec = 70;
                 seconds = 10;
                 minutes = 1;
-                timeDevide = 35;
+
                 break;
             case "1:20":
                 cloneSec = 80;
                 seconds = 20;
                 minutes = 1;
-                timeDevide = 40;
+
                 break;
             case "1:30":
                 cloneSec = 90;
                 seconds = 30;
                 minutes = 1;
-                timeDevide = 45;
+
                 break;
             case "1:40":
                 cloneSec = 100;
                 seconds = 40;
                 minutes = 1;
-                timeDevide = 50;
+
                 break;
             case "1:50":
                 cloneSec = 110;
                 seconds = 50;
                 minutes = 1;
-                timeDevide = 55;
+
                 break;
             case "2:00":
                 cloneSec = 120;
                 seconds = 0;
                 minutes = 2;
-                timeDevide = 60;
+
                 break;
             default:
 //                Toast.makeText(getApplicationContext(), "ERROR404", Toast.LENGTH_SHORT).show();
 
+        }
+
+
+        switch (missionList.get(0).getTimeDeduction()) {
+            case "0:30":
+                timeDevide = 30;
+                break;
+            case "0:35": timeDevide = 35;
+                break;
+            case "0:40": timeDevide = 40;
+                break;
+            case "0:45":timeDevide = 45;
+                break;
+            case "0:50":timeDevide = 50;
+                break;
+            case "0:55":timeDevide = 55;
+                break;
+            case "1:00":timeDevide = 60;
+                break;
+            case "1:05":timeDevide = 65;
+                break;
+            case "1:10":timeDevide = 70;
+                break;
+            case "1:15":timeDevide = 75;
+                break;
+            case "1:20":timeDevide = 80;
+                break;
+            case "1:25":timeDevide = 85;
+                break;
+            case "1:30":timeDevide = 90;
+                break;
+            case "1:35":timeDevide = 95;
+                break;
+            case "1:40":timeDevide = 100;
+                break;
+            case "1:45":timeDevide = 105;
+                break;
+            case "1:50":timeDevide = 110;
+                break;
+            case "1:55":timeDevide = 115;
+                break;
+            case "2:00":timeDevide = 120;
+                break;
+            default:
+                Toast.makeText(getApplicationContext(), "getTimeDeduction Error", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -347,13 +389,13 @@ public class PlayPage extends AppCompatActivity {
 
             head.setText("Hint number : 1");
 
-            checkSpeakHint +=1;
+            checkSpeakHint += 1;
             h1 = true;
 
-            if (checkSpeakHint == HintString.length){
+            if (checkSpeakHint == HintString.length) {
                 speakHint.setVisibility(View.VISIBLE);
                 speakHint.setOnClickListener(clickSpeakHintEnd);
-            }else {
+            } else {
                 speakHint.setVisibility(View.GONE);
             }
 
@@ -383,12 +425,12 @@ public class PlayPage extends AppCompatActivity {
             if (h1) {
                 hint2.setBackgroundResource(R.drawable.elevetorcircle_used);
 
-                checkSpeakHint +=1;
+                checkSpeakHint += 1;
                 h2 = true;
 
-                if (checkSpeakHint == HintString.length){
+                if (checkSpeakHint == HintString.length) {
                     speakHint.setVisibility(View.VISIBLE);
-                }else {
+                } else {
                     speakHint.setVisibility(View.GONE);
                 }
 
@@ -421,12 +463,12 @@ public class PlayPage extends AppCompatActivity {
             if (h2) {
                 hint3.setBackgroundResource(R.drawable.elevetorcircle_used);
 
-                checkSpeakHint +=1;
+                checkSpeakHint += 1;
                 h3 = true;
 
-                if (checkSpeakHint == HintString.length){
+                if (checkSpeakHint == HintString.length) {
                     speakHint.setVisibility(View.VISIBLE);
-                }else {
+                } else {
                     speakHint.setVisibility(View.GONE);
                 }
 
@@ -460,14 +502,14 @@ public class PlayPage extends AppCompatActivity {
             if (h3) {
                 hint4.setBackgroundResource(R.drawable.elevetorcircle_used);
 
-                checkSpeakHint +=1;
+                checkSpeakHint += 1;
 
                 h4 = true;
 
-                if (checkSpeakHint == HintString.length){
+                if (checkSpeakHint == HintString.length) {
 
                     speakHint.setVisibility(View.VISIBLE);
-                }else {
+                } else {
                     speakHint.setVisibility(View.GONE);
                 }
 
@@ -483,7 +525,6 @@ public class PlayPage extends AppCompatActivity {
 
         }
     };
-
 
 
     View.OnClickListener onClickSurrender = new View.OnClickListener() {
@@ -1156,13 +1197,13 @@ public class PlayPage extends AppCompatActivity {
 
             checkSpeakHint = 0;
 
-            if (speakHint.getVisibility() == View.VISIBLE){
+            if (speakHint.getVisibility() == View.VISIBLE) {
                 speakHint.setVisibility(View.GONE);
             }
-            if (frameHint.getVisibility() == View.VISIBLE){
+            if (frameHint.getVisibility() == View.VISIBLE) {
 
 
-                Toast.makeText(getApplicationContext(), "เก็บแล้ว" ,Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "เก็บแล้ว", Toast.LENGTH_LONG).show();
 
                 frameHint.setVisibility(View.GONE);
 
@@ -1203,7 +1244,6 @@ public class PlayPage extends AppCompatActivity {
 
                 stopTimer();
                 getTime();
-
 
 
                 if (etKeyboard.getVisibility() == View.VISIBLE) {

@@ -7,23 +7,22 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:background="@drawable/framedetailstep"
-    android:padding="20dp"
+
     android:layout_gravity="center"
     >
 
     <FrameLayout
-        android:paddingStart="16dp"
         android:id="@+id/dad"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/frame"
-        android:padding="5dp"
+        android:padding="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/head"
-        app:layout_constraintBottom_toTopOf="@+id/guideline5">
+        app:layout_constraintTop_toBottomOf="@+id/head">
 
 
         <androidx.core.widget.NestedScrollView
@@ -31,61 +30,59 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/head"
-            app:layout_constraintBottom_toTopOf="@+id/guideline5">
+            app:layout_constraintTop_toBottomOf="@+id/head">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                >
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/answerDetail"
-                    android:layout_width="125dp"
-                    android:layout_height="wrap_content"
-                    android:text="gdfshgdfshdhb"
-                    android:textSize="16dp"
-                    android:gravity="center"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:background="@drawable/bgtext2"
-                    android:fontFamily="@font/thin"
+                android:orientation="vertical">
 
-
-
-                    />
-                <TextView
-                    android:text="10      "
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="16dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginRight="5dp"
-                    android:paddingLeft="5dp"
-                    android:textColor="@color/black"
-                    />
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/answerDetail"
+                        android:layout_width="125dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:background="@drawable/bgtextcorrect"
+                        android:fontFamily="@font/thin"
+                        android:gravity="center"
+                        android:text="gdfshgdfshdhb"
+                        android:textSize="16dp"
 
 
+                        />
 
-            </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="5dp"
+                        android:paddingLeft="5dp"
+                        android:text="10      "
+                        android:textColor="@color/black"
+                        android:textSize="16dp" />
 
-            <LinearLayout
 
-                android:id="@+id/linearDetail"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:padding="2dp"
+                </LinearLayout>
 
-                >
+                <LinearLayout
 
-            </LinearLayout>
+                    android:id="@+id/linearDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="2dp"
+
+                    >
+
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -95,16 +92,17 @@
     </FrameLayout>
 
 
-
     <TextView
         android:id="@+id/head"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="10dp"
         android:fontFamily="@font/bold"
         android:text="HEAD"
+        android:textColor="@color/white"
         android:textSize="35dp"
         app:layout_constraintBottom_toTopOf="@id/dad"
         app:layout_constraintEnd_toEndOf="parent"
@@ -122,9 +120,12 @@
 
     <Button
         android:id="@+id/ok"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="4dp"
         android:background="@drawable/buttondetail"
         android:fontFamily="@font/bold"
         android:paddingLeft="20dp"
@@ -132,6 +133,7 @@
         android:text="SAVE"
         android:textColor="#ffff"
         android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline5" />
