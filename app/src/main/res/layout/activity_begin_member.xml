@@ -21,7 +21,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintWidth_percent="0.28"
-        app:srcCompat="@drawable/member"
+        app:srcCompat="@drawable/home2"
         tools:ignore="VectorDrawableCompat" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -101,7 +101,7 @@
                 android:layout_marginBottom="4dp"
                 android:fontFamily="@font/bold"
                 android:gravity="bottom"
-                android:text="Admin Mode"
+                android:text="Setup"
                 android:textSize="20dp" />
 
         </LinearLayout>

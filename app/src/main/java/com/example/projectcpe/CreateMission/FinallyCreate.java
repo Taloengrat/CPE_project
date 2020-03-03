@@ -48,10 +48,12 @@ import android.widget.Toast;
 
 import com.example.projectcpe.Adapter.StepAdapter;
 import com.example.projectcpe.AdminPage;
+import com.example.projectcpe.BeginMember;
 import com.example.projectcpe.CSV.Utility.EasyCsv;
 import com.example.projectcpe.CSV.Utility.FileCallback;
 import com.example.projectcpe.CreateMission.Export.ExportOnDevice;
 import com.example.projectcpe.CreateMission.Export.ExportOnGoogleDrive;
+import com.example.projectcpe.FunctionEditProfile;
 import com.example.projectcpe.Main2Activity;
 import com.example.projectcpe.MainActivity;
 import com.example.projectcpe.MusicService;
@@ -840,9 +842,10 @@ bundle = getIntent().getExtras();
 
                         loadingDialog.dismiss();
 
-                        Intent i = new Intent(FinallyCreate.this,AdminPage.class);
-                        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        finish();
+                        Intent intent = new Intent(getApplicationContext(), BeginMember.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+
 
                     }
                 });

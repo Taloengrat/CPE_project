@@ -62,22 +62,24 @@ public class Feedback extends AppCompatActivity {
         Static statistic = new Static(id, memberId, memberList.get(0).getProfile(), memberList.get(0).getName(), Integer.valueOf(memberList.get(0).getAge())
                 , Score, numstar);
 
+        Log.v("star", String.valueOf(numstar));
 
-        if (CheckForUpdate(memberId) == null) {
+
+        if (CheckForUpdate(memberId, id) == null) {
 
             MissionDATABASE.getInstance(Feedback.this).missionDAO().createStatistic(statistic);
 
         } else {
 
-            if (CheckForUpdate(memberId).getScore() < Score) {
-                MissionDATABASE.getInstance(Feedback.this).missionDAO().updateStatistic2(Score, CheckForUpdate(memberId).getId());
+            if (CheckForUpdate(memberId, id).getScore() < Score) {
+                MissionDATABASE.getInstance(Feedback.this).missionDAO().updateStatistic2(Score, CheckForUpdate(memberId,id).getId(),numstar);
             } else {
 
             }
         }
 
 
-        MemberStatic memberStatic = new MemberStatic(id, missionList.get(0).getMissionName(), String.valueOf(missionList.get(0).getAge()), numstar, Score);
+        MemberStatic memberStatic = new MemberStatic(memberId, missionList.get(0).getMissionName(), String.valueOf(missionList.get(0).getAge()), numstar, Score);
 
         MissionDATABASE.getInstance(Feedback.this).missionDAO().createMemberStatic(memberStatic);
 
@@ -116,17 +118,14 @@ public class Feedback extends AppCompatActivity {
         return MissionDATABASE.getInstance(Feedback.this).missionDAO().getAllinfoOfMission(id);
     }
 
-    private Static CheckForUpdate(int id) {
-        return MissionDATABASE.getInstance(Feedback.this).missionDAO().CheckForUpdateStatistic(id);
+    private Static CheckForUpdate(int id, int missionId) {
+        return MissionDATABASE.getInstance(Feedback.this).missionDAO().CheckForUpdateStatistic(id, missionId);
     }
 
     private List<Member> getDataMember(int id) {
         return MissionDATABASE.getInstance(Feedback.this).missionDAO().getAllinfoOfMember(id);
     }
 
-    private Static getStatisticForUpdate(int id) {
-        return MissionDATABASE.getInstance(Feedback.this).missionDAO().CheckForUpdateStatistic(id);
-    }
 
 
     private void ShowStar(float score) {

@@ -14,15 +14,14 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="116dp"
         android:foregroundGravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.2"
         app:layout_constraintHorizontal_bias="0.482"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintWidth_percent="0.35"
-        app:srcCompat="@drawable/ic_language_black_24dp"
+        app:srcCompat="@drawable/logo"
         tools:ignore="VectorDrawableCompat" />
 
     <TextView
@@ -30,67 +29,70 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
 
         android:layout_marginEnd="8dp"
 
 
-
         android:layout_marginBottom="8dp"
-        android:text="ENGLISH PRACTICE"
         android:fontFamily="@font/bold"
+        android:text="ENGLISH PRACTICE"
+
         android:textColor="#FFFFFF"
 
         android:textSize="35dp"
-
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/guideline13"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logoApp"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/etPass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="76dp"
         android:layout_marginEnd="8dp"
-        android:ems="10"
-        android:textColor="@color/black"
-        android:hint="Create Password Admin"
-        android:visibility="gone"
-        android:fontFamily="@font/thin"
         android:background="@drawable/bgtext"
+        android:ems="10"
+        android:fontFamily="@font/thin"
+        android:hint="Create Password Admin"
         android:inputType="number"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
         android:textAlignment="center"
-        android:textColorHint="@color/black"
+        android:textColor="@color/black"
+
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toTopOf="@+id/guideline13" />
 
     <Button
         android:id="@+id/_etBegin"
-        android:layout_width="90dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/button"
+        android:fontFamily="@font/bold"
         android:gravity="center"
         android:text="BEGIN"
-        android:textSize="20dp"
 
-        android:translationZ="2dp"
-        android:fontFamily="@font/bold"
+
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
         android:textColor="#ffff"
+        android:textSize="20dp"
         android:textStyle="bold"
+        android:translationZ="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPass"
-        app:layout_constraintVertical_bias="0.282"
-         />
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -109,6 +109,13 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MemberView
 
                     private void ChooseWay() {
                         MissionDATABASE.getInstance(mCtx).missionDAO().deleteMember(member);
+
+                        MissionDATABASE.getInstance(mCtx).missionDAO().deleteStatisticByMemberId(member.getId());
+
+                        MissionDATABASE.getInstance(mCtx).missionDAO().deleteByMemberStaticId(member.getId());
+
+
+
                         ((FunctionEditProfile)mCtx).recreate();
                         dialog.cancel();
                     }

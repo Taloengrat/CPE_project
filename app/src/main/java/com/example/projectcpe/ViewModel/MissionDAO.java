@@ -48,8 +48,16 @@ public interface MissionDAO {
     @Query("select * from member where id=:id")
     List<Member> getAllinfoOfMember(int id);
 
-    @Query("select * from static where memberId=:id")
-    Static CheckForUpdateStatistic(int id);
+    @Query("select * from static where memberId=:id and idsub=:missionId")
+    Static CheckForUpdateStatistic(int id,int missionId);
+
+
+    ///// Delete by idMember
+    @Query("DELETE FROM static WHERE memberId = :memberId")
+    void deleteStatisticByMemberId(int memberId);
+
+    @Query("DELETE FROM memberstatic WHERE idsub = :memberId")
+    void deleteByMemberStaticId(int memberId);
 
 
 /////////////////////////////////////////////////
@@ -77,8 +85,8 @@ public interface MissionDAO {
     @Update
     void updateStatistic(Static statistic);
 
-    @Query("UPDATE static SET score=:price WHERE id = :id")
-    void updateStatistic2(Float price, int id);
+    @Query("UPDATE static SET score=:price,numstar=:numstar WHERE id = :id")
+    void updateStatistic2(Float price, int id,int numstar);
 
     ////////////////////////////////////////////////
 
@@ -87,5 +95,8 @@ public interface MissionDAO {
 
     @Delete
     void deleteMember(Member mission);
+
+    @Delete
+    void deleteMissionStatistic(Static mission);
 
 }
