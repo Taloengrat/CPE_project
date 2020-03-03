@@ -251,6 +251,7 @@ public class PlayPage extends AppCompatActivity {
                 seconds = 60;
                 minutes = 0;
 
+
                 break;
             case "1:10":
                 cloneSec = 70;
@@ -1218,6 +1219,8 @@ public class PlayPage extends AppCompatActivity {
                 i.putExtra("scoreStep", scoreStep);
                 i.putExtra("scoreWrongStep", scoreWrongStep);
                 startActivity(i);
+//                MediaPlayer.create(PlayPage.this, R.raw.timeout).stop(); /// stop sound timeout
+                stopTimer();
                 finish();
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             } else {

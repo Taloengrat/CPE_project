@@ -234,7 +234,7 @@ public class ExportOnGoogleDrive extends AppCompatActivity implements MissionAda
                         + "," + missionClone.getA1() + "," + missionClone.getA2() + "," + missionClone.getA3() + "," + missionClone.getA4() + "," + missionClone.getA5()
                         + "," + missionClone.getS1() + "," + missionClone.getS2() + "," + missionClone.getS3() + "," + missionClone.getS4() + "," + missionClone.getS5()
                         + "," + missionClone.getH1() + "," + missionClone.getH2() + "," + missionClone.getH3() + "," + missionClone.getH4() + "," + missionClone.getH5()
-                        + "," + missionClone.getTime()  + ","+ missionClone.getTimeDeduction()+ "-");
+                        + "," + missionClone.getTime() + "," + missionClone.getTimeDeduction() + "-");
                 createFileCsv();
 
                 break;
@@ -250,7 +250,7 @@ public class ExportOnGoogleDrive extends AppCompatActivity implements MissionAda
                         + "," + missionClone.getA1() + "," + missionClone.getA2() + "," + missionClone.getA3() + "," + missionClone.getA4() + "," + missionClone.getA5() + "," + missionClone.getA6()
                         + "," + missionClone.getS1() + "," + missionClone.getS2() + "," + missionClone.getS3() + "," + missionClone.getS4() + "," + missionClone.getS5() + "," + missionClone.getS6()
                         + "," + missionClone.getH1() + "," + missionClone.getH2() + "," + missionClone.getH3() + "," + missionClone.getH4() + "," + missionClone.getH5() + "," + missionClone.getH6()
-                        + "," + missionClone.getTime() + "," + missionClone.getTimeDeduction()+ "-");
+                        + "," + missionClone.getTime() + "," + missionClone.getTimeDeduction() + "-");
 
 
                 createFileCsv();
@@ -269,7 +269,7 @@ public class ExportOnGoogleDrive extends AppCompatActivity implements MissionAda
                         + "," + missionClone.getA1() + "," + missionClone.getA2() + "," + missionClone.getA3() + "," + missionClone.getA4() + "," + missionClone.getA5() + "," + missionClone.getA6() + "," + missionClone.getA7()
                         + "," + missionClone.getS1() + "," + missionClone.getS2() + "," + missionClone.getS3() + "," + missionClone.getS4() + "," + missionClone.getS5() + "," + missionClone.getS6() + "," + missionClone.getS7()
                         + "," + missionClone.getH1() + "," + missionClone.getH2() + "," + missionClone.getH3() + "," + missionClone.getH4() + "," + missionClone.getH5() + "," + missionClone.getH6() + "," + missionClone.getH7()
-                        + "," + missionClone.getTime() + "," + missionClone.getTimeDeduction()+ "-");
+                        + "," + missionClone.getTime() + "," + missionClone.getTimeDeduction() + "-");
 
 
                 createFileCsv();
@@ -287,7 +287,7 @@ public class ExportOnGoogleDrive extends AppCompatActivity implements MissionAda
                         + "," + missionClone.getA1() + "," + missionClone.getA2() + "," + missionClone.getA3() + "," + missionClone.getA4() + "," + missionClone.getA5() + "," + missionClone.getA6() + "," + missionClone.getA7() + "," + missionClone.getA8()
                         + "," + missionClone.getS1() + "," + missionClone.getS2() + "," + missionClone.getS3() + "," + missionClone.getS4() + "," + missionClone.getS5() + "," + missionClone.getS6() + "," + missionClone.getS7() + "," + missionClone.getS8()
                         + "," + missionClone.getH1() + "," + missionClone.getH2() + "," + missionClone.getH3() + "," + missionClone.getH4() + "," + missionClone.getH5() + "," + missionClone.getH6() + "," + missionClone.getH7() + "," + missionClone.getH8()
-                        + "," + missionClone.getTime() + "," + missionClone.getTimeDeduction()+ "-");
+                        + "," + missionClone.getTime() + "," + missionClone.getTimeDeduction() + "-");
 
 
                 createFileCsv();
@@ -306,7 +306,7 @@ public class ExportOnGoogleDrive extends AppCompatActivity implements MissionAda
                         + "," + missionClone.getA1() + "," + missionClone.getA2() + "," + missionClone.getA3() + "," + missionClone.getA4() + "," + missionClone.getA5() + "," + missionClone.getA6() + "," + missionClone.getA7() + "," + missionClone.getA8() + "," + missionClone.getA9()
                         + "," + missionClone.getS1() + "," + missionClone.getS2() + "," + missionClone.getS3() + "," + missionClone.getS4() + "," + missionClone.getS5() + "," + missionClone.getS6() + "," + missionClone.getS7() + "," + missionClone.getS8() + "," + missionClone.getS9()
                         + "," + missionClone.getH1() + "," + missionClone.getH2() + "," + missionClone.getH3() + "," + missionClone.getH4() + "," + missionClone.getH5() + "," + missionClone.getH6() + "," + missionClone.getH7() + "," + missionClone.getH8() + "," + missionClone.getH9()
-                        + "," + missionClone.getTime() + "," + missionClone.getTimeDeduction()+ "-");
+                        + "," + missionClone.getTime() + "," + missionClone.getTimeDeduction() + "-");
 
 
                 createFileCsv();
@@ -326,7 +326,7 @@ public class ExportOnGoogleDrive extends AppCompatActivity implements MissionAda
                         + "," + missionClone.getA1() + "," + missionClone.getA2() + "," + missionClone.getA3() + "," + missionClone.getA4() + "," + missionClone.getA5() + "," + missionClone.getA6() + "," + missionClone.getA7() + "," + missionClone.getA8() + "," + missionClone.getA9() + "," + missionClone.getA10()
                         + "," + missionClone.getS1() + "," + missionClone.getS2() + "," + missionClone.getS3() + "," + missionClone.getS4() + "," + missionClone.getS5() + "," + missionClone.getS6() + "," + missionClone.getS7() + "," + missionClone.getS8() + "," + missionClone.getS9() + "," + missionClone.getS10()
                         + "," + missionClone.getH1() + "," + missionClone.getH2() + "," + missionClone.getH3() + "," + missionClone.getH4() + "," + missionClone.getH5() + "," + missionClone.getH6() + "," + missionClone.getH7() + "," + missionClone.getH8() + "," + missionClone.getH9() + "," + missionClone.getH10()
-                        + "," + missionClone.getTime()  + ","+ missionClone.getTimeDeduction()+ "-");
+                        + "," + missionClone.getTime() + "," + missionClone.getTimeDeduction() + "-");
 
                 createFileCsv();
 
@@ -453,6 +453,17 @@ public class ExportOnGoogleDrive extends AppCompatActivity implements MissionAda
                                                                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
                                                                     Toast.makeText(getApplicationContext(), "นำออกแบบทดสอบเสร็จเรียบร้อย", Toast.LENGTH_LONG).show();
+
+                                                                    File dir = new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionClone.getMissionName());
+
+                                                                    if (dir.isDirectory()) {
+                                                                        String[] children = dir.list();
+                                                                        for (int i = 0; i < children.length; i++) {
+                                                                            new File(dir, children[i]).delete();
+                                                                        }
+
+                                                                        dir.delete();
+                                                                    }
                                                                     progressDialog.dismiss();
                                                                     recreate();
 
@@ -536,9 +547,9 @@ public class ExportOnGoogleDrive extends AppCompatActivity implements MissionAda
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         Toast.makeText(getApplicationContext(), "ออกจากระบบแล้ว", Toast.LENGTH_LONG).show();
+
+
                     }
                 });
     }
-
-
 }

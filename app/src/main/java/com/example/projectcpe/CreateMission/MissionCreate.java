@@ -131,6 +131,12 @@ public class MissionCreate extends AppCompatActivity {
             return;
         }
 
+        if (MissionDATABASE.getInstance(MissionCreate.this).missionDAO().CheckNameMission(etName.getText().toString()).getMissionName().toLowerCase().equals(etName.getText().toString().toLowerCase())){
+            etName.setError("Mission name that is the same as that already exists");
+            etName.requestFocus();
+            return;
+        }
+
         if (TextUtils.isEmpty(etDetail.getText().toString())) {
             etDetail.setError("Current Password is required");
             etDetail.requestFocus();

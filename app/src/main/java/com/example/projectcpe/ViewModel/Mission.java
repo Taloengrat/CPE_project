@@ -36,6 +36,8 @@ public class Mission {
     @ColumnInfo(name = "timeDeduction")
     private String timeDeduction;
 
+    @ColumnInfo(name = "UniqueKey")
+    private String UniqueKey;
 
 
     ///////////// attribute Picture
@@ -194,6 +196,9 @@ public class Mission {
 
     @ColumnInfo(name = "H10")
     private String H10;
+
+
+
 
 
     public Mission() {
@@ -738,7 +743,15 @@ public class Mission {
         this.timeDeduction = timeDeduction;
     }
 
-    //    public int[] getQuestion() {
+    public String getUniqueKey() {
+        return UniqueKey;
+    }
+
+    public void setUniqueKey(String uniqueKey) {
+        UniqueKey = uniqueKey;
+    }
+
+//    public int[] getQuestion() {
 //        return question;
 //    }
 //

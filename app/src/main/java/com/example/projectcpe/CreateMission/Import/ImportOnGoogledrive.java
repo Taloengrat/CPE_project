@@ -142,7 +142,8 @@ public class ImportOnGoogledrive extends AppCompatActivity implements MissionAda
 
                             Mission mission = new Mission();
 
-                            mission.setMissionName(childDataSnapshot.getKey());
+                            mission.setUniqueKey(childDataSnapshot.getKey());
+                            mission.setMissionName(String.valueOf(childDataSnapshot.child("MissionName").getValue()));
                             mission.setAge(Integer.valueOf(String.valueOf(childDataSnapshot.child("AGE").getValue())));
                             mission.setNumberofMission(Integer.valueOf(String.valueOf(childDataSnapshot.child("NumberQuiz").getValue())));
 
@@ -305,12 +306,12 @@ public class ImportOnGoogledrive extends AppCompatActivity implements MissionAda
         startService(new Intent(ImportOnGoogledrive.this, MusicService.class));
     }
 
-    private void downloadFile(int i) {
+    private void    downloadFile(int i) {
         FirebaseStorage storage = FirebaseStorage.getInstance();
-        StorageReference storageRef = storage.getReference(FirebaseAuth.getInstance().getCurrentUser().getUid() + "/" + missionClone.getMissionName());
+        StorageReference storageRef = storage.getReference(FirebaseAuth.getInstance().getCurrentUser().getUid() + "/" + missionClone.getUniqueKey());
         StorageReference islandRef = storageRef.child("picture" + i + ".png");
 
-        StorageReference RefCSV = FirebaseStorage.getInstance().getReference(FirebaseAuth.getInstance().getCurrentUser().getUid() + "/" + missionClone.getMissionName())
+        StorageReference RefCSV = FirebaseStorage.getInstance().getReference(FirebaseAuth.getInstance().getCurrentUser().getUid() + "/" + missionClone.getUniqueKey())
                 .child(missionClone.getMissionName() + "Data.csv");
 
         File rootPath = new File(Environment.getExternalStorageDirectory(), "EnglishPractice/" + missionClone.getMissionName());
