@@ -53,14 +53,14 @@
         android:background="@drawable/bgtext"
         android:ems="10"
         android:fontFamily="@font/thin"
-        android:hint="Create Password Admin"
+        android:hint="Create Admin Password"
         android:inputType="number"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
         android:textAlignment="center"
         android:textColor="@color/black"
 
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline13" />
