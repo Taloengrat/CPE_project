@@ -309,7 +309,7 @@ public class ImportOnGoogledrive extends AppCompatActivity implements MissionAda
     private void    downloadFile(int i) {
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReference(FirebaseAuth.getInstance().getCurrentUser().getUid() + "/" + missionClone.getUniqueKey());
-        StorageReference islandRef = storageRef.child("picture" + i + ".png");
+        StorageReference islandRef = storageRef.child("picture" + i + ".jpg");
 
         StorageReference RefCSV = FirebaseStorage.getInstance().getReference(FirebaseAuth.getInstance().getCurrentUser().getUid() + "/" + missionClone.getUniqueKey())
                 .child(missionClone.getMissionName() + "Data.csv");
@@ -319,7 +319,7 @@ public class ImportOnGoogledrive extends AppCompatActivity implements MissionAda
             rootPath.mkdirs();
         }
 
-        final File localFile = new File(rootPath, "picture" + i + ".png");
+        final File localFile = new File(rootPath, "picture" + i + ".jpg");
         final File localFileCSV = new File(rootPath, missionClone.getMissionName() + "Data.csv");
 
         islandRef.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
@@ -732,7 +732,7 @@ public class ImportOnGoogledrive extends AppCompatActivity implements MissionAda
         storageRef = FirebaseStorage.getInstance().getReference(FirebaseAuth.getInstance().getCurrentUser().getUid() + "/" + "testttt");
 
         File dir = new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionClone.getMissionName());
-        final File file = new File(dir, "picture" + (i + 1) + ".png");
+        final File file = new File(dir, "picture" + (i + 1) + ".jpg");
         try {
             if (!dir.exists()) {
                 dir.mkdir();

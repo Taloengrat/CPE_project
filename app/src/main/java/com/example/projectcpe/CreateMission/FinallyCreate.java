@@ -256,13 +256,13 @@ bundle = getIntent().getExtras();
         // path to /data/data/yourapp/app_data/imageDir
         File directory = new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionName + "/");
         // Create imageDir
-        File mypath = new File(directory, picturename + ".png");
+        File mypath = new File(directory, picturename + ".jpg");
 
         FileOutputStream fos = null;
         try {
             fos = new FileOutputStream(mypath);
             // Use the compress method on the BitMap object to write image to the OutputStream
-            bitmapImage.compress(Bitmap.CompressFormat.PNG, 30, fos);
+            bitmapImage.compress(Bitmap.CompressFormat.JPEG, 30, fos);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

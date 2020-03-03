@@ -165,11 +165,11 @@ public class ExportOnDevice extends AppCompatActivity implements MissionAdapter.
 
 
                 try {
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture1.png"))), "picture1");
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture2.png"))), "picture2");
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture3.png"))), "picture3");
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture4.png"))), "picture4");
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture5.png"))), "picture5");
+                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture1.jpg"))), "picture1");
+                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture2.jpg"))), "picture2");
+                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture3.jpg"))), "picture3");
+                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture4.jpg"))), "picture4");
+                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture5.jpg"))), "picture5");
 
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
@@ -193,12 +193,12 @@ public class ExportOnDevice extends AppCompatActivity implements MissionAdapter.
                 createFileCsv();
 
                 try {
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture1.png"))), "picture1");
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture2.png"))), "picture2");
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture3.png"))), "picture3");
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture4.png"))), "picture4");
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture5.png"))), "picture5");
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture6.png"))), "picture6");
+                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture1.jpg"))), "picture1");
+                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture2.jpg"))), "picture2");
+                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture3.jpg"))), "picture3");
+                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture4.jpg"))), "picture4");
+                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture5.jpg"))), "picture5");
+                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture6.jpg"))), "picture6");
 
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
@@ -222,13 +222,13 @@ public class ExportOnDevice extends AppCompatActivity implements MissionAdapter.
                 createFileCsv();
 
                 try {
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture1.png"))), "picture1");
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture2.png"))), "picture2");
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture3.png"))), "picture3");
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture4.png"))), "picture4");
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture5.png"))), "picture5");
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture6.png"))), "picture6");
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture7.png"))), "picture7");
+                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture1.jpg"))), "picture1");
+                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture2.jpg"))), "picture2");
+                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture3.jpg"))), "picture3");
+                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture4.jpg"))), "picture4");
+                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture5.jpg"))), "picture5");
+                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture6.jpg"))), "picture6");
+                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture7.jpg"))), "picture7");
 
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
@@ -252,14 +252,14 @@ public class ExportOnDevice extends AppCompatActivity implements MissionAdapter.
                 createFileCsv();
 
                 try {
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture1.png"))), "picture1");
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture2.png"))), "picture2");
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture3.png"))), "picture3");
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture4.png"))), "picture4");
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture5.png"))), "picture5");
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture6.png"))), "picture6");
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture7.png"))), "picture7");
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture8.png"))), "picture8");
+                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture1.jpg"))), "picture1");
+                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture2.jpg"))), "picture2");
+                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture3.jpg"))), "picture3");
+                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture4.jpg"))), "picture4");
+                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture5.jpg"))), "picture5");
+                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture6.jpg"))), "picture6");
+                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture7.jpg"))), "picture7");
+                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture8.jpg"))), "picture8");
 
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
@@ -284,15 +284,15 @@ public class ExportOnDevice extends AppCompatActivity implements MissionAdapter.
                 createFileCsv();
 
                 try {
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture1.png"))), "picture1");
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture2.png"))), "picture2");
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture3.png"))), "picture3");
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture4.png"))), "picture4");
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture5.png"))), "picture5");
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture6.png"))), "picture6");
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture7.png"))), "picture7");
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture8.png"))), "picture8");
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture9.png"))), "picture9");
+                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture1.jpg"))), "picture1");
+                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture2.jpg"))), "picture2");
+                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture3.jpg"))), "picture3");
+                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture4.jpg"))), "picture4");
+                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture5.jpg"))), "picture5");
+                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture6.jpg"))), "picture6");
+                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture7.jpg"))), "picture7");
+                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture8.jpg"))), "picture8");
+                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture9.jpg"))), "picture9");
 
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
@@ -321,16 +321,16 @@ public class ExportOnDevice extends AppCompatActivity implements MissionAdapter.
                 createFileCsv();
 
                 try {
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture1.png"))), "picture1");
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture2.png"))), "picture2");
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture3.png"))), "picture3");
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture4.png"))), "picture4");
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture5.png"))), "picture5");
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture6.png"))), "picture6");
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture7.png"))), "picture7");
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture8.png"))), "picture8");
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture9.png"))), "picture9");
-                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture10.png"))), "picture10");
+                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture1.jpg"))), "picture1");
+                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture2.jpg"))), "picture2");
+                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture3.jpg"))), "picture3");
+                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture4.jpg"))), "picture4");
+                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture5.jpg"))), "picture5");
+                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture6.jpg"))), "picture6");
+                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture7.jpg"))), "picture7");
+                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture8.jpg"))), "picture8");
+                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture9.jpg"))), "picture9");
+                    saveToInternalStorage(BitmapFactory.decodeStream(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName(), "picture10.jpg"))), "picture10");
 
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
@@ -365,13 +365,13 @@ public class ExportOnDevice extends AppCompatActivity implements MissionAdapter.
         // path to /data/data/yourapp/app_data/imageDir
         File directory = new File(Environment.getExternalStorageDirectory() + "/MyMissionExport/" + missionList.get(0).getMissionName() + "/");
         // Create imageDir
-        File mypath = new File(directory, foldername + ".png");
+        File mypath = new File(directory, foldername + ".jpg");
 
         FileOutputStream fos = null;
         try {
             fos = new FileOutputStream(mypath);
             // Use the compress method on the BitMap object to write image to the OutputStream
-            bitmapImage.compress(Bitmap.CompressFormat.PNG, 100, fos);
+            bitmapImage.compress(Bitmap.CompressFormat.JPEG, 100, fos);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

@@ -288,7 +288,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         Mission mission2 = new Mission("TalktoJame", "Talk to KJame", 18, 10
-                , directory_path + "Talktojame" + "/picture1.png", directory_path + "Talktojame" + "/picture2png", directory_path + "Talktojame" + "/picture3.png", directory_path + "Talktojame" + "/picture4.png", directory_path + "Talktojame" + "/picture5png", directory_path + "Talktojame" + "/picture6.png", directory_path + "Talktojame" + "/picture7.png", directory_path + "Talktojame" + "/picture8.png", directory_path + "Talktojame" + "/picture9.png", directory_path + "Talktojame" + "/picture10.png"
+                , directory_path + "Talktojame" + "/picture1.jpg", directory_path + "Talktojame" + "/picture2.jpg", directory_path + "Talktojame" + "/picture3.jpg", directory_path + "Talktojame" + "/picture4.jpg", directory_path + "Talktojame" + "/picture5.jpg", directory_path + "Talktojame" + "/picture6.jpg", directory_path + "Talktojame" + "/picture7.jpg", directory_path + "Talktojame" + "/picture8.jpg", directory_path + "Talktojame" + "/picture9.jpg", directory_path + "Talktojame" + "/picture10.jpg"
                 , getResources().getString(R.string.q2_1), getResources().getString(R.string.q2_2), getResources().getString(R.string.q2_3), getResources().getString(R.string.q2_4), getResources().getString(R.string.q2_5)
                 , getResources().getString(R.string.q2_6), getResources().getString(R.string.q2_7), getResources().getString(R.string.q2_8)
                 , getResources().getString(R.string.q2_9), getResources().getString(R.string.q2_10)
@@ -332,7 +332,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         Mission mission3 = new Mission("Animal", "Various animals", 9, 10
-                , directory_path + "Animal" + "/picture1.png", directory_path + "Animal" + "/picture2png", directory_path + "Animal" + "/picture3.png", directory_path + "Animal" + "/picture4.png", directory_path + "Animal" + "/picture5png", directory_path + "Animal" + "/picture6.png", directory_path + "Animal" + "/picture7.png", directory_path + "Animal" + "/picture8.png", directory_path + "Animal" + "/picture9.png", directory_path + "Animal" + "/picture10.png"
+                , directory_path + "Animal" + "/picture1.jpg", directory_path + "Animal" + "/picture2.jpg", directory_path + "Animal" + "/picture3.jpg", directory_path + "Animal" + "/picture4.jpg", directory_path + "Animal" + "/picture5.jpg", directory_path + "Animal" + "/picture6.jpg", directory_path + "Animal" + "/picture7.jpg", directory_path + "Animal" + "/picture8.jpg", directory_path + "Animal" + "/picture9.jpg", directory_path + "Animal" + "/picture10.jpg"
                 , getResources().getString(R.string.q3_1), getResources().getString(R.string.q3_2), getResources().getString(R.string.q3_3), getResources().getString(R.string.q3_4), getResources().getString(R.string.q3_5)
                 , getResources().getString(R.string.q3_6), getResources().getString(R.string.q3_7), getResources().getString(R.string.q3_8)
                 , getResources().getString(R.string.q3_9), getResources().getString(R.string.q3_10)
@@ -373,7 +373,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         Mission career = new Mission("Career", "Various career", 9, 10
-                , directory_path + "Career" + "/picture1.png", directory_path + "Career" + "/picture2png", directory_path + "Career" + "/picture3.png", directory_path + "Career" + "/picture4.png", directory_path + "Career" + "/picture5png", directory_path + "Career" + "/picture6.png", directory_path + "Career" + "/picture7.png", directory_path + "Career" + "/picture8.png", directory_path + "Career" + "/picture9.png", directory_path + "Career" + "/picture10.png"
+                , directory_path + "Career" + "/picture1.jpg", directory_path + "Career" + "/picture2.jpg", directory_path + "Career" + "/picture3.jpg", directory_path + "Career" + "/picture4.jpg", directory_path + "Career" + "/picture5.jpg", directory_path + "Career" + "/picture6.jpg", directory_path + "Career" + "/picture7.jpg", directory_path + "Career" + "/picture8.jpg", directory_path + "Career" + "/picture9.jpg", directory_path + "Career" + "/picture10.jpg"
                 , getResources().getString(R.string.q4_1), getResources().getString(R.string.q4_2), getResources().getString(R.string.q4_3), getResources().getString(R.string.q4_4), getResources().getString(R.string.q4_5)
                 , getResources().getString(R.string.q4_6), getResources().getString(R.string.q4_7), getResources().getString(R.string.q4_8)
                 , getResources().getString(R.string.q4_9), getResources().getString(R.string.q4_10)
@@ -402,7 +402,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static Drawable getAssetImage(Context context, String filename) throws IOException {
         AssetManager assets = context.getResources().getAssets();
-        InputStream buffer = new BufferedInputStream((assets.open(filename + ".png")));
+        InputStream buffer = new BufferedInputStream((assets.open(filename + ".jpg")));
         Bitmap bitmap = BitmapFactory.decodeStream(buffer);
         return new BitmapDrawable(context.getResources(), bitmap);
     }
@@ -591,13 +591,13 @@ public class MainActivity extends AppCompatActivity {
         // path to /data/data/yourapp/app_data/imageDir
         File directory = new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionName + "/");
         // Create imageDir
-        File mypath = new File(directory, picturename + ".png");
+        File mypath = new File(directory, picturename + ".jpg");
 
         FileOutputStream fos = null;
         try {
             fos = new FileOutputStream(mypath);
             // Use the compress method on the BitMap object to write image to the OutputStream
-            bitmapImage.compress(Bitmap.CompressFormat.PNG, 30, fos);
+            bitmapImage.compress(Bitmap.CompressFormat.JPEG, 30, fos);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
