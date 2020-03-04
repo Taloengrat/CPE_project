@@ -56,8 +56,8 @@
                 android:layout_height="60dp"
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/elevetorcircle"
-                android:padding="8dp"
-                app:srcCompat="@drawable/iconcreate"
+                android:padding="12dp"
+                app:srcCompat="@drawable/visual"
                 tools:ignore="VectorDrawableCompat" />
 
             <TextView
@@ -100,8 +100,8 @@
                 android:layout_height="60dp"
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/elevetorcircle"
-                android:padding="8dp"
-                app:srcCompat="@drawable/icondelete"
+                android:padding="12dp"
+                app:srcCompat="@drawable/delete"
                 tools:ignore="VectorDrawableCompat" />
 
 
@@ -145,7 +145,7 @@
                 android:layout_height="60dp"
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/elevetorcircle"
-                android:padding="8dp"
+                android:padding="12dp"
                 app:srcCompat="@drawable/iconimport"
                 tools:ignore="VectorDrawableCompat" />
 
@@ -191,7 +191,7 @@
                 android:layout_height="60dp"
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/elevetorcircle"
-                android:padding="8dp"
+                android:padding="12dp"
                 app:srcCompat="@drawable/iconupload"
                 tools:ignore="VectorDrawableCompat" />
 
@@ -235,8 +235,8 @@
                 android:layout_height="60dp"
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/elevetorcircle"
-                android:padding="8dp"
-                app:srcCompat="@drawable/accout_statistic"
+                android:padding="12dp"
+                app:srcCompat="@drawable/member"
                 tools:ignore="VectorDrawableCompat" />
 
             <TextView
@@ -280,8 +280,8 @@
                 android:layout_height="60dp"
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/elevetorcircle"
-                android:padding="10dp"
-                app:srcCompat="@drawable/key"
+                android:padding="12dp"
+                app:srcCompat="@drawable/password"
                 tools:ignore="VectorDrawableCompat" />
 
             <TextView

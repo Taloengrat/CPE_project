@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,11 +25,11 @@ import java.util.List;
 
 public class StatisticMember extends AppCompatActivity {
 
-List<Member> memberList;
-Bitmap bitmap;
-ImageView imProfile;
-TextView txName,txAge;
-RecyclerView recyclerView;
+    List<Member> memberList;
+    Bitmap bitmap;
+    ImageView imProfile;
+    TextView txName, txAge;
+    RecyclerView recyclerView;
     int id;
 
     @Override
@@ -45,7 +47,7 @@ RecyclerView recyclerView;
 
         imProfile.setImageBitmap(bitmap);
         txName.setText("Name : " + memberList.get(0).getName());
-        txAge.setText("Age : "+memberList.get(0).getAge());
+        txAge.setText("Age : " + memberList.get(0).getAge());
 
         loadData();
     }
@@ -65,10 +67,10 @@ RecyclerView recyclerView;
         return MissionDATABASE.getInstance(this).missionDAO().getAllMemberStatic(id);
     }
 
-    public void loadData(){
+    public void loadData() {
         if (getDataMission(id).isEmpty()) {
-           findViewById(R.id.textnohave).setVisibility(View.VISIBLE);
-        }else{
+            findViewById(R.id.textnohave).setVisibility(View.VISIBLE);
+        } else {
             RecyclerView.Adapter adapter = new MemberStatisticAdapter(getDataMission(id), this);
             recyclerView.setHasFixedSize(true);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -88,5 +90,23 @@ RecyclerView recyclerView;
         super.onResume();
         stopService(new Intent(StatisticMember.this, MusicService.class));
         startService(new Intent(StatisticMember.this, MusicService.class));
+    }
+
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.editDetail : ShowdialogEdit();
+                break;
+        }
+    }
+
+    private void ShowdialogEdit() {
+        final Dialog dialog = new Dialog(this);
+        dialog.getWindow().setBackgroundDrawableResource(R.drawable.bg_dialog_custom);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_editdetail_member);
+        dialog.setCancelable(true);
+
+        dialog.show();
+
     }
 }
