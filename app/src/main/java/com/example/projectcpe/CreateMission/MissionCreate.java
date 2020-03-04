@@ -131,7 +131,7 @@ public class MissionCreate extends AppCompatActivity {
             return;
         }
 
-        if (MissionDATABASE.getInstance(MissionCreate.this).missionDAO().CheckNameMission(etName.getText().toString()).getMissionName().toLowerCase().equals(etName.getText().toString().toLowerCase())){
+        if (CheckNameCreateMissionSame(etName.getText().toString()) != null){
             etName.setError("Mission name that is the same as that already exists");
             etName.requestFocus();
             return;
@@ -173,6 +173,10 @@ public class MissionCreate extends AppCompatActivity {
         i.putExtra("timededuction", spinerdeduction.getSelectedItem().toString());
         startActivity(i);
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+    }
+
+    private Mission CheckNameCreateMissionSame(String missionName) {
+       return MissionDATABASE.getInstance(MissionCreate.this).missionDAO().CheckNameMission(missionName);
     }
 
     @Override

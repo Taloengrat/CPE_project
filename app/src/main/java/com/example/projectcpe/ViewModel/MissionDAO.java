@@ -54,7 +54,7 @@ public interface MissionDAO {
     @Query("select * from static where memberId=:id and idsub=:missionId")
     Static CheckForUpdateStatistic(int id,int missionId);
 
-    @Query("select * from mission where name=:missionName")
+    @Query("select * from mission where name LIKE :missionName")
     Mission CheckNameMission(String missionName);
 
 
