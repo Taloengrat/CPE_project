@@ -1,8 +1,10 @@
 package com.example.projectcpe;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -50,8 +52,39 @@ public class AdminPage extends AppCompatActivity {
 
         new ButtonServiceEffect(AdminPage.this).startEffect(); // Sound button effect
         onBackPressed();
-        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+
+
+
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+        dialog.setTitle("Logout setup");
+        dialog.setCancelable(true);
+        dialog.setMessage("Do you want to logout?");
+        dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                startActivity(new Intent(AdminPage.this, BeginMember.class));
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                finish();
+
+            }
+        });
+
+        dialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        new ButtonServiceEffect(this).startEffect(); // Sound button effect
+        dialog.show();
+        // your code.
+
+
+
     }
 
     @Override

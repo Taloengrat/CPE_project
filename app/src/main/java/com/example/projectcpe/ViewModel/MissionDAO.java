@@ -18,6 +18,9 @@ public interface MissionDAO {
     @Query("select * from member")
     List<Member> getAllMember();
 
+    @Query("select * from member")
+    Member CheckMember();
+
     @Query("select * from static where idsub=:idsub order by score DESC")
     List<Static> getAllStatic(int idsub);
 

@@ -24,6 +24,7 @@ import android.widget.Toast;
 
 import com.example.projectcpe.Adapter.MemberAdapterBegin;
 import com.example.projectcpe.ViewModel.Member;
+import com.example.projectcpe.ViewModel.Mission;
 import com.example.projectcpe.ViewModel.MissionDATABASE;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -54,7 +55,6 @@ public class BeginMember extends AppCompatActivity {
     public static final String MY_PRE_PASSWORD_ADMIN = "com.example.projectcpe.passwordasmin";
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +63,7 @@ public class BeginMember extends AppCompatActivity {
 //        requestSignIn();
 
         Initia();
+        loadData();
 
 
         menu.setOnClickListener(new View.OnClickListener() {
@@ -81,6 +82,7 @@ public class BeginMember extends AppCompatActivity {
         return MissionDATABASE.getInstance(this).missionDAO().getAllMember();
 
     }
+
     private void CreateMember() {
         final Dialog dialog = new Dialog(BeginMember.this);
         dialog.getWindow().setBackgroundDrawableResource(R.drawable.frameline);
@@ -189,42 +191,42 @@ public class BeginMember extends AppCompatActivity {
                     Member newMember = new Member(_etName.getText().toString(), _etAge.getText().toString(), imageInByte, Integer.valueOf(_etPassword.getText().toString()));
 
                     MissionDATABASE.getInstance(BeginMember.this).missionDAO().createMember(newMember);
-                    dialog.cancel();
-                    loadData();
+                    dialog.dismiss();
 
 
                 } else {
-                    Toast.makeText(getApplicationContext(), "กรุณาเลือกรูปโปรไฟล์", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "you forget choose profile picture", Toast.LENGTH_SHORT).show();
                 }
+
+                loadData();
             }
         });
         dialog.show();
     }
 
     private void loadData() {
-      if (lodeMember() == null){
+        if (CheckMember() == null) {
 
-          CreateMember();
+            CreateMember();
 
-      }else{
-          RecyclerView.Adapter adapter = new MemberAdapterBegin(lodeMember(), this);
-          MemberRecyclerview.setHasFixedSize(true);
-          MemberRecyclerview.setLayoutManager(new LinearLayoutManager(this));
-          MemberRecyclerview.setAdapter(adapter);
-      }
+        } else {
 
+            RecyclerView.Adapter adapter = new MemberAdapterBegin(lodeMember(), this);
+            MemberRecyclerview.setHasFixedSize(true);
+            MemberRecyclerview.setLayoutManager(new LinearLayoutManager(this));
+            MemberRecyclerview.setAdapter(adapter);
+        }
+
+    }
+
+    private Member CheckMember() {
+        return MissionDATABASE.getInstance(BeginMember.this).missionDAO().CheckMember();
     }
 
     private void Initia() {
         MemberRecyclerview = findViewById(R.id.MemberRecyclerView);
         addMember = findViewById(R.id.addmember);
         menu = findViewById(R.id.menu_begin);
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        loadData();
     }
 
 
@@ -255,6 +257,7 @@ public class BeginMember extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Password Correct :)", Toast.LENGTH_SHORT).show();
                     dialog.cancel();
                     startActivity(new Intent(BeginMember.this, AdminPage.class));
+                    finish();
                     overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 } else {
                     Toast.makeText(getApplicationContext(), "Password Invalid !!!", Toast.LENGTH_SHORT).show();
@@ -294,7 +297,7 @@ public class BeginMember extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
 
                 new ButtonServiceEffect(BeginMember.this).startEffect(); // Sound button effect
-                 finish();
+                finish();
             }
         });
 
@@ -317,6 +320,8 @@ public class BeginMember extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
+
         stopService(new Intent(BeginMember.this, MusicService.class));
         startService(new Intent(BeginMember.this, MusicService.class));
     }

@@ -7,6 +7,20 @@
     tools:context=".FunctionEditProfile"
     android:background= "@color/white">
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineFrame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.28"
+       />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/blue50"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineFrame"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imagemanage"

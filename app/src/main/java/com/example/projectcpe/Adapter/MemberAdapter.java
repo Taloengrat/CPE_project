@@ -18,6 +18,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.projectcpe.BeginMember;
 import com.example.projectcpe.FunctionEditProfile;
 import com.example.projectcpe.R;
 import com.example.projectcpe.ViewModel.Member;
@@ -117,6 +118,7 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MemberView
 
 
                         ((FunctionEditProfile)mCtx).recreate();
+
                         dialog.cancel();
                     }
                 });
