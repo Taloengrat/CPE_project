@@ -1083,7 +1083,7 @@ public class PlayPage extends AppCompatActivity {
                 textclock.setText(String.format(Locale.getDefault(), "%02d:%02d", 0, 0));
                 textclock.setTextColor(getResources().getColor(R.color.red600));
 
-                MediaPlayer.create(PlayPage.this, R.raw.timeout).start();
+//                MediaPlayer.create(PlayPage.this, R.raw.timeout).start();
                 textclock.setTextSize(60);
 
                 recogni.setVisibility(View.INVISIBLE);

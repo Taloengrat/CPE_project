@@ -178,13 +178,13 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(View v) {
 
                         startService(new Intent(MainActivity.this, ButtonServiceEffect.class)); // Sound button effect
-                        String directory_path1 = Environment.getExternalStorageDirectory().getPath() + "/EnglishPractice/Color";
+                        String directory_path1 = Environment.getExternalStorageDirectory().getPath() + "/EnglishPractice/Introduction";
                         File file1 = new File(directory_path1);
                         if (!file1.exists()) {
                             file1.mkdirs();
                         }
 
-                        String directory_path2 = Environment.getExternalStorageDirectory().getPath() + "/EnglishPractice/TalktoJame";
+                        String directory_path2 = Environment.getExternalStorageDirectory().getPath() + "/EnglishPractice/SayHello";
                         File file2 = new File(directory_path2);
                         if (!file2.exists()) {
                             file2.mkdirs();
@@ -196,11 +196,17 @@ public class MainActivity extends AppCompatActivity {
                             file3.mkdirs();
                         }
 
-                        String directory_path4 = Environment.getExternalStorageDirectory().getPath() + "/EnglishPractice/Career";
+                        String directory_path4 = Environment.getExternalStorageDirectory().getPath() + "/EnglishPractice/WhyJamieSad";
                         File file4 = new File(directory_path4);
                         if (!file4.exists()) {
                             file4.mkdirs();
                         }
+                        String directory_path5 = Environment.getExternalStorageDirectory().getPath() + "/EnglishPractice/BuyFlower";
+                        File file5 = new File(directory_path5);
+                        if (!file5.exists()) {
+                            file5.mkdirs();
+                        }
+
                         if (_etPass.getText().toString().isEmpty()) {
                             Snackbar.make(_etPass, "Plese enter your password for Admin !", Snackbar.LENGTH_SHORT).show();
                         } else {
@@ -230,37 +236,44 @@ public class MainActivity extends AppCompatActivity {
     private void CreateMissionDefault() {
 
 
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.red)).getBitmap(), "picture1", "Color");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.green)).getBitmap(), "picture2", "Color");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.blue)).getBitmap(), "picture3", "Color");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.yellow)).getBitmap(), "picture4", "Color");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.black)).getBitmap(), "picture5", "Color");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.white)).getBitmap(), "picture6", "Color");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.brown)).getBitmap(), "picture7", "Color");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.purple)).getBitmap(), "picture8", "Color");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.gray)).getBitmap(), "picture9", "Color");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.orange)).getBitmap(), "picture10", "Color");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.mission1_1)).getBitmap(), "picture1", "Introduction");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.mission1_2)).getBitmap(), "picture2", "Introduction");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.mission1_3)).getBitmap(), "picture3", "Introduction");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.mission1_4)).getBitmap(), "picture4", "Introduction");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.mission1_5)).getBitmap(), "picture5", "Introduction");
 
 
-        Mission mission = new Mission("Color", "Various colors", 5, 10
-                , directory_path + "Color", directory_path + "Color", directory_path + "Color", directory_path + "Color", directory_path + "Color", directory_path + "Color", directory_path + "Color", directory_path + "Color", directory_path + "Color", directory_path + "Color"
-                , getResources().getString(R.string.q1_1), getResources().getString(R.string.q1_2), getResources().getString(R.string.q1_3), getResources().getString(R.string.q1_4), getResources().getString(R.string.q1_5)
-                , getResources().getString(R.string.q1_6), getResources().getString(R.string.q1_7), getResources().getString(R.string.q1_8)
-                , getResources().getString(R.string.q1_9), getResources().getString(R.string.q1_10)
-                , getResources().getString(R.string.a1_1).trim(), getResources().getString(R.string.a1_2).trim(), getResources().getString(R.string.a1_3).trim()
-                , getResources().getString(R.string.a1_4).trim(), getResources().getString(R.string.a1_5).trim()
-                , getResources().getString(R.string.a1_6).trim(), getResources().getString(R.string.a1_7).trim(), getResources().getString(R.string.a1_8).trim()
-                , getResources().getString(R.string.a1_9).trim(), getResources().getString(R.string.a1_10).trim()
+        Mission mission = new Mission("Introduction", "Suggestions for playing the quiz.", 7, 5
+                , directory_path + "Introduction" + "/picture1.jpg", directory_path + "Introduction" + "/picture2.jpg", directory_path + "Introduction" + "/picture3.jpg", directory_path + "Introduction" + "/picture4.jpg", directory_path + "Introduction" + "/picture5.jpg"
+                ,"Follow the instructions.","Follow the instructions.","Follow the instructions.","Follow the instructions.","Say \"I am understand\" to finish.","Hello","I am understand","I am understand","I am understand","I am understand"
+                ,"10","10","10","10","10"
+                ,"Say\"Hello\"","Say \"I am understand\"","Say \"I am understand\"","Say \"I am understand\"","Say \"I am understand\""
+        );
 
-                , getResources().getString(R.string.s1_1).trim(), getResources().getString(R.string.s1_2).trim(), getResources().getString(R.string.s1_3).trim()
-                , getResources().getString(R.string.s1_4).trim(), getResources().getString(R.string.s1_5).trim(), getResources().getString(R.string.s1_6).trim()
-                , getResources().getString(R.string.s1_7).trim(), getResources().getString(R.string.s1_8).trim(), getResources().getString(R.string.s1_9).trim()
-                , getResources().getString(R.string.s1_10).trim()
 
-                , getResources().getString(R.string.h1_1).trim(), getResources().getString(R.string.h1_2).trim(), getResources().getString(R.string.h1_3).trim()
-                , getResources().getString(R.string.h1_4).trim(), getResources().getString(R.string.h1_5).trim(), getResources().getString(R.string.h1_6).trim()
-                , getResources().getString(R.string.h1_7).trim(), getResources().getString(R.string.h1_8).trim(), getResources().getString(R.string.h1_9).trim()
-                , getResources().getString(R.string.h1_10).trim());
+
+
+
+
+//        Mission mission = new Mission("Introduction", "Suggestions for playing the quiz.", 5, 5
+//                , directory_path + "Introduction", directory_path + "Introduction", directory_path + "Introduction", directory_path + "Introduction", directory_path + "Color", directory_path + "Color", directory_path + "Color", directory_path + "Color", directory_path + "Color", directory_path + "Color"
+//                , getResources().getString(R.string.q1_1), getResources().getString(R.string.q1_2), getResources().getString(R.string.q1_3), getResources().getString(R.string.q1_4), getResources().getString(R.string.q1_5)
+//                , getResources().getString(R.string.q1_6), getResources().getString(R.string.q1_7), getResources().getString(R.string.q1_8)
+//                , getResources().getString(R.string.q1_9), getResources().getString(R.string.q1_10)
+//                , getResources().getString(R.string.a1_1).trim(), getResources().getString(R.string.a1_2).trim(), getResources().getString(R.string.a1_3).trim()
+//                , getResources().getString(R.string.a1_4).trim(), getResources().getString(R.string.a1_5).trim()
+//                , getResources().getString(R.string.a1_6).trim(), getResources().getString(R.string.a1_7).trim(), getResources().getString(R.string.a1_8).trim()
+//                , getResources().getString(R.string.a1_9).trim(), getResources().getString(R.string.a1_10).trim()
+//
+//                , getResources().getString(R.string.s1_1).trim(), getResources().getString(R.string.s1_2).trim(), getResources().getString(R.string.s1_3).trim()
+//                , getResources().getString(R.string.s1_4).trim(), getResources().getString(R.string.s1_5).trim(), getResources().getString(R.string.s1_6).trim()
+//                , getResources().getString(R.string.s1_7).trim(), getResources().getString(R.string.s1_8).trim(), getResources().getString(R.string.s1_9).trim()
+//                , getResources().getString(R.string.s1_10).trim()
+//
+//                , getResources().getString(R.string.h1_1).trim(), getResources().getString(R.string.h1_2).trim(), getResources().getString(R.string.h1_3).trim()
+//                , getResources().getString(R.string.h1_4).trim(), getResources().getString(R.string.h1_5).trim(), getResources().getString(R.string.h1_6).trim()
+//                , getResources().getString(R.string.h1_7).trim(), getResources().getString(R.string.h1_8).trim(), getResources().getString(R.string.h1_9).trim()
+//                , getResources().getString(R.string.h1_10).trim());
 
         mission.setTime("1:00");
         mission.setTimeDeduction("0:30");
@@ -275,37 +288,37 @@ public class MainActivity extends AppCompatActivity {
     private void CreateMissionTwo() {
 
 
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.mt1)).getBitmap(), "picture1", "TalktoJame");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.mt2)).getBitmap(), "picture2", "TalktoJame");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.mt3)).getBitmap(), "picture3", "TalktoJame");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.mt4)).getBitmap(), "picture4", "TalktoJame");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.mt5)).getBitmap(), "picture5", "TalktoJame");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.mt6)).getBitmap(), "picture6", "TalktoJame");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.mt7)).getBitmap(), "picture7", "TalktoJame");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.mt8)).getBitmap(), "picture8", "TalktoJame");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.mt9)).getBitmap(), "picture9", "TalktoJame");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.mt10)).getBitmap(), "picture10", "TalktoJame");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.m2_1)).getBitmap(), "picture1", "SayHello");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.m2_2)).getBitmap(), "picture2", "SayHello");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.m2_3)).getBitmap(), "picture3", "SayHello");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.m2_4)).getBitmap(), "picture4", "SayHello");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.m2_5)).getBitmap(), "picture5", "SayHello");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.m2_6)).getBitmap(), "picture6", "SayHello");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.m2_7)).getBitmap(), "picture7", "SayHello");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.m2_8)).getBitmap(), "picture8", "SayHello");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.m2_9)).getBitmap(), "picture9", "SayHello");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.m2_10)).getBitmap(), "picture10", "SayHello");
 
 
-        Mission mission2 = new Mission("TalktoJame", "Talk to KJame", 18, 10
-                , directory_path + "Talktojame" + "/picture1.jpg", directory_path + "Talktojame" + "/picture2.jpg", directory_path + "Talktojame" + "/picture3.jpg", directory_path + "Talktojame" + "/picture4.jpg", directory_path + "Talktojame" + "/picture5.jpg", directory_path + "Talktojame" + "/picture6.jpg", directory_path + "Talktojame" + "/picture7.jpg", directory_path + "Talktojame" + "/picture8.jpg", directory_path + "Talktojame" + "/picture9.jpg", directory_path + "Talktojame" + "/picture10.jpg"
-                , getResources().getString(R.string.q2_1), getResources().getString(R.string.q2_2), getResources().getString(R.string.q2_3), getResources().getString(R.string.q2_4), getResources().getString(R.string.q2_5)
-                , getResources().getString(R.string.q2_6), getResources().getString(R.string.q2_7), getResources().getString(R.string.q2_8)
-                , getResources().getString(R.string.q2_9), getResources().getString(R.string.q2_10)
-                , getResources().getString(R.string.a2_1).trim(), getResources().getString(R.string.a2_2).trim(), getResources().getString(R.string.a2_3).trim()
-                , getResources().getString(R.string.a2_4).trim(), getResources().getString(R.string.a2_5).trim()
-                , getResources().getString(R.string.a2_6).trim(), getResources().getString(R.string.a2_7).trim(), getResources().getString(R.string.a2_8).trim()
-                , getResources().getString(R.string.a2_9).trim(), getResources().getString(R.string.a2_10).trim()
+        Mission mission2 = new Mission("SayHello", "general description.", 15, 10
+                , directory_path + "SayHello" + "/picture1.jpg", directory_path + "SayHello" + "/picture2.jpg", directory_path + "SayHello" + "/picture3.jpg", directory_path + "SayHello" + "/picture4.jpg", directory_path + "SayHello" + "/picture5.jpg", directory_path + "SayHello" + "/picture6.jpg", directory_path + "SayHello" + "/picture7.jpg", directory_path + "SayHello" + "/picture8.jpg", directory_path + "SayHello" + "/picture9.jpg", directory_path + "SayHello" + "/picture10.jpg"
+                , "Say hello to Peter.", "How is Peter's body ?", "What color is Peter's shirt ?", "What color is Peter's pants ?", "How do you think Peter feel?"
+                , "Say hello to Jamie.", "How is Jamie's body?", "What color is Jamie's shirt?"
+                , "What color is Jamie's pants?", "How do you think Jamie feel?"
+                , "hello peter/hello/hi peter/hi".trim(), "Peter's body is stout/Peter's body is fat/stout/fat".trim(), "Peter's shirt is black color/Peter's shirt is black/it is black/black".trim()
+                , "Peter's pants is black color/Peter's pants is black/it is black/black".trim(), "I think Peter feel happy/Peter feel happy/Peter seems happy/Peter look like happy/happy".trim()
+                , "hello Jamie/hello/hi Jamie/hi".trim(), "Jamie's body is thin/Jamie's body is skinny/thin/skinny".trim(), "Jamie's shirt is blue color/Jamie's shirt is blue/it is blue/blue".trim()
+                , "Jamie's pants is black color/Jamie's pants is black/it is black/black".trim(), "I think Jamie feel sad/Jamie feel sad/Jamie seems sad/Jamie look like sad/sad".trim()
 
-                , getResources().getString(R.string.s2_1).trim(), getResources().getString(R.string.s2_2).trim(), getResources().getString(R.string.s2_3).trim()
-                , getResources().getString(R.string.s2_4).trim(), getResources().getString(R.string.s2_5).trim(), getResources().getString(R.string.s2_6).trim()
-                , getResources().getString(R.string.s2_7).trim(), getResources().getString(R.string.s2_8).trim(), getResources().getString(R.string.s2_9).trim()
-                , getResources().getString(R.string.s2_10).trim()
+                , "10/9/8/8".trim(), "10/8/6/6".trim(), "10/9/7/5".trim()
+                , "10/9/7/5".trim(), "10/9/8/8/5".trim(), "10/9/8/8".trim()
+                , "10/8/6/6".trim(), "10/9/7/5".trim(), "10/9/7/5".trim()
+                , "10/9/8/8/5".trim()
 
-                , getResources().getString(R.string.h2_1).trim(), getResources().getString(R.string.h2_2).trim(), getResources().getString(R.string.h2_3).trim()
-                , getResources().getString(R.string.h2_4).trim(), getResources().getString(R.string.h2_5).trim(), getResources().getString(R.string.h2_6).trim()
-                , getResources().getString(R.string.h2_7).trim(), getResources().getString(R.string.h2_8).trim(), getResources().getString(R.string.h2_9).trim()
-                , getResources().getString(R.string.h2_10).trim());
+                , "H___o ____/Hello ____/Hello P____/Hello Peter".trim(), "_____ ____ is ____/Peter's ____ is ____/Peter's body is ____/Peter's body is stout".trim(), "____ shirt is ____ ____/Peter's shirt is ____ ____/Peter's shirt is ____ color/Peter's shirt is black color".trim()
+                , "____ pants is ____ ____/Peter's pants is ____ ____/Peter's pants is ____ color/Peter's pants is black color".trim(), "I ____ ____ feel ____/I think ____ feel ____/I think Peter feel ____/I think Peter feel happy".trim(), "H___o ____/Hello ____/Hello J____/Hello Jamie".trim()
+                , "_____ ____ is ____/Jamie's ____ is ____/Jamie's body is ____/Jamie's body is thin".trim(), "____ shirt is ____ ____/Jamie's shirt is ____ ____/Jamie's shirt is ____ color/Jamie's shirt is blue color".trim(), "____ pants is ____ ____/Jamie's pants is ____ ____/Jamie's pants is ____ color/Jamie's pants is black color".trim()
+                , "I ____ ____ feel ____/I think ____ feel ____/I think Jamie feel ____/I think Jamie feel sad".trim());
 
         mission2.setTime("1:10");
         mission2.setTimeDeduction("0:35");
@@ -360,45 +373,121 @@ public class MainActivity extends AppCompatActivity {
 
     private void CreateMissionCareer() {
 
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c1)).getBitmap(), "picture1", "Career");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c2)).getBitmap(), "picture2", "Career");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c3)).getBitmap(), "picture3", "Career");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c4)).getBitmap(), "picture4", "Career");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c5)).getBitmap(), "picture5", "Career");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c6)).getBitmap(), "picture6", "Career");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c7)).getBitmap(), "picture7", "Career");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c8)).getBitmap(), "picture8", "Career");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c9)).getBitmap(), "picture9", "Career");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c10)).getBitmap(), "picture10", "Career");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.m3_1)).getBitmap(), "picture1", "WhyJamieSad");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.m3_2)).getBitmap(), "picture2", "WhyJamieSad");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.m3_3)).getBitmap(), "picture3", "WhyJamieSad");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.m3_4)).getBitmap(), "picture4", "WhyJamieSad");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.m3_5)).getBitmap(), "picture5", "WhyJamieSad");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.m3_6)).getBitmap(), "picture6", "WhyJamieSad");
+
+        Mission mission = new Mission("WhyJamieSad", "Jamie's story", 9, 6
+                , directory_path + "WhyJamieSad" + "/picture1.jpg"
+                , directory_path + "WhyJamieSad" + "/picture2.jpg"
+                , directory_path + "WhyJamieSad" + "/picture3.jpg"
+                , directory_path + "WhyJamieSad" + "/picture4.jpg"
+                , directory_path + "WhyJamieSad" + "/picture5.jpg"
+                , directory_path + "WhyJamieSad" + "/picture6.jpg"
+
+                ,"What do you think this women is related to jamie ?"
+                ,"What are they doing ?"
+                ,"How does she feel ?"
+                ,"Why does she angry ?"
+                ,"Where is she going ?"
+                ,"Do you think why jamie is sad ?"
+
+                ,"She is his girlfriend/She is jamie's girlfriend/her is girlfriend/girlfriend".trim()
+                ,"They are talking/She is asking to Jamie/Talking".trim()
+                ,"She feel angry/She is angry/angry".trim()
+                ,"Because he forget the anniversary/Because Jamie forget the anniversary/he forget the anniversary/Because he forget anniversary/Because Jamie forget anniversary/he forget anniversary/forget the anniversary/forget anniversary".trim()
+                ,"She is going home/going home/go to home/home"
+                ,"I think he sad because he broken heart/I think jamie sad because he broken heart/because he broken heart/because jamie broken heart/he broken heart/jamie broken heart/broken heart".trim()
+
+                ,"10/10/8/6".trim(),"10/9/6".trim(),"10/10/8".trim(),"10/10/9/8/8/7/6/5".trim(),"10/8/8/6".trim(),"10/10/8/8/7/7/6".trim()
+
+                ,"She __ ___ ______/She is ___ ______/She is his ______/She is his girlfriend".trim()
+                ,"They ___ ____/They are ____/They are talking".trim()
+                ,"She ___ ____/She feel ____/She feel angry".trim()
+                ,"Because ___ ____ ___ ________/Because ___ forget ___ ________/Because he forget the ________/Because he forget the anniversary".trim()
+                ,"She __ ____ ____/She __ going ____/She is going ____/She is going home".trim()
+                ,"I think ___ ___ because he ____ ____/I think he ___ because he _____ _____/I think he sad because he _____ heart/I think he sad because he broken heart".trim()
+                );
 
 
-        Mission career = new Mission("Career", "Various career", 9, 10
-                , directory_path + "Career" + "/picture1.jpg", directory_path + "Career" + "/picture2.jpg", directory_path + "Career" + "/picture3.jpg", directory_path + "Career" + "/picture4.jpg", directory_path + "Career" + "/picture5.jpg", directory_path + "Career" + "/picture6.jpg", directory_path + "Career" + "/picture7.jpg", directory_path + "Career" + "/picture8.jpg", directory_path + "Career" + "/picture9.jpg", directory_path + "Career" + "/picture10.jpg"
-                , getResources().getString(R.string.q4_1), getResources().getString(R.string.q4_2), getResources().getString(R.string.q4_3), getResources().getString(R.string.q4_4), getResources().getString(R.string.q4_5)
-                , getResources().getString(R.string.q4_6), getResources().getString(R.string.q4_7), getResources().getString(R.string.q4_8)
-                , getResources().getString(R.string.q4_9), getResources().getString(R.string.q4_10)
-                , getResources().getString(R.string.a4_1).trim(), getResources().getString(R.string.a4_2).trim(), getResources().getString(R.string.a4_3).trim()
-                , getResources().getString(R.string.a4_4).trim(), getResources().getString(R.string.a4_5).trim()
-                , getResources().getString(R.string.a4_6).trim(), getResources().getString(R.string.a4_7).trim(), getResources().getString(R.string.a4_8).trim()
-                , getResources().getString(R.string.a4_9).trim(), getResources().getString(R.string.a4_10).trim()
-
-                , getResources().getString(R.string.s4_1).trim(), getResources().getString(R.string.s4_2).trim(), getResources().getString(R.string.s4_3).trim()
-                , getResources().getString(R.string.s4_4).trim(), getResources().getString(R.string.s4_5).trim(), getResources().getString(R.string.s4_6).trim()
-                , getResources().getString(R.string.s4_7).trim(), getResources().getString(R.string.s4_8).trim(), getResources().getString(R.string.s4_9).trim()
-                , getResources().getString(R.string.s4_10).trim()
-
-                , getResources().getString(R.string.h4_1).trim(), getResources().getString(R.string.h4_2).trim(), getResources().getString(R.string.h4_3).trim()
-                , getResources().getString(R.string.h4_4).trim(), getResources().getString(R.string.h4_5).trim(), getResources().getString(R.string.h4_6).trim()
-                , getResources().getString(R.string.h4_7).trim(), getResources().getString(R.string.h4_8).trim(), getResources().getString(R.string.h4_9).trim()
-                , getResources().getString(R.string.h4_10).trim());
-
-        career.setTime("1:10");
-        career.setTimeDeduction("0:35");
-        MissionDATABASE.getInstance(MainActivity.this).missionDAO().create(career);
 
 
+//        Mission careers = new Mission("WhyJamieSad", "Jamie's story", 9, 6
+//                , directory_path + "WhyJamieSad" + "/picture1.jpg", directory_path + "WhyJamieSad" + "/picture2.jpg", directory_path + "WhyJamieSad" + "/picture3.jpg", directory_path + "WhyJamieSad" + "/picture4.jpg", directory_path + "WhyJamieSad" + "/picture5.jpg", directory_path + "WhyJamieSad" + "/picture6.jpg", directory_path + "Career" + "/picture7.jpg", directory_path + "Career" + "/picture8.jpg", directory_path + "Career" + "/picture9.jpg", directory_path + "Career" + "/picture10.jpg"
+//                , getResources().getString(R.string.q4_1), getResources().getString(R.string.q4_2), getResources().getString(R.string.q4_3), getResources().getString(R.string.q4_4), getResources().getString(R.string.q4_5)
+//                , getResources().getString(R.string.q4_6), getResources().getString(R.string.q4_7), getResources().getString(R.string.q4_8)
+//                , getResources().getString(R.string.q4_9), getResources().getString(R.string.q4_10)
+//                , getResources().getString(R.string.a4_1).trim(), getResources().getString(R.string.a4_2).trim(), getResources().getString(R.string.a4_3).trim()
+//                , getResources().getString(R.string.a4_4).trim(), getResources().getString(R.string.a4_5).trim()
+//                , getResources().getString(R.string.a4_6).trim(), getResources().getString(R.string.a4_7).trim(), getResources().getString(R.string.a4_8).trim()
+//                , getResources().getString(R.string.a4_9).trim(), getResources().getString(R.string.a4_10).trim()
+//
+//                , getResources().getString(R.string.s4_1).trim(), getResources().getString(R.string.s4_2).trim(), getResources().getString(R.string.s4_3).trim()
+//                , getResources().getString(R.string.s4_4).trim(), getResources().getString(R.string.s4_5).trim(), getResources().getString(R.string.s4_6).trim()
+//                , getResources().getString(R.string.s4_7).trim(), getResources().getString(R.string.s4_8).trim(), getResources().getString(R.string.s4_9).trim()
+//                , getResources().getString(R.string.s4_10).trim()
+//
+//                , getResources().getString(R.string.h4_1).trim(), getResources().getString(R.string.h4_2).trim(), getResources().getString(R.string.h4_3).trim()
+//                , getResources().getString(R.string.h4_4).trim(), getResources().getString(R.string.h4_5).trim(), getResources().getString(R.string.h4_6).trim()
+//                , getResources().getString(R.string.h4_7).trim(), getResources().getString(R.string.h4_8).trim(), getResources().getString(R.string.h4_9).trim()
+//                , getResources().getString(R.string.h4_10).trim());
 
+        mission.setTime("1:10");
+        mission.setTimeDeduction("0:35");
+        MissionDATABASE.getInstance(MainActivity.this).missionDAO().create(mission);
     }
+
+    private void CreateMissionBuyFlower() {
+
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.m5_1)).getBitmap(), "picture1", "BuyFlower");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.m5_2)).getBitmap(), "picture2", "BuyFlower");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.m5_3)).getBitmap(), "picture3", "BuyFlower");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.m5_4)).getBitmap(), "picture4", "BuyFlower");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.m5_5)).getBitmap(), "picture5", "BuyFlower");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.m5_6)).getBitmap(), "picture6", "BuyFlower");
+
+        Mission mission = new Mission("BuyFlower", "Jamie would like to buy flower", 9, 6
+                , directory_path + "BuyFlower" + "/picture1.jpg"
+                , directory_path + "BuyFlower" + "/picture2.jpg"
+                , directory_path + "BuyFlower" + "/picture3.jpg"
+                , directory_path + "BuyFlower" + "/picture4.jpg"
+                , directory_path + "BuyFlower" + "/picture5.jpg"
+                , directory_path + "BuyFlower" + "/picture6.jpg"
+
+                ,"Help him find money."
+                ,"Help him find car key."
+                ,"Tell jamie where is his car."
+                ,"Tell jamie where is flower shop."
+                ,"He arrived at the flower shop. What flowers would he like to buy ?"
+                ,"Who does he give a flower to ?"
+
+                ,"Money is on the table/Money placed on the table/on the table/on table".trim()
+                ,"Car key is under the table/under the table/under table".trim()
+                ,"His car is in the parking lot/car is in the parking lot/in the parking lot/in parking lot".trim()
+                ,"The flower shop is opposite the tesco lotus/The flower shop is near the tesco lotus/opposite the tesco lotus/near the tesco lotus/opposite tesco lotus/near tesco lotus".trim()
+                ,"He would like to buy a rose/He wants to buy a rose/buy a rose/buy rose/a rose/rose/rose flower".trim()
+                ,"He gave a flower to his girlfriend/his girlfriend/jamie's girlfriend/girlfriend/He give a flower to his girlfriend".trim()
+
+                ,"10/10/8/6".trim(),"10/8/6".trim(),"10/10/7/5".trim(),"10/10/8/8/5/5".trim(),"10/10/8/7/6/5/5".trim(),"10/8/8/6/6".trim()
+
+                ,"____ is __ ___ ____/____ is on ___ ____/Money is on the ____/Money is on the table".trim()
+                ,"___ key is ____ ___ ____/Car key is ____ ___ ____/Car key is under the ____/Car key is under the table".trim()
+                ,"His ___ is __ ___ _____ ___/His ___ is in ___ _____ lot/His ___ is in the _____ lot/His car is in the parking lot".trim()
+                ,"The _____ ____ __ ______ the ____ ____/The _____ ____ is ______ the tesco lotus/The flower shop is ______ the tesco lotus/The flower shop is opposite the tesco lotus".trim()
+                ,"He _____ ____ to ___ __ ____/He would ____ to ____ a ____/He would ____ to buy a ____/He would like to buy a rose".trim()
+                ,"He ____ __ _____ to ___ ______/He ____ a _____ to his _______/He gave a _____ to his ______/He gave a flower to his girlfriend".trim()
+        );
+
+
+        mission.setTime("1:10");
+        mission.setTimeDeduction("0:35");
+        MissionDATABASE.getInstance(MainActivity.this).missionDAO().create(mission);
+    }
+
+
 
     public static Drawable getAssetImage(Context context, String filename) throws IOException {
         AssetManager assets = context.getResources().getAssets();
@@ -662,6 +751,8 @@ public class MainActivity extends AppCompatActivity {
 
                 CreateMissionZoo();
 
+
+
                 percent = 99;
 
             }
@@ -679,7 +770,6 @@ public class MainActivity extends AppCompatActivity {
                 });
 
                 CreateMissionTwo();
-
                 percent = 99;
 
             }
@@ -695,6 +785,21 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
                 CreateMissionCareer();
+
+                percent = 99;
+            }
+            if (box5) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        startTimer();
+                        loadingDialog.setTitle("กำลังเตรียมแบบทดสอบที่ 4");
+
+
+                    }
+                });
+                CreateMissionBuyFlower();
 
                 percent = 99;
             }

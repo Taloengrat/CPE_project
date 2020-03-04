@@ -224,6 +224,100 @@ public class Mission {
 
     @Ignore
     public Mission(String missionName, String detailMission, int age, int numberofMission
+            , String p1, String p2, String p3, String p4, String p5, String p6
+            , String q1, String q2, String q3, String q4, String q5, String q6
+            , String a1, String a2, String a3, String a4, String a5, String a6
+            , String s1, String s2, String s3, String s4, String s5, String s6
+            , String h1, String h2, String h3, String h4, String h5, String h6) {
+        this.idMission = idMission;
+        this.missionName = missionName;
+        this.detailMission = detailMission;
+        this.numberofMission = numberofMission;
+        this.age = age;
+        P1 = p1;
+        P2 = p2;
+        P3 = p3;
+        P4 = p4;
+        P5 = p5;
+        P6 = p6;
+
+        Q1 = q1;
+        Q2 = q2;
+        Q3 = q3;
+        Q4 = q4;
+        Q5 = q5;
+        Q6 = q6;
+
+        A1 = a1;
+        A2 = a2;
+        A3 = a3;
+        A4 = a4;
+        A5 = a5;
+        A6 = a6;
+
+        S1 = s1;
+        S2 = s2;
+        S3 = s3;
+        S4 = s4;
+        S5 = s5;
+        S6 = s6;
+
+        H1 = h1;
+        H2 = h2;
+        H3 = h3;
+        H4 = h4;
+        H5 = h5;
+        H6 = h6;
+
+    }
+
+    @Ignore
+    public Mission(String missionName, String detailMission, int age, int numberofMission
+            , String p1, String p2, String p3, String p4, String p5
+            , String q1, String q2, String q3, String q4, String q5
+            , String a1, String a2, String a3, String a4, String a5
+            , String s1, String s2, String s3, String s4, String s5
+            , String h1, String h2, String h3, String h4, String h5) {
+        this.idMission = idMission;
+        this.missionName = missionName;
+        this.detailMission = detailMission;
+        this.numberofMission = numberofMission;
+        this.age = age;
+        P1 = p1;
+        P2 = p2;
+        P3 = p3;
+        P4 = p4;
+        P5 = p5;
+
+        Q1 = q1;
+        Q2 = q2;
+        Q3 = q3;
+        Q4 = q4;
+        Q5 = q5;
+
+        A1 = a1;
+        A2 = a2;
+        A3 = a3;
+        A4 = a4;
+        A5 = a5;
+
+        S1 = s1;
+        S2 = s2;
+        S3 = s3;
+        S4 = s4;
+        S5 = s5;
+
+        H1 = h1;
+        H2 = h2;
+        H3 = h3;
+        H4 = h4;
+        H5 = h5;
+
+    }
+
+
+    @Ignore
+    public Mission(String missionName, String detailMission, int age, int numberofMission
             , String p1, String p2, String p3, String p4, String p5, String p6, String p7, String p8, String p9, String p10
             , String q1, String q2, String q3, String q4, String q5, String q6, String q7, String q8, String q9, String q10
             , String a1, String a2, String a3, String a4, String a5, String a6, String a7, String a8, String a9, String a10
@@ -285,6 +379,9 @@ public class Mission {
         H9 = h9;
         H10 = h10;
     }
+
+
+
 
 
     public int getIdMission() {
