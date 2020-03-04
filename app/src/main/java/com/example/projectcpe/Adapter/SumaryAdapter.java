@@ -72,7 +72,7 @@ public class SumaryAdapter extends RecyclerView.Adapter<SumaryAdapter.SumaryView
         holder.scoreWrongStep.setText("Wrong speech " + sumary.getScoreWrongStep() + " time.");
 
         try {
-            File directory = new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/"+missionData.get(0).getMissionName(),"picture"+(position+1)+".png");
+            File directory = new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/"+missionData.get(0).getMissionName(),"picture"+(position+1)+".jpg");
             b = BitmapFactory.decodeStream(new FileInputStream(directory));
             holder.picture.setImageBitmap(b);
 
@@ -94,7 +94,7 @@ public class SumaryAdapter extends RecyclerView.Adapter<SumaryAdapter.SumaryView
                 ImageView imageDetail = dialog.findViewById(R.id.imDetail);
 
                 try {
-                    File directory = new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/"+missionData.get(0).getMissionName(),"picture"+(position+1)+".png");
+                    File directory = new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/"+missionData.get(0).getMissionName(),"picture"+(position+1)+".jpg");
                     Bitmap b2 = BitmapFactory.decodeStream(new FileInputStream(directory));
                     imageDetail.setImageBitmap(b2);
 
@@ -119,7 +119,7 @@ public class SumaryAdapter extends RecyclerView.Adapter<SumaryAdapter.SumaryView
 //        missionData = getData(id);
 
 //        try {
-//            File directory = new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/"+missionData.get(0).getMissionName(),"picture"+ position+1 +".png");
+//            File directory = new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/"+missionData.get(0).getMissionName(),"picture"+ position+1 +".jpg");
 //            Bitmap b = BitmapFactory.decodeStream(new FileInputStream(directory));
 //            holder.picture.setImageBitmap(b);
 //

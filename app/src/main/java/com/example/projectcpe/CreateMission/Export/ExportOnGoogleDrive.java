@@ -411,16 +411,16 @@ public class ExportOnGoogleDrive extends AppCompatActivity implements MissionAda
 
                         int finalI1 = i;
                         FirebaseStorage.getInstance().getReference(FirebaseAuth.getInstance().getCurrentUser().getUid() + "/" + postId + "/" + "picture" + (i + 1) +
-                                ".png")
+                                ".jpg")
                                 .putFile(Uri.fromFile(new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/"
-                                        + missionClone.getMissionName(), "picture" + (i + 1) + ".png")))
+                                        + missionClone.getMissionName(), "picture" + (i + 1) + ".jpg")))
                                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                                     @Override
                                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
 
                                         FirebaseDatabase.getInstance().getReference(FirebaseAuth.getInstance().getCurrentUser().getUid() + "/" +
-                                                postId).child("picture" + (finalI1 + 1)).setValue("picture" + (finalI1 + 1) + ".png");
+                                                postId).child("picture" + (finalI1 + 1)).setValue("picture" + (finalI1 + 1) + ".jpg");
 
 
                                         if (finalI1 == (missionClone.getNumberofMission() - 1)) {

@@ -118,11 +118,11 @@ public class CsvImportAdapter extends RecyclerView.Adapter<CsvImportAdapter.CsvV
                     String path = Environment.getExternalStorageDirectory().getPath() + "/MyMissionExport/" + txName.getText();
 
 
-                    File image1 = new File(path, "picture1.png");
-                    File image2 = new File(path, "picture2.png");
-                    File image3 = new File(path, "picture3.png");
-                    File image4 = new File(path, "picture4.png");
-                    File image5 = new File(path, "picture5.png");
+                    File image1 = new File(path, "picture1.jpg");
+                    File image2 = new File(path, "picture2.jpg");
+                    File image3 = new File(path, "picture3.jpg");
+                    File image4 = new File(path, "picture4.jpg");
+                    File image5 = new File(path, "picture5.jpg");
 
 
                     Bitmap bitmap1 = BitmapFactory.decodeStream(new FileInputStream(image1));
@@ -175,7 +175,7 @@ public class CsvImportAdapter extends RecyclerView.Adapter<CsvImportAdapter.CsvV
                             break;
                         case 6:
 
-                            File image6 = new File(path, "picture6.png");
+                            File image6 = new File(path, "picture6.jpg");
 
                             Bitmap bitmap6 = BitmapFactory.decodeStream(new FileInputStream(image6));
 
@@ -223,8 +223,8 @@ public class CsvImportAdapter extends RecyclerView.Adapter<CsvImportAdapter.CsvV
 
                             break;
                         case 7:
-                            File image6new = new File(path, "picture6.png");
-                            File image7 = new File(path, "picture7.png");
+                            File image6new = new File(path, "picture6.jpg");
+                            File image7 = new File(path, "picture7.jpg");
 
 
                             Bitmap bitmap6new = BitmapFactory.decodeStream(new FileInputStream(image6new));
@@ -281,9 +281,9 @@ public class CsvImportAdapter extends RecyclerView.Adapter<CsvImportAdapter.CsvV
                             break;
                         case 8:
 
-                            File image6new2 = new File(path, "picture6.png");
-                            File image7new = new File(path, "picture7.png");
-                            File image8 = new File(path, "picture8.png");
+                            File image6new2 = new File(path, "picture6.jpg");
+                            File image7new = new File(path, "picture7.jpg");
+                            File image8 = new File(path, "picture8.jpg");
 
 
                             Bitmap bitmap6new2 = BitmapFactory.decodeStream(new FileInputStream(image6new2));
@@ -343,10 +343,10 @@ public class CsvImportAdapter extends RecyclerView.Adapter<CsvImportAdapter.CsvV
                             break;
                         case 9:
 
-                            File image6new3 = new File(path, "picture6.png");
-                            File image7new2 = new File(path, "picture7.png");
-                            File image8new = new File(path, "picture8.png");
-                            File image9 = new File(path, "picture9.png");
+                            File image6new3 = new File(path, "picture6.jpg");
+                            File image7new2 = new File(path, "picture7.jpg");
+                            File image8new = new File(path, "picture8.jpg");
+                            File image9 = new File(path, "picture9.jpg");
 
 
                             Bitmap bitmap6new3 = BitmapFactory.decodeStream(new FileInputStream(image6new3));
@@ -412,11 +412,11 @@ public class CsvImportAdapter extends RecyclerView.Adapter<CsvImportAdapter.CsvV
                             break;
                         case 10:
 
-                            File image6new4 = new File(path, "picture6.png");
-                            File image7new3 = new File(path, "picture7.png");
-                            File image8new2 = new File(path, "picture8.png");
-                            File image9new = new File(path, "picture9.png");
-                            File image10 = new File(path, "picture10.png");
+                            File image6new4 = new File(path, "picture6.jpg");
+                            File image7new3 = new File(path, "picture7.jpg");
+                            File image8new2 = new File(path, "picture8.jpg");
+                            File image9new = new File(path, "picture9.jpg");
+                            File image10 = new File(path, "picture10.jpg");
 
 
                             Bitmap bitmap6new4 = BitmapFactory.decodeStream(new FileInputStream(image6new4));
@@ -576,13 +576,13 @@ public class CsvImportAdapter extends RecyclerView.Adapter<CsvImportAdapter.CsvV
         // path to /data/data/yourapp/app_data/imageDir
         File directory = new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionName + "/");
         // Create imageDir
-        File mypath = new File(directory, picturename + ".png");
+        File mypath = new File(directory, picturename + ".jpg");
 
         FileOutputStream fos = null;
         try {
             fos = new FileOutputStream(mypath);
             // Use the compress method on the BitMap object to write image to the OutputStream
-            bitmapImage.compress(Bitmap.CompressFormat.PNG, 30, fos);
+            bitmapImage.compress(Bitmap.CompressFormat.JPEG, 30, fos);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
