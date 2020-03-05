@@ -805,7 +805,7 @@ public class PlayPage extends AppCompatActivity {
                     Score = Float.valueOf(ScoreString[8]);
                     break;
 
-                    default : Score = Float.valueOf(ScoreString[5]);
+                    default : Score = 5.0f;
 
             }
 
@@ -831,17 +831,21 @@ public class PlayPage extends AppCompatActivity {
             // Hint Score 30%
 
             float percenHintStep = 30.0f / stepnum;
-            float oneHintStep = percenHintStep / 5.0f;
+            float oneHintStep = percenHintStep / 4.0f;
             float hintScore;
 
             if (h1 == true && h2 == false && h3 == false && h4 == false) {
                 hintScore = percenHintStep - oneHintStep;
+                Log.e("h1","true");
             } else if (h1 == true && h2 == true && h3 == false && h4 == false) {
                 hintScore = percenHintStep - (oneHintStep * 2);
+                Log.e("h2","true");
             } else if (h1 == true && h2 == true && h3 == true && h4 == false) {
                 hintScore = percenHintStep - (oneHintStep * 3);
+                Log.e("h3","true");
             } else if (h1 == true && h2 == true && h3 == true && h4 == true) {
                 hintScore = percenHintStep - (oneHintStep * 4);
+                Log.e("h4","true");
             } else {
                 hintScore = percenHintStep;
             }
@@ -855,15 +859,15 @@ public class PlayPage extends AppCompatActivity {
 
 //            Log.e("textclock", timeclock);
 
-//            Log.e("percenHintStep", String.valueOf(percenHintStep));
-//            Log.e("oneHintStep", String.valueOf(oneHintStep));
+            Log.e("percenHintStep", String.valueOf(percenHintStep));
+            Log.e("oneHintStep", String.valueOf(oneHintStep));
             Log.e("hintScore", String.valueOf(hintScore));
 
 
-            Log.e("timeFinish", String.valueOf(timeFinish));
-            Log.e("oneTimeStep", String.valueOf(oneTimeStep));
-            Log.e("timeDevide", String.valueOf(timeDevide));
-            Log.e("timeQuiz", String.valueOf(timeQuiz));
+//            Log.e("timeFinish", String.valueOf(timeFinish));
+//            Log.e("oneTimeStep", String.valueOf(oneTimeStep));
+//            Log.e("timeDevide", String.valueOf(timeDevide));
+//            Log.e("timeQuiz", String.valueOf(timeQuiz));
             Log.e("timeScore", String.valueOf(timeScore));
 
             float newSumScore = answerScore + hintScore + timeScore;
