@@ -130,12 +130,12 @@
     <string name="a3_2">this is a Tiger/Tiger</string>
     <string name="a3_3">this is a Zebra/Zebra</string>
     <string name="a3_4">this is a Fox/Fox</string>
-    <string name="a3_5">this is a Dolphin/Dolphin</string>
-    <string name="a3_6">this is a Eagle/Eagle</string>
-    <string name="a3_7">this is a horse/horse</string>
-    <string name="a3_8">this is a Pig/Pig</string>
-    <string name="a3_9">this is a chicken/chicken</string>
-    <string name="a3_10">this is a wolf/wolf</string>
+    <string name="a3_5">this is a Panda/Panda</string>
+    <string name="a3_6">this is a Giraffe/Giraffe</string>
+    <string name="a3_7">this is a Monkey/Monkey</string>
+    <string name="a3_8">this is a Koala/Koala</string>
+    <string name="a3_9">this is a snake/snake</string>
+    <string name="a3_10">this is a turtle/turtle</string>
 
     <string name="s3_1">10/7</string>
     <string name="s3_2">10/7</string>
@@ -148,16 +148,16 @@
     <string name="s3_9">10/7</string>
     <string name="s3_10">10/7</string>
 
-    <string name="h3_1">this ___ __ ____/this is __ ____/this is a ____/this is a Lion</string>
-    <string name="h3_2">this ___ __ ____/this is __ ____/this is a ____/this is a Tiger</string>
-    <string name="h3_3">this ___ __ ____/this is __ ____/this is a ____/this is a Zebra</string>
-    <string name="h3_4">this ___ __ ____/this is __ ____/this is a ____/this is a Fox</string>
-    <string name="h3_5">this ___ __ ____/this is __ ____/this is a ____/this is a Dolphin</string>
-    <string name="h3_6">this ___ __ ____/this is __ ____/this is a ____/this is a Eagle</string>
-    <string name="h3_7">this ___ __ ____/this is __ ____/this is a ____/this is a horse</string>
-    <string name="h3_8">this ___ __ ____/this is __ ____/this is a ____/this is a Pig</string>
-    <string name="h3_9">this ___ __ ____/this is __ ____/this is a ____/this is a chicken</string>
-    <string name="h3_10">this ___ __ ____/this is __ ____/this is a ____/this is a wolf</string>
+    <string name="h3_1">this ___ __ ____/this is __ ____/this is a ____/this is a lion</string>
+    <string name="h3_2">this ___ __ ____/this is __ ____/this is a ____/this is a tiger</string>
+    <string name="h3_3">this ___ __ ____/this is __ ____/this is a ____/this is a zebra</string>
+    <string name="h3_4">this ___ __ ____/this is __ ____/this is a ____/this is a fox</string>
+    <string name="h3_5">this ___ __ ____/this is __ ____/this is a ____/this is a panda</string>
+    <string name="h3_6">this ___ __ ____/this is __ ____/this is a ____/this is a giraffe</string>
+    <string name="h3_7">this ___ __ ____/this is __ ____/this is a ____/this is a monkey</string>
+    <string name="h3_8">this ___ __ ____/this is __ ____/this is a ____/this is a koala</string>
+    <string name="h3_9">this ___ __ ____/this is __ ____/this is a ____/this is a snake</string>
+    <string name="h3_10">this ___ __ ____/this is __ ____/this is a ____/this is a turtle</string>
 
 
     <string name="M4">Career</string>
@@ -183,7 +183,7 @@
     <string name="a4_6">teacher/instructor/master</string>
     <string name="a4_7">Dentist/stomatologist</string>
     <string name="a4_8">farmer/peasant/peasantry</string>
-    <string name="a4_9">engineering</string>
+    <string name="a4_9">engineer</string>
     <string name="a4_10">soldier/warrior/combatant</string>
 
     <string name="h4_1">Ph_t_gr_ph_r/Photogr_ph_r/Photographer</string>
@@ -194,7 +194,7 @@
     <string name="h4_6">t_ach_r/teach_r/teacher</string>
     <string name="h4_7">Dentist/Dentist</string>
     <string name="h4_8">f_rm_r/farm_r/farmer</string>
-    <string name="h4_9">_ng_ne_r_ng/eng_ne_r_ng/engine_r_ng/engineering</string>
+    <string name="h4_9">e_g_n__r/e_g_ne_r/e_gineer/engineer</string>
     <string name="h4_10">s_ld__r/soldi_r/soldier</string>
 
     <string name="s4_1">10/9</string>
