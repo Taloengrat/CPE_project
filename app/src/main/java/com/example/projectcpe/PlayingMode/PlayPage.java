@@ -917,6 +917,7 @@ public class PlayPage extends AppCompatActivity {
 
         Handler pd = new Handler();
         pd.postDelayed(CheckPagerBeforeSkip, 2000);
+
     }
 
     private void SettingRecognizi() {
