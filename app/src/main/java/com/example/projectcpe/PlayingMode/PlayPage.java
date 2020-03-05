@@ -101,6 +101,7 @@ public class PlayPage extends AppCompatActivity {
     TextView hint1, hint2, hint3, hint4, txPlay;
 
     boolean h1 = false, h2 = false, h3 = false, h4 = false;
+    boolean h1Click = false, h2Click = false, h3Click = false, h4Click = false;
 
     SpeechRecognizer speechRecognizer;
     Intent speechRecognizerIntent;
@@ -368,7 +369,7 @@ public class PlayPage extends AppCompatActivity {
                     case 1:
 
 
-                        h1 = true;
+                        h1Click = true;
 
 
 //                        hint2.setVisibility(View.GONE);
@@ -376,25 +377,25 @@ public class PlayPage extends AppCompatActivity {
 //                        hint4.setVisibility(View.GONE);
                         break;
                     case 2:
-                        h1 = true;
+                        h1Click = true;
                         h2 = true;
 //                        hint3.setVisibility(View.GONE);
 //                        hint4.setVisibility(View.GONE);
                         break;
                     case 3:
-                        h1 = true;
-                        h2 = true;
-                        h3 = true;
+                        h1Click = true;
+                        h2Click = true;
+                        h3Click = true;
 //                        hint1.setVisibility(View.VISIBLE);
 //                        hint2.setVisibility(View.VISIBLE);
 //                        hint3.setVisibility(View.VISIBLE);
 //                        hint4.setVisibility(View.GONE);
                         break;
                     case 4:
-                        h1 = true;
-                        h2 = true;
-                        h3 = true;
-                        h4 = true;
+                        h1Click = true;
+                        h2Click = true;
+                        h3Click = true;
+                        h4Click = true;
 //                        hint1.setVisibility(View.VISIBLE);
 //                        hint2.setVisibility(View.VISIBLE);
 //                        hint3.setVisibility(View.VISIBLE);
@@ -462,8 +463,9 @@ public class PlayPage extends AppCompatActivity {
             head.setText("Hint number : 1");
 
 
+            h1 = true;
 
-            if (h2) {
+            if (h2Click) {
                 hint2.setVisibility(View.VISIBLE);
 
                 hint1.setVisibility(View.VISIBLE);
@@ -502,8 +504,9 @@ public class PlayPage extends AppCompatActivity {
 
             head.setText("Hint number : 2");
 
+            h2 = true;
 
-            if (h3) {
+            if (h3Click) {
 
                 hint3.setVisibility(View.VISIBLE);
 
@@ -548,8 +551,9 @@ public class PlayPage extends AppCompatActivity {
 
 
             head.setText("Hint number : 3");
+            h3 = true;
 
-            if (h4) {
+            if (h4Click) {
 
                 hint4.setVisibility(View.VISIBLE);
 
@@ -595,6 +599,7 @@ public class PlayPage extends AppCompatActivity {
                 hint4.setBackgroundResource(R.drawable.elevetorcircle_used);
                 data.setText(HintString[3]);
             hint3.setOnClickListener(hintThree);
+            h4 = true;
 
                 dialog.show();
             }
@@ -1347,6 +1352,11 @@ public class PlayPage extends AppCompatActivity {
                 h2 = false;
                 h3 = false;
                 h4 = false;
+
+                h1Click = false;
+                h2Click = false;
+                h3Click = false;
+                h4Click = false;
 
                 ReHintVisibility();
 
