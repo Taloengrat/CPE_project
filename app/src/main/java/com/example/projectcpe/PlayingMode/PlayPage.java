@@ -1437,10 +1437,10 @@ public class PlayPage extends AppCompatActivity {
             hint4.setVisibility(View.GONE);
         }
 
-        hint1.setBackgroundResource(R.drawable.elevetorcircle);
-        hint2.setBackgroundResource(R.drawable.elevetorcircle);
-        hint3.setBackgroundResource(R.drawable.elevetorcircle);
-        hint4.setBackgroundResource(R.drawable.elevetorcircle);
+        hint1.setBackgroundResource(R.drawable.elevator_regtang);
+        hint2.setBackgroundResource(R.drawable.elevator_regtang);
+        hint3.setBackgroundResource(R.drawable.elevator_regtang);
+        hint4.setBackgroundResource(R.drawable.elevator_regtang);
     }
 
 
