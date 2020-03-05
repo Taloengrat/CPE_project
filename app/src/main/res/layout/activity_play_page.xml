@@ -130,6 +130,7 @@
             android:fontFamily="@font/bold"
             android:gravity="center"
             android:textSize="24dp"
+            android:visibility="visible"
 
             />
 
@@ -143,7 +144,8 @@
             android:ems="1"
             android:fontFamily="@font/bold"
             android:gravity="center"
-            android:textSize="24dp" />
+            android:textSize="24dp"
+            android:visibility="gone"/>
 
         <TextView
             android:id="@+id/hint3"
@@ -155,7 +157,8 @@
             android:ems="1"
             android:fontFamily="@font/bold"
             android:gravity="center"
-            android:textSize="24dp" />
+            android:textSize="24dp"
+            android:visibility="gone"/>
 
         <TextView
             android:id="@+id/hint4"
@@ -167,7 +170,8 @@
             android:ems="1"
             android:fontFamily="@font/bold"
             android:gravity="center"
-            android:textSize="24dp" />
+            android:textSize="24dp"
+            android:visibility="gone"/>
 
         <ImageView
             android:id="@+id/speakHint"

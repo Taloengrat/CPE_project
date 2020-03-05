@@ -299,41 +299,59 @@ public class PlayPage extends AppCompatActivity {
             case "0:30":
                 timeDevide = 30;
                 break;
-            case "0:35": timeDevide = 35;
+            case "0:35":
+                timeDevide = 35;
                 break;
-            case "0:40": timeDevide = 40;
+            case "0:40":
+                timeDevide = 40;
                 break;
-            case "0:45":timeDevide = 45;
+            case "0:45":
+                timeDevide = 45;
                 break;
-            case "0:50":timeDevide = 50;
+            case "0:50":
+                timeDevide = 50;
                 break;
-            case "0:55":timeDevide = 55;
+            case "0:55":
+                timeDevide = 55;
                 break;
-            case "1:00":timeDevide = 60;
+            case "1:00":
+                timeDevide = 60;
                 break;
-            case "1:05":timeDevide = 65;
+            case "1:05":
+                timeDevide = 65;
                 break;
-            case "1:10":timeDevide = 70;
+            case "1:10":
+                timeDevide = 70;
                 break;
-            case "1:15":timeDevide = 75;
+            case "1:15":
+                timeDevide = 75;
                 break;
-            case "1:20":timeDevide = 80;
+            case "1:20":
+                timeDevide = 80;
                 break;
-            case "1:25":timeDevide = 85;
+            case "1:25":
+                timeDevide = 85;
                 break;
-            case "1:30":timeDevide = 90;
+            case "1:30":
+                timeDevide = 90;
                 break;
-            case "1:35":timeDevide = 95;
+            case "1:35":
+                timeDevide = 95;
                 break;
-            case "1:40":timeDevide = 100;
+            case "1:40":
+                timeDevide = 100;
                 break;
-            case "1:45":timeDevide = 105;
+            case "1:45":
+                timeDevide = 105;
                 break;
-            case "1:50":timeDevide = 110;
+            case "1:50":
+                timeDevide = 110;
                 break;
-            case "1:55":timeDevide = 115;
+            case "1:55":
+                timeDevide = 115;
                 break;
-            case "2:00":timeDevide = 120;
+            case "2:00":
+                timeDevide = 120;
                 break;
             default:
                 Toast.makeText(getApplicationContext(), "getTimeDeduction Error", Toast.LENGTH_LONG).show();
@@ -348,25 +366,39 @@ public class PlayPage extends AppCompatActivity {
                 frameHint.setVisibility(View.VISIBLE);
                 switch (numHint) {
                     case 1:
-                        hint2.setVisibility(View.GONE);
-                        hint3.setVisibility(View.GONE);
-                        hint4.setVisibility(View.GONE);
+
+
+                        h1 = true;
+
+
+//                        hint2.setVisibility(View.GONE);
+//                        hint3.setVisibility(View.GONE);
+//                        hint4.setVisibility(View.GONE);
                         break;
                     case 2:
-                        hint3.setVisibility(View.GONE);
-                        hint4.setVisibility(View.GONE);
+                        h1 = true;
+                        h2 = true;
+//                        hint3.setVisibility(View.GONE);
+//                        hint4.setVisibility(View.GONE);
                         break;
                     case 3:
-                        hint1.setVisibility(View.VISIBLE);
-                        hint2.setVisibility(View.VISIBLE);
-                        hint3.setVisibility(View.VISIBLE);
-                        hint4.setVisibility(View.GONE);
+                        h1 = true;
+                        h2 = true;
+                        h3 = true;
+//                        hint1.setVisibility(View.VISIBLE);
+//                        hint2.setVisibility(View.VISIBLE);
+//                        hint3.setVisibility(View.VISIBLE);
+//                        hint4.setVisibility(View.GONE);
                         break;
                     case 4:
-                        hint1.setVisibility(View.VISIBLE);
-                        hint2.setVisibility(View.VISIBLE);
-                        hint3.setVisibility(View.VISIBLE);
-                        hint4.setVisibility(View.VISIBLE);
+                        h1 = true;
+                        h2 = true;
+                        h3 = true;
+                        h4 = true;
+//                        hint1.setVisibility(View.VISIBLE);
+//                        hint2.setVisibility(View.VISIBLE);
+//                        hint3.setVisibility(View.VISIBLE);
+//                        hint4.setVisibility(View.VISIBLE);
 
                 }
 
@@ -375,6 +407,36 @@ public class PlayPage extends AppCompatActivity {
             }
         }
     };
+
+    public void ChangeSameHint(View view,String dataaa,int number){
+
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Dialog dialog = new Dialog(PlayPage.this);
+                dialog.getWindow().setBackgroundDrawableResource(R.drawable.frameline);
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                dialog.setContentView(R.layout.dialog_hint);
+                dialog.setCancelable(true);
+
+                TextView data = dialog.findViewById(R.id.dataHint);
+                TextView head = dialog.findViewById(R.id.txHeadHint);
+
+                Button ok = dialog.findViewById(R.id.btOkkkkkk);
+                head.setText("Hint number : "+number);
+                data.setText(dataaa);
+
+                ok.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+
+
+            }
+        });
+    }
 
     View.OnClickListener hintOne = new View.OnClickListener() {
         @Override
@@ -388,21 +450,29 @@ public class PlayPage extends AppCompatActivity {
             TextView data = dialog.findViewById(R.id.dataHint);
             TextView head = dialog.findViewById(R.id.txHeadHint);
 
+            Button ok = dialog.findViewById(R.id.btOkkkkkk);
+
+            ok.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                }
+            });
+
             head.setText("Hint number : 1");
 
-            checkSpeakHint += 1;
-            h1 = true;
 
-            if (checkSpeakHint == HintString.length) {
-                speakHint.setVisibility(View.VISIBLE);
-                speakHint.setOnClickListener(clickSpeakHintEnd);
+
+            if (h2 || h1) {
+                hint2.setVisibility(View.VISIBLE);
+
+                hint1.setVisibility(View.VISIBLE);
+                hint1.setBackgroundResource(R.drawable.elevetorcircle_used);
+                data.setText(HintString[0]);
             } else {
-                speakHint.setVisibility(View.GONE);
+                hint1.setBackgroundResource(R.drawable.elevetorcircle_used);
+                data.setText(HintString[0]);
             }
-
-            hint1.setBackgroundResource(R.drawable.elevetorcircle_used);
-            data.setText(HintString[0]);
-
 
             dialog.show();
         }
@@ -420,29 +490,37 @@ public class PlayPage extends AppCompatActivity {
             final TextView data = dialog.findViewById(R.id.dataHint);
             TextView head = dialog.findViewById(R.id.txHeadHint);
 
+            Button ok = dialog.findViewById(R.id.btOkkkkkk);
+
+            ok.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                }
+            });
+
+
             head.setText("Hint number : 2");
 
 
-            if (h1) {
+            if (h3) {
+
+                hint3.setVisibility(View.VISIBLE);
+
+
                 hint2.setBackgroundResource(R.drawable.elevetorcircle_used);
-
-                checkSpeakHint += 1;
-                h2 = true;
-
-                if (checkSpeakHint == HintString.length) {
-                    speakHint.setVisibility(View.VISIBLE);
-                } else {
-                    speakHint.setVisibility(View.GONE);
-                }
-
                 data.setText(HintString[1]);
-
                 hint1.setOnClickListener(hintTwo);
 
-                dialog.show();
+            } else {
+
+                hint2.setBackgroundResource(R.drawable.elevetorcircle_used);
+                data.setText(HintString[1]);
+                hint1.setOnClickListener(hintTwo);
+
             }
 
-
+            dialog.show();
         }
     };
 
@@ -459,30 +537,33 @@ public class PlayPage extends AppCompatActivity {
             final TextView data = dialog.findViewById(R.id.dataHint);
             TextView head = dialog.findViewById(R.id.txHeadHint);
 
+            Button ok = dialog.findViewById(R.id.btOkkkkkk);
+
+            ok.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                }
+            });
+
+
             head.setText("Hint number : 3");
 
-            if (h2) {
+            if (h4) {
+
+                hint4.setVisibility(View.VISIBLE);
+
                 hint3.setBackgroundResource(R.drawable.elevetorcircle_used);
-
-                checkSpeakHint += 1;
-                h3 = true;
-
-                if (checkSpeakHint == HintString.length) {
-                    speakHint.setVisibility(View.VISIBLE);
-                } else {
-                    speakHint.setVisibility(View.GONE);
-                }
-
                 data.setText(HintString[2]);
-
-                hint1.setOnClickListener(hintThree);
                 hint2.setOnClickListener(hintThree);
 
-                dialog.show();
-
+            }else{
+                hint3.setBackgroundResource(R.drawable.elevetorcircle_used);
+                data.setText(HintString[2]);
+                hint2.setOnClickListener(hintThree);
             }
 
-
+            dialog.show();
         }
     };
 
@@ -498,33 +579,26 @@ public class PlayPage extends AppCompatActivity {
             final TextView data = dialog.findViewById(R.id.dataHint);
             TextView head = dialog.findViewById(R.id.txHeadHint);
 
+            Button ok = dialog.findViewById(R.id.btOkkkkkk);
+
+            ok.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                }
+            });
+
+
             head.setText("Hint number : 4");
 
-            if (h3) {
+
                 hint4.setBackgroundResource(R.drawable.elevetorcircle_used);
-
-                checkSpeakHint += 1;
-
-                h4 = true;
-
-                if (checkSpeakHint == HintString.length) {
-
-                    speakHint.setVisibility(View.VISIBLE);
-                } else {
-                    speakHint.setVisibility(View.GONE);
-                }
-
                 data.setText(HintString[3]);
-
-                hint1.setOnClickListener(hintFour);
-                hint2.setOnClickListener(hintFour);
-                hint3.setOnClickListener(hintFour);
+            hint3.setOnClickListener(hintThree);
 
                 dialog.show();
             }
 
-
-        }
     };
 
 
@@ -1204,8 +1278,6 @@ public class PlayPage extends AppCompatActivity {
             if (frameHint.getVisibility() == View.VISIBLE) {
 
 
-                Toast.makeText(getApplicationContext(), "เก็บแล้ว", Toast.LENGTH_LONG).show();
-
                 frameHint.setVisibility(View.GONE);
 
             }
@@ -1232,10 +1304,6 @@ public class PlayPage extends AppCompatActivity {
 
                 Answer.setText("");
                 Answer.setVisibility(View.INVISIBLE);
-
-//                    changeHint(numHint); //เปลี่ยนจำนวนของ Hint
-
-
                 textclock.setTextSize(32);
 
                 recogni.setVisibility(View.VISIBLE);
@@ -1258,7 +1326,6 @@ public class PlayPage extends AppCompatActivity {
 
                     confirm.setVisibility(View.GONE);
 
-
                 }
 
                 hint1.setOnClickListener(hintOne);
@@ -1271,10 +1338,8 @@ public class PlayPage extends AppCompatActivity {
                 h3 = false;
                 h4 = false;
 
-                hint1.setBackgroundResource(R.drawable.elevetorcircle);
-                hint2.setBackgroundResource(R.drawable.elevetorcircle);
-                hint3.setBackgroundResource(R.drawable.elevetorcircle);
-                hint4.setBackgroundResource(R.drawable.elevetorcircle);
+                ReHintVisibility();
+
 
                 startTimer();
             }
@@ -1317,5 +1382,25 @@ public class PlayPage extends AppCompatActivity {
     private List<Member> getDataMember(int id) {
         return MissionDATABASE.getInstance(PlayPage.this).missionDAO().getAllinfoOfMember(id);
     }
+
+
+    public void ReHintVisibility(){
+        if (hint2.getVisibility() == View.VISIBLE){
+            hint2.setVisibility(View.GONE);
+        }
+
+        if (hint3.getVisibility() == View.VISIBLE){
+            hint3.setVisibility(View.GONE);
+        }
+
+        if (hint3.getVisibility() == View.VISIBLE){
+            hint3.setVisibility(View.GONE);
+        }
+        hint1.setBackgroundResource(R.drawable.elevetorcircle);
+        hint2.setBackgroundResource(R.drawable.elevetorcircle);
+        hint3.setBackgroundResource(R.drawable.elevetorcircle);
+        hint4.setBackgroundResource(R.drawable.elevetorcircle);
+    }
+
 
 }
