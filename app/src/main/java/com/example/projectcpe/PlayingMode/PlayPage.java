@@ -61,7 +61,7 @@ import java.util.TimerTask;
 
 public class PlayPage extends AppCompatActivity {
 
-    int cloneSec = 0;
+    int cloneSec = 0,timeQuiz=0;
     private int ms;
     private int seconds;
     private int minutes;
@@ -247,6 +247,7 @@ public class PlayPage extends AppCompatActivity {
         textclock.setText(missionList.get(0).getTime());
         switch (missionList.get(0).getTime()) {
             case "1:00":
+                timeQuiz = 60;
                 cloneSec = 60;
                 seconds = 60;
                 minutes = 0;
@@ -254,36 +255,42 @@ public class PlayPage extends AppCompatActivity {
 
                 break;
             case "1:10":
+                timeQuiz = 70;
                 cloneSec = 70;
                 seconds = 10;
                 minutes = 1;
 
                 break;
             case "1:20":
+                timeQuiz = 80;
                 cloneSec = 80;
                 seconds = 20;
                 minutes = 1;
 
                 break;
             case "1:30":
+                timeQuiz = 90;
                 cloneSec = 90;
                 seconds = 30;
                 minutes = 1;
 
                 break;
             case "1:40":
+                timeQuiz = 100;
                 cloneSec = 100;
                 seconds = 40;
                 minutes = 1;
 
                 break;
             case "1:50":
+                timeQuiz = 110;
                 cloneSec = 110;
                 seconds = 50;
                 minutes = 1;
 
                 break;
             case "2:00":
+                timeQuiz = 120;
                 cloneSec = 120;
                 seconds = 0;
                 minutes = 2;
@@ -808,10 +815,10 @@ public class PlayPage extends AppCompatActivity {
             float answerScore = Score * oneAnswerStep;                // จำนวนคะแนน คูณด้วยอัตราส่วน จะได้คะแนนของแต่ละ Step
 
             // Time Score 20%
-            float timeFinish = Float.valueOf(seconds);
+            float timeFinish = Float.valueOf(cloneSec);
 
             float percenTimeStep = 20.0f / stepnum;
-            float oneTimeStep = percenTimeStep / timeDevide;
+            float oneTimeStep = percenTimeStep / timeQuiz;
             float timeScore = 0;
 
             if (timeFinish >= timeDevide) {
@@ -844,19 +851,19 @@ public class PlayPage extends AppCompatActivity {
 
 //            Log.e("percenAnswerStep", String.valueOf(percenAnswerStep));
 //            Log.e("oneAnswerStep", String.valueOf(oneAnswerStep));
-//            Log.e("answerScore", String.valueOf(answerScore));
+            Log.e("answerScore", String.valueOf(answerScore));
 
 //            Log.e("textclock", timeclock);
 
 //            Log.e("percenHintStep", String.valueOf(percenHintStep));
 //            Log.e("oneHintStep", String.valueOf(oneHintStep));
-//            Log.e("hintScore", String.valueOf(hintScore));
+            Log.e("hintScore", String.valueOf(hintScore));
 
 
             Log.e("timeFinish", String.valueOf(timeFinish));
-            Log.e("timeScore", String.valueOf(timeScore));
+            Log.e("oneTimeStep", String.valueOf(oneTimeStep));
             Log.e("timeDevide", String.valueOf(timeDevide));
-
+            Log.e("timeScore", String.valueOf(timeScore));
 
             float newSumScore = answerScore + hintScore + timeScore;
 //            Log.e("newSumScore", String.valueOf(newSumScore));
