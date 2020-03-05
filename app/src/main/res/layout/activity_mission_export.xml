@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:title="Export Mission"
-        android:background="@drawable/bgtoolbar"
+        android:background="@drawable/bgtoolbarplay"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"

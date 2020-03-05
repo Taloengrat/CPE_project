@@ -20,34 +20,13 @@
         app:layout_constraintTop_toTopOf="parent"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:title="Import On googledrive"
-        android:background="@drawable/bgtoolbar"
+        android:background="@drawable/bgtoolbarplay"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         app:subtitleTextAppearance="@font/bold"/>
 
-    <TextView
-        android:id="@+id/Nameeee"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/bold"
-        android:text="username"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageUser"
-        app:layout_constraintStart_toEndOf="@+id/imageUser"
-        app:layout_constraintTop_toTopOf="@+id/imageUser" />
 
-    <ImageView
-        android:id="@+id/imageUser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:srcCompat="@drawable/accout_statistic" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
@@ -60,6 +39,42 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Nameeee" />
+
+    <TextView
+        android:id="@+id/Nameeee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/bold"
+        android:text="username"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="@+id/imageUser"
+        app:layout_constraintStart_toStartOf="@+id/imageUser"
         app:layout_constraintTop_toBottomOf="@+id/imageUser" />
+
+    <ImageView
+        android:id="@+id/imageUser"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@drawable/elevetorcircle"
+        android:padding="14dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:srcCompat="@drawable/google" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:padding="10dp"
+        app:srcCompat="@drawable/iconimport"
+        app:layout_constraintCircle="@id/imageUser"
+        app:layout_constraintCircleAngle="120"
+        app:layout_constraintCircleRadius="40dp"
+        android:background="@drawable/elevator_white_circle"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
