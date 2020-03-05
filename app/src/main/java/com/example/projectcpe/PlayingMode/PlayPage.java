@@ -463,7 +463,7 @@ public class PlayPage extends AppCompatActivity {
 
 
 
-            if (h2 || h1) {
+            if (h2) {
                 hint2.setVisibility(View.VISIBLE);
 
                 hint1.setVisibility(View.VISIBLE);
@@ -572,7 +572,7 @@ public class PlayPage extends AppCompatActivity {
         public void onClick(View view) {
             final Dialog dialog = new Dialog(PlayPage.this);
             dialog.getWindow().setBackgroundDrawableResource(R.drawable.frameline);
-            dialog.requestWindowFeature(Window.FEATURE_LEFT_ICON);
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
             dialog.setContentView(R.layout.dialog_hint);
             dialog.setCancelable(true);
 
@@ -790,6 +790,15 @@ public class PlayPage extends AppCompatActivity {
                 case 6:
                     Score = Float.valueOf(ScoreString[6]);
                     break;
+                case 7:
+                    Score = Float.valueOf(ScoreString[7]);
+
+                    break;
+                case 8:
+                    Score = Float.valueOf(ScoreString[8]);
+                    break;
+
+                    default : Score = Float.valueOf(ScoreString[5]);
 
             }
 
@@ -1290,9 +1299,9 @@ public class PlayPage extends AppCompatActivity {
                 i.putExtra("memberId", memberId);
                 i.putExtra("scoreStep", scoreStep);
                 i.putExtra("scoreWrongStep", scoreWrongStep);
-                startActivity(i);
-//                MediaPlayer.create(PlayPage.this, R.raw.timeout).stop(); /// stop sound timeout
                 stopTimer();
+                startActivity(i);
+//                MediaPlayer.create(PlayPage.this, R.raw.timeout).stop(); /// stop sound timeou
                 finish();
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             } else {
@@ -1385,6 +1394,8 @@ public class PlayPage extends AppCompatActivity {
 
 
     public void ReHintVisibility(){
+
+
         if (hint2.getVisibility() == View.VISIBLE){
             hint2.setVisibility(View.GONE);
         }
@@ -1393,9 +1404,10 @@ public class PlayPage extends AppCompatActivity {
             hint3.setVisibility(View.GONE);
         }
 
-        if (hint3.getVisibility() == View.VISIBLE){
-            hint3.setVisibility(View.GONE);
+        if (hint4.getVisibility() == View.VISIBLE){
+            hint4.setVisibility(View.GONE);
         }
+
         hint1.setBackgroundResource(R.drawable.elevetorcircle);
         hint2.setBackgroundResource(R.drawable.elevetorcircle);
         hint3.setBackgroundResource(R.drawable.elevetorcircle);
