@@ -61,7 +61,7 @@ import java.util.TimerTask;
 
 public class PlayPage extends AppCompatActivity {
 
-    int cloneSec = 0,timeQuiz=0;
+    int cloneSec = 0, timeQuiz = 0;
     private int ms;
     private int seconds;
     private int minutes;
@@ -416,7 +416,7 @@ public class PlayPage extends AppCompatActivity {
         }
     };
 
-    public void ChangeSameHint(View view,String dataaa,int number){
+    public void ChangeSameHint(View view, String dataaa, int number) {
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -431,7 +431,7 @@ public class PlayPage extends AppCompatActivity {
                 TextView head = dialog.findViewById(R.id.txHeadHint);
 
                 Button ok = dialog.findViewById(R.id.btOkkkkkk);
-                head.setText("Hint number : "+number);
+                head.setText("Hint number : " + number);
                 data.setText(dataaa);
 
                 ok.setOnClickListener(new View.OnClickListener() {
@@ -566,11 +566,14 @@ public class PlayPage extends AppCompatActivity {
 
                 hint3.setBackgroundResource(R.drawable.elevetorcircle_used);
                 data.setText(HintString[2]);
+                hint1.setOnClickListener(hintThree);
                 hint2.setOnClickListener(hintThree);
 
-            }else{
+            } else {
                 hint3.setBackgroundResource(R.drawable.elevetorcircle_used);
                 data.setText(HintString[2]);
+
+                hint1.setOnClickListener(hintThree);
                 hint2.setOnClickListener(hintThree);
             }
 
@@ -603,13 +606,15 @@ public class PlayPage extends AppCompatActivity {
             head.setText("Hint number : 4");
 
 
-                hint4.setBackgroundResource(R.drawable.elevetorcircle_used);
-                data.setText(HintString[3]);
-            hint3.setOnClickListener(hintThree);
+            hint4.setBackgroundResource(R.drawable.elevetorcircle_used);
+            data.setText(HintString[3]);
+            hint1.setOnClickListener(hintFour);
+            hint2.setOnClickListener(hintFour);
+            hint3.setOnClickListener(hintFour);
             h4 = true;
 
-                dialog.show();
-            }
+            dialog.show();
+        }
 
     };
 
@@ -810,7 +815,8 @@ public class PlayPage extends AppCompatActivity {
                     Score = Float.valueOf(ScoreString[8]);
                     break;
 
-                    default : Score = 5.0f;
+                default:
+                    Score = 5.0f;
 
             }
 
@@ -841,16 +847,16 @@ public class PlayPage extends AppCompatActivity {
 
             if (h1 == true && h2 == false && h3 == false && h4 == false) {
                 hintScore = percenHintStep - oneHintStep;
-                Log.e("h1","true");
+                Log.e("h1", "true");
             } else if (h1 == true && h2 == true && h3 == false && h4 == false) {
                 hintScore = percenHintStep - (oneHintStep * 2);
-                Log.e("h2","true");
+                Log.e("h2", "true");
             } else if (h1 == true && h2 == true && h3 == true && h4 == false) {
                 hintScore = percenHintStep - (oneHintStep * 3);
-                Log.e("h3","true");
+                Log.e("h3", "true");
             } else if (h1 == true && h2 == true && h3 == true && h4 == true) {
                 hintScore = percenHintStep - (oneHintStep * 4);
-                Log.e("h4","true");
+                Log.e("h4", "true");
             } else {
                 hintScore = percenHintStep;
             }
@@ -1416,18 +1422,18 @@ public class PlayPage extends AppCompatActivity {
     }
 
 
-    public void ReHintVisibility(){
+    public void ReHintVisibility() {
 
 
-        if (hint2.getVisibility() == View.VISIBLE){
+        if (hint2.getVisibility() == View.VISIBLE) {
             hint2.setVisibility(View.GONE);
         }
 
-        if (hint3.getVisibility() == View.VISIBLE){
+        if (hint3.getVisibility() == View.VISIBLE) {
             hint3.setVisibility(View.GONE);
         }
 
-        if (hint4.getVisibility() == View.VISIBLE){
+        if (hint4.getVisibility() == View.VISIBLE) {
             hint4.setVisibility(View.GONE);
         }
 
