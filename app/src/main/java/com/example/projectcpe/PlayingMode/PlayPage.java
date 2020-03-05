@@ -818,7 +818,7 @@ public class PlayPage extends AppCompatActivity {
             float timeFinish = Float.valueOf(cloneSec);
 
             float percenTimeStep = 20.0f / stepnum;
-            float oneTimeStep = percenTimeStep / timeQuiz;
+            float oneTimeStep = percenTimeStep / timeDevide;
             float timeScore = 0;
 
             if (timeFinish >= timeDevide) {
@@ -863,6 +863,7 @@ public class PlayPage extends AppCompatActivity {
             Log.e("timeFinish", String.valueOf(timeFinish));
             Log.e("oneTimeStep", String.valueOf(oneTimeStep));
             Log.e("timeDevide", String.valueOf(timeDevide));
+            Log.e("timeQuiz", String.valueOf(timeQuiz));
             Log.e("timeScore", String.valueOf(timeScore));
 
             float newSumScore = answerScore + hintScore + timeScore;
@@ -878,8 +879,8 @@ public class PlayPage extends AppCompatActivity {
             scoreWrongStep[numberStep] = String.valueOf(countWrong);
 
 
-            Log.e("countWrong", String.valueOf(countWrong));
-            Log.e("scoreWrongStep", Arrays.toString(scoreWrongStep));
+//            Log.e("countWrong", String.valueOf(countWrong));
+//            Log.e("scoreWrongStep", Arrays.toString(scoreWrongStep));
             Log.e("scoreStep", Arrays.toString(scoreStep));
 
             numberStep++;
