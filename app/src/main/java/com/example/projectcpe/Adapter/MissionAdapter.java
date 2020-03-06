@@ -104,7 +104,7 @@ public class MissionAdapter extends RecyclerView.Adapter<MissionAdapter.MissionV
 
 
         }
-
+///
 
         @Override
         public boolean onLongClick(View v) {
