@@ -77,7 +77,7 @@ import java.util.Map;
 import java.util.UUID;
 
 
-public class ImportOnGoogledrive extends AppCompatActivity implements MissionAdapter.OnCustomerItemClick, MissionAdapter.OnCustomerItemLongClick {
+public class ImportOnGoogledrive extends AppCompatActivity implements MissionAdapter.OnCustomerItemClick{
 
 
     FirebaseAuth mAuth;
@@ -205,11 +205,11 @@ public class ImportOnGoogledrive extends AppCompatActivity implements MissionAda
         new Thread(runnable).start();
 
     }
-
-    @Override
-    public void onCustomerLongClick(int pos, Mission missionList) {
-        Toast.makeText(getApplicationContext(), "OnLongClick", Toast.LENGTH_LONG).show();
-    }
+//
+//    @Override
+//    public void onCustomerLongClick(int pos, Mission missionList) {
+//        Toast.makeText(getApplicationContext(), "OnLongClick", Toast.LENGTH_LONG).show();
+//    }
 
 
     class ExampleRunnable implements Runnable {

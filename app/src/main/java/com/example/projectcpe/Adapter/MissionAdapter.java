@@ -34,7 +34,7 @@ public class MissionAdapter extends RecyclerView.Adapter<MissionAdapter.MissionV
         this.missionList = c;
         this.mCtx = ctx;
         this.onCustomerItemClick = (OnCustomerItemClick) ctx;
-        this.onCustomerItemLongClick = (OnCustomerItemLongClick) ctx;
+//        this.onCustomerItemLongClick = (OnCustomerItemLongClick) ctx;
     }
 
 
