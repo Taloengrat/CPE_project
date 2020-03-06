@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
     EditText _etPass;
     ImageView imMedium;
     Button _btBegin;
-    boolean box1=true, box2=true, box3=true, box4=true, box5=true;
+    boolean box1=true, box2=true, box3=true, box4=true, box5=true, box6=true;
 
     private int ms = 0;
     private int seconds = 0;
@@ -184,17 +184,25 @@ public class MainActivity extends AppCompatActivity {
                             file1.mkdirs();
                         }
 
+                        String directory_path3 = Environment.getExternalStorageDirectory().getPath() + "/EnglishPractice/Animal";
+                        File file3 = new File(directory_path3);
+                        if (!file3.exists()) {
+                            file3.mkdirs();
+                        }
+
+                        String directory_path6 = Environment.getExternalStorageDirectory().getPath() + "/EnglishPractice/Career";
+                        File file6 = new File(directory_path6);
+                        if (!file6.exists()) {
+                            file6.mkdirs();
+                        }
+
                         String directory_path2 = Environment.getExternalStorageDirectory().getPath() + "/EnglishPractice/SayHello";
                         File file2 = new File(directory_path2);
                         if (!file2.exists()) {
                             file2.mkdirs();
                         }
 
-                        String directory_path3 = Environment.getExternalStorageDirectory().getPath() + "/EnglishPractice/Animal";
-                        File file3 = new File(directory_path3);
-                        if (!file3.exists()) {
-                            file3.mkdirs();
-                        }
+
 
                         String directory_path4 = Environment.getExternalStorageDirectory().getPath() + "/EnglishPractice/WhyJamieSad";
                         File file4 = new File(directory_path4);
@@ -285,6 +293,122 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void CreateMissionZoo() {
+
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.z1)).getBitmap(), "picture1", "Animal");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.z2)).getBitmap(), "picture2", "Animal");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.z3)).getBitmap(), "picture3", "Animal");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.z4)).getBitmap(), "picture4", "Animal");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.z5)).getBitmap(), "picture5", "Animal");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.z6)).getBitmap(), "picture6", "Animal");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.z7)).getBitmap(), "picture7", "Animal");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.z8)).getBitmap(), "picture8", "Animal");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.z9)).getBitmap(), "picture9", "Animal");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.z10)).getBitmap(), "picture10", "Animal");
+
+        Mission mission3 = new Mission("Animal", "Various animals", 9, 10
+                , directory_path + "Animal" + "/picture1.jpg", directory_path + "Animal" + "/picture2.jpg", directory_path + "Animal" + "/picture3.jpg", directory_path + "Animal" + "/picture4.jpg", directory_path + "Animal" + "/picture5.jpg", directory_path + "Animal" + "/picture6.jpg", directory_path + "Animal" + "/picture7.jpg", directory_path + "Animal" + "/picture8.jpg", directory_path + "Animal" + "/picture9.jpg", directory_path + "Animal" + "/picture10.jpg"
+                , getResources().getString(R.string.q3_1), getResources().getString(R.string.q3_2), getResources().getString(R.string.q3_3), getResources().getString(R.string.q3_4), getResources().getString(R.string.q3_5)
+                , getResources().getString(R.string.q3_6), getResources().getString(R.string.q3_7), getResources().getString(R.string.q3_8)
+                , getResources().getString(R.string.q3_9), getResources().getString(R.string.q3_10)
+                , getResources().getString(R.string.a3_1).trim(), getResources().getString(R.string.a3_2).trim(), getResources().getString(R.string.a3_3).trim()
+                , getResources().getString(R.string.a3_4).trim(), getResources().getString(R.string.a3_5).trim()
+                , getResources().getString(R.string.a3_6).trim(), getResources().getString(R.string.a3_7).trim(), getResources().getString(R.string.a3_8).trim()
+                , getResources().getString(R.string.a3_9).trim(), getResources().getString(R.string.a3_10).trim()
+
+                , "10/7".trim(), "10/7".trim(), getResources().getString(R.string.s3_3).trim()
+                , getResources().getString(R.string.s3_4).trim(), getResources().getString(R.string.s3_5).trim(), getResources().getString(R.string.s3_6).trim()
+                , getResources().getString(R.string.s3_7).trim(), getResources().getString(R.string.s3_8).trim(), getResources().getString(R.string.s3_9).trim()
+                , getResources().getString(R.string.s3_10).trim()
+
+                , getResources().getString(R.string.h3_1).trim(), getResources().getString(R.string.h3_2).trim(), getResources().getString(R.string.h3_3).trim()
+                , getResources().getString(R.string.h3_4).trim(), getResources().getString(R.string.h3_5).trim(), getResources().getString(R.string.h3_6).trim()
+                , getResources().getString(R.string.h3_7).trim(), getResources().getString(R.string.h3_8).trim(), getResources().getString(R.string.h3_9).trim()
+                , getResources().getString(R.string.h3_10).trim());
+
+        mission3.setTime("1:00");
+        mission3.setTimeDeduction("0:30");
+        MissionDATABASE.getInstance(MainActivity.this).missionDAO().create(mission3);
+
+
+    }
+
+    private void CreateMissionCareer() {
+
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c1)).getBitmap(), "picture1", "Career");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c2)).getBitmap(), "picture2", "Career");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c3)).getBitmap(), "picture3", "Career");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c4)).getBitmap(), "picture4", "Career");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c5)).getBitmap(), "picture5", "Career");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c6)).getBitmap(), "picture6", "Career");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c7)).getBitmap(), "picture7", "Career");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c8)).getBitmap(), "picture8", "Career");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c9)).getBitmap(), "picture9", "Career");
+        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c10)).getBitmap(), "picture10", "Career");
+
+        Mission mission3 = new Mission("Career", "Various Career.", 9, 10
+                , directory_path + "Career" + "/picture1.jpg"
+                , directory_path + "Career" + "/picture2.jpg"
+                , directory_path + "Career" + "/picture3.jpg"
+                , directory_path + "Career" + "/picture4.jpg"
+                , directory_path + "Career" + "/picture5.jpg"
+                , directory_path + "Career" + "/picture6.jpg"
+                , directory_path + "Career" + "/picture7.jpg"
+                , directory_path + "Career" + "/picture8.jpg"
+                , directory_path + "Career" + "/picture9.jpg"
+                , directory_path + "Career" + "/picture10.jpg"
+
+                , getResources().getString(R.string.q4_1)
+                , getResources().getString(R.string.q4_2)
+                , getResources().getString(R.string.q4_3)
+                , getResources().getString(R.string.q4_4)
+                , getResources().getString(R.string.q4_5)
+                , getResources().getString(R.string.q4_6)
+                , getResources().getString(R.string.q4_7)
+                , getResources().getString(R.string.q4_8)
+                , getResources().getString(R.string.q4_9)
+                , getResources().getString(R.string.q4_10)
+
+                , getResources().getString(R.string.a4_1).trim()
+                , getResources().getString(R.string.a4_2).trim()
+                , getResources().getString(R.string.a4_3).trim()
+                , getResources().getString(R.string.a4_4).trim()
+                , getResources().getString(R.string.a4_5).trim()
+                , getResources().getString(R.string.a4_6).trim()
+                , getResources().getString(R.string.a4_7).trim()
+                , getResources().getString(R.string.a4_8).trim()
+                , getResources().getString(R.string.a4_9).trim()
+                , getResources().getString(R.string.a4_10).trim()
+
+                , getResources().getString(R.string.s4_1).trim()
+                , getResources().getString(R.string.s4_2).trim()
+                , getResources().getString(R.string.s4_3).trim()
+                , getResources().getString(R.string.s4_4).trim()
+                , getResources().getString(R.string.s4_5).trim()
+                , getResources().getString(R.string.s4_6).trim()
+                , getResources().getString(R.string.s4_7).trim()
+                , getResources().getString(R.string.s4_8).trim()
+                , getResources().getString(R.string.s4_9).trim()
+                , getResources().getString(R.string.s4_10).trim()
+
+                , getResources().getString(R.string.h4_1).trim()
+                , getResources().getString(R.string.h4_2).trim()
+                , getResources().getString(R.string.h4_3).trim()
+                , getResources().getString(R.string.h4_4).trim()
+                , getResources().getString(R.string.h4_5).trim()
+                , getResources().getString(R.string.h4_6).trim()
+                , getResources().getString(R.string.h4_7).trim()
+                , getResources().getString(R.string.h4_8).trim()
+                , getResources().getString(R.string.h4_9).trim()
+                , getResources().getString(R.string.h4_10).trim());
+
+        mission3.setTime("1:00");
+        mission3.setTimeDeduction("0:30");
+        MissionDATABASE.getInstance(MainActivity.this).missionDAO().create(mission3);
+
+
+    }
+
     private void CreateMissionTwo() {
 
 
@@ -329,47 +453,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void CreateMissionZoo() {
-
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.z1)).getBitmap(), "picture1", "Animal");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.z2)).getBitmap(), "picture2", "Animal");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.z3)).getBitmap(), "picture3", "Animal");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.z4)).getBitmap(), "picture4", "Animal");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.z5)).getBitmap(), "picture5", "Animal");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.z6)).getBitmap(), "picture6", "Animal");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.z7)).getBitmap(), "picture7", "Animal");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.z8)).getBitmap(), "picture8", "Animal");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.z9)).getBitmap(), "picture9", "Animal");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.z10)).getBitmap(), "picture10", "Animal");
-
-        Mission mission3 = new Mission("Animal", "Various animals", 9, 10
-                , directory_path + "Animal" + "/picture1.jpg", directory_path + "Animal" + "/picture2.jpg", directory_path + "Animal" + "/picture3.jpg", directory_path + "Animal" + "/picture4.jpg", directory_path + "Animal" + "/picture5.jpg", directory_path + "Animal" + "/picture6.jpg", directory_path + "Animal" + "/picture7.jpg", directory_path + "Animal" + "/picture8.jpg", directory_path + "Animal" + "/picture9.jpg", directory_path + "Animal" + "/picture10.jpg"
-                , getResources().getString(R.string.q3_1), getResources().getString(R.string.q3_2), getResources().getString(R.string.q3_3), getResources().getString(R.string.q3_4), getResources().getString(R.string.q3_5)
-                , getResources().getString(R.string.q3_6), getResources().getString(R.string.q3_7), getResources().getString(R.string.q3_8)
-                , getResources().getString(R.string.q3_9), getResources().getString(R.string.q3_10)
-                , getResources().getString(R.string.a3_1).trim(), getResources().getString(R.string.a3_2).trim(), getResources().getString(R.string.a3_3).trim()
-                , getResources().getString(R.string.a3_4).trim(), getResources().getString(R.string.a3_5).trim()
-                , getResources().getString(R.string.a3_6).trim(), getResources().getString(R.string.a3_7).trim(), getResources().getString(R.string.a3_8).trim()
-                , getResources().getString(R.string.a3_9).trim(), getResources().getString(R.string.a3_10).trim()
-
-                , "10/7".trim(), "10/7".trim(), getResources().getString(R.string.s3_3).trim()
-                , getResources().getString(R.string.s3_4).trim(), getResources().getString(R.string.s3_5).trim(), getResources().getString(R.string.s3_6).trim()
-                , getResources().getString(R.string.s3_7).trim(), getResources().getString(R.string.s3_8).trim(), getResources().getString(R.string.s3_9).trim()
-                , getResources().getString(R.string.s3_10).trim()
-
-                , getResources().getString(R.string.h3_1).trim(), getResources().getString(R.string.h3_2).trim(), getResources().getString(R.string.h3_3).trim()
-                , getResources().getString(R.string.h3_4).trim(), getResources().getString(R.string.h3_5).trim(), getResources().getString(R.string.h3_6).trim()
-                , getResources().getString(R.string.h3_7).trim(), getResources().getString(R.string.h3_8).trim(), getResources().getString(R.string.h3_9).trim()
-                , getResources().getString(R.string.h3_10).trim());
-
-        mission3.setTime("1:00");
-        mission3.setTimeDeduction("0:30");
-        MissionDATABASE.getInstance(MainActivity.this).missionDAO().create(mission3);
 
 
-    }
-
-    private void CreateMissionCareer() {
+    private void CreateMissionThree() {
 
         saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.m3_1)).getBitmap(), "picture1", "WhyJamieSad");
         saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.m3_2)).getBitmap(), "picture2", "WhyJamieSad");
@@ -378,7 +464,7 @@ public class MainActivity extends AppCompatActivity {
         saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.m3_5)).getBitmap(), "picture5", "WhyJamieSad");
         saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.m3_6)).getBitmap(), "picture6", "WhyJamieSad");
 
-        Mission mission = new Mission("WhyJamieSad", "Jamie's story", 9, 6
+        Mission mission = new Mission("WhyJamieSad", "Jamie's story", 12, 6
                 , directory_path + "WhyJamieSad" + "/picture1.jpg"
                 , directory_path + "WhyJamieSad" + "/picture2.jpg"
                 , directory_path + "WhyJamieSad" + "/picture3.jpg"
@@ -746,7 +832,6 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                 });
-
                 CreateMissionZoo();
 
 
@@ -755,13 +840,34 @@ public class MainActivity extends AppCompatActivity {
 
             }
 
-            if (box3) {
+            if (box6) {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
 
                         startTimer();
                         loadingDialog.setTitle("กำลังเตรียมแบบทดสอบที่ 3");
+
+
+                    }
+                });
+                CreateMissionCareer();
+
+
+
+
+                percent = 99;
+
+            }
+
+
+            if (box3) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        startTimer();
+                        loadingDialog.setTitle("กำลังเตรียมแบบทดสอบที่ 4");
 
 
                     }
@@ -777,12 +883,12 @@ public class MainActivity extends AppCompatActivity {
                     public void run() {
 
                         startTimer();
-                        loadingDialog.setTitle("กำลังเตรียมแบบทดสอบที่ 4");
+                        loadingDialog.setTitle("กำลังเตรียมแบบทดสอบที่ 5");
 
 
                     }
                 });
-                CreateMissionCareer();
+                CreateMissionThree();
 
                 percent = 99;
             }
@@ -792,7 +898,7 @@ public class MainActivity extends AppCompatActivity {
                     public void run() {
 
                         startTimer();
-                        loadingDialog.setTitle("กำลังเตรียมแบบทดสอบที่ 4");
+                        loadingDialog.setTitle("กำลังเตรียมแบบทดสอบที่ 6");
 
 
                     }
