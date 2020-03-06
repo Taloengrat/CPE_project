@@ -55,7 +55,7 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_centerHorizontal="true"
-                android:background="@drawable/elevetorcircle"
+                android:background="@drawable/elevator_white_circle"
                 android:padding="12dp"
                 app:srcCompat="@drawable/visual"
                 tools:ignore="VectorDrawableCompat" />
@@ -99,7 +99,7 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_centerHorizontal="true"
-                android:background="@drawable/elevetorcircle"
+                android:background="@drawable/elevator_white_circle"
                 android:padding="12dp"
                 app:srcCompat="@drawable/delete"
                 tools:ignore="VectorDrawableCompat" />
@@ -144,7 +144,7 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_centerHorizontal="true"
-                android:background="@drawable/elevetorcircle"
+                android:background="@drawable/elevator_white_circle"
                 android:padding="12dp"
                 app:srcCompat="@drawable/iconimport"
                 tools:ignore="VectorDrawableCompat" />
@@ -190,7 +190,7 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_centerHorizontal="true"
-                android:background="@drawable/elevetorcircle"
+                android:background="@drawable/elevator_white_circle"
                 android:padding="12dp"
                 app:srcCompat="@drawable/iconupload"
                 tools:ignore="VectorDrawableCompat" />
@@ -234,7 +234,7 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_centerHorizontal="true"
-                android:background="@drawable/elevetorcircle"
+                android:background="@drawable/elevator_white_circle"
                 android:padding="12dp"
                 app:srcCompat="@drawable/member"
                 tools:ignore="VectorDrawableCompat" />
@@ -279,7 +279,7 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_centerHorizontal="true"
-                android:background="@drawable/elevetorcircle"
+                android:background="@drawable/elevator_white_circle"
                 android:padding="12dp"
                 app:srcCompat="@drawable/password"
                 tools:ignore="VectorDrawableCompat" />

@@ -77,7 +77,7 @@ import java.util.Map;
 import java.util.UUID;
 
 
-public class ImportOnGoogledrive extends AppCompatActivity implements MissionAdapter.OnCustomerItemClick {
+public class ImportOnGoogledrive extends AppCompatActivity implements MissionAdapter.OnCustomerItemClick, MissionAdapter.OnCustomerItemLongClick {
 
 
     FirebaseAuth mAuth;
@@ -206,6 +206,12 @@ public class ImportOnGoogledrive extends AppCompatActivity implements MissionAda
 
     }
 
+    @Override
+    public void onCustomerLongClick(int pos, Mission missionList) {
+        Toast.makeText(getApplicationContext(), "OnLongClick", Toast.LENGTH_LONG).show();
+    }
+
+
     class ExampleRunnable implements Runnable {
 
 
@@ -216,10 +222,23 @@ public class ImportOnGoogledrive extends AppCompatActivity implements MissionAda
         @Override
         public void run() {
 
-            for (int i = 0; i < missionClone.getNumberofMission(); i++) {
+            if (MissionDATABASE.getInstance(ImportOnGoogledrive.this).missionDAO().CheckNameMission(missionClone.getMissionName()) == null){
+                for (int i = 0; i < missionClone.getNumberofMission(); i++) {
 
-                downloadFile(i + 1);
+                    downloadFile(i + 1);
+                }
+            }else{
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(ImportOnGoogledrive.this, "มีแบบทดสอบนี้อยู่แล้ว",Toast.LENGTH_LONG).show();
+                        progressDialog.dismiss();
+                    }
+                });
+
             }
+
+
 
 
         }
@@ -280,6 +299,8 @@ public class ImportOnGoogledrive extends AppCompatActivity implements MissionAda
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         Toast.makeText(getApplicationContext(), "ออกจากระบบแล้ว", Toast.LENGTH_LONG).show();
+
+
                     }
                 });
     }
@@ -767,5 +788,7 @@ public class ImportOnGoogledrive extends AppCompatActivity implements MissionAda
             }
         });
     }
+
+
 
 }

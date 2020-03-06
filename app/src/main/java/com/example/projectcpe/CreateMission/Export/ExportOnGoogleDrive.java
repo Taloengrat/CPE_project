@@ -455,6 +455,7 @@ public class ExportOnGoogleDrive extends AppCompatActivity implements MissionAda
                                                                     Toast.makeText(getApplicationContext(), "นำออกแบบทดสอบเสร็จเรียบร้อย", Toast.LENGTH_LONG).show();
 
                                                                     File dir = new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionClone.getMissionName());
+                                                                    File dirCSV = new File(Environment.getExternalStorageDirectory() + "/MyMissionExport/" + missionClone.getMissionName());
 
                                                                     if (dir.isDirectory()) {
                                                                         String[] children = dir.list();
@@ -464,6 +465,16 @@ public class ExportOnGoogleDrive extends AppCompatActivity implements MissionAda
 
                                                                         dir.delete();
                                                                     }
+
+                                                                    if (dirCSV.isDirectory()) {
+                                                                        String[] children = dirCSV.list();
+                                                                        for (int k = 0; k < children.length; k++) {
+                                                                            new File(dirCSV, children[k]).delete();
+                                                                        }
+
+                                                                        dirCSV.delete();
+                                                                    }
+
                                                                     progressDialog.dismiss();
                                                                     recreate();
 

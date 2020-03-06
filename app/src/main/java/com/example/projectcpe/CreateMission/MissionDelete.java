@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -20,6 +21,7 @@ import com.example.projectcpe.R;
 import com.example.projectcpe.ViewModel.Mission;
 import com.example.projectcpe.ViewModel.MissionDATABASE;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -84,8 +86,21 @@ switch (result){
                         public void onClick(DialogInterface dialogInterface, int i) {
                             switch (i){
                                 case 0:
+
+                                    File dir = new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionlist.getMissionName());
+
+                                    if (dir.isDirectory()) {
+                                        String[] children = dir.list();
+                                        for (int l = 0; l < children.length; l++) {
+                                            new File(dir, children[l]).delete();
+                                        }
+
+                                        dir.delete();
+                                    }
+
                                     MissionDATABASE.getInstance(MissionDelete.this).missionDAO().delete(missionlist);
                                     missionsList.remove(missionlist);
+
                                     recreate();
                                     break;
                                 case 1:

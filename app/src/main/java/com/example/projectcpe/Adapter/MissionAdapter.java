@@ -26,6 +26,7 @@ public class MissionAdapter extends RecyclerView.Adapter<MissionAdapter.MissionV
     //we are storing all the products in a list
     private List<Mission> missionList;
     private OnCustomerItemClick onCustomerItemClick;
+    private OnCustomerItemLongClick onCustomerItemLongClick;
 
 
 
@@ -33,6 +34,7 @@ public class MissionAdapter extends RecyclerView.Adapter<MissionAdapter.MissionV
         this.missionList = c;
         this.mCtx = ctx;
         this.onCustomerItemClick = (OnCustomerItemClick) ctx;
+        this.onCustomerItemLongClick = (OnCustomerItemLongClick) ctx;
     }
 
 
@@ -71,7 +73,7 @@ public class MissionAdapter extends RecyclerView.Adapter<MissionAdapter.MissionV
 
 
 
-    public class MissionViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class MissionViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,View.OnLongClickListener{
 
         TextView tvMisName, tvMisAge, number;
         ImageView delete;
@@ -80,6 +82,7 @@ public class MissionAdapter extends RecyclerView.Adapter<MissionAdapter.MissionV
         public MissionViewHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
+            itemView.setOnLongClickListener(this);
             tvMisName = itemView.findViewById(R.id.textMisssionName);
             tvMisAge = itemView.findViewById(R.id.textAge);
             delete = itemView.findViewById(R.id.delete);
@@ -103,8 +106,12 @@ public class MissionAdapter extends RecyclerView.Adapter<MissionAdapter.MissionV
         }
 
 
-
-
+        @Override
+        public boolean onLongClick(View v) {
+            int iddd = MissionDATABASE.getInstance(mCtx).missionDAO().getDesMission(missionList.get(getAdapterPosition()).getIdMission());
+           onCustomerItemLongClick.onCustomerLongClick(iddd, missionList.get(getAdapterPosition()));
+            return false;
+        }
     }
 
     public interface OnCustomerItemClick{
@@ -113,5 +120,9 @@ public class MissionAdapter extends RecyclerView.Adapter<MissionAdapter.MissionV
     }
 
 
+    public interface OnCustomerItemLongClick{
+        void onCustomerLongClick(int pos, Mission missionList);
+
+    }
 
 }
