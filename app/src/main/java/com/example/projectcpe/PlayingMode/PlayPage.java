@@ -1247,6 +1247,11 @@ public class PlayPage extends AppCompatActivity {
         @Override
         public void run() {
 
+
+            if (cloneSec == timeDevide){
+                frameHint.setVisibility(View.VISIBLE);
+            }
+
             if (cloneSec == 0) {
 
                 stopTimer();

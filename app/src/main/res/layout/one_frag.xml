@@ -35,27 +35,25 @@
 
     <TextView
         android:id="@+id/Question"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
 
+        android:layout_marginTop="4dp"
         android:background="@color/white"
         android:fontFamily="@font/thin"
         android:text="Question"
         android:textSize="28dp"
-        app:layout_constraintEnd_toStartOf="@+id/imageView8"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text" />
+        app:layout_constraintTop_toBottomOf="@+id/speakerQuestion" />
 
     <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:id="@+id/speakerQuestion"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginEnd="8dp"
         android:src="@drawable/speaker"
-        app:layout_constraintBottom_toBottomOf="@+id/Question"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text" />
 
