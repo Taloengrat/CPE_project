@@ -240,18 +240,7 @@
 
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/mic"
-        android:layout_width="85dp"
-        android:layout_height="85dp"
-        android:layout_weight="1"
-        android:background="@drawable/backgroundmic"
-        android:elevation="16dp"
-        android:padding="8dp"
-        app:layout_constraintCircle="@id/bar"
-        app:srcCompat="@drawable/mic"
-        tools:ignore="MissingConstraints,VectorDrawableCompat"
-        android:visibility="gone"/>
+
 
     <TextView
         android:id="@+id/textClock"

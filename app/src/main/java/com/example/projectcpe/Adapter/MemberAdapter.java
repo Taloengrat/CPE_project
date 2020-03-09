@@ -2,6 +2,8 @@ package com.example.projectcpe.Adapter;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -16,10 +18,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projectcpe.BeginMember;
+import com.example.projectcpe.ButtonServiceEffect;
 import com.example.projectcpe.FunctionEditProfile;
+import com.example.projectcpe.HomePage;
 import com.example.projectcpe.R;
 import com.example.projectcpe.ViewModel.Member;
 import com.example.projectcpe.ViewModel.MissionDATABASE;
@@ -64,69 +69,40 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MemberView
         holder.imUser.setBackgroundResource(R.drawable.elevetorcircle);
 
 //        Toast.makeText(mCtx, String.valueOf(member.getProfile()), Toast.LENGTH_SHORT).show();
-        holder.delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                final Dialog dialog = new Dialog(mCtx);
-                dialog.getWindow().setBackgroundDrawableResource(R.drawable.frameline);
-                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                dialog.setContentView(R.layout.dialog_confirm_admin);
-                dialog.setCancelable(true);
+    holder.delete.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            AlertDialog.Builder dialog = new AlertDialog.Builder(mCtx);
+            dialog.setTitle("Delete member");
+            dialog.setCancelable(true);
+            dialog.setMessage("Do you want delete this member?");
+            dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    MissionDATABASE.getInstance(mCtx).missionDAO().deleteMember(member);
 
-                dialog.show();
-                final EditText input = dialog.findViewById(R.id.etpassss);
+                    MissionDATABASE.getInstance(mCtx).missionDAO().deleteStatisticByMemberId(member.getId());
 
-                Button ok = dialog.findViewById(R.id.ok);
-
-                ok.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        final String pass= (input.getText().toString());
-
-                        if (input.getText().toString().isEmpty()) {
-                            Snackbar.make(holder.layout, "Please enter your pass word", Snackbar.LENGTH_SHORT).show();
-                        }else if (CheckPassword(Integer.parseInt(pass))) {
-                            Snackbar.make(holder.layout, "Password Correct :)", Snackbar.LENGTH_SHORT).show();
-                            ChooseWay();
-                        } else {
-                            Snackbar.make(holder.layout, "Password Invalid !!!", Snackbar.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    private boolean CheckPassword(int parseInt) {
-
-                        SharedPreferences getPassword = mCtx.getSharedPreferences(MY_PRE_PASSWORD_ADMIN, MODE_PRIVATE);
-                        int gettingPassword = 0;
-                        int gettedPassword  = getPassword.getInt("Pass", gettingPassword);
-                        boolean resault;
-                        if (parseInt == gettedPassword){
-                            Toast.makeText(mCtx, "Password Verified",Toast.LENGTH_SHORT).show();
-                            resault = true;
-                        }else{
-                            resault = false;
-                        }
-                        return resault;
-                    }
-
-                    private void ChooseWay() {
-                        MissionDATABASE.getInstance(mCtx).missionDAO().deleteMember(member);
-
-                        MissionDATABASE.getInstance(mCtx).missionDAO().deleteStatisticByMemberId(member.getId());
-
-                        MissionDATABASE.getInstance(mCtx).missionDAO().deleteByMemberStaticId(member.getId());
+                    MissionDATABASE.getInstance(mCtx).missionDAO().deleteByMemberStaticId(member.getId());
 
 
 
-                        ((FunctionEditProfile)mCtx).recreate();
+                    ((FunctionEditProfile)mCtx).recreate();
 
-                        dialog.cancel();
-                    }
-                });
+                    dialog.cancel();
 
+                }
+            });
 
-
-            }
-        });
+            dialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+            new ButtonServiceEffect((FunctionEditProfile)mCtx).startEffect(); // Sound button effect
+            dialog.show();
+            // your code.
+        }
+    });
 
 
 

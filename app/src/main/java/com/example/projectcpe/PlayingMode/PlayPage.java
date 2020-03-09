@@ -38,9 +38,11 @@ import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -87,7 +89,7 @@ public class PlayPage extends AppCompatActivity {
 
     private SlidePageAdapter adapter;
     private TextView textclock, timecount, Answer;
-    ImageView recogni, surrender, help, start;
+    ImageView  surrender, help, start;
     private Timer timer;
     private CountDownTimer countDownTimer;
     ViewPager pager;
@@ -1002,7 +1004,7 @@ public class PlayPage extends AppCompatActivity {
         keyboardUnion = findViewById(R.id.keyboardUnion);
 
         check = findViewById(R.id.check);
-        recogni = findViewById(R.id.mic);
+//        recogni = findViewById(R.id.mic);
 //        back = findViewById(R.id.back);
 //        next = findViewById(R.id.next);
         help = findViewById(R.id.hint);
@@ -1036,6 +1038,20 @@ public class PlayPage extends AppCompatActivity {
         keyboardUnion.setOnClickListener(keyboardClick);
 
         micUnion.setOnTouchListener(speechTouchTimeOut);
+
+        etKeyboard.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                    getAnswerFun(pager.getCurrentItem());
+                    VerifyAnswer(stringList, etKeyboard.getText().toString().toLowerCase());
+
+                    Log.v("Para1", Arrays.toString(new List[]{stringList}));
+                    Log.v("Para2", etKeyboard.getText().toString().toLowerCase());
+                }
+                return false;
+            }
+        });
 
 
 //        layoutUnion.setVisibility(View.VISIBLE);
@@ -1114,13 +1130,14 @@ public class PlayPage extends AppCompatActivity {
 
                         timecount.setVisibility(View.GONE);
                         bar.setVisibility(View.VISIBLE);
-                        recogni.setVisibility(View.VISIBLE);
+                        layoutUnion.setVisibility(View.VISIBLE);
                         startTimer();
                         ShowViewPage();
 
                         surrender.setOnClickListener(onClickSurrender);// ใหปุ่ม speech อ่านออกเสียง เริ่มทำงานหลังจาก นับถอยหลังเสร็จ
                         help.setOnClickListener(HintStep);// ใหปุ่ม speech hint เริ่มทำงานหลังจาก นับถอยหลังเสร็จ
-                        recogni.setOnTouchListener(Hilight);// ใหปุ่ม speech recog เริ่มทำงานหลังจาก นับถอยหลังเสร็จ
+                        micUnion.setOnTouchListener(Hilight);// ใหปุ่ม speech recog เริ่มทำงานหลังจาก นับถอยหลังเสร็จ
+//                        recogni.setOnTouchListener(Hilight);// ใหปุ่ม speech recog เริ่มทำงานหลังจาก นับถอยหลังเสร็จ
 
                     }
                 };
@@ -1193,8 +1210,8 @@ public class PlayPage extends AppCompatActivity {
 //                MediaPlayer.create(PlayPage.this, R.raw.timeout).start();
                 textclock.setTextSize(60);
 
-                recogni.setVisibility(View.INVISIBLE);
-                layoutUnion.setVisibility(View.VISIBLE);
+//                recogni.setVisibility(View.INVISIBLE);
+
 
 
             } else {
@@ -1339,11 +1356,11 @@ public class PlayPage extends AppCompatActivity {
                 Answer.setVisibility(View.INVISIBLE);
                 textclock.setTextSize(32);
 
-                recogni.setVisibility(View.VISIBLE);
+//                recogni.setVisibility(View.VISIBLE);
 
-                layoutUnion.setVisibility(View.GONE);
+//                layoutUnion.setVisibility(View.GONE);
 
-                recogni.setOnTouchListener(Hilight);
+//                recogni.setOnTouchListener(Hilight);
                 textclock.setTextColor(getResources().getColor(R.color.black));
 
                 stopTimer();
