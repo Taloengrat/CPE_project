@@ -25,6 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.projectcpe.Adapter.MissionAdapter;
+import com.example.projectcpe.Adapter.MissionDeleteImport;
 import com.example.projectcpe.ButtonServiceEffect;
 import com.example.projectcpe.CreateMission.Export.ExportOnGoogleDrive;
 import com.example.projectcpe.MusicService;
@@ -74,10 +75,11 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.UUID;
 
 
-public class ImportOnGoogledrive extends AppCompatActivity implements MissionAdapter.OnCustomerItemClick{
+public class ImportOnGoogledrive extends AppCompatActivity implements MissionDeleteImport.OnCustomerItemClick, MissionDeleteImport.OnCustomerItemLongClick{
 
 
     FirebaseAuth mAuth;
@@ -97,6 +99,15 @@ public class ImportOnGoogledrive extends AppCompatActivity implements MissionAda
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_on_googledrive);
+
+        mAuth = FirebaseAuth.getInstance();
+
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+
+        googleSignInClient = GoogleSignIn.getClient(this, gso);
 
         Nameee = findViewById(R.id.Nameeee);
         imageUser = findViewById(R.id.imageUser);
@@ -205,6 +216,94 @@ public class ImportOnGoogledrive extends AppCompatActivity implements MissionAda
         new Thread(runnable).start();
 
     }
+
+    @Override
+    public void onCustomerLongClick(int pos, Mission missionList) {
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+        dialog.setTitle("Delete Mission On Could");
+        dialog.setCancelable(true);
+        dialog.setMessage("Do you want to delete this mission?");
+        dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+
+
+                missionClone = missionList;
+
+
+                progressDialog = ProgressDialog.show(ImportOnGoogledrive.this, "Delete on Could ", "deleting...", true, false);
+
+
+// Create a reference to the file to delete
+
+
+// Delete the file
+
+                    for (int i = 1 ; i <= missionClone.getNumberofMission() ; i++){
+
+                        int finalI = i;
+                        FirebaseStorage.getInstance().getReference(FirebaseAuth.getInstance().getCurrentUser().getUid() + "/" + missionClone.getUniqueKey()).child("picture"+i+".jpg").delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                // File deleted successfully
+
+                                if (finalI == missionClone.getNumberofMission()){
+
+
+                                    FirebaseStorage.getInstance().getReference(FirebaseAuth.getInstance().getCurrentUser().getUid() + "/" + missionClone.getUniqueKey()).child(missionClone.getMissionName()+"Data.csv").delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            Toast.makeText(getApplicationContext(), "ลบแบบทดสอบเรียบร้อย", Toast.LENGTH_LONG).show();
+
+                                            FirebaseDatabase.getInstance().getReference(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(missionClone.getUniqueKey()).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                @Override
+                                                public void onSuccess(Void aVoid) {
+                                                    Toast.makeText(getApplicationContext(), "ลบแบบทดสอบเรียบร้อย", Toast.LENGTH_LONG).show();
+                                                    recreate();
+                                                }
+                                            }).addOnFailureListener(new OnFailureListener() {
+                                                @Override
+                                                public void onFailure(@NonNull Exception e) {
+                                                    Toast.makeText(getApplicationContext(), "ลบแบบทดสอบล้มเหลว", Toast.LENGTH_LONG).show();
+                                                }
+                                            });
+                                            progressDialog.dismiss();
+                                        }
+                                    }).addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            progressDialog.dismiss();
+                                            Toast.makeText(getApplicationContext(), "ลบแบบทดสอบล้มเหลว", Toast.LENGTH_LONG).show();
+                                        }
+                                    });
+                                    progressDialog.dismiss();
+
+                                }
+
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception exception) {
+                                // Uh-oh, an error occurred!
+                                progressDialog.dismiss();
+                                Toast.makeText(getApplicationContext(), "ลบแบบทดสอบล้มเหลว", Toast.LENGTH_LONG).show();
+                            }
+                        });
+
+                    }
+
+
+
+            }
+        });
+
+        dialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        dialog.show();
+    }
 //
 //    @Override
 //    public void onCustomerLongClick(int pos, Mission missionList) {
@@ -248,7 +347,7 @@ public class ImportOnGoogledrive extends AppCompatActivity implements MissionAda
 
     public void loadData() {
 
-        RecyclerView.Adapter adapter = new MissionAdapter(missionArrayList, this);
+        RecyclerView.Adapter adapter = new MissionDeleteImport(missionArrayList, this);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);

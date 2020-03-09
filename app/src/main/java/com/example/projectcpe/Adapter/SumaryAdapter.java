@@ -190,7 +190,7 @@ public class SumaryAdapter extends RecyclerView.Adapter<SumaryAdapter.SumaryView
     private void speak(String text) {
 
 
-        mTTs.speak(text.replace("/","  or  "), TextToSpeech.QUEUE_FLUSH, null, null);
+        mTTs.speak(text.replace("/","      "), TextToSpeech.QUEUE_FLUSH, null, null);
 
 
     }

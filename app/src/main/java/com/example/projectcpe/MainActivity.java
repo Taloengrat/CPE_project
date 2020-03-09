@@ -50,7 +50,7 @@ import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
     ImageView _logoApp;
-    EditText _etPass;
+    EditText _etPass,_etNameAdmin;
     ImageView imMedium;
     Button _btBegin;
     boolean box1=true, box2=true, box3=true, box4=true, box5=true, box6=true;
@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public static final String MY_PRE_PASSWORD_ADMIN = "com.example.projectcpe.passwordasmin";
+    public static final String MY_PRE_NAME_ADMIN = "com.example.projectcpe.nameadmin";
     private volatile boolean stopThread = false;
     ProgressDialog loadingDialog;
     private int percent = 0;
@@ -160,6 +161,7 @@ public class MainActivity extends AppCompatActivity {
         _btBegin = (Button) findViewById(R.id._etBegin);
 
         _etPass = (EditText) findViewById(R.id.etPass);
+        _etNameAdmin = findViewById(R.id.etAdminname);
 
 
         _btBegin.setOnClickListener(new View.OnClickListener() {
@@ -171,6 +173,7 @@ public class MainActivity extends AppCompatActivity {
 
                 startService(new Intent(MainActivity.this, ButtonServiceEffect.class)); // Sound button effect
                 _etPass.setVisibility(View.VISIBLE);
+                _etNameAdmin.setVisibility(View.VISIBLE);
                 _btBegin.setText("LET's GO !");
 
                 _btBegin.setOnClickListener(new View.OnClickListener() {
@@ -213,6 +216,14 @@ public class MainActivity extends AppCompatActivity {
                         File file5 = new File(directory_path5);
                         if (!file5.exists()) {
                             file5.mkdirs();
+                        }
+
+                        if (_etNameAdmin.getText().toString().isEmpty()){
+                            Snackbar.make(_etPass, "Plese enter your name for Admin !", Snackbar.LENGTH_SHORT).show();
+                        }else {
+                            SharedPreferences.Editor name = getSharedPreferences(MY_PRE_NAME_ADMIN, MODE_PRIVATE).edit();
+                            name.putString("Name", _etNameAdmin.getText().toString().trim());
+                            name.commit();
                         }
 
                         if (_etPass.getText().toString().isEmpty()) {
@@ -749,6 +760,8 @@ public class MainActivity extends AppCompatActivity {
 
                     MissionDATABASE.getInstance(MainActivity.this).missionDAO().createMember(newMember);
                     dialog.cancel();
+
+
                     startActivity(new Intent(MainActivity.this, LogoIntro.class));
                     finish();
                     overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);

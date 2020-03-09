@@ -6,8 +6,11 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.projectcpe.CreateMission.MissionCreate;
 import com.example.projectcpe.CreateMission.MissionDelete;
@@ -18,7 +21,9 @@ import com.example.projectcpe.ViewModel.Admin;
 
 public class AdminPage extends AppCompatActivity {
 
+    public static final String MY_PRE_NAME_ADMIN = "com.example.projectcpe.nameadmin";
 
+    TextView txName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +35,9 @@ public class AdminPage extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        txName = findViewById(R.id.txName);
+
+        txName.setText(getMyPreNameAdmin());
 
     }
     public void FunctionAdmin(View view) {
@@ -99,5 +107,17 @@ public class AdminPage extends AppCompatActivity {
         super.onResume();
         stopService(new Intent(AdminPage.this, MusicService.class));
         startService(new Intent(AdminPage.this, MusicService.class));
+    }
+
+    public String getMyPreNameAdmin() {
+
+
+        SharedPreferences getPassword = getSharedPreferences(MY_PRE_NAME_ADMIN, MODE_PRIVATE);
+        String gettingPassword = "";
+        String name = getPassword.getString("Name", gettingPassword);
+
+
+        return name;
+
     }
 }

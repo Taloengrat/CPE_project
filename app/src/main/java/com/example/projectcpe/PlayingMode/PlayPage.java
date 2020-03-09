@@ -64,6 +64,7 @@ import java.util.TimerTask;
 public class PlayPage extends AppCompatActivity {
 
     int cloneSec = 0, timeQuiz = 0;
+    int numLengthHintatring = 0;
     private int ms;
     private int seconds;
     private int minutes;
@@ -75,7 +76,7 @@ public class PlayPage extends AppCompatActivity {
     float countAllWrong = 0;
     float timeDevide;
     LinearLayout bar;
-
+    private TextToSpeech mTTs;
     int numHint;
 
     int numberStep = 0;
@@ -132,6 +133,27 @@ public class PlayPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_page);
+
+        mTTs = new TextToSpeech(this, new TextToSpeech.OnInitListener()
+        {
+            @Override
+            public void onInit(int status) {
+                if (status == TextToSpeech.SUCCESS){
+                    int result = mTTs.setLanguage(new Locale("en"));
+
+                    mTTs.setSpeechRate(0.6f);
+
+                    if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED){
+
+                    }else{
+//                        speakbt.setEnabled(true);
+
+                    }
+                }else{
+
+                }
+            }
+        });
 
         Initial();
         getTime();
@@ -418,35 +440,7 @@ public class PlayPage extends AppCompatActivity {
         }
     };
 
-    public void ChangeSameHint(View view, String dataaa, int number) {
 
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final Dialog dialog = new Dialog(PlayPage.this);
-                dialog.getWindow().setBackgroundDrawableResource(R.drawable.frameline);
-                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                dialog.setContentView(R.layout.dialog_hint);
-                dialog.setCancelable(true);
-
-                TextView data = dialog.findViewById(R.id.dataHint);
-                TextView head = dialog.findViewById(R.id.txHeadHint);
-
-                Button ok = dialog.findViewById(R.id.btOkkkkkk);
-                head.setText("Hint number : " + number);
-                data.setText(dataaa);
-
-                ok.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
-                    }
-                });
-
-
-            }
-        });
-    }
 
     View.OnClickListener hintOne = new View.OnClickListener() {
         @Override
@@ -456,6 +450,19 @@ public class PlayPage extends AppCompatActivity {
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
             dialog.setContentView(R.layout.dialog_hint);
             dialog.setCancelable(true);
+
+            numLengthHintatring = 1;
+
+            if (HintString.length == numLengthHintatring){
+                speakHint.setVisibility(View.VISIBLE);
+
+                speakHint.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        speak(HintString[0]);
+                    }
+                });
+            }
 
             TextView data = dialog.findViewById(R.id.dataHint);
             TextView head = dialog.findViewById(R.id.txHeadHint);
@@ -501,6 +508,20 @@ public class PlayPage extends AppCompatActivity {
             final TextView data = dialog.findViewById(R.id.dataHint);
             TextView head = dialog.findViewById(R.id.txHeadHint);
 
+
+            numLengthHintatring = 2;
+
+            if (HintString.length == numLengthHintatring){
+                speakHint.setVisibility(View.VISIBLE);
+
+                speakHint.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        speak(HintString[1]);
+                    }
+                });
+            }
+
             Button ok = dialog.findViewById(R.id.btOkkkkkk);
 
             ok.setOnClickListener(new View.OnClickListener() {
@@ -545,6 +566,18 @@ public class PlayPage extends AppCompatActivity {
             dialog.setContentView(R.layout.dialog_hint);
             dialog.setCancelable(true);
 
+            numLengthHintatring = 3;
+
+            if (HintString.length == numLengthHintatring){
+                speakHint.setVisibility(View.VISIBLE);
+
+                speakHint.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        speak(HintString[2]);
+                    }
+                });
+            }
 
             final TextView data = dialog.findViewById(R.id.dataHint);
             TextView head = dialog.findViewById(R.id.txHeadHint);
@@ -594,6 +627,19 @@ public class PlayPage extends AppCompatActivity {
 
             final TextView data = dialog.findViewById(R.id.dataHint);
             TextView head = dialog.findViewById(R.id.txHeadHint);
+
+            numLengthHintatring = 4;
+
+            if (HintString.length == numLengthHintatring){
+                speakHint.setVisibility(View.VISIBLE);
+
+                speakHint.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        speak(HintString[3]);
+                    }
+                });
+            }
 
             Button ok = dialog.findViewById(R.id.btOkkkkkk);
 
@@ -1320,7 +1366,7 @@ public class PlayPage extends AppCompatActivity {
         @Override
         public void run() {
 
-            checkSpeakHint = 0;
+            numLengthHintatring = 0;
 
             if (speakHint.getVisibility() == View.VISIBLE) {
                 speakHint.setVisibility(View.GONE);
@@ -1460,5 +1506,10 @@ public class PlayPage extends AppCompatActivity {
         hint4.setBackgroundResource(R.drawable.elevator_regtang);
     }
 
+    public void speak(String text){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            mTTs.speak(text, TextToSpeech.QUEUE_FLUSH, null, null);
+        }
+    }
 
 }

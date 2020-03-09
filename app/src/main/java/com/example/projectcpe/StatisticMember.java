@@ -92,21 +92,5 @@ public class StatisticMember extends AppCompatActivity {
         startService(new Intent(StatisticMember.this, MusicService.class));
     }
 
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.editDetail : ShowdialogEdit();
-                break;
-        }
-    }
 
-    private void ShowdialogEdit() {
-        final Dialog dialog = new Dialog(this);
-        dialog.getWindow().setBackgroundDrawableResource(R.drawable.bg_dialog_custom);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.dialog_editdetail_member);
-        dialog.setCancelable(true);
-
-        dialog.show();
-
-    }
 }
