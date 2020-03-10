@@ -131,6 +131,12 @@ public class MissionCreate extends AppCompatActivity {
             return;
         }
 
+        if (etName.getText().toString().contains("?") || etName.getText().toString().contains("-") || etName.getText().toString().contains(",")
+        || etName.getText().toString().contains("/") || etName.getText().toString().contains(" ")){
+            etName.setError("Do not use the symbol ?, /, -, ");
+            etName.requestFocus();
+            return;
+        }
         if (CheckNameCreateMissionSame(etName.getText().toString()) != null){
             etName.setError("Mission name that is the same as that already exists");
             etName.requestFocus();

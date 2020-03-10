@@ -33,7 +33,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/layout_shadow"
         android:elevation="16dp"
@@ -85,7 +85,6 @@
             android:id="@+id/DetailMission"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:background="@drawable/layout_black"
             android:fontFamily="@font/bold"
             android:gravity="center"
@@ -96,23 +95,21 @@
             app:layout_constraintEnd_toEndOf="@+id/numstep"
             app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="@+id/numstep"
-            app:layout_constraintTop_toBottomOf="@+id/Age" />
+            tools:layout_editor_absoluteY="127dp" />
 
         <ImageView
             android:id="@+id/btPlay"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="4dp"
             android:onClick="setBtPlayClick"
-            app:layout_constraintBottom_toTopOf="@+id/DetailMission"
+            app:layout_constraintBottom_toTopOf="@+id/guidelineDevide"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.45"
             app:layout_constraintStart_toStartOf="@+id/guideline8"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintWidth_percent="0.3"
             app:srcCompat="@drawable/youtube"
             tools:ignore="VectorDrawableCompat" />
 
@@ -121,7 +118,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:fontFamily="@font/thin"
@@ -130,8 +126,7 @@
             android:textSize="18dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/DetailMission"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/DetailMission" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline8"
@@ -142,18 +137,28 @@
 
         <ImageView
             android:id="@+id/btShowDetailQuestion"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/elevator_white_circle"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="40dp"
+
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/regtang_white_background"
             android:onClick="onClick"
             android:padding="8dp"
-            app:layout_constraintCircle="@id/btPlay"
-            app:layout_constraintCircleAngle="135"
-            app:layout_constraintCircleRadius="50dp"
+            app:layout_constraintBottom_toTopOf="@+id/DetailMission"
             app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@drawable/search"
-            tools:layout_editor_absoluteY="58dp" />
+            app:layout_constraintStart_toStartOf="@+id/guideline8"
+            app:layout_constraintTop_toTopOf="@+id/guidelineDevide"
+            app:srcCompat="@drawable/search" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineDevide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.35" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.core.widget.NestedScrollView
