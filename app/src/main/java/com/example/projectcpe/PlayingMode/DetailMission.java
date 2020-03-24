@@ -37,7 +37,7 @@ import java.util.List;
 public class DetailMission extends AppCompatActivity implements View.OnClickListener {
 
     ImageView btPlay, expand;
-    TextView txName, txNumstep, txAge, DetailMission, txDetail;
+    TextView txName, txNumstep, txAge, txDetail;
     public int MissionId, MemberId;
     public List<Mission> missionData;
     ImageView btShowDetailQuestion;
@@ -56,7 +56,7 @@ public class DetailMission extends AppCompatActivity implements View.OnClickList
         txName = findViewById(R.id.Name);
         txAge = findViewById(R.id.Age);
         txNumstep = findViewById(R.id.numstep);
-        DetailMission = findViewById(R.id.DetailMission);
+
         txDetail = findViewById(R.id.txDetail);
         recyclerView = findViewById(R.id.recyclerView);
         expand = findViewById(R.id.expand);
@@ -106,7 +106,7 @@ public class DetailMission extends AppCompatActivity implements View.OnClickList
         txName.setText(missionData.get(0).getMissionName());
         txAge.setText("age : " + String.valueOf(missionData.get(0).getAge()));
         txNumstep.setText("step : " + String.valueOf(missionData.get(0).getNumberofMission()));
-        txDetail.setText("This Mission is about " + missionData.get(0).getDetailMission());
+        txDetail.setText("   Detail : " + missionData.get(0).getDetailMission());
 
 
     }

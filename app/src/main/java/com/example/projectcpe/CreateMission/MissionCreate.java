@@ -5,6 +5,7 @@ import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -124,6 +125,7 @@ public class MissionCreate extends AppCompatActivity {
 
     public void setBtNextOnClick(View v) {
 
+        MediaPlayer.create(getApplicationContext(), R.raw.button1).start();
 
         if (TextUtils.isEmpty(etName.getText().toString())) {
             etName.setError("Current Password is required");

@@ -9,6 +9,7 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -113,11 +114,13 @@ public class MissionExport extends AppCompatActivity {
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.cardDevice :
+                MediaPlayer.create(getApplicationContext(), R.raw.button1).start();
 //                StoreCSV.storeCSV("test.csv");
                 startActivity(new Intent(MissionExport.this, ExportOnDevice.class));
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 break;
             case R.id.cardGoogledrive :
+                MediaPlayer.create(getApplicationContext(), R.raw.button1).start();
 
                 GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                         .requestIdToken(getString(R.string.default_web_client_id))

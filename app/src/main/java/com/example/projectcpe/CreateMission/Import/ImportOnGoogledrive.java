@@ -14,6 +14,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.net.wifi.hotspot2.pps.Credential;
 import android.os.Bundle;
@@ -179,6 +180,7 @@ public class ImportOnGoogledrive extends AppCompatActivity implements MissionDel
 
     @Override
     public void onCustomerClick(int pos, int result, Mission missionList) {
+        MediaPlayer.create(getApplicationContext(), R.raw.button1).start();
 
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
         dialog.setTitle("Import Mission On Could");

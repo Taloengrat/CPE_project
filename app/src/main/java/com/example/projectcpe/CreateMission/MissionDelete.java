@@ -5,6 +5,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Environment;
 
@@ -76,7 +77,10 @@ public class MissionDelete extends AppCompatActivity implements MissionAdapter.O
 
     @Override
     public void onCustomerClick(final int pos, int result, final Mission missionlist) {
+        MediaPlayer.create(getApplicationContext(), R.raw.button1).start();
 switch (result){
+
+
 
     case 0 : new AlertDialog.Builder(MissionDelete.this)
             .setTitle("Delete this mission?")

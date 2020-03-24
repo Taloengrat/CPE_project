@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
+import android.media.MediaPlayer;
 import android.os.Environment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -85,6 +86,8 @@ public class CsvImportAdapter extends RecyclerView.Adapter<CsvImportAdapter.CsvV
 
         @Override
         public void onClick(View view) {
+
+            MediaPlayer.create(activity, R.raw.button1).start();
 
 //            Toast.makeText(activity, txName.getText(),Toast.LENGTH_LONG).show();
             AlertDialog.Builder dialog = new AlertDialog.Builder(activity);

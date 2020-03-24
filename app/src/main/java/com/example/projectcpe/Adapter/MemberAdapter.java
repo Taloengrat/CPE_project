@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.MediaPlayer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -72,6 +73,8 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MemberView
     holder.delete.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            MediaPlayer.create(mCtx, R.raw.button1).start();
+
             AlertDialog.Builder dialog = new AlertDialog.Builder(mCtx);
             dialog.setTitle("Delete member");
             dialog.setCancelable(true);

@@ -17,6 +17,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -189,6 +190,8 @@ public class ExportOnGoogleDrive extends AppCompatActivity implements MissionAda
 
     @Override
     public void onCustomerClick(int id, int result, Mission mission) {
+        MediaPlayer.create(getApplicationContext(), R.raw.button1).start();
+
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
         dialog.setTitle("Export Mission On Google drive");
         dialog.setCancelable(true);

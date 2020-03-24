@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -45,6 +46,8 @@ public class FunctionEditProfile extends AppCompatActivity {
         addMember.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                MediaPlayer.create(getApplicationContext(), R.raw.button1).start();
+
                 final Dialog dialog = new Dialog(FunctionEditProfile.this);
                 dialog.getWindow().setBackgroundDrawableResource(R.drawable.frameline);
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -60,6 +63,10 @@ public class FunctionEditProfile extends AppCompatActivity {
                 profile.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+
+
+                        MediaPlayer.create(getApplicationContext(), R.raw.button1).start();
+
                         final Dialog dialog = new Dialog(FunctionEditProfile.this);
                         dialog.getWindow().setBackgroundDrawableResource(R.drawable.frameline);
                         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -70,6 +77,8 @@ public class FunctionEditProfile extends AppCompatActivity {
 
                             @Override
                             public void onClick(View view) {
+
+                                MediaPlayer.create(getApplicationContext(), R.raw.button1).start();
 
                                 imMedium = (ImageView) view;
 
@@ -121,6 +130,7 @@ public class FunctionEditProfile extends AppCompatActivity {
                 Button btSubmit = (Button) dialog.findViewById(R.id.ok);
                 btSubmit.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
+                        MediaPlayer.create(getApplicationContext(), R.raw.button1).start();
                         if (_etName.getText().toString().isEmpty()) {
                             _etName.setError("Name is required");
                             _etName.requestFocus();

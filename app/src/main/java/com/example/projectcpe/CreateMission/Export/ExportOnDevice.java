@@ -14,6 +14,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -113,6 +114,7 @@ public class ExportOnDevice extends AppCompatActivity implements MissionAdapter.
     @Override
     public void onCustomerClick(final int id, int result, Mission mission) {
 
+        MediaPlayer.create(getApplicationContext(), R.raw.button1).start();
 
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
         dialog.setTitle("Export Mission On Device");

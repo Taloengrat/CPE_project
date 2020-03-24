@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
@@ -85,11 +86,14 @@ public class MissionImport extends AppCompatActivity {
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.cardDevice :
+                MediaPlayer.create(getApplicationContext(), R.raw.button1).start();
 //                StoreCSV.storeCSV("test.csv");
                 startActivity(new Intent(MissionImport.this, ImportOnDevice.class));
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 break;
             case R.id.cardGoogledrive :
+                MediaPlayer.create(getApplicationContext(), R.raw.button1).start();
+
                 GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                         .requestIdToken(getString(R.string.default_web_client_id))
                         .requestEmail()

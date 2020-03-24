@@ -16,6 +16,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.graphics.drawable.Drawable;
 import android.media.ExifInterface;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
@@ -120,7 +121,7 @@ public class FinallyCreate extends AppCompatActivity implements StepAdapter.OnCu
 
 
 
-bundle = getIntent().getExtras();
+        bundle = getIntent().getExtras();
         getNumOfStep = bundle.getInt("NumOfStep");
         getName = bundle.getString("name");
         getDetail = bundle.getString("detail");
@@ -141,6 +142,7 @@ bundle = getIntent().getExtras();
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View v) {
+                MediaPlayer.create(getApplicationContext(), R.raw.button1).start();
                 String checker = "default";
 
                 for (int i = 0; i < StepAdapter.stepList.size(); i++){
