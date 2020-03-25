@@ -455,7 +455,6 @@ public class ExportOnGoogleDrive extends AppCompatActivity implements MissionAda
                                                                 @Override
                                                                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-                                                                    Toast.makeText(getApplicationContext(), "นำออกแบบทดสอบเสร็จเรียบร้อย", Toast.LENGTH_LONG).show();
 
                                                                     File dir = new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionClone.getMissionName());
                                                                     File dirCSV = new File(Environment.getExternalStorageDirectory() + "/MyMissionExport/" + missionClone.getMissionName());

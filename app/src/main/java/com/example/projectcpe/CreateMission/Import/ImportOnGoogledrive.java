@@ -848,48 +848,4 @@ public class ImportOnGoogledrive extends AppCompatActivity implements MissionDel
         });
     }
 
-    private void downloadInLocalFile(int i) throws IOException {
-
-
-        storageRef = FirebaseStorage.getInstance().getReference(FirebaseAuth.getInstance().getCurrentUser().getUid() + "/" + "testttt");
-
-        File dir = new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionClone.getMissionName());
-        final File file = new File(dir, "picture" + (i + 1) + ".jpg");
-        try {
-            if (!dir.exists()) {
-                dir.mkdir();
-            }
-            file.createNewFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        final FileDownloadTask fileDownloadTask = storageRef.getFile(file);
-
-
-        fileDownloadTask.addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-
-                progressDialog.dismiss();
-                Toast.makeText(getApplicationContext(), "successs", Toast.LENGTH_LONG).show();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-
-                Toast.makeText(getApplicationContext(), "Fail", Toast.LENGTH_LONG).show();
-            }
-        }).addOnProgressListener(new OnProgressListener<FileDownloadTask.TaskSnapshot>() {
-            @Override
-            public void onProgress(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                int progress = (int) ((100 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount());
-                progressDialog.setTitle("นำเข้าแบบทดสอบ");
-                progressDialog.setMessage("ความคืบหน้า : " + progress + "%");
-            }
-        });
-    }
-
-
-
 }
