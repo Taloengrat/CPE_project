@@ -684,6 +684,9 @@ public class PlayPage extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     Handler pd = new Handler();
+
+                    scoreStep[numberStep] = String.format("%.1f", 0.0);
+                    numberStep++;
                     pd.postDelayed(CheckPagerBeforeSkip, 0);
                     dialog.cancel();
                 }
@@ -712,6 +715,11 @@ public class PlayPage extends AppCompatActivity {
 
             switch (motionEvent.getAction()) {
                 case MotionEvent.ACTION_DOWN:
+
+                    if (etKeyboard.getVisibility() == View.VISIBLE) {
+                        etKeyboard.setVisibility(View.GONE);
+                        confirm.setVisibility(View.GONE);
+                    }
 
                     if (frameHint.getVisibility() == View.VISIBLE) {
                         frameHint.setVisibility(View.GONE);

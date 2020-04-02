@@ -313,7 +313,7 @@
         android:inputType="textPersonName"
         android:gravity="center"
         android:padding="8dp"
-        android:background="@drawable/frame"
+        android:background="@drawable/frameetkeyboard"
         app:layout_constraintCircle="@id/answer"
         tools:ignore="MissingConstraints"
         android:visibility="invisible"/>
