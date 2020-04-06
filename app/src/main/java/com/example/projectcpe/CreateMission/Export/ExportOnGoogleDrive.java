@@ -163,7 +163,7 @@ public class ExportOnGoogleDrive extends AppCompatActivity implements MissionAda
     }
 
     private List<Mission> getMissionList() {
-        return MissionDATABASE.getInstance(this).missionDAO().getAllMission();
+        return MissionDATABASE.getInstance(this).missionDAO().getMissionAdmin();
     }
 
 
@@ -337,7 +337,7 @@ public class ExportOnGoogleDrive extends AppCompatActivity implements MissionAda
         }
 
 
-        MissionDATABASE.getInstance(ExportOnGoogleDrive.this).missionDAO().delete(missionClone);
+//        MissionDATABASE.getInstance(ExportOnGoogleDrive.this).missionDAO().delete(missionClone);
 
 
     }
@@ -456,29 +456,29 @@ public class ExportOnGoogleDrive extends AppCompatActivity implements MissionAda
                                                                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
 
-                                                                    File dir = new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionClone.getMissionName());
-                                                                    File dirCSV = new File(Environment.getExternalStorageDirectory() + "/MyMissionExport/" + missionClone.getMissionName());
+//                                                                    File dir = new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionClone.getMissionName());
+//                                                                    File dirCSV = new File(Environment.getExternalStorageDirectory() + "/MyMissionExport/" + missionClone.getMissionName());
 
-                                                                    if (dir.isDirectory()) {
-                                                                        String[] children = dir.list();
-                                                                        for (int i = 0; i < children.length; i++) {
-                                                                            new File(dir, children[i]).delete();
-                                                                        }
+//                                                                    if (dir.isDirectory()) {
+//                                                                        String[] children = dir.list();
+//                                                                        for (int i = 0; i < children.length; i++) {
+//                                                                            new File(dir, children[i]).delete();
+//                                                                        }
+//
+//                                                                        dir.delete();
+//                                                                    }
 
-                                                                        dir.delete();
-                                                                    }
-
-                                                                    if (dirCSV.isDirectory()) {
-                                                                        String[] children = dirCSV.list();
-                                                                        for (int k = 0; k < children.length; k++) {
-                                                                            new File(dirCSV, children[k]).delete();
-                                                                        }
-
-                                                                        dirCSV.delete();
-                                                                    }
+//                                                                    if (dirCSV.isDirectory()) {
+//                                                                        String[] children = dirCSV.list();
+//                                                                        for (int k = 0; k < children.length; k++) {
+//                                                                            new File(dirCSV, children[k]).delete();
+//                                                                        }
+//
+//                                                                        dirCSV.delete();
+//                                                                    }
 
                                                                     progressDialog.dismiss();
-                                                                    recreate();
+                                                                    Toast.makeText(ExportOnGoogleDrive.this,"นำออกแบบทดสอบบน google account เรียบร้อย",Toast.LENGTH_LONG).show();
 
                                                                 }
                                                             })

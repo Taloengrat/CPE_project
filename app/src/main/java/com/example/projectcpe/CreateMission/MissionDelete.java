@@ -63,7 +63,7 @@ public class MissionDelete extends AppCompatActivity implements MissionAdapter.O
 
 
     private List<Mission> getMissionList() {
-        return MissionDATABASE.getInstance(getApplicationContext()).missionDAO().getAllMission();
+        return MissionDATABASE.getInstance(getApplicationContext()).missionDAO().getMissionAdmin();
     }
 
 

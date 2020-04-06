@@ -22,6 +22,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projectcpe.CreateMission.Export.ExportOnDevice;
+import com.example.projectcpe.CreateMission.Import.ImportOnGoogledrive;
 import com.example.projectcpe.R;
 import com.example.projectcpe.ViewModel.Csv;
 import com.example.projectcpe.ViewModel.Mission;
@@ -521,17 +522,25 @@ public class CsvImportAdapter extends RecyclerView.Adapter<CsvImportAdapter.CsvV
                             CSVReader reader = new CSVReader(new FileReader(csvfile.getAbsolutePath()));
 
                             while ((nextLine = reader.readNext()) != null) {
-                                // nextLine[] is an array of values from the line
+                                    // nextLine[] is an array of values from the line
+                                    if (reader.getLinesRead() == 2) {
 
-                                if (reader.getLinesRead() == 2) {
-                                    Log.v("Lineeeeeeeee", String.valueOf(reader.getLinesRead()));
+                                        if (MissionDATABASE.getInstance(activity).missionDAO().CheckNameMission(nextLine[0]) == null) {
 
-                                    SwitchImport(Integer.valueOf(nextLine[3]));
-                                }
+                                        SwitchImport(Integer.valueOf(nextLine[3]));
 
+                                        } else {
+                                            activity.runOnUiThread(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                    Toast.makeText(activity, "มีแบบทดสอบนี้อยู่แล้ว", Toast.LENGTH_LONG).show();
+                                                    progressDialog.dismiss();
+                                                }
+                                            });
 
+                                        }
+                                    }
                             }
-
 
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -547,6 +556,7 @@ public class CsvImportAdapter extends RecyclerView.Adapter<CsvImportAdapter.CsvV
                                 public void run() {
 
 
+                                    Toast.makeText(activity, "นำเข้าแบบทดสอบบนอุปกรณ์เรียบร้อย",Toast.LENGTH_LONG).show();
                                     progressDialog.dismiss();
 //                                    recreate();
 

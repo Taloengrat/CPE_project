@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -36,6 +38,12 @@ public class FunctionEditPassword extends AppCompatActivity {
         etCurrent = findViewById(R.id.etCurrent);
         etConfirm = findViewById(R.id.etConfirm);
         etNewpass = findViewById(R.id.etNewpass);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
     public void checkChange(){
@@ -71,9 +79,9 @@ public class FunctionEditPassword extends AppCompatActivity {
             SharedPreferences.Editor newPass = getSharedPreferences(MY_PRE_PASSWORD_ADMIN, MODE_PRIVATE).edit();
             newPass.putInt("Pass", Integer.parseInt(etNewpass.getText().toString().trim()));
             newPass.commit();
-            Snackbar.make(btSubmit, "Created Password For Admin", Snackbar.LENGTH_SHORT).show();
 
-            startActivity(new Intent(FunctionEditPassword.this, HomePage.class));
+
+            startActivity(new Intent(FunctionEditPassword.this, AdminPage.class));
             Toast.makeText(getApplicationContext(), "Your Password is Changed", Toast.LENGTH_SHORT).show();
         }else{
             etNewpass.setError("Password not the same");
@@ -109,5 +117,20 @@ public class FunctionEditPassword extends AppCompatActivity {
         super.onResume();
         stopService(new Intent(FunctionEditPassword.this, MusicService.class));
         startService(new Intent(FunctionEditPassword.this, MusicService.class));
+    }
+
+    @Override
+    public void onBackPressed() {
+        // your code.
+
+        finish();
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        return true;
     }
 }

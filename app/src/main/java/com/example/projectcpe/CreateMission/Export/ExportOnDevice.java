@@ -108,7 +108,7 @@ public class ExportOnDevice extends AppCompatActivity implements MissionAdapter.
     }
 
     private List<Mission> getMissionList() {
-        return MissionDATABASE.getInstance(this).missionDAO().getAllMission();
+        return MissionDATABASE.getInstance(this).missionDAO().getMissionAdmin();
     }
 
     @Override
@@ -127,7 +127,7 @@ public class ExportOnDevice extends AppCompatActivity implements MissionAdapter.
                 missionList = MissionDATABASE.getInstance(ExportOnDevice.this).missionDAO().getAllinfoOfMission(id);
 
 
-                progressDialog = ProgressDialog.show(ExportOnDevice.this, "Fetch photos", "Loading...", true, false);
+                progressDialog = ProgressDialog.show(ExportOnDevice.this, "Export on device", "exporting...", true, false);
 
                 startThread();
 
@@ -342,21 +342,21 @@ public class ExportOnDevice extends AppCompatActivity implements MissionAdapter.
 
         }
 
-        File dir = new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName());
+//        File dir = new File(Environment.getExternalStorageDirectory() + "/EnglishPractice/" + missionList.get(0).getMissionName());
 
-        if (dir.isDirectory()) {
-            String[] children = dir.list();
-            for (int i = 0; i < children.length; i++) {
-                new File(dir, children[i]).delete();
-            }
-
-            dir.delete();
-        }
+//        if (dir.isDirectory()) {
+//            String[] children = dir.list();
+//            for (int i = 0; i < children.length; i++) {
+//                new File(dir, children[i]).delete();
+//            }
+//
+//            dir.delete();
+//        }
 
 
         stopThread = true;
 
-        MissionDATABASE.getInstance(ExportOnDevice.this).missionDAO().delete(missionList.get(0));
+//        MissionDATABASE.getInstance(ExportOnDevice.this).missionDAO().delete(missionList.get(0));
 
 
     }
@@ -457,7 +457,8 @@ public class ExportOnDevice extends AppCompatActivity implements MissionAdapter.
 
 
                         progressDialog.dismiss();
-                        recreate();
+                        Toast.makeText(ExportOnDevice.this,"นำออกแบบทดสอบบนอุปกรณ์เรียบร้อย \n" +
+                                "foldername : MissionExport ",Toast.LENGTH_LONG).show();
 
 
                     }

@@ -893,25 +893,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
 
-            if (box6) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
 
-                        startTimer();
-                        loadingDialog.setTitle("กำลังเตรียมแบบทดสอบที่ 3");
-
-
-                    }
-                });
-                CreateMissionCareer();
-
-
-
-
-                percent = 99;
-
-            }
 
 
             if (box3) {
@@ -959,6 +941,26 @@ public class MainActivity extends AppCompatActivity {
                 CreateMissionBuyFlower();
 
                 percent = 99;
+            }
+
+            if (box6) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        startTimer();
+                        loadingDialog.setTitle("กำลังเตรียมแบบทดสอบที่ 3");
+
+
+                    }
+                });
+                CreateMissionCareer();
+
+
+
+
+                percent = 99;
+
             }
 
 
