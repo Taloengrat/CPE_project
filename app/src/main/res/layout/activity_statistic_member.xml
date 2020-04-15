@@ -45,7 +45,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txName"
+        android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -66,7 +66,7 @@
         android:fontFamily="@font/bold"
         android:textSize="25dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txName" />
+        app:layout_constraintTop_toBottomOf="@+id/name" />
 
     <FrameLayout
         android:id="@+id/asfdas"
@@ -87,9 +87,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="This member not have statistic"
-        android:textSize="25dp"
         android:fontFamily="@font/bold"
+        android:text="This player does not have statistical data."
+        android:textSize="25dp"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

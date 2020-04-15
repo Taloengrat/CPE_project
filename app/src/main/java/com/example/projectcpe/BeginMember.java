@@ -260,7 +260,7 @@ public class BeginMember extends AppCompatActivity {
                     finish();
                     overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 } else {
-                    Toast.makeText(getApplicationContext(), "Password Invalid !!!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Invalid Password!!!", Toast.LENGTH_SHORT).show();
                 }
 
                 dialog.cancel();

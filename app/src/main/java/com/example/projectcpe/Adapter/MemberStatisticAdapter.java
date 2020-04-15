@@ -107,8 +107,8 @@ public class MemberStatisticAdapter extends RecyclerView.Adapter<MemberStatistic
         public MemberStaticViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            name = itemView.findViewById(R.id.name);
-            age = itemView.findViewById(R.id.age);
+            name = itemView.findViewById(R.id.namem);
+            age = itemView.findViewById(R.id.agem);
             score = itemView.findViewById(R.id.score);
             star1 = itemView.findViewById(R.id.star1);
             star2 = itemView.findViewById(R.id.star2);

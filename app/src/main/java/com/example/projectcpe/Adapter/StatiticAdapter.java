@@ -2,7 +2,6 @@ package com.example.projectcpe.Adapter;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
@@ -17,9 +16,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projectcpe.R;
-import com.example.projectcpe.ViewModel.Mission;
 import com.example.projectcpe.ViewModel.Static;
-import com.example.projectcpe.ViewModel.Step;
 
 
 import java.util.List;
@@ -145,7 +142,7 @@ public class StatiticAdapter extends RecyclerView.Adapter<StatiticAdapter.Statis
             super(itemView);
             itemView.setOnClickListener(this);
 
-            txName = itemView.findViewById(R.id.txName);
+            txName = itemView.findViewById(R.id.name);
             txAge = itemView.findViewById(R.id.txAge);
             txScore = itemView.findViewById(R.id.txScore);
             improfile = itemView.findViewById(R.id.imPro);

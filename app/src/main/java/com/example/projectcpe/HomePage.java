@@ -102,7 +102,7 @@ public class HomePage extends AppCompatActivity implements  MissionAdapter.OnCus
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         txAge = findViewById(R.id.txAge);
-        txName = findViewById(R.id.txName);
+        txName = findViewById(R.id.name);
         imProfile = findViewById(R.id.imProfile);
         drawer = findViewById(R.id.drawLayout);
         imdelete = findViewById(R.id.delete);

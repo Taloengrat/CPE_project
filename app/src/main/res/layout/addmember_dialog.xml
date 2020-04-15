@@ -104,10 +104,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:text="Create member"
-        android:textSize="24dp"
-
         android:fontFamily="@font/bold"
+        android:text="Create a player"
+
+        android:textSize="24dp"
         app:layout_constraintBottom_toTopOf="@+id/head"
         app:layout_constraintEnd_toEndOf="@+id/head"
         app:layout_constraintStart_toStartOf="@+id/head" />

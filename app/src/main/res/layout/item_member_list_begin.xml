@@ -46,30 +46,30 @@
                 tools:ignore="RedundantNamespace,VectorDrawableCompat" />
 
             <TextView
-                android:id="@+id/name"
+                android:id="@+id/namem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="16dp"
                 android:fontFamily="@font/thin"
-                android:text="member1"
+                android:text="Name :"
                 android:textColor="#000000"
                 android:textSize="25dp"
                 app:layout_constraintStart_toEndOf="@+id/imUser"
                 app:layout_constraintTop_toTopOf="@+id/imUser" />
 
             <TextView
-                android:id="@+id/age"
+                android:id="@+id/agem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/thin"
-                android:text="age"
+                android:text="Age :"
                 android:textColor="#000000"
                 android:textSize="25dp"
-                app:layout_constraintStart_toStartOf="@+id/name"
-                app:layout_constraintTop_toBottomOf="@+id/name" />
+                app:layout_constraintEnd_toEndOf="@+id/namem"
+                app:layout_constraintTop_toBottomOf="@+id/namem" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
@@ -93,6 +93,29 @@
 
             </androidx.cardview.widget.CardView>
 
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/thin"
+                android:text="TextView"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="@+id/namem"
+                app:layout_constraintStart_toEndOf="@+id/namem"
+                app:layout_constraintTop_toTopOf="@+id/namem" />
+
+            <TextView
+                android:id="@+id/age"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/thin"
+                android:text="TextView"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="@+id/agem"
+                app:layout_constraintStart_toEndOf="@+id/agem"
+                app:layout_constraintTop_toTopOf="@+id/agem" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

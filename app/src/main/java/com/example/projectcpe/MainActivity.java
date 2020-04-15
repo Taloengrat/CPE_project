@@ -40,6 +40,7 @@ import android.widget.Toast;
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -53,13 +54,10 @@ public class MainActivity extends AppCompatActivity {
     EditText _etPass,_etNameAdmin;
     ImageView imMedium;
     Button _btBegin;
-    boolean box1=true, box2=true, box3=true, box4=true, box5=true, box6=true;
+    boolean box1=true, box2=true, box3=true, box4=true, box5=true;
 
     private int ms = 0;
-    private int seconds = 0;
-    private int minutes;
 
-    ProgressBar progressBar;
     private Timer timer;
     protected boolean running = false;
 
@@ -180,6 +178,19 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
 
+                        String test = Environment.getExternalStorageDirectory().getPath() + "/EnglishPractice";
+                        File file = new File(test);
+                        if (!file.exists()) {
+                            file.mkdirs();
+
+                            String filenameForNoMedia4 = Environment.getExternalStorageDirectory().getAbsolutePath()+".nomedia";
+                            try {
+                                FileOutputStream outForNoMedia4 = new FileOutputStream(filenameForNoMedia4);
+                            } catch (FileNotFoundException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
                         startService(new Intent(MainActivity.this, ButtonServiceEffect.class)); // Sound button effect
                         String directory_path1 = Environment.getExternalStorageDirectory().getPath() + "/EnglishPractice/Introduction";
                         File file1 = new File(directory_path1);
@@ -193,11 +204,7 @@ public class MainActivity extends AppCompatActivity {
                             file3.mkdirs();
                         }
 
-                        String directory_path6 = Environment.getExternalStorageDirectory().getPath() + "/EnglishPractice/Career";
-                        File file6 = new File(directory_path6);
-                        if (!file6.exists()) {
-                            file6.mkdirs();
-                        }
+
 
                         String directory_path2 = Environment.getExternalStorageDirectory().getPath() + "/EnglishPractice/SayHello";
                         File file2 = new File(directory_path2);
@@ -271,29 +278,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-
-
-//        Mission mission = new Mission("Introduction", "Suggestions for playing the quiz.", 5, 5
-//                , directory_path + "Introduction", directory_path + "Introduction", directory_path + "Introduction", directory_path + "Introduction", directory_path + "Color", directory_path + "Color", directory_path + "Color", directory_path + "Color", directory_path + "Color", directory_path + "Color"
-//                , getResources().getString(R.string.q1_1), getResources().getString(R.string.q1_2), getResources().getString(R.string.q1_3), getResources().getString(R.string.q1_4), getResources().getString(R.string.q1_5)
-//                , getResources().getString(R.string.q1_6), getResources().getString(R.string.q1_7), getResources().getString(R.string.q1_8)
-//                , getResources().getString(R.string.q1_9), getResources().getString(R.string.q1_10)
-//                , getResources().getString(R.string.a1_1).trim(), getResources().getString(R.string.a1_2).trim(), getResources().getString(R.string.a1_3).trim()
-//                , getResources().getString(R.string.a1_4).trim(), getResources().getString(R.string.a1_5).trim()
-//                , getResources().getString(R.string.a1_6).trim(), getResources().getString(R.string.a1_7).trim(), getResources().getString(R.string.a1_8).trim()
-//                , getResources().getString(R.string.a1_9).trim(), getResources().getString(R.string.a1_10).trim()
-//
-//                , getResources().getString(R.string.s1_1).trim(), getResources().getString(R.string.s1_2).trim(), getResources().getString(R.string.s1_3).trim()
-//                , getResources().getString(R.string.s1_4).trim(), getResources().getString(R.string.s1_5).trim(), getResources().getString(R.string.s1_6).trim()
-//                , getResources().getString(R.string.s1_7).trim(), getResources().getString(R.string.s1_8).trim(), getResources().getString(R.string.s1_9).trim()
-//                , getResources().getString(R.string.s1_10).trim()
-//
-//                , getResources().getString(R.string.h1_1).trim(), getResources().getString(R.string.h1_2).trim(), getResources().getString(R.string.h1_3).trim()
-//                , getResources().getString(R.string.h1_4).trim(), getResources().getString(R.string.h1_5).trim(), getResources().getString(R.string.h1_6).trim()
-//                , getResources().getString(R.string.h1_7).trim(), getResources().getString(R.string.h1_8).trim(), getResources().getString(R.string.h1_9).trim()
-//                , getResources().getString(R.string.h1_10).trim());
-
         mission.setTime("1:00");
         mission.setTimeDeduction("0:30");
 
@@ -344,121 +328,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void CreateMissionColor() {
-
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.z1)).getBitmap(), "picture1", "Color");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.z2)).getBitmap(), "picture2", "Color");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.z3)).getBitmap(), "picture3", "Color");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.z4)).getBitmap(), "picture4", "Color");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.z5)).getBitmap(), "picture5", "Color");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.z6)).getBitmap(), "picture6", "Color");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.z7)).getBitmap(), "picture7", "Color");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.z8)).getBitmap(), "picture8", "Color");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.z9)).getBitmap(), "picture9", "Color");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.z10)).getBitmap(), "picture10", "Color");
-
-        Mission mission3 = new Mission("Color", "Various color", 9, 10
-                , directory_path + "Animal" + "/picture1.jpg", directory_path + "Animal" + "/picture2.jpg", directory_path + "Animal" + "/picture3.jpg", directory_path + "Animal" + "/picture4.jpg", directory_path + "Animal" + "/picture5.jpg", directory_path + "Animal" + "/picture6.jpg", directory_path + "Animal" + "/picture7.jpg", directory_path + "Animal" + "/picture8.jpg", directory_path + "Animal" + "/picture9.jpg", directory_path + "Animal" + "/picture10.jpg"
-                , getResources().getString(R.string.q3_1), getResources().getString(R.string.q3_2), getResources().getString(R.string.q3_3), getResources().getString(R.string.q3_4), getResources().getString(R.string.q3_5)
-                , getResources().getString(R.string.q3_6), getResources().getString(R.string.q3_7), getResources().getString(R.string.q3_8)
-                , getResources().getString(R.string.q3_9), getResources().getString(R.string.q3_10)
-                , getResources().getString(R.string.a3_1).trim(), getResources().getString(R.string.a3_2).trim(), getResources().getString(R.string.a3_3).trim()
-                , getResources().getString(R.string.a3_4).trim(), getResources().getString(R.string.a3_5).trim()
-                , getResources().getString(R.string.a3_6).trim(), getResources().getString(R.string.a3_7).trim(), getResources().getString(R.string.a3_8).trim()
-                , getResources().getString(R.string.a3_9).trim(), getResources().getString(R.string.a3_10).trim()
-
-                , "10/7".trim(), "10/7".trim(), getResources().getString(R.string.s3_3).trim()
-                , getResources().getString(R.string.s3_4).trim(), getResources().getString(R.string.s3_5).trim(), getResources().getString(R.string.s3_6).trim()
-                , getResources().getString(R.string.s3_7).trim(), getResources().getString(R.string.s3_8).trim(), getResources().getString(R.string.s3_9).trim()
-                , getResources().getString(R.string.s3_10).trim()
-
-                , getResources().getString(R.string.h3_1).trim(), getResources().getString(R.string.h3_2).trim(), getResources().getString(R.string.h3_3).trim()
-                , getResources().getString(R.string.h3_4).trim(), getResources().getString(R.string.h3_5).trim(), getResources().getString(R.string.h3_6).trim()
-                , getResources().getString(R.string.h3_7).trim(), getResources().getString(R.string.h3_8).trim(), getResources().getString(R.string.h3_9).trim()
-                , getResources().getString(R.string.h3_10).trim());
-
-        mission3.setTime("1:00");
-        mission3.setTimeDeduction("0:30");
-        MissionDATABASE.getInstance(MainActivity.this).missionDAO().create(mission3);
 
 
-    }
 
-    private void CreateMissionCareer() {
-
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c1)).getBitmap(), "picture1", "Career");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c2)).getBitmap(), "picture2", "Career");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c3)).getBitmap(), "picture3", "Career");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c4)).getBitmap(), "picture4", "Career");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c5)).getBitmap(), "picture5", "Career");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c6)).getBitmap(), "picture6", "Career");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c7)).getBitmap(), "picture7", "Career");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c8)).getBitmap(), "picture8", "Career");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c9)).getBitmap(), "picture9", "Career");
-        saveToInternalStorage(((BitmapDrawable) getResources().getDrawable(R.drawable.c10)).getBitmap(), "picture10", "Career");
-
-        Mission mission3 = new Mission("Career", "Various Career.", 9, 10
-                , directory_path + "Career" + "/picture1.jpg"
-                , directory_path + "Career" + "/picture2.jpg"
-                , directory_path + "Career" + "/picture3.jpg"
-                , directory_path + "Career" + "/picture4.jpg"
-                , directory_path + "Career" + "/picture5.jpg"
-                , directory_path + "Career" + "/picture6.jpg"
-                , directory_path + "Career" + "/picture7.jpg"
-                , directory_path + "Career" + "/picture8.jpg"
-                , directory_path + "Career" + "/picture9.jpg"
-                , directory_path + "Career" + "/picture10.jpg"
-
-                , getResources().getString(R.string.q4_1)
-                , getResources().getString(R.string.q4_2)
-                , getResources().getString(R.string.q4_3)
-                , getResources().getString(R.string.q4_4)
-                , getResources().getString(R.string.q4_5)
-                , getResources().getString(R.string.q4_6)
-                , getResources().getString(R.string.q4_7)
-                , getResources().getString(R.string.q4_8)
-                , getResources().getString(R.string.q4_9)
-                , getResources().getString(R.string.q4_10)
-
-                , getResources().getString(R.string.a4_1).trim()
-                , getResources().getString(R.string.a4_2).trim()
-                , getResources().getString(R.string.a4_3).trim()
-                , getResources().getString(R.string.a4_4).trim()
-                , getResources().getString(R.string.a4_5).trim()
-                , getResources().getString(R.string.a4_6).trim()
-                , getResources().getString(R.string.a4_7).trim()
-                , getResources().getString(R.string.a4_8).trim()
-                , getResources().getString(R.string.a4_9).trim()
-                , getResources().getString(R.string.a4_10).trim()
-
-                , getResources().getString(R.string.s4_1).trim()
-                , getResources().getString(R.string.s4_2).trim()
-                , getResources().getString(R.string.s4_3).trim()
-                , getResources().getString(R.string.s4_4).trim()
-                , getResources().getString(R.string.s4_5).trim()
-                , getResources().getString(R.string.s4_6).trim()
-                , getResources().getString(R.string.s4_7).trim()
-                , getResources().getString(R.string.s4_8).trim()
-                , getResources().getString(R.string.s4_9).trim()
-                , getResources().getString(R.string.s4_10).trim()
-
-                , getResources().getString(R.string.h4_1).trim()
-                , getResources().getString(R.string.h4_2).trim()
-                , getResources().getString(R.string.h4_3).trim()
-                , getResources().getString(R.string.h4_4).trim()
-                , getResources().getString(R.string.h4_5).trim()
-                , getResources().getString(R.string.h4_6).trim()
-                , getResources().getString(R.string.h4_7).trim()
-                , getResources().getString(R.string.h4_8).trim()
-                , getResources().getString(R.string.h4_9).trim()
-                , getResources().getString(R.string.h4_10).trim());
-
-        mission3.setTime("1:00");
-        mission3.setTimeDeduction("0:30");
-        MissionDATABASE.getInstance(MainActivity.this).missionDAO().create(mission3);
-
-
-    }
 
     private void CreateMissionTwo() {
 
@@ -548,28 +420,6 @@ public class MainActivity extends AppCompatActivity {
                 );
 
 
-
-
-//        Mission careers = new Mission("WhyJamieSad", "Jamie's story", 9, 6
-//                , directory_path + "WhyJamieSad" + "/picture1.jpg", directory_path + "WhyJamieSad" + "/picture2.jpg", directory_path + "WhyJamieSad" + "/picture3.jpg", directory_path + "WhyJamieSad" + "/picture4.jpg", directory_path + "WhyJamieSad" + "/picture5.jpg", directory_path + "WhyJamieSad" + "/picture6.jpg", directory_path + "Career" + "/picture7.jpg", directory_path + "Career" + "/picture8.jpg", directory_path + "Career" + "/picture9.jpg", directory_path + "Career" + "/picture10.jpg"
-//                , getResources().getString(R.string.q4_1), getResources().getString(R.string.q4_2), getResources().getString(R.string.q4_3), getResources().getString(R.string.q4_4), getResources().getString(R.string.q4_5)
-//                , getResources().getString(R.string.q4_6), getResources().getString(R.string.q4_7), getResources().getString(R.string.q4_8)
-//                , getResources().getString(R.string.q4_9), getResources().getString(R.string.q4_10)
-//                , getResources().getString(R.string.a4_1).trim(), getResources().getString(R.string.a4_2).trim(), getResources().getString(R.string.a4_3).trim()
-//                , getResources().getString(R.string.a4_4).trim(), getResources().getString(R.string.a4_5).trim()
-//                , getResources().getString(R.string.a4_6).trim(), getResources().getString(R.string.a4_7).trim(), getResources().getString(R.string.a4_8).trim()
-//                , getResources().getString(R.string.a4_9).trim(), getResources().getString(R.string.a4_10).trim()
-//
-//                , getResources().getString(R.string.s4_1).trim(), getResources().getString(R.string.s4_2).trim(), getResources().getString(R.string.s4_3).trim()
-//                , getResources().getString(R.string.s4_4).trim(), getResources().getString(R.string.s4_5).trim(), getResources().getString(R.string.s4_6).trim()
-//                , getResources().getString(R.string.s4_7).trim(), getResources().getString(R.string.s4_8).trim(), getResources().getString(R.string.s4_9).trim()
-//                , getResources().getString(R.string.s4_10).trim()
-//
-//                , getResources().getString(R.string.h4_1).trim(), getResources().getString(R.string.h4_2).trim(), getResources().getString(R.string.h4_3).trim()
-//                , getResources().getString(R.string.h4_4).trim(), getResources().getString(R.string.h4_5).trim(), getResources().getString(R.string.h4_6).trim()
-//                , getResources().getString(R.string.h4_7).trim(), getResources().getString(R.string.h4_8).trim(), getResources().getString(R.string.h4_9).trim()
-//                , getResources().getString(R.string.h4_10).trim());
-
         mission.setTime("1:10");
         mission.setTimeDeduction("0:35");
         MissionDATABASE.getInstance(MainActivity.this).missionDAO().create(mission);
@@ -624,12 +474,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    public static Drawable getAssetImage(Context context, String filename) throws IOException {
-        AssetManager assets = context.getResources().getAssets();
-        InputStream buffer = new BufferedInputStream((assets.open(filename + ".jpg")));
-        Bitmap bitmap = BitmapFactory.decodeStream(buffer);
-        return new BitmapDrawable(context.getResources(), bitmap);
-    }
+
 
     @Override
     protected void onStart() {
@@ -775,42 +620,6 @@ public class MainActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    private void ChooseMission() {
-
-        final Dialog dialog = new Dialog(MainActivity.this);
-        dialog.getWindow().setBackgroundDrawableResource(R.drawable.frameloadmission);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.select_mission);
-        dialog.setCancelable(false);
-
-        CheckBox checkBox1 = dialog.findViewById(R.id.checkbox1);
-        CheckBox checkBox2 = dialog.findViewById(R.id.checkbox2);
-        CheckBox checkBox3 = dialog.findViewById(R.id.checkbox3);
-        CheckBox checkBox4 = dialog.findViewById(R.id.checkbox4);
-        CheckBox checkBox5 = dialog.findViewById(R.id.checkbox5);
-
-        Button ok = dialog.findViewById(R.id.ok);
-
-
-        ok.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-
-
-                loadingDialog = ProgressDialog.show(MainActivity.this, "เตรียมข้อมูลแบบทดสอบ", "กำลังเตรียมแบบทดสอบ...", true, false);
-
-                dialog.dismiss();
-                startThread();
-
-            }
-        });
-
-
-        dialog.show();
-
-
-    }
 
     private String saveToInternalStorage(Bitmap bitmapImage, String picturename, String missionName) {
         ContextWrapper cw = new ContextWrapper(getApplicationContext());
@@ -902,7 +711,7 @@ public class MainActivity extends AppCompatActivity {
                     public void run() {
 
                         startTimer();
-                        loadingDialog.setTitle("กำลังเตรียมแบบทดสอบที่ 4");
+                        loadingDialog.setTitle("กำลังเตรียมแบบทดสอบที่ 3");
 
 
                     }
@@ -918,7 +727,7 @@ public class MainActivity extends AppCompatActivity {
                     public void run() {
 
                         startTimer();
-                        loadingDialog.setTitle("กำลังเตรียมแบบทดสอบที่ 5");
+                        loadingDialog.setTitle("กำลังเตรียมแบบทดสอบที่ 4");
 
 
                     }
@@ -933,7 +742,7 @@ public class MainActivity extends AppCompatActivity {
                     public void run() {
 
                         startTimer();
-                        loadingDialog.setTitle("กำลังเตรียมแบบทดสอบที่ 6");
+                        loadingDialog.setTitle("กำลังเตรียมแบบทดสอบที่ 5");
 
 
                     }
@@ -943,25 +752,7 @@ public class MainActivity extends AppCompatActivity {
                 percent = 99;
             }
 
-            if (box6) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
 
-                        startTimer();
-                        loadingDialog.setTitle("กำลังเตรียมแบบทดสอบที่ 3");
-
-
-                    }
-                });
-                CreateMissionCareer();
-
-
-
-
-                percent = 99;
-
-            }
 
 
             stopThread = true;

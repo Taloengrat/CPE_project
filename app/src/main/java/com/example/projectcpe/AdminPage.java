@@ -11,14 +11,11 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.projectcpe.CreateMission.MissionCreate;
 import com.example.projectcpe.CreateMission.MissionDelete;
 import com.example.projectcpe.CreateMission.Export.MissionExport;
 import com.example.projectcpe.CreateMission.Import.MissionImport;
-import com.example.projectcpe.PlayingMode.DetailMission;
-import com.example.projectcpe.ViewModel.Admin;
 
 public class AdminPage extends AppCompatActivity {
 
@@ -36,7 +33,7 @@ public class AdminPage extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        txName = findViewById(R.id.txName);
+        txName = findViewById(R.id.name);
 
         txName.setText(getMyPreNameAdmin());
 

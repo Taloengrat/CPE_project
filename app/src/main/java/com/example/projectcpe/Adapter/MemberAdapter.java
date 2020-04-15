@@ -1,39 +1,27 @@
 package com.example.projectcpe.Adapter;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.projectcpe.BeginMember;
 import com.example.projectcpe.ButtonServiceEffect;
 import com.example.projectcpe.FunctionEditProfile;
-import com.example.projectcpe.HomePage;
 import com.example.projectcpe.R;
 import com.example.projectcpe.ViewModel.Member;
 import com.example.projectcpe.ViewModel.MissionDATABASE;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
-
-import static android.content.Context.MODE_PRIVATE;
 
 public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MemberViewHolder> {
 
@@ -126,8 +114,8 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MemberView
             super(itemView);
 
 
-            name = itemView.findViewById(R.id.name);
-            age = itemView.findViewById(R.id.age);
+            name = itemView.findViewById(R.id.namem);
+            age = itemView.findViewById(R.id.agem);
             delete = itemView.findViewById(R.id.delete);
             layout = itemView.findViewById(R.id.layout);
             imUser =itemView.findViewById(R.id.imUser);

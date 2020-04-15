@@ -54,8 +54,8 @@ public class MemberAdapterBegin extends RecyclerView.Adapter<MemberAdapterBegin.
         final Member member = memberListb.get(position);
         Bitmap bitmap = BitmapFactory.decodeByteArray(member.getProfile(), 0, member.getProfile().length);
 
-        holder.name.setText("name : " + member.getName());
-        holder.age.setText("age : " + member.getAge());
+        holder.name.setText(member.getName());
+        holder.age.setText(member.getAge());
         holder.imUser.setImageBitmap(bitmap);
 
 
@@ -142,6 +142,8 @@ public class MemberAdapterBegin extends RecyclerView.Adapter<MemberAdapterBegin.
                     } else {
 
                         Toast.makeText(activity, "Incorrect password.", Toast.LENGTH_SHORT).show();
+                        _etPassword.setText(null);
+
                     }
                 }
             });

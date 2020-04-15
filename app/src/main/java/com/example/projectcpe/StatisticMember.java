@@ -4,21 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.projectcpe.Adapter.MemberStatisticAdapter;
-import com.example.projectcpe.Adapter.MissionAdapter;
 import com.example.projectcpe.ViewModel.Member;
 import com.example.projectcpe.ViewModel.MemberStatic;
-import com.example.projectcpe.ViewModel.Mission;
 import com.example.projectcpe.ViewModel.MissionDATABASE;
 
 import java.util.List;
@@ -54,7 +50,7 @@ public class StatisticMember extends AppCompatActivity {
 
     private void Initial() {
         txAge = findViewById(R.id.txAge);
-        txName = findViewById(R.id.txName);
+        txName = findViewById(R.id.name);
         imProfile = findViewById(R.id.imProfile);
         recyclerView = findViewById(R.id.recyclerView);
     }
